@@ -1,2 +1,2 @@
-# Portofolio
-My portofolio website to show off my projects
+# Portfolio
+My portfolio website to show off my projects
