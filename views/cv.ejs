@@ -1,3 +1,61 @@
-<div>
-    <h1>HELLO WORLD !</h1>
-</div>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portfolio</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+</head>
+<body>
+    <%- include("partials/header", {pageHeader: "Curriculum Vitae"}) %>
+    <main>
+        <div>Baptiste Grimaldi</div>
+        <div id="cv-header">
+            <span>3D Model</span>
+            <div>
+                <span>67000 Strasbourg</span>
+                <span>France</span>
+                <span>bapt.grimaldi@gmail.com</span>
+                <span>https://github.com/GrimalDev</span>
+            </div>
+            <div>
+                <span>Développeur full-stack</span>
+                <span>Javascript, Html, CSS, Bootstrap, PHP, UI/UX Apache, NodeJS, Docker</span>
+                <span>Mobilité: Bas-Rhin</span>
+            </div>
+        </div>
+        <div>
+            <div id="cv-degrees" class="cv-category-title">
+                <div class="cv-category-title">Diplômes</div>
+                <ul>
+                    <li class="cv-content">2021 - BTS SIO SLAM - Ecole IRIS</li>
+                    <li class="cv-content">2020 - Abi Bac S mention Bien</li>
+                    <li class="cv-content-secondary">(Double diplôme franco-allemand)</li>
+                    <li class="cv-content">2016 - Technicien Son et Lumière (Allemagne)</li>
+                </ul>
+            </div>
+            <div id="cv-experience" class="cv-category-title">
+                <div class="cv-category-title">Expérience</div>
+                <ul>
+                    <li class="cv-content">Juin 2021 à Juillet 2021 - HARA - Stagiaire pôle IT</li>
+                    <li class="cv-content-secondary">Définition et amélioration continue de l'architecture réseau</li>
+                    <li class="cv-content-secondary">Maintenance du matériel informatique</li>
+                    <li class="cv-content-secondary">Développement d'outils de gestion et de veille informatique</li>
+                    <li class="cv-content">Juin 2021 à aujourd'hui - Missions développement fullstack javascript</li>
+                    <li class="cv-content-secondary">Intranet médical</li>
+                    <li class="cv-content-secondary">Interface outil trading</li>
+                    <li class="cv-content-secondary">Blog communautaire de recettes asiatiques</li>
+                    <li class="cv-content">Avril 2021 à Juillet 2021 - ADIS - Gestionnaire Parc Informatique</li>
+                    <li class="cv-content-secondary">Installation de postes informatiques</li>
+                    <li class="cv-content-secondary">Assistance technique</li>
+                    <li class="cv-content-secondary">Gestion de stock et maintenance de matériel</li>
+                    <li class="cv-content">Mars 2019 à mars 2020 - GrimCorp - Auto-Entrepreneur</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <%- include("partials/footer") %>
+</body>
+</html>
