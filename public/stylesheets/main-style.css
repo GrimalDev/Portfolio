@@ -1,25 +1,17 @@
-body, html {
-  padding: 0;
-  margin: 0;
-  background-color: #FBFBFB;
-  height: 100%;
-  width: 100%;
-}
+/* Error: expected "{".
+ *   ,
+ * 2 | body; html {
+ *   |     ^
+ *   '
+ *   main-style.scss 2:5  root stylesheet */
 
-main {
-  height: 100%;
-  width: 100%;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: expected "{".\a   \2577 \a 2 \2502  body; html {\a   \2502      ^\a   \2575 \a   main-style.scss 2:5  root stylesheet';
 }
-main .home-section {
-  height: 100vh;
-  width: 100%;
-}
-
-nav {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  padding: 0 1rem 0 1rem;
-}
-
-/*# sourceMappingURL=main-style.css.map */

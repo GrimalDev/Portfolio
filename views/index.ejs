@@ -1,23 +1,77 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
+    <meta charset="UTF-8">
+    <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Portfolio</title>
-  <link rel="shortcut icon" href="http://127.0.0.1:3000/images/favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portfolio</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" />
 </head>
 <body>
-  <nav></nav>
-  <header>
-<!--    All first view-->
-  </header>
-  <main>
-    <div class="home-section"></div>
-    <div class="home-section"></div>
-    <div class="home-section"></div>
-  </main>
-  <footer></footer>
+    <header>
+        <nav>
+            <span>&lt;img src="logo.svg"&gt;</span>
+            <span><%= pageHeader %></span>
+            <span>&lt;span&gt;MENU&lt;/span&gt;</span>
+        </nav>
+    </header>
+    <main>
+      <div id="landing-page" class="home-section">
+          &lt;br&gt;<br>
+          &lt;br&gt;<br>
+          &lt;br&gt;<br>
+          &lt;br&gt;<br>
+          &lt;center&gt;&lt;span&gt;&lt;h1&gt;PORTOFOLIO&lt;/h1&gt;&lt;/span&gt;&lt;/center&gt;<br>
+          &lt;center&gt;&lt;span&gt;&lt;h1&gt;GRIMALDI BAPTISTE&lt;/h1&gt;&lt;/span&gt;&lt;/center&gt;<br>
+          &lt;br&gt;<br>
+          &lt;br&gt;<br>
+          &lt;br&gt;<br>
+          &lt;center&gt;&lt;span&gt;&lt;h2&gt;See how this page was made&lt;/h2&gt;&lt;/span&gt;&lt;/center&gt;<br>
+          &lt;br&gt;<br>
+          &lt;br&gt;<br>
+          &lt;br&gt;<br>
+          &lt;br&gt;<br>
+          &lt;br&gt;<br>
+      </div>
+      <div id="articles" class="home-section">
+        <div>
+            <h2>MY LATEST ARTICLES</h2>
+            <h2>MY LATEST ARTICLES</h2>
+        </div>
+        <div class="article-card-container">
+        </div>
+            <img src="/images/Portfolio-logo-detailed.png" alt="portfolio image">
+            <span class="article-title">TITLE</span>
+            <span class="article-description">description</span>
+        <div class="article-card-container">
+            <img src="/images/Portfolio-logo-detailed.png" alt="portfolio image">
+            <span class="article-title">TITLE</span>
+            <span class="article-description">description</span>
+        </div>
+        <div class="article-card-container">
+            <img src="/images/Portfolio-logo-detailed.png" alt="portfolio image">
+            <span class="article-title">TITLE</span>
+            <span class="article-description">description</span>
+        </div>
+    </div>
+    <div id="presentation" class="home-section">
+        <div id="3d-head"></div>
+        <div id="presentation-description"></div>
+    </div>
+    <div id="technologies" class="home-section">
+        <div>USED TECHNOLOGIES</div>
+        <span>PHP</span>
+        <span>NodeJS</span>
+        <span>VueJS</span>
+        <span>Javascript</span>
+        <span>CSS</span>
+        <span>SQL</span>
+        <span>Docker</span>
+        <span>Bootstrap</span>
+        <div>Click to see more projects</div>
+    </div>
+    </main>
+  <%- include("partials/footer") %>
 </body>
 </html>
