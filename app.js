@@ -3,12 +3,15 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+require('dotenv').config()
 
 const indexRouter = require('./routes/index-route');
 const cvRouter = require('./routes/cv-route');
+const cvDataRouter = require('./routes/cv-data-route')
 const projectsRouter = require('./routes/projects-route');
 const articlesRouter = require('./routes/articles-route');
 const docRouter = require('./routes/doc-route');
+const {con} = require("./app/configDB");
 
 const app = express();
 const listeningPort = 3030
@@ -25,10 +28,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/cv', cvRouter);
+app.use('/getcvdata', cvDataRouter);
 app.use('/projects', projectsRouter);
 app.use('/articles', articlesRouter);
 app.use('/doc', docRouter);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
