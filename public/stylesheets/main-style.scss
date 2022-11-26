@@ -1,11 +1,28 @@
 //Main style sheet to use with all pages
-body; html {
+/*------------GENERAl-----------*/
+
+body, html {
   padding: 0;
   margin: 0;
   background-color: #FBFBFB;
   height: 100%;
   width: 100%
 }
+
+/*------------HEADER-----------*/
+header {
+  padding: 3rem;
+  background-color: blue;
+}
+/*------------NAV-----------*/
+nav {
+  display: flex;
+  width: 100%;
+
+  justify-content: space-between;
+  padding: 0 1rem 0 1rem
+}
+/*------------MAIN-----------*/
 
 main {
   height: 100%;
@@ -15,11 +32,4 @@ main {
     width: 100%
   }
 }
-
-nav {
-  display: flex;
-  width: 100%;
-
-  justify-content: space-between;
-  padding: 0 1rem 0 1rem
-}
+/*------------FOOTER-----------*/
