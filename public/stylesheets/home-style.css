@@ -1,0 +1,137 @@
+/*------------IMPORTS-----------*/
+/*------------FONTS-----------*/
+@font-face {
+  font-family: "Source Code Pro";
+  src: url("../fonts/Source_Code_Pro/SourceCodePro-VariableFont_wght.ttf") format("TrueType");
+}
+/*------------GENERAl-----------*/
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  padding: 0;
+  margin: 0;
+  background-color: #FBFBFB;
+  height: 100%;
+}
+
+/*------------FOOTER-----------*/
+/*------------RESPONSIVE-----------*/
+/* Avoid Chrome to see Safari hack */
+@supports (-webkit-touch-callout: none) {
+  body {
+    /* The hack for Safari */
+    min-height: -webkit-fill-available;
+  }
+}
+/*------------HEADER-----------*/
+header {
+  height: 100vh;
+  padding: 1.5rem;
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
+  color: #C82829;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+#landing-page {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+}
+#landing-page * {
+  display: flex;
+  align-items: baseline;
+}
+#landing-page > div {
+  gap: 1rem;
+  flex-grow: 1;
+}
+#landing-page h1 {
+  margin: 0;
+  width: fit-content;
+  color: #4D4D4C;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 50px;
+  text-align: center;
+}
+
+.code-gray {
+  color: #4D4D4C;
+}
+
+.code-green {
+  color: #718C00;
+}
+
+.code-number {
+  color: #737373;
+  width: 2em;
+  justify-content: right;
+  font-size: 17px;
+  line-height: 21px;
+}
+
+.code-center {
+  flex-grow: 1;
+  justify-content: center;
+}
+
+/*------------NAV-----------*/
+nav {
+  display: flex;
+  align-items: end;
+  height: 2.5rem;
+  padding-bottom: 1rem;
+}
+nav > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+}
+nav > div > * {
+  display: flex;
+  align-items: baseline;
+}
+nav > div #portfolio-head-icon {
+  color: #C82829;
+  text-decoration: underline;
+  text-decoration-color: #4D4D4C;
+  background: rgba(217, 217, 217, 0.48);
+}
+nav > div > span {
+  text-decoration-line: underline;
+  text-decoration-color: #4D4D4C;
+  background: rgba(217, 217, 217, 0.48);
+  height: fit-content;
+  cursor: pointer;
+}
+nav > div > div {
+  gap: 5rem;
+}
+nav > div > div a:last-child {
+  text-decoration: none;
+}
+nav > div > div .code-number {
+  display: flex;
+  align-items: center;
+}
+
+/*------------MAIN-----------*/
+main {
+  height: 100%;
+}
+main .home-section {
+  height: 100vh;
+  width: 100%;
+}
+
+/*------------RESPONSIVE-----------*/
+
+/*# sourceMappingURL=home-style.css.map */
