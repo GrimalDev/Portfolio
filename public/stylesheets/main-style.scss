@@ -1,35 +1,33 @@
 //Main style sheet to use with all pages
+/*------------FONTS-----------*/
+
+@font-face {
+  font-family: "Source Code Pro";
+  src: url("../fonts/Source_Code_Pro/SourceCodePro-VariableFont_wght.ttf") format("TrueType");
+}
+
 /*------------GENERAl-----------*/
+
+* {
+  box-sizing: border-box;
+}
 
 body, html {
   padding: 0;
   margin: 0;
   background-color: #FBFBFB;
   height: 100%;
-  width: 100%
 }
 
-/*------------HEADER-----------*/
-header {
-  padding: 3rem;
-  background-color: blue;
-}
-/*------------NAV-----------*/
-nav {
-  display: flex;
-  width: 100%;
+/*------------FOOTER-----------*/
 
-  justify-content: space-between;
-  padding: 0 1rem 0 1rem
-}
-/*------------MAIN-----------*/
 
-main {
-  height: 100%;
-  width: 100%;
-  .home-section {
-    height: 100vh;
-    width: 100%
+/*------------RESPONSIVE-----------*/
+
+/* Avoid Chrome to see Safari hack */
+@supports (-webkit-touch-callout: none) {
+  body {
+    /* The hack for Safari */
+    min-height: -webkit-fill-available;
   }
 }
-/*------------FOOTER-----------*/

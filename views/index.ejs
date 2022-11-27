@@ -7,34 +7,39 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Portfolio</title>
     <link rel="shortcut icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="/stylesheets/home-style.css">
 </head>
 <body>
     <header>
         <nav>
-            <span>&lt;img src="logo.svg"&gt;</span>
-            <span><%= pageHeader %></span>
-            <span>&lt;span&gt;MENU&lt;/span&gt;</span>
+            <div>
+                <div>
+                    <span class="code-number">1.</span><a href="/" id="portfolio-head-icon">&lt;img <span class="code-gray">src</span>=<span class="code-green">"logo.svg"</span>&gt;</a>
+                    <a href="/" class="code-gray"><%= pageHeader %></a>
+                </div>
+                <span>&lt;span&gt;<span class="code-gray">MENU</span>&lt;/span&gt;</span>
+            </div>
         </nav>
+        <div id="landing-page" class="home-section">
+            <div><span class="code-number">2.</span><span>&lt;br&gt;</span></div>
+            <div><span class="code-number">3.</span><span>&lt;br&gt;</span></div>
+            <div><span class="code-number">4.</span><span>&lt;br&gt;</span></div>
+            <div><span class="code-number">5.</span><span>&lt;br&gt;</span></div>
+            <div><span class="code-number">6.</span><span class="code-center">&lt;center&gt;&lt;span&gt;&lt;h1&gt;<h1>PORTFOLIO</h1>&lt;/h1&gt;&lt;/span&gt;&lt;/center&gt;</span></div>
+            <div><span class="code-number">7.</span><span class="code-center">&lt;center&gt;&lt;span&gt;&lt;h1&gt;<h1>GRIMALDI BAPTISTE</h1>&lt;/h1&gt;&lt;/span&gt;&lt;/center&gt;</span></div>
+            <div><span class="code-number">8.</span><span>&lt;br&gt;</span></div>
+            <div><span class="code-number">9.</span><span>&lt;br&gt;</span></div>
+            <div><span class="code-number">10.</span><span>&lt;br&gt;</span></div>
+            <div><span class="code-number">11.</span><span class="code-center">&lt;center&gt;&lt;span&gt;&lt;h2&gt;<span class="code-gray">See how this page was made</span>&lt;/h2&gt;&lt;/span&gt;&lt;/center&gt;</span></div>
+            <div><span class="code-number">12.</span><span>&lt;br&gt;</span></div>
+            <div><span class="code-number">13.</span><span>&lt;br&gt;</span></div>
+            <div><span class="code-number">14.</span><span>&lt;br&gt;</span></div>
+            <div><span class="code-number">15.</span><span>&lt;br&gt;</span></div>
+            <div><span class="code-number">16.</span><span>&lt;br&gt;</span></div>
+        </div>
     </header>
     <main>
-      <div id="landing-page" class="home-section">
-          &lt;br&gt;<br>
-          &lt;br&gt;<br>
-          &lt;br&gt;<br>
-          &lt;br&gt;<br>
-          &lt;center&gt;&lt;span&gt;&lt;h1&gt;PORTOFOLIO&lt;/h1&gt;&lt;/span&gt;&lt;/center&gt;<br>
-          &lt;center&gt;&lt;span&gt;&lt;h1&gt;GRIMALDI BAPTISTE&lt;/h1&gt;&lt;/span&gt;&lt;/center&gt;<br>
-          &lt;br&gt;<br>
-          &lt;br&gt;<br>
-          &lt;br&gt;<br>
-          &lt;center&gt;&lt;span&gt;&lt;h2&gt;See how this page was made&lt;/h2&gt;&lt;/span&gt;&lt;/center&gt;<br>
-          &lt;br&gt;<br>
-          &lt;br&gt;<br>
-          &lt;br&gt;<br>
-          &lt;br&gt;<br>
-          &lt;br&gt;<br>
-      </div>
-      <div id="articles" class="home-section">
+        <div id="articles" class="home-section">
         <div>
             <h2>MY LATEST ARTICLES</h2>
             <h2>MY LATEST ARTICLES</h2>
@@ -54,12 +59,12 @@
             <span class="article-title">TITLE</span>
             <span class="article-description">description</span>
         </div>
-    </div>
-    <div id="presentation" class="home-section">
+        </div>
+        <div id="presentation" class="home-section">
         <div id="3d-head"></div>
         <div id="presentation-description"></div>
-    </div>
-    <div id="technologies" class="home-section">
+        </div>
+        <div id="technologies" class="home-section">
         <div>USED TECHNOLOGIES</div>
         <span>PHP</span>
         <span>NodeJS</span>
@@ -70,8 +75,8 @@
         <span>Docker</span>
         <span>Bootstrap</span>
         <div>Click to see more projects</div>
-    </div>
-    </main>
+        </div>
+        </main>
   <%- include("partials/footer") %>
 </body>
 </html>
