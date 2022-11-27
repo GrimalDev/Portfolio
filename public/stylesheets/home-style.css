@@ -4,6 +4,10 @@
   font-family: "Source Code Pro";
   src: url("../fonts/Source_Code_Pro/SourceCodePro-VariableFont_wght.ttf") format("TrueType");
 }
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter/Inter-VariableFont_wght.ttf") format("TrueType");
+}
 /*------------GENERAl-----------*/
 * {
   box-sizing: border-box;
@@ -16,6 +20,15 @@ body, html {
   height: 100%;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+}
+body > * {
+  flex-shrink: 0;
+}
+
+/*------------MAIN-----------*/
 /*------------FOOTER-----------*/
 /*------------RESPONSIVE-----------*/
 /* Avoid Chrome to see Safari hack */
@@ -25,16 +38,24 @@ body, html {
     min-height: -webkit-fill-available;
   }
 }
+/*------------GENERAL-----------*/
 /*------------HEADER-----------*/
 header {
   height: 100vh;
+  width: 100%;
   padding: 1.5rem;
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
+  font-family: "Source Code Pro", serif;
   color: #C82829;
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
+  font-size: clamp(16px, 2vw, 24px);
   line-height: 30px;
+}
+header * {
+  min-width: fit-content;
+}
+header #header-formore-swipe {
+  display: none;
 }
 
 #landing-page {
@@ -46,19 +67,30 @@ header {
 #landing-page * {
   display: flex;
   align-items: baseline;
+  height: fit-content;
 }
 #landing-page > div {
   gap: 1rem;
   flex-grow: 1;
+  height: fit-content;
 }
 #landing-page h1 {
   margin: 0;
   width: fit-content;
   color: #4D4D4C;
   font-weight: 500;
-  font-size: 40px;
+  font-size: clamp(20px, 3vw, 40px);
   line-height: 50px;
   text-align: center;
+}
+#landing-page h1 span:last-child {
+  display: none;
+}
+#landing-page h2 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(16px, 2vw, 24px);
+  line-height: 30px;
 }
 
 .code-gray {
@@ -132,6 +164,115 @@ main .home-section {
   width: 100%;
 }
 
+#articles-title {
+  position: relative;
+  font-family: "Inter", serif;
+  font-style: normal;
+}
+#articles-title h2 {
+  position: relative;
+  font-weight: 700;
+  font-size: clamp(20px, 3vw, 40px);
+  line-height: 48px;
+  color: #4D4D4C;
+  z-index: 10;
+}
+#articles-title h2:last-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  color: #C82829 !important;
+  transform: translate(2px, 2px);
+}
+
+#article-cards-all-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 70%;
+  max-width: 100rem;
+}
+#article-cards-all-container .article-card-container {
+  display: flex;
+  flex-direction: column;
+  width: 15rem;
+}
+#article-cards-all-container .article-card-container img {
+  width: 100%;
+}
+
 /*------------RESPONSIVE-----------*/
+@media screen and (max-width: 1025px) {
+  #landing-page h2 {
+    font-size: clamp(14px, 1.8vw, 20px);
+  }
+}
+@media screen and (max-width: 915px) {
+  .fake-span-tag {
+    display: none !important;
+  }
+  #article-cards-all-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  #article-cards-all-container .article-card-container {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 740px) {
+  .fake-span-tag {
+    display: none !important;
+  }
+  nav > div > div {
+    gap: 1rem;
+  }
+  #header-formore-scroll {
+    display: none !important;
+  }
+  #header-formore-swipe {
+    display: inline !important;
+    font-size: clamp(16px, 2vw, 20px) !important;
+  }
+}
+@media screen and (max-width: 555px) {
+  .fake-center-tag {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 520px) {
+  header {
+    padding: 1.5rem 0.5rem 1.5rem 0.5rem;
+  }
+  header nav > div > div {
+    gap: 2rem;
+  }
+  header nav > div > div a {
+    background-color: rgba(217, 217, 217, 0.48);
+    padding: 0 1rem 0 1rem;
+    text-decoration: underline !important;
+    text-decoration-color: #4D4D4C !important;
+  }
+  header #portfolio-head-icon {
+    display: none !important;
+  }
+  header > div > div {
+    gap: 0.3rem !important;
+  }
+  #articles-title h2:last-child {
+    transform: translate(1.5px, 1.5px);
+  }
+}
+@media screen and (max-width: 350px) {
+  header nav > div > div a:last-child {
+    display: none !important;
+  }
+  #landing-page h1 span:first-child {
+    display: none !important;
+  }
+  #landing-page h1 span:last-child {
+    display: inline !important;
+  }
+}
 
 /*# sourceMappingURL=home-style.css.map */
