@@ -1,9 +1,23 @@
+//Main style sheet to use with all pages
 /*------------FONTS-----------*/
+
 @font-face {
   font-family: "Source Code Pro";
   src: url("../fonts/Source_Code_Pro/SourceCodePro-VariableFont_wght.ttf") format("TrueType");
 }
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter/Inter-VariableFont_wght.ttf") format("TrueType");
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto/Roboto-Medium.ttf");
+}
+
+
 /*------------GENERAl-----------*/
+
 * {
   box-sizing: border-box;
 }
@@ -15,8 +29,27 @@ body, html {
   height: 100%;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  > * {
+    flex-shrink: 0;
+  }
+}
+
+/*------------MAIN-----------*/
+
+.home-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /*------------FOOTER-----------*/
+
+
 /*------------RESPONSIVE-----------*/
+
 /* Avoid Chrome to see Safari hack */
 @supports (-webkit-touch-callout: none) {
   body {
@@ -24,5 +57,3 @@ body, html {
     min-height: -webkit-fill-available;
   }
 }
-
-/*# sourceMappingURL=main-style.css.map */
