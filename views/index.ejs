@@ -6,7 +6,6 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Portfolio</title>
-    <link rel="shortcut icon" href="/images/favicon.ico" />
     <link rel="stylesheet" href="/stylesheets/home-style.css">
 </head>
 <body>
@@ -57,27 +56,19 @@
                 <h2>MY LATEST ARTICLES</h2>
             </div>
             <div id="article-cards-all-container">
-                <div class="article-card-container">
-                    <img src="/images/Portfolio-logo-detailed.png" alt="portfolio image">
-                    <span class="article-title">TITLE</span>
-                    <span class="article-description">description</span>
-                </div>
-                <div class="article-card-container">
-                    <img src="/images/Portfolio-logo-detailed.png" alt="portfolio image">
-                    <span class="article-title">TITLE</span>
-                    <span class="article-description">description</span>
-                </div>
-                <div class="article-card-container">
-                    <img src="/images/Portfolio-logo-detailed.png" alt="portfolio image">
-                    <span class="article-title">TITLE</span>
-                    <span class="article-description">description</span>
-                </div>
+                <% lastArticles.forEach(obj => { %>
+                    <div class="article-card-container">
+                        <img src="/images/articles/<%= obj.img %>" alt="<%= obj.title %> image">
+                        <span class="article-title"><%= obj.title %></span>
+                        <span class="article-description"><%= obj.description %></span>
+                    </div>
+                <% }); %>
             </div>
             <div>HOVER TO SEE MORE</div>
         </div>
         <div id="presentation" class="home-section">
-        <div id="3d-head"></div>
-        <div id="presentation-description"></div>
+            <div id="ddd-head"></div>
+            <div id="presentation-description"></div>
         </div>
         <div id="technologies" class="home-section">
         <div>USED TECHNOLOGIES</div>
@@ -92,6 +83,6 @@
         <div>Click to see more projects</div>
         </div>
         </main>
-  <%- include("partials/footer") %>
+    <%- include("partials/footer") %>
 </body>
 </html>

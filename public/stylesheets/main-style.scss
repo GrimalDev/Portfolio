@@ -10,6 +10,11 @@
   src: url("../fonts/Inter/Inter-VariableFont_wght.ttf") format("TrueType");
 }
 
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto/Roboto-Medium.ttf");
+}
+
 
 /*------------GENERAl-----------*/
 
@@ -35,7 +40,9 @@ body {
 /*------------MAIN-----------*/
 
 .home-section {
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /*------------FOOTER-----------*/

@@ -30,6 +30,7 @@ header {
   flex-direction: column;
   flex-grow: 1;
   height: 100%;
+  width: 100%;
   * {
     display: flex;
     align-items: baseline;
@@ -128,15 +129,21 @@ nav {
 main {
   height: 100%;
   .home-section {
-    height: 100vh;
+    min-height: fit-content;
     width: 100%
   }
+}
+
+#articles-section {
+  justify-content: center;
+  gap: 1rem;
 }
 
 #articles-title {
   position: relative;
   font-family: "Inter", serif;
   font-style: normal;
+  margin-bottom: 5rem;
   h2 {
     position: relative;
     font-weight: 700;
@@ -161,15 +168,50 @@ main {
   gap: 2rem;
   width: 70%;
   max-width: 100rem;
+  font-family: 'Roboto', serif;
+  font-style: normal;
+  margin-bottom: 2.5rem;
+  color: #4D4D4C;
   .article-card-container {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
     width: 15rem;
-
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1rem 1rem 3rem 1rem;
     img {
       width: 100%;
     }
+    .article-title {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 23px;
+      text-transform: uppercase;
+      margin-top: 1.5rem;
+    }
+    .article-description {
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 19px;
+    }
   }
+  & + div {
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 39px;
+  }
+}
+
+#presentation {
+
+}
+
+#ddd-head {
+  height: 50vh;
+  width: 50vw;
 }
 
 /*------------RESPONSIVE-----------*/
