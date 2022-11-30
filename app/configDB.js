@@ -1,4 +1,5 @@
-const mysql = require('mysql');
+import mysql from 'mysql';
+import './env.js'
 
 const dbParams = {
     host    : process.env.DB_HOST,
@@ -14,4 +15,4 @@ con.connect((err) => {
     console.log("Connected to mysql database!");
 });
 
-module.exports = { con };
+export default con;

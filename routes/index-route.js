@@ -1,6 +1,6 @@
-const express = require('express');
-const {con} = require("../app/configDB");
-const router = express.Router();
+import express from 'express';
+const router = express.Router()
+import con from "../app/configDB.js";
 
 let sql = "SELECT * FROM (SELECT * FROM articles ORDER BY id DESC LIMIT 3) as r ORDER BY id"
 
@@ -16,4 +16,4 @@ router.get('/', function(req, res, next) {
   });
 });
 
-module.exports = router;
+export default router;
