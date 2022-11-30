@@ -4,6 +4,14 @@
   font-family: "Source Code Pro";
   src: url("../fonts/Source_Code_Pro/SourceCodePro-VariableFont_wght.ttf") format("TrueType");
 }
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter/Inter-VariableFont_wght.ttf") format("TrueType");
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto/Roboto-Medium.ttf");
+}
 /*------------GENERAl-----------*/
 * {
   box-sizing: border-box;
@@ -14,6 +22,21 @@ body, html {
   margin: 0;
   background-color: #FBFBFB;
   height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+body > * {
+  flex-shrink: 0;
+}
+
+/*------------MAIN-----------*/
+.home-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /*------------FOOTER-----------*/
