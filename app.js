@@ -1,20 +1,21 @@
-const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-require('dotenv').config()
+import createError from "http-errors";
+import express from "express";
+import path from "path";
+import {fileURLToPath} from 'url';
+import cookieParser from "cookie-parser";
+import logger from "morgan";
 
-const indexRouter = require('./routes/index-route');
-const cvRouter = require('./routes/cv-route');
-const cvDataRouter = require('./routes/cv-data-route')
-const projectsRouter = require('./routes/projects-route');
-const articlesRouter = require('./routes/articles-route');
-const docRouter = require('./routes/doc-route');
-const {con} = require("./app/configDB");
+import indexRouter from "./routes/index-route.js";
+import cvRouter from "./routes/cv-route.js";
+import cvDataRouter from "./routes/cv-data-route.js";
+import projectsRouter from "./routes/projects-route.js";
+import articlesRouter from "./routes/articles-route.js";
+import docRouter from "./routes/doc-route.js";
 
 const app = express();
 const listeningPort = 3030
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

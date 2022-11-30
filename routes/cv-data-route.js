@@ -1,6 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const { con } = require('../app/configDB');
+import express from 'express';
+const router = express.Router()
+import con from '../app/configDB.js'
 
 let sql = "SELECT * FROM cv_data";
 
@@ -11,4 +11,4 @@ router.get('/', function(req, res) {
   });
 });
 
-module.exports = router;
+export default router;
