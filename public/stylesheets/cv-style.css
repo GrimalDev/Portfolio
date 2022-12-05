@@ -17,14 +17,18 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body, html {
   padding: 0;
   margin: 0;
   background-color: #FBFBFB;
-  height: 100%;
 }
 
 body {
+  min-height: fit-content;
   display: flex;
   flex-direction: column;
 }
@@ -32,20 +36,245 @@ body > * {
   flex-shrink: 0;
 }
 
+.opacity-hover:hover {
+  opacity: 0.8;
+}
+
+.shadow-section {
+  border-bottom: 1.5px solid rgba(177, 177, 177, 0.1);
+  box-shadow: 10px 0 20px rgba(169, 169, 169, 0.26);
+}
+
+.code-gray {
+  color: #4D4D4C;
+}
+
+.code-green {
+  color: #718C00;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+             supported by Chrome, Edge, Opera and Firefox */
+}
+
+.animate {
+  animation-duration: 0.5s;
+  animation-name: animate-fade;
+  animation-delay: 0.5s;
+  animation-fill-mode: backwards;
+}
+
+.animate.pop {
+  animation-name: animate-pop;
+  animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
+}
+
+.delay {
+  animation-delay: 0.6s;
+}
+
+/*------------NAV-----------*/
+nav {
+  z-index: 10;
+}
+
+.menu-unfold {
+  position: absolute;
+  top: 3rem;
+  right: -100%;
+  width: 30rem;
+  height: fit-content;
+  border: 1px solid rgba(77, 77, 76, 0.05);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 10px 0 0 10px;
+  background-color: #FBFBFB;
+  padding-right: 2rem;
+}
+.menu-unfold ul {
+  gap: 1.5rem;
+}
+.menu-unfold ul, .menu-unfold ul ul * {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.menu-unfold ul li {
+  position: relative;
+  list-style: none;
+}
+.menu-unfold ul li a {
+  color: #4D4D4C;
+}
+.menu-unfold ul li:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  left: -0.75rem;
+  top: 25%;
+  width: 1px;
+  height: 50%;
+  background-color: #4D4D4C;
+}
+
+.menu-unfold-true {
+  animation: 0.5s slide-right;
+  right: -2rem !important;
+}
+
+.nav-element:hover {
+  position: relative;
+  cursor: pointer;
+}
+.nav-element:hover::after {
+  content: "";
+  position: absolute;
+  left: -0.5rem;
+  top: 0;
+  width: calc(100% + 1rem);
+  height: 100%;
+  background-color: #718c00;
+  opacity: 0.1;
+  border-radius: 5px;
+}
+.nav-element:hover a {
+  position: relative;
+  z-index: 20;
+}
+
 /*------------MAIN-----------*/
 .home-section {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding-block: 2rem;
+}
+.home-section h1 {
+  font-size: clamp(20px, 3vw, 40px);
+}
+.home-section h2 {
+  font-size: clamp(16px, 2vw, 24px);
 }
 
 /*------------FOOTER-----------*/
+footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: fit-content;
+}
+footer nav {
+  width: 100%;
+  min-height: fit-content;
+  display: flex;
+}
+footer nav ul {
+  display: flex;
+  justify-content: space-around;
+  border: 0.5px solid #4D4D4C;
+  list-style: none;
+  width: 100%;
+  padding: 0;
+}
+footer nav ul li {
+  flex-grow: 1;
+  font-family: "Inter", serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 39px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 0.5px solid #4D4D4C;
+  list-style: none;
+  padding: 0.5rem;
+}
+footer nav ul li a {
+  position: relative;
+  color: #4D4D4C;
+  text-decoration: none;
+}
+footer nav ul li:hover {
+  position: relative;
+  box-shadow: #4D4D4C 1px 1px 2px;
+}
+footer nav ul li:hover::after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  top: 10%;
+  width: 80%;
+  height: 80%;
+  background-color: #718c00;
+  opacity: 0.1;
+  border-radius: 5px;
+}
+footer div {
+  min-height: 10rem;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding-inline: 2rem;
+  width: 100%;
+}
+
 /*------------RESPONSIVE-----------*/
-/* Avoid Chrome to see Safari hack */
 @supports (-webkit-touch-callout: none) {
   body {
     /* The hack for Safari */
     min-height: -webkit-fill-available;
+  }
+}
+@media screen and (max-width: 740px) {
+  footer nav ul {
+    flex-direction: column;
+  }
+}
+/*------------ANIMATIONS-----------*/
+@keyframes animate-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes animate-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+@keyframes slide-right {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slide-left {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
   }
 }
 /*------------MAIN-----------*/

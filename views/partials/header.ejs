@@ -2,10 +2,35 @@
     <nav>
         <div>
             <div>
-                <span class="code-number">1.</span><a href="/" id="portfolio-head-icon">&lt;img <span class="code-gray">src</span>=<span class="code-green">"logo.svg"</span>&gt;</a>
-                <a href="/" class="code-gray"><%= pageHeader %></a>
+                <a href="/" id="portfolio-head-icon" class="opacity-hover"></a>
+                <a href="/" id="head-section" class="opacity-hover"><%= pageHeader %></a>
             </div>
-            <span>&lt;span&gt;<span class="code-gray">MENU</span>&lt;/span&gt;</span>
+            <span class="menu opacity-hover noselect">&lt;span&gt;<span class="code-gray">MENU</span>&lt;/span&gt;</span>
+            <div class="menu-unfold">
+                <ul>
+                    <li class="unfold-nav opacity-hover"><a href="/">HOME</a></li>
+                    <li class="unfold-nav opacity-hover"><a href="/cv">CV</a></li>
+                    <li class="unfold-nav opacity-hover"><a href="/projects">PROJECTS</a></li>
+                    <li class="unfold-nav opacity-hover"><a href="/articles">ARTICLES</a></li>
+                    <li class="unfold-nav opacity-hover"><a href="/doc">DOC</a></li>
+                </ul>
+            </div>
+            <script>
+                //------------menu open and close------------
+
+                const menuUnfold = document.querySelector(".menu-unfold");
+
+                let clickOutMenuChangeStatus = (e) => {
+                    if (e.target.matches(".menu") && !menuUnfold.classList.contains("menu-unfold-true")) {
+                        menuUnfold.classList.toggle("menu-unfold-true");
+
+                    } else if (!e.target.matches(".menu-unfold") && menuUnfold.classList.contains("menu-unfold-true")) {
+                        menuUnfold.classList.toggle("menu-unfold-true");
+                    }
+                };
+
+                window.addEventListener("click", clickOutMenuChangeStatus, false)
+            </script>
         </div>
     </nav>
 </header>

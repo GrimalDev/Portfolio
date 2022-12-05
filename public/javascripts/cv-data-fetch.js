@@ -98,7 +98,6 @@ async function applyDataTemplate(json) {
 
 async function cvDataFetch() {
     const res = await fetch('/getcvdata');
-
     if (res.ok) { // if HTTP-status is 200-299
         let json = await res.json(); // Get response body
         await applyDataTemplate(json)
