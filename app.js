@@ -33,8 +33,10 @@ app.use('/getcvdata', cvDataRouter);
 app.use('/projects', projectsRouter);
 app.use('/articles', articlesRouter);
 app.use('/doc', docRouter);
+app.use('/threebuild/', express.static(path.join(__dirname, 'node_modules/three/build')));
+app.use('/threejsm/', express.static(path.join(__dirname, 'node_modules/three/examples/jsm')));
 
-// catch 404 and forward to error handler
+// catch 404 and forward to error handlerchest-model-v2.usdz
 app.use(function(req, res, next) {
   next(createError(404));
 });
@@ -51,6 +53,6 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(listeningPort, (err) => {
-  if (err) { throw err };
+  if (err) { throw err }
   console.log(`App up and running on port ${listeningPort} !`);
 })

@@ -7,17 +7,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Portfolio</title>
     <link rel="stylesheet" href="/stylesheets/home-style.css">
-    <script defer src="/javascripts/index-scripts.js"></script>
+    <script type="importmap">
+        {
+            "imports":{
+                "three": "/threebuild/three.module.js",
+                "three/examples/loaders/GLTFLoader": "/threejsm/loaders/GLTFLoader.js"
+            }
+        }
+    </script>
+    <script defer type="module" src="/javascripts/index-scripts.js"></script>
 </head>
 <body>
-    <header>
+    <header class="shadow-section">
         <nav>
             <div>
                 <div>
-                    <span class="code-number">1.</span><a href="/" id="portfolio-head-icon">&lt;img <span class="code-gray">src</span>=<span class="code-green">"logo.svg"</span>&gt;</a>
-                    <a href="/" class="code-gray"><%= pageHeader %></a>
+                    <span class="code-number">1.</span><a href="/" id="portfolio-head-icon" class="opacity-hover">&lt;img <span class="code-gray">src</span>=<span class="code-green">"logo.svg"</span>&gt;</a>
+                    <a href="/" class="code-gray opacity-hover"><%= pageHeader %></a>
                 </div>
-                <span>&lt;span&gt;<span class="code-gray">MENU</span>&lt;/span&gt;</span>
+                <span class="menu opacity-hover noselect">&lt;span&gt;<span class="code-gray">MENU</span>&lt;/span&gt;</span>
+                <div class="menu-unfold">
+                    <ul>
+                        <li class="nav-element opacity-hover"><a href="/">HOME</a></li>
+                        <li class="nav-element opacity-hover"><a href="/cv">CV</a></li>
+                        <li class="nav-element opacity-hover"><a href="/projects">PROJECTS</a></li>
+                        <li class="nav-element opacity-hover"><a href="/articles">ARTICLES</a></li>
+                        <li class="nav-element opacity-hover"><a href="/doc">DOC</a></li>
+                    </ul>
+                </div>
             </div>
         </nav>
         <div id="landing-page">
@@ -25,17 +42,17 @@
             <div><span class="code-number">3.</span><span>&lt;br&gt;</span></div>
             <div><span class="code-number">4.</span><span>&lt;br&gt;</span></div>
             <div><span class="code-number">5.</span><span>&lt;br&gt;</span></div>
-            <div><span class="code-number">6.</span><span class="code-center"><span class="fake-center-tag">&lt;center&gt;<span class="fake-span-tag">&lt;span&gt;</span></span>&lt;h1&gt;<h1>PORTFOLIO</h1>&lt;/h1&gt;<span class="fake-center-tag"><span class="fake-span-tag">&lt;/span&gt;</span>&lt;/center&gt;</span></span></div>
-            <div><span class="code-number">7.</span><span class="code-center"><span class="fake-center-tag">&lt;center&gt;<span class="fake-span-tag">&lt;span&gt;</span></span>&lt;h1&gt;<h1><span>GRIMALDI BAPTISTE</span><span>GrimalDev</span></h1>&lt;/h1&gt;<span class="fake-center-tag"><span class="fake-span-tag">&lt;/span&gt;</span>&lt;/center&gt;</span></span></div>
+            <div><span class="code-number">6.</span><span class="code-center animate pop"><span class="fake-center-tag">&lt;center&gt;<span class="fake-span-tag">&lt;span&gt;</span></span>&lt;h1&gt;<h1>PORTFOLIO</h1>&lt;/h1&gt;<span class="fake-center-tag"><span class="fake-span-tag">&lt;/span&gt;</span>&lt;/center&gt;</span></span></div>
+            <div><span class="code-number">7.</span><span class="code-center animate pop delay"><span class="fake-center-tag">&lt;center&gt;<span class="fake-span-tag">&lt;span&gt;</span></span>&lt;h1&gt;<h1><span>GRIMALDI BAPTISTE</span><span>GrimalDev</span></h1>&lt;/h1&gt;<span class="fake-center-tag"><span class="fake-span-tag">&lt;/span&gt;</span>&lt;/center&gt;</span></span></div>
             <div><span class="code-number">8.</span><span>&lt;br&gt;</span></div>
             <div><span class="code-number">9.</span><span>&lt;br&gt;</span></div>
             <div><span class="code-number">10.</span><span>&lt;br&gt;</span></div>
             <div>
                 <span class="code-number">11.</span>
-                <span class="code-center">
+                <span class="code-center animate">
                     <span class="fake-center-tag">&lt;center&gt;<span class="fake-span-tag">&lt;span&gt;</span></span>
                     &lt;h2&gt;
-                    <span class="code-gray">
+                    <span class="code-gray animate lure-to-scroll">
                         <h2 id="header-formore-scroll">Scroll to see how this page was made</h2>
                         <h2 id="header-formore-swipe">Swipe for more</h2>
                     </span>
@@ -51,7 +68,7 @@
         </div>
     </header>
     <main>
-        <div id="articles-section" class="home-section">
+        <div id="articles-section" class="home-section shadow-section">
             <div id="articles-title">
                 <h2>MY LATEST ARTICLES</h2>
                 <h2>MY LATEST ARTICLES</h2>
@@ -65,23 +82,31 @@
                     </div>
                 <% }); %>
             </div>
-            <div>HOVER TO SEE MORE</div>
+            <div><span id="articles-responsive-hover">HOVER</span><span id="articles-responsive-tap">TAP</span> TO SEE MORE</div>
         </div>
-        <div id="presentation" class="home-section">
-            <div id="ddd-head"></div>
-            <div id="presentation-description"></div>
+        <div id="presentation" class="home-section shadow-section">
+<!--            <div class="layer-back seen"></div>-->
+            <canvas class="ddd-head"></canvas>
+            <div id="presentation-description">
+                Bonjour! I am a french fullstack web developer. <br>
+                I am still junior and am always looking for new ways to improve and enhance my skills. <br>
+                Not just in programming but also my human, co-working and self-motivation skills. <br>
+                I hope this website will give you a good expression of what I can do. <br>
+            </div>
         </div>
-        <div id="technologies" class="home-section">
-        <div>USED TECHNOLOGIES</div>
-        <span>PHP</span>
-        <span>NodeJS</span>
-        <span>VueJS</span>
-        <span>Javascript</span>
-        <span>CSS</span>
-        <span>SQL</span>
-        <span>Docker</span>
-        <span>Bootstrap</span>
-        <div>Click to see more projects</div>
+        <div id="technologies" class="home-section shadow-section">
+            <h1>USED TECHNOLOGIES</h1>
+            <div id="techno-bubbles">
+                <span class="very-known opacity-hover">PHP</span>
+                <span class="very-known opacity-hover">NodeJS</span>
+                <span class="learning opacity-hover">VueJS</span>
+                <span class="very-known opacity-hover">Javascript</span>
+                <span class="very-known opacity-hover">CSS</span>
+                <span class="known opacity-hover">SQL</span>
+                <span class="very-known opacity-hover">Docker</span>
+                <span class="known opacity-hover">Bootstrap</span>
+            </div>
+            <h2><span id="technologies-responsive-click">Click</span><span id="technologies-responsive-tap">Tap</span> to see more projects</h2>
         </div>
         </main>
     <%- include("partials/footer") %>
