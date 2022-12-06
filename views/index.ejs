@@ -7,14 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Portfolio</title>
     <link rel="stylesheet" href="/stylesheets/home-style.css">
-    <script type="importmap">
-        {
-            "imports":{
-                "three": "/threebuild/three.module.js",
-                "three/examples/loaders/GLTFLoader": "/threejsm/loaders/GLTFLoader.js"
-            }
-        }
-    </script>
+    <%- include("partials/threeJS") %>
     <script defer type="module" src="/javascripts/index-scripts.js"></script>
 </head>
 <body>
@@ -25,7 +18,7 @@
                     <span class="code-number">1.</span><a href="/" id="portfolio-head-icon" class="opacity-hover">&lt;img <span class="code-gray">src</span>=<span class="code-green">"logo.svg"</span>&gt;</a>
                     <a href="/" class="code-gray opacity-hover"><%= pageHeader %></a>
                 </div>
-                <span class="menu opacity-hover noselect">&lt;span&gt;<span class="code-gray">MENU</span>&lt;/span&gt;</span>
+                <span class="menu opacity-hover noselect">&lt;span&gt;<span class="menu code-gray">MENU</span>&lt;/span&gt;</span>
                 <div class="menu-unfold">
                     <ul>
                         <li class="nav-element opacity-hover"><a href="/">HOME</a></li>

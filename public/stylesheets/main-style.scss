@@ -45,19 +45,6 @@ body {
   opacity: .8;
 }
 
-.shadow-section {
-  border-bottom: 1.5px solid rgba(177, 177, 177, 0.1);
-  box-shadow: 10px 0 20px rgba(169, 169, 169, 0.26);
-}
-
-.code-gray {
-  color: #4D4D4C;
-}
-
-.code-green {
-  color: #718C00;
-}
-
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -86,6 +73,15 @@ body {
 
 /*------------NAV-----------*/
 
+header {
+  font-family: "Source Code Pro", serif;
+  color: #C82829;
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(16px, 2vw, 24px);
+  line-height: 30px;
+}
+
 nav {
   z-index: 10;
 }
@@ -100,7 +96,7 @@ nav {
   box-shadow: 0 20px 30px rgba(0,0,0,.1);
   border-radius: 10px 0 0 10px;
   background-color: #FBFBFB;
-  padding-right: 2rem;
+  padding: .5rem 2rem .5rem .5rem;
   ul {
     gap: 1.5rem;
     &, ul * {
@@ -154,6 +150,10 @@ nav {
 
 /*------------MAIN-----------*/
 
+main {
+  padding-top: 2.5rem;
+}
+
 .home-section {
   position: relative;
   display: flex;
@@ -161,12 +161,26 @@ nav {
   align-items: center;
   justify-content: center;
   padding-block: 2rem;
+  background-color: #FBFBFB;
   h1 {
     font-size: clamp(20px, 3vw, 40px);
   }
   h2 {
     font-size: clamp(16px, 2vw, 24px);
   }
+}
+
+.shadow-section {
+  border-bottom: 1.5px solid rgba(177, 177, 177, 0.1);
+  box-shadow: 10px 0 20px rgba(169, 169, 169, 0.26);
+}
+
+.code-gray {
+  color: #4D4D4C;
+}
+
+.code-green {
+  color: #718C00;
 }
 
 //.layer-back {
@@ -183,9 +197,11 @@ footer {
   width: 100%;
   min-height: fit-content;
   nav {
+    position: relative !important;
     width: 100%;
     min-height: fit-content;
     display: flex;
+    padding: 0 !important;
     ul {
       display: flex;
       justify-content: space-around;
@@ -212,6 +228,7 @@ footer {
           position: relative;
           color: #4D4D4C;
           text-decoration: none;
+          z-index: 20;
         }
         &:hover {
           position: relative;
@@ -254,8 +271,20 @@ footer {
   footer nav ul {
     flex-direction: column;
   }
+  .menu-unfold {
+    ul {
+      flex-direction: column;
+      li {
+        padding-right: 1rem;
+        &:not(:first-child)::before {
+          content: none;
+        }
+      }
+    }
+    width: fit-content;
+    height: 20rem;
+  }
 }
-
 
 /*------------ANIMATIONS-----------*/
 

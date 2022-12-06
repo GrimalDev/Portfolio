@@ -12,12 +12,6 @@ header {
   min-height: 35rem;
   width: 100%;
   padding: 1.5rem;
-  font-family: "Source Code Pro", serif;
-  color: #C82829;
-  font-style: normal;
-  font-weight: 500;
-  font-size: clamp(16px, 2vw, 24px);
-  line-height: 30px;
   * {
     min-width: fit-content;
   }
@@ -130,6 +124,7 @@ header nav {
 /*------------MAIN-----------*/
 
 main {
+  padding: 0;
   .home-section {
     height: 100vh;
     min-height: 50rem;
@@ -216,7 +211,7 @@ main {
 }
 
 .ddd-head {
-  width: 50vw;
+  width: 100%;
   height: 50vh;
   overflow: hidden;
 }
@@ -224,6 +219,7 @@ main {
 #presentation {
   min-height: 35rem;
   padding-inline: 1rem;
+  overflow: hidden;
   #presentation-description {
     font-family: "Source Code Pro", serif;
     font-size: clamp(14px, 1.8vw, 20px);
@@ -351,7 +347,7 @@ main {
 }
 
 @media screen and (max-width: 350px) {
-  header nav > div > div a:last-child { display: none !important }
+  header nav > div > div:first-child a:last-child { display: none !important }
   #landing-page h1 span {
     &:first-child { display: none !important }
     &:last-child { display: inline !important }

@@ -2,7 +2,133 @@
 
 /*------------IMPORTS-----------*/
 @import "main-style";
+@import "header-style";
 
 /*------------MAIN-----------*/
 
+main {
+  font-family: 'Roboto', serif;
+  font-style: normal;
+  h1 {
+    font-weight: 700;
+    line-height: 41px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #4D4D4C;
+  }
+  h2 {
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #4D4D4C;
+  }
+}
+
+#cv-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+#ddd-and-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-grow: 1;
+  width: 100%;
+}
+
+#cv-header-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 3rem;
+  flex-grow: 1;
+  > div {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+.ddd-head {
+  flex: 0 0 40%;
+  height: 20rem;
+  overflow: hidden;
+}
+
+//list style
+
+.cv-content-container {
+  width: 80vw;
+
+}
+
+li {
+  text-decoration: none;
+  list-style: none;
+}
+
+.key {
+  position: relative;
+  display: block;
+  padding: .4em .4em .4em 2em;
+  *padding: .4em;
+  margin: .5em 0;
+  background: #ddd;
+  color: #444;
+  text-decoration: none;
+  border-radius: .3em;
+  transition: all .3s ease-out;
+}
+
+.key:hover{
+  background: #eee;
+}
+
+.key:hover:before{
+  transform: rotate(360deg);
+}
+
+.key:before{
+  content: ">";
+  position: absolute;
+  left: -1.3em;
+  top: 50%;
+  margin-top: -1.3em;
+  background: #87ceeb;
+  height: 2em;
+  width: 2em;
+  line-height: 2em;
+  border: .3em solid #fff;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 2em;
+  transition: all .3s ease-out;
+}
+
 /*------------RESPONSIVE-----------*/
+
+@media screen and (max-width: 555px) {
+  #ddd-and-header {
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .ddd-head {
+    flex-basis: 100%;
+    width: 100vw;
+  }
+  #cv-header-content {
+    margin-inline: 1rem;
+  }
+}

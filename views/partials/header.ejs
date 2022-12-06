@@ -2,10 +2,14 @@
     <nav>
         <div>
             <div>
-                <a href="/" id="portfolio-head-icon" class="opacity-hover"></a>
-                <a href="/" id="head-section" class="opacity-hover"><%= pageHeader %></a>
+                <a href="/<%= route %>" id="portfolio-head-icon" class="opacity-hover">
+                    <img src="/images/Portfolio-logo.png" alt="Logo portfolio">
+                </a>
+                <a href="/<%= route %>" id="head-section" class="opacity-hover long"><%= pageHeader %></a>
+                <a href="/<%= route %>" id="head-section" class="opacity-hover short"><%= pageHeaderShort %></a>
+
             </div>
-            <span class="menu opacity-hover noselect">&lt;span&gt;<span class="code-gray">MENU</span>&lt;/span&gt;</span>
+            <span class="menu opacity-hover noselect">&lt;span&gt;<span class="menu code-gray">MENU</span>&lt;/span&gt;</span>
             <div class="menu-unfold">
                 <ul>
                     <li class="unfold-nav opacity-hover"><a href="/">HOME</a></li>
@@ -15,22 +19,24 @@
                     <li class="unfold-nav opacity-hover"><a href="/doc">DOC</a></li>
                 </ul>
             </div>
-            <script>
-                //------------menu open and close------------
-
-                const menuUnfold = document.querySelector(".menu-unfold");
-
-                let clickOutMenuChangeStatus = (e) => {
-                    if (e.target.matches(".menu") && !menuUnfold.classList.contains("menu-unfold-true")) {
-                        menuUnfold.classList.toggle("menu-unfold-true");
-
-                    } else if (!e.target.matches(".menu-unfold") && menuUnfold.classList.contains("menu-unfold-true")) {
-                        menuUnfold.classList.toggle("menu-unfold-true");
-                    }
-                };
-
-                window.addEventListener("click", clickOutMenuChangeStatus, false)
-            </script>
         </div>
     </nav>
 </header>
+
+<script type="application/javascript">
+    //------------menu open and close------------
+
+    const menuUnfold = document.querySelector(".menu-unfold");
+
+    let clickOutMenuChangeStatus = (e) => {
+        if (e.target.matches(".menu") && !menuUnfold.classList.contains("menu-unfold-true")) {
+            menuUnfold.classList.toggle("menu-unfold-true");
+
+        } else if (!e.target.matches(".menu-unfold") && menuUnfold.classList.contains("menu-unfold-true")) {
+            menuUnfold.classList.toggle("menu-unfold-true");
+        }
+    };
+
+    window.addEventListener("click", clickOutMenuChangeStatus, false)
+    window.addEventListener("touchend", clickOutMenuChangeStatus, false)
+</script>
