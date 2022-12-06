@@ -17,6 +17,7 @@ import docRouter from "./routes/doc-route.js";
 import adminRouter from "./routes/admin-route.js";
 import loginRouter from "./routes/login-route.js";
 import logoutRouter from "./routes/logout-route.js";
+import newcvlineRouter from "./routes/newcvline-route.js";
 
 const app = express();
 const listeningPort = 80
@@ -49,6 +50,7 @@ app.use('/projects', projectsRouter);
 app.use('/articles', articlesRouter);
 app.use('/doc', docRouter);
 app.use('/admin', adminRouter);
+app.use('/newcvline', newcvlineRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/threebuild/', express.static(path.join(__dirname, 'node_modules/three/build')));
