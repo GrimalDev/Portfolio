@@ -13,7 +13,7 @@ import articlesRouter from "./routes/articles-route.js";
 import docRouter from "./routes/doc-route.js";
 
 const app = express();
-const listeningPort = 3030
+const listeningPort = 80
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 

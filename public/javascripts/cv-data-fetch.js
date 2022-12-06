@@ -11,9 +11,9 @@ async function applyDataTemplate(json) {
             //see if line is a title, a list element or a secondary argument
             case 1:
                 let cvCategory = document.createElement('div');
-                cvCategory.className += 'cv-category';
+                cvCategory.className += 'cv-category home-section shadow-section';
 
-                let cvCategoryTitle = document.createElement('div');
+                let cvCategoryTitle = document.createElement('h2');
                 cvCategoryTitle.className += 'cv-category-title';
                 cvCategoryTitle.innerText = obj['content'];
 
@@ -37,7 +37,7 @@ async function applyDataTemplate(json) {
                     tempNewCategoryBool = !tempNewCategoryBool
                 }
                 let contentElement = document.createElement('li');
-                contentElement.className += 'cv-content';
+                contentElement.className += 'cv-content key';
                 contentElement.innerText = obj['content'];
 
                 (async () => {
@@ -65,7 +65,7 @@ async function applyDataTemplate(json) {
                 }
 
                 let contentSecondaryElement = document.createElement('li');
-                contentSecondaryElement.className += 'cv-content-secondary';
+                contentSecondaryElement.className += 'cv-content-secondary key';
                 contentSecondaryElement.innerText = obj['content'];
 
                 (async () => {
