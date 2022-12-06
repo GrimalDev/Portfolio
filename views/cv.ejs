@@ -8,23 +8,34 @@
     <title>Portfolio</title>
     <link rel="stylesheet" href="/stylesheets/cv-style.css">
     <script src="/javascripts/cv-data-fetch.js"></script>
+    <%- include("partials/threeJS") %>
 </head>
 <body>
-    <%- include("partials/header", {pageHeader: "Curriculum Vitae"}) %>
+    <%-
+        include("partials/header", {
+                                        pageHeader: "Curriculum Vitae",
+                                        pageHeaderShort: "CV",
+                                        route: "cv"
+                                    })
+    %>
     <main>
-        <div>Baptiste Grimaldi</div>
-        <div id="cv-header">
-            <span>3D Model</span>
-            <div>
-                <span>67000 Strasbourg</span>
-                <span>France</span>
-                <span>bapt.grimaldi@gmail.com</span>
-                <span>https://github.com/GrimalDev</span>
-            </div>
-            <div>
-                <span>Développeur full-stack</span>
-                <span>Javascript, Html, CSS, Bootstrap, PHP, UI/UX Apache, NodeJS, Docker</span>
-                <span>Mobilité: Bas-Rhin</span>
+        <div id="cv-header" class="home-section">
+            <h1>Baptiste Grimaldi</h1>
+            <div id="ddd-and-header">
+                <canvas class="ddd-head"></canvas>
+                <div id="cv-header-content">
+                    <div>
+                        <span>67000 Strasbourg</span>
+                        <span>France</span>
+                        <span>bapt.grimaldi@gmail.com</span>
+                        <span>https://github.com/GrimalDev</span>
+                    </div>
+                    <div>
+                        <span>Développeur full-stack</span>
+                        <span>Javascript, Html, CSS, Bootstrap, PHP, UI/UX Apache, NodeJS, Docker</span>
+                        <span>Mobilité: Bas-Rhin</span>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
