@@ -11,6 +11,7 @@ import cvDataRouter from "./routes/cv-data-route.js";
 import projectsRouter from "./routes/projects-route.js";
 import articlesRouter from "./routes/articles-route.js";
 import docRouter from "./routes/doc-route.js";
+import adminpanelRouter from "./routes/adminpanel-route.js";
 
 const app = express();
 const listeningPort = 80
@@ -33,6 +34,7 @@ app.use('/getcvdata', cvDataRouter);
 app.use('/projects', projectsRouter);
 app.use('/articles', articlesRouter);
 app.use('/doc', docRouter);
+app.use('/adminpanel', adminpanelRouter);
 app.use('/threebuild/', express.static(path.join(__dirname, 'node_modules/three/build')));
 app.use('/threejsm/', express.static(path.join(__dirname, 'node_modules/three/examples/jsm')));
 
