@@ -1,0 +1,61 @@
+// HEADER GENERIC STYLE
+
+nav {
+  position: fixed;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    > div:first-child {
+      gap: 3rem;
+      a {
+        color: #4D4D4C;
+        text-decoration: none;
+        min-width: fit-content;
+        &.long {
+          display: flex;
+        }
+        &.short {
+          display: none;
+        }
+      }
+    }
+    > * {
+      display: flex;
+      align-items: center;
+    }
+    #portfolio-head-icon {
+      width: 3rem;
+      height: 3rem;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+/*------------RESPONSIVE-----------*/
+
+@media screen and (max-width: 740px) {
+  nav > div > div {
+    gap: 1rem !important
+  }
+}
+
+@media screen and (max-width: 555px) {
+  nav > div > div a {
+    &.long {
+      display: none !important;
+    }
+    &.short {
+      display: flex !important;
+    }
+  }
+}

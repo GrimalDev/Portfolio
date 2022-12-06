@@ -1,0 +1,10 @@
+/*------------IMPORTS-----------*/
+@import "main-style";
+@import "header-style";
+
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
