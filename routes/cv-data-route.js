@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router()
 import con from '../app/configDB.js'
 
-let sql = "SELECT * FROM cv_data";
+const sql = "SELECT * FROM cv_data";
 
 router.get('/', function(req, res) {
   con.query(sql, (err, result) => {

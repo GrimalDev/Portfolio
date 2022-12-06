@@ -4,6 +4,9 @@ import path from "path";
 import {fileURLToPath} from 'url';
 import cookieParser from "cookie-parser";
 import logger from "morgan";
+import passport from "passport";
+import session from "express-session";
+import './app/env.js'
 
 import indexRouter from "./routes/index-route.js";
 import cvRouter from "./routes/cv-route.js";
@@ -11,7 +14,9 @@ import cvDataRouter from "./routes/cv-data-route.js";
 import projectsRouter from "./routes/projects-route.js";
 import articlesRouter from "./routes/articles-route.js";
 import docRouter from "./routes/doc-route.js";
-import adminpanelRouter from "./routes/adminpanel-route.js";
+import adminRouter from "./routes/admin-route.js";
+import loginRouter from "./routes/login-route.js";
+import logoutRouter from "./routes/logout-route.js";
 
 const app = express();
 const listeningPort = 80
@@ -28,13 +33,24 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// For Passport
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized:true
+})); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+
 app.use('/', indexRouter);
 app.use('/cv', cvRouter);
 app.use('/getcvdata', cvDataRouter);
 app.use('/projects', projectsRouter);
 app.use('/articles', articlesRouter);
 app.use('/doc', docRouter);
-app.use('/adminpanel', adminpanelRouter);
+app.use('/admin', adminRouter);
+app.use('/login', loginRouter);
+app.use('/logout', logoutRouter);
 app.use('/threebuild/', express.static(path.join(__dirname, 'node_modules/three/build')));
 app.use('/threejsm/', express.static(path.join(__dirname, 'node_modules/three/examples/jsm')));
 
