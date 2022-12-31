@@ -3,28 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css'>
     <link rel="stylesheet" href="/stylesheets/login-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script defer src="/javascripts/login-script.js"></script>
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<div class="container">
-    <div id="login-box">
-        <div class="logo">
-            <img src="/images/Portfolio-logo-detailed.png" class="img img-responsive img-circle center-block"/>
-            <h1 class="logo-caption"><span class="tweak">L</span>ogin</h1>
+<div id="login-container">
+    <div>
+        <div>
+            <img src="/images/Portfolio-logo-detailed.png" alt="logo portfolio from Grimaldi Baptiste"/>
+            <h1>Admin Control</h1>
         </div><!-- /.logo -->
-        <form class="controls" method="post" action="/admin">
-            <input type="text" name="username" placeholder="Username" class="form-control" />
-            <input type="password" name="password" placeholder="Password" class="form-control" />
-            <button type="submit" class="btn btn-default btn-block btn-custom">Login</button>
+        <form method="post" action="/admin" id="login-admin-form">
+            <input type="text" name="username" placeholder="Username" />
+            <input type="password" name="password" placeholder="Password" />
+            <button type="submit">Enter dashboard</button>
         </form>
     </div>
 </div>
 <div id="particles-js"></div>
-<!-- partial -->
-<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css'></script>
-<script src='https://code.jquery.com/jquery-1.11.1.min.js'></script><script  src="/javascripts/login-script.js"></script>
-
 </body>
 </html>
