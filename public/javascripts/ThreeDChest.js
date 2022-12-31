@@ -1,8 +1,6 @@
 import * as THREE from '/threebuild/three.module.js';
 import {GLTFLoader} from '/threejsm/loaders/GLTFLoader.js';
 
-console.log("test");
-
 let scene;
 let camera;
 let renderer;

@@ -1,34 +1,35 @@
-$.getScript("https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js", function(){
+window.onload = function () {
     particlesJS('particles-js',
         {
             "particles": {
                 "number": {
-                    "value": 100,
+                    "value": 80,
                     "density": {
                         "enable": true,
-                        "value_area": 500
+                        "value_area": 800
                     }
                 },
                 "color": {
-                    "value": "#b1c900"
+                    "value": "#e698ff"
                 },
                 "shape": {
-                    "type": "circle",
+                    "type": "polygon",
                     "stroke": {
                         "width": 0,
                         "color": "#000000"
                     },
                     "polygon": {
-                        "nb_sides": 5
+                        "nb_sides": 6
                     },
                     "image": {
+                        "src": "img/github.svg",
                         "width": 100,
                         "height": 100
                     }
                 },
                 "opacity": {
-                    "value": 0.5,
-                    "random": false,
+                    "value": 0.5129540629907585,
+                    "random": true,
                     "anim": {
                         "enable": false,
                         "speed": 1,
@@ -37,8 +38,8 @@ $.getScript("https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles
                     }
                 },
                 "size": {
-                    "value": 5,
-                    "random": true,
+                    "value": 15,
+                    "random": false,
                     "anim": {
                         "enable": false,
                         "speed": 40,
@@ -48,9 +49,9 @@ $.getScript("https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles
                 },
                 "line_linked": {
                     "enable": true,
-                    "distance": 150,
-                    "color": "#ffffff",
-                    "opacity": 0.4,
+                    "distance": 170,
+                    "color": "#000000",
+                    "opacity": 1,
                     "width": 1
                 },
                 "move": {
@@ -60,6 +61,7 @@ $.getScript("https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles
                     "random": false,
                     "straight": false,
                     "out_mode": "out",
+                    "bounce": false,
                     "attract": {
                         "enable": false,
                         "rotateX": 600,
@@ -88,14 +90,15 @@ $.getScript("https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles
                         }
                     },
                     "bubble": {
-                        "distance": 400,
-                        "size": 40,
+                        "distance": 239.74491141425517,
+                        "size": 20,
                         "duration": 2,
                         "opacity": 8,
                         "speed": 3
                     },
                     "repulse": {
-                        "distance": 100
+                        "distance": 119.87245570712759,
+                        "duration": 0.4
                     },
                     "push": {
                         "particles_nb": 4
@@ -105,16 +108,13 @@ $.getScript("https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles
                     }
                 }
             },
-            "retina_detect": true,
-            "config_demo": {
-                "hide_card": false,
-                "background_color": "#b61924",
-                "background_image": "",
-                "background_position": "50% 50%",
-                "background_repeat": "no-repeat",
-                "background_size": "cover"
-            }
+            "retina_detect": true
         }
     );
 
-});
+}
+
+const buttonLogin = document.querySelector('button[type="submit"]');
+buttonLogin.addEventListener("click", (e) => {
+    e.preventDefault();
+})

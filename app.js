@@ -53,8 +53,8 @@ app.use('/admin', adminRouter);
 app.use('/newcvline', newcvlineRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
-app.use('/threebuild/', express.static(path.join(__dirname, 'node_modules/three/build')));
-app.use('/threejsm/', express.static(path.join(__dirname, 'node_modules/three/examples/jsm')));
+app.use('/threebuild', express.static(path.join(__dirname, 'node_modules/three/build')));
+app.use('/threejsm', express.static(path.join(__dirname, 'node_modules/three/examples/jsm')));
 
 // catch 404 and forward to error handlerchest-model-v2.usdz
 app.use(function(req, res, next) {
