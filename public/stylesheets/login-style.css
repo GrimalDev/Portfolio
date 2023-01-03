@@ -1,0 +1,426 @@
+/*------------FONTS-----------*/
+@font-face {
+  font-family: "Source Code Pro";
+  src: url("../fonts/Source_Code_Pro/SourceCodePro-VariableFont_wght.ttf") format("TrueType");
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter/Inter-VariableFont_wght.ttf") format("TrueType");
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto/Roboto-Medium.ttf");
+}
+/*------------GENERAl-----------*/
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body, html {
+  padding: 0;
+  margin: 0;
+  background-color: #FBFBFB;
+}
+
+body {
+  min-height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+body > * {
+  flex-shrink: 0;
+}
+
+.opacity-hover:hover {
+  opacity: 0.8;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+             supported by Chrome, Edge, Opera and Firefox */
+}
+
+.animate {
+  animation-duration: 0.5s;
+  animation-name: animate-fade;
+  animation-delay: 0.5s;
+  animation-fill-mode: backwards;
+}
+
+.animate.pop {
+  animation-name: animate-pop;
+  animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
+}
+
+.delay {
+  animation-delay: 0.6s;
+}
+
+*::before, *::after {
+  position: absolute;
+}
+
+/*------------NAV-----------*/
+header {
+  font-family: "Source Code Pro", serif;
+  color: #C82829;
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(16px, 2vw, 24px);
+  line-height: 30px;
+}
+
+nav {
+  z-index: 10;
+}
+
+.menu-unfold {
+  position: absolute;
+  top: 3rem;
+  right: -100%;
+  width: 30rem;
+  height: fit-content;
+  border: 1px solid rgba(77, 77, 76, 0.05);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 10px 0 0 10px;
+  background-color: #FBFBFB;
+  padding: 0.5rem 2rem 0.5rem 0.5rem;
+}
+.menu-unfold ul {
+  gap: 1.5rem;
+}
+.menu-unfold ul, .menu-unfold ul ul * {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.menu-unfold ul li {
+  position: relative;
+  list-style: none;
+}
+.menu-unfold ul li a {
+  color: #4D4D4C;
+}
+.menu-unfold ul li:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  left: -0.75rem;
+  top: 25%;
+  width: 1px;
+  height: 50%;
+  background-color: #4D4D4C;
+}
+
+.menu-unfold-true {
+  animation: 0.5s slide-right;
+  right: -2rem !important;
+}
+
+.nav-element:hover {
+  position: relative;
+  cursor: pointer;
+}
+.nav-element:hover::after {
+  content: "";
+  position: absolute;
+  left: -0.5rem;
+  top: 0;
+  width: calc(100% + 1rem);
+  height: 100%;
+  background-color: #718c00;
+  opacity: 0.1;
+  border-radius: 5px;
+}
+.nav-element:hover a {
+  position: relative;
+  z-index: 20;
+}
+
+/*------------MAIN-----------*/
+main {
+  padding-top: 2.5rem;
+}
+
+.home-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-block: 2rem;
+  background-color: #FBFBFB;
+}
+.home-section h1 {
+  font-size: clamp(20px, 3vw, 40px);
+}
+.home-section h2 {
+  font-size: clamp(16px, 2vw, 24px);
+}
+
+.shadow-section {
+  border-bottom: 1.5px solid rgba(177, 177, 177, 0.1);
+  box-shadow: 10px 0 20px rgba(169, 169, 169, 0.26);
+}
+
+.code-gray {
+  color: #4D4D4C;
+}
+
+.code-green {
+  color: #718C00;
+}
+
+/*------------FOOTER-----------*/
+footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: fit-content;
+}
+footer nav {
+  position: relative !important;
+  width: 100%;
+  min-height: fit-content;
+  display: flex;
+  padding: 0 !important;
+}
+footer nav ul {
+  display: flex;
+  justify-content: space-around;
+  border: 0.5px solid #4D4D4C;
+  list-style: none;
+  width: 100%;
+  padding: 0;
+}
+footer nav ul li {
+  flex-grow: 1;
+  font-family: "Inter", serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 39px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 0.5px solid #4D4D4C;
+  list-style: none;
+  padding: 0.5rem;
+}
+footer nav ul li a {
+  position: relative;
+  color: #4D4D4C;
+  text-decoration: none;
+  z-index: 20;
+}
+footer nav ul li:hover {
+  position: relative;
+  box-shadow: #4D4D4C 1px 1px 2px;
+}
+footer nav ul li:hover::after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  top: 10%;
+  width: 80%;
+  height: 80%;
+  background-color: #718c00;
+  opacity: 0.1;
+  border-radius: 5px;
+}
+footer div {
+  min-height: 10rem;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding-inline: 2rem;
+  width: 100%;
+}
+
+/*------------RESPONSIVE-----------*/
+@supports (-webkit-touch-callout: none) {
+  body {
+    /* The hack for Safari */
+    min-height: -webkit-fill-available;
+  }
+}
+@media screen and (max-width: 740px) {
+  footer nav ul {
+    flex-direction: column;
+  }
+  .menu-unfold {
+    width: fit-content;
+    height: 20rem;
+  }
+  .menu-unfold ul {
+    flex-direction: column;
+  }
+  .menu-unfold ul li {
+    padding-right: 1rem;
+  }
+  .menu-unfold ul li:not(:first-child)::before {
+    content: none;
+  }
+}
+/*------------ANIMATIONS-----------*/
+@keyframes animate-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes animate-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+@keyframes slide-right {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slide-left {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+body, html {
+  height: 100%;
+  position: relative;
+  background-color: #565654;
+}
+
+img {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  height: 30vh;
+}
+
+#login-container {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+  height: fit-content;
+  z-index: 10;
+  background-color: #3f3f3e;
+  box-shadow: 0 0 10px 20px #3f3f3e;
+  color: white;
+  font-family: "Roboto", serif;
+}
+#login-container h1 {
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+#login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#login-container form input {
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: black;
+  font-family: "Inter", serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1rem;
+}
+#login-container form input::placeholder {
+  color: #969696;
+}
+
+button {
+  background-color: #539D8B;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem 0.75rem 1rem;
+  position: relative;
+  width: 70%;
+  min-width: 15rem;
+  margin-top: 1rem;
+  margin-inline: auto;
+  box-shadow: 2px 2px 3px #d3d3d3;
+  overflow: hidden;
+  transition: linear 0.1s;
+}
+button, button::before, button button::after {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+}
+button:hover {
+  color: transparent;
+}
+button::after {
+  content: "";
+  transform: translateX(200%);
+  height: 1.5rem;
+  width: 2rem;
+  top: 0.75rem;
+  right: 50%;
+}
+button::before {
+  content: "Connect !";
+  color: transparent;
+  min-width: fit-content;
+  top: 0.75rem;
+  left: 50%;
+  transform: translateX(-60%);
+  transition: linear 0.1s;
+}
+button:hover::before {
+  color: black;
+}
+button:hover::after {
+  color: black;
+  background: url("/images/two-angles-right.svg") center no-repeat;
+  background-size: contain;
+  transition: ease-in-out 0.3s;
+  transform: translateX(270%);
+}
+button:active {
+  box-shadow: none;
+  transform: translate(2px, 2px);
+}
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+/*# sourceMappingURL=login-style.css.map */
