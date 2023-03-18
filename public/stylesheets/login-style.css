@@ -82,6 +82,9 @@ header {
 nav {
   z-index: 10;
 }
+nav .scroll-animate {
+  transition: top 0.3s;
+}
 
 .menu-unfold {
   position: absolute;
@@ -319,7 +322,7 @@ body, html {
 img {
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
-  height: 30vh;
+  width: 30vw;
 }
 
 #login-container {

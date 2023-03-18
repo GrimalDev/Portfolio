@@ -7,18 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Portfolio</title>
     <link rel="stylesheet" href="/stylesheets/admin-style.css">
+    <% include("partials/general-js") %>
 </head>
 <body>
     <%-
-        include("partials/header", {
-                                        pageHeader: "Curriculum Vitae",
-                                        pageHeaderShort: "CV",
-                                        route: "cv"
-                                    })
+        include("partials/header", { pageHeader: "Admin", pageHeaderShort: "Admin", route: "/admin" })
     %>
     <main>
 
-        <h1>GUTENTAG <%= userConnected %></h1>
+        <h1>GUTENTAG <%= user.username %></h1>
 
         <form action="/newcvline" method="post">
             <input type="text" name="title" placeholder="Enter title">
