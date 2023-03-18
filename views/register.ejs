@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="/stylesheets/login-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script defer src="/javascripts/login-script.js"></script>
+    <% include("partials/general-js") %>
+
+</head>
+<body>
+<div id="login-container">
+    <div>
+        <div>
+            <img src="/images/Portfolio-logo-detailed.png" alt="logo portfolio from Grimaldi Baptiste"/>
+            <h1>Register Panel</h1>
+        </div><!-- /.logo -->
+        <form method="post" action="/account/register" id="login-admin-form">
+            <input type="text" name="username" placeholder="Username" />
+            <input type="password" name="password" placeholder="Password" />
+            <button type="submit">Enter dashboard</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

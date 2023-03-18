@@ -1,5 +1,5 @@
-import * as THREE from '/threebuild/three.module.js';
-import {GLTFLoader} from '/threejsm/loaders/GLTFLoader.js';
+import * as THREE from 'three';
+import {GLTFLoader} from 'GLTFLoader';
 
 let scene;
 let camera;

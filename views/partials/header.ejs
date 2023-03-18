@@ -1,12 +1,12 @@
 <header>
-    <nav>
+    <nav class="scroll-animate">
         <div>
             <div>
-                <a href="/<%= route %>" id="portfolio-head-icon" class="opacity-hover">
+                <a href="<%= route %>" id="portfolio-head-icon" class="opacity-hover">
                     <img src="/images/Portfolio-logo.png" alt="Logo portfolio">
                 </a>
-                <a href="/<%= route %>" id="head-section" class="opacity-hover long"><%= pageHeader %></a>
-                <a href="/<%= route %>" id="head-section" class="opacity-hover short"><%= pageHeaderShort %></a>
+                <a href="<%= route %>" id="head-section" class="opacity-hover long"><%= pageHeader %></a>
+                <a href="<%= route %>" id="head-section" class="opacity-hover short"><%= pageHeaderShort %></a>
 
             </div>
             <span class="menu opacity-hover noselect">&lt;span&gt;<span class="menu code-gray">MENU</span>&lt;/span&gt;</span>
@@ -28,7 +28,7 @@
 
     const menuUnfold = document.querySelector(".menu-unfold");
 
-    let clickOutMenuChangeStatus = (e) => {
+    const clickOutMenuChangeStatus = (e) => {
         if (e.target.matches(".menu") && !menuUnfold.classList.contains("menu-unfold-true")) {
             menuUnfold.classList.toggle("menu-unfold-true");
 
@@ -37,6 +37,6 @@
         }
     };
 
-    window.addEventListener("click", clickOutMenuChangeStatus, false)
-    window.addEventListener("touchend", clickOutMenuChangeStatus, false)
+    window.addEventListener("click", clickOutMenuChangeStatus)
+    window.addEventListener("touchend", clickOutMenuChangeStatus)
 </script>

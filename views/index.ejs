@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="/stylesheets/home-style.css">
     <%- include("partials/threeJS") %>
     <script defer type="module" src="/javascripts/index-scripts.js"></script>
+    <% include("partials/general-js") %>
 </head>
 <body>
     <header class="shadow-section">
-        <nav>
+        <nav class="scroll-animate">
             <div>
                 <div>
                     <span class="code-number">1.</span><a href="/" id="portfolio-head-icon" class="opacity-hover">&lt;img <span class="code-gray">src</span>=<span class="code-green">"logo.svg"</span>&gt;</a>
@@ -88,7 +89,7 @@
             </div>
         </div>
         <div id="technologies" class="home-section shadow-section">
-            <h1>USED TECHNOLOGIES</h1>
+            <h1>TECHNOLOGIES I USE</h1>
             <div id="techno-bubbles">
                 <span class="very-known opacity-hover">PHP</span>
                 <span class="very-known opacity-hover">NodeJS</span>

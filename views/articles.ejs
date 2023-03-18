@@ -8,10 +8,11 @@
     <title>Portfolio</title>
     <link rel="stylesheet" href="/stylesheets/articles-style.css">
     <link rel="stylesheet" href="/stylesheets/stackoverflow-light.css">
+    <% include("partials/general-js") %>
 </head>
 <body>
 
-<%- include("partials/header", {pageHeader: "Articles", pageHeaderShort: "Articles", route:"articles"}) %>
+<%- include("partials/header", {pageHeader: "Articles", pageHeaderShort: "Articles", route:"/articles"}) %>
 
 <main>
     <div class="home-section">

@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/stylesheets/login-style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script defer src="/javascripts/login-script.js"></script>
+    <% include("partials/general-js") %>
+
 </head>
 <body>
 <div id="login-container">
@@ -14,9 +16,9 @@
             <img src="/images/Portfolio-logo-detailed.png" alt="logo portfolio from Grimaldi Baptiste"/>
             <h1>Admin Control</h1>
         </div><!-- /.logo -->
-        <form method="post" action="/admin" id="login-admin-form">
-            <input type="text" name="username" placeholder="Username" />
-            <input type="password" name="password" placeholder="Password" />
+        <form method="post" action="/account/login" id="login-admin-form">
+            <input type="text" name="username" placeholder="username" />
+            <input type="password" name="password" placeholder="password" />
             <button type="submit">Enter dashboard</button>
         </form>
     </div>

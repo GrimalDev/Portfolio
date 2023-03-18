@@ -1,5 +1,5 @@
 import express from 'express';
-import con from "../app/configDB.js";
+import con from "../app/config/configDB.js";
 import hljs from 'highlight.js';
 import Markdown from 'markdown-it';
 const router = express.Router()

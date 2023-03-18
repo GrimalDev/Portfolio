@@ -83,6 +83,9 @@ header {
 nav {
   z-index: 10;
 }
+nav .scroll-animate {
+  transition: top 0.3s;
+}
 
 .menu-unfold {
   position: absolute;
