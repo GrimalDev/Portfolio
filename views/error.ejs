@@ -7,10 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Portfolio</title>
     <link rel="stylesheet" href="/stylesheets/error-style.css">
+    <% include("partials/general-js") %>
 </head>
 <body>
 
-    <%- include("partials/header", {pageHeader: "ERROR", pageHeaderShort: "404", route:"home"}) %>
+    <%- include("partials/header", {pageHeader: "ERROR", pageHeaderShort: "404", route:"/home"}) %>
 
     <main>
         <h1><%= message %></h1>

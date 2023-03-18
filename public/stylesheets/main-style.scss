@@ -90,6 +90,9 @@ header {
 
 nav {
   z-index: 10;
+  .scroll-animate {
+    transition: top .3s;
+  }
 }
 
 .menu-unfold {
