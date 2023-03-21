@@ -8,7 +8,7 @@
     <title>Portfolio</title>
     <link rel="stylesheet" href="/stylesheets/articles-style.css">
     <link rel="stylesheet" href="/stylesheets/stackoverflow-light.css">
-    <% include("partials/general-js") %>
+
 </head>
 <body>
 
@@ -19,12 +19,12 @@
         <h1>All my Articles</h1>
     </div>
     <div id="article-cards-all-container">
-        <% articles.forEach(obj => { %>
+        <% articles.forEach(async (article) => { %>
             <div class="article-card-container home-section shadow-section">
-                <img src="/images/articles/<%= obj.img %>" alt="<%= obj.title %> image">
-                <h2 class="article-title"><%= obj.title %></h2>
-                <h3 class="article-description"><%= obj.description %></h3>
-                <pre class="article-content"><%= obj.content_body %></pre>
+                <img src="/images/articles/<%= article.img %>" alt="<%= article.title %> image">
+                <h2 class="article-title"><%= article.title %></h2>
+                <h3 class="article-description"><%= article.description %></h3>
+                <div class="article-content"><%-article.body%></div>
             </div>
         <% }); %>
     </div>

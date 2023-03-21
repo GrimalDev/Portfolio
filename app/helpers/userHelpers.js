@@ -24,11 +24,15 @@ export function isNotAuth(req, res, next) {
     res.redirect('/admin');
 }
 
-export function isAdmin(req, res, next) {
-    if (req.user.role === 'admin') {
-        return next();
+export async function isAdmin(req, res, next) {
+    const user = await getUserById(req.user);
+    if (!user) {
+        res.redirect('/');
     }
-    res.redirect('/');
+    if (user.role !== 'ADMIN') {
+        res.redirect('/');
+    }
+    next();
 }
 
 export async function userExists(req, res, next) {

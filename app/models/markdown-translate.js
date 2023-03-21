@@ -1,4 +1,8 @@
-Object.keys(articles).forEach(async (key) => {
+import Markdown from 'markdown-it';
+import hljs from 'highlight.js';
+
+//Convert markdown into html
+export default async function markdownTranslate(mdText) {
     const md = Markdown({
         highlight: (
             str,
@@ -14,10 +18,11 @@ Object.keys(articles).forEach(async (key) => {
         },
     });
 
-    if (articles[key].content_body) {
-        const html = await md.render(articles[key].content_body);
-        articles[key].content_body = html;
+    if (!mdText) {
+        return null;
     }
-});
+
+    return await md.render(mdText);
+}
 
 //TODO: add the ability to write articles in markdown and display to webpage

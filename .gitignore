@@ -1,6 +1,10 @@
 #Webstorm
 .idea
 
+#REST Client
+.REST
+http-client.private.env.json
+
 # Logs
 logs
 *.log

@@ -113,9 +113,3 @@ window.onload = function () {
     );
 
 }
-
-/*
-const buttonLogin = document.querySelector('button[type="submit"]');
-buttonLogin.addEventListener("click", (e) => {
-    e.preventDefault();
-})*/

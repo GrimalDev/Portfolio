@@ -6,27 +6,40 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Portfolio</title>
-    <link rel="stylesheet" href="/stylesheets/articles-style.css">
-    <% include("partials/general-js") %>
-
+    <link rel="stylesheet" href="/stylesheets/projects-style.css">
+    <script defer src="/javascripts/projects-handle.js"></script>
+    <script defer src="/javascripts/projects-animator-simple.js"></script>
 </head>
 <body>
 
 <%- include("partials/header", {pageHeader: "Projects", pageHeaderShort: "Projects", route:"/projects"}) %>
-
-<main>
-    <div class="home-section">
-        <h1>All my Projects</h1>
-    </div>
-    <div id="article-cards-all-container">
-        <% projects.forEach(obj => { %>
-            <div class="article-card-container home-section shadow-section">
-                <img src="/images/articles/<%= obj.img %>" alt="<%= obj.title %> image">
-                <h2 class="article-title"><%= obj.title %></h2>
-                <h3 class="article-description"><%= obj.description %></h3>
-                <pre class="article-content"><%= obj.content_body %></pre>
+<main class="home-section">
+    <h1>All my Projects</h1>
+    <div id="projects-view__container">
+        <div id="projects-view__sidebar">
+            <div id="projects-view__sidebar__search">
+                <input type="text" id="projects-view__sidebar__search__input" placeholder="Search">
+                <img src="/images/magnifying-glass-svgrepo-com.svg" alt="Magnifying glass">
             </div>
-        <% }); %>
+            <ul id="projects-view__sidebar__options__container">
+                <li class="projects-view__sidebar__option">
+                    <input type="checkbox" id="option-0" name="option-0" class="projects-view__sidebar__option__button" checked>
+                    <label for="option-0" class="projects-view__sidebar__option__label">All</label>
+                </li>
+                <% languages.forEach(language => { %>
+                    <li class="projects-view__sidebar__option">
+                        <input type="checkbox" id="option-<%= language.id %>" name="option-<%= language.id %>" class="projects-view__sidebar__option__button">
+                        <label for="option-<%= language.id %>" class="projects-view__sidebar__option__label"><%= language.name %></label>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+        <div id="cards__main-container"></div>
+        <div class="page-selection__container">
+            <img class="page-selection__button" id="page-selection__button__previous" src="/images/next-long-arrow-left-svgrepo-com.svg" alt="Previous page" disabled="true">
+            <div id="page-selection__number__container">Page&nbsp<span id="page-selection__number__current">1</span>&nbsp/<span id="page-selection__number__max"></span></div>
+            <img class="page-selection__button" id="page-selection__button__next" src="/images/next-long-arrow-right-svgrepo-com.svg" alt="Next page">
+        </div>
     </div>
 </main>
 

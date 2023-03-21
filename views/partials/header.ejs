@@ -5,8 +5,8 @@
                 <a href="<%= route %>" id="portfolio-head-icon" class="opacity-hover">
                     <img src="/images/Portfolio-logo.png" alt="Logo portfolio">
                 </a>
-                <a href="<%= route %>" id="head-section" class="opacity-hover long"><%= pageHeader %></a>
-                <a href="<%= route %>" id="head-section" class="opacity-hover short"><%= pageHeaderShort %></a>
+                <a href="<%= route %>" class="opacity-hover long"><%= pageHeader %></a>
+                <a href="<%= route %>" class="opacity-hover short"><%= pageHeaderShort %></a>
 
             </div>
             <span class="menu opacity-hover noselect">&lt;span&gt;<span class="menu code-gray">MENU</span>&lt;/span&gt;</span>
@@ -22,21 +22,4 @@
         </div>
     </nav>
 </header>
-
-<script type="application/javascript">
-    //------------menu open and close------------
-
-    const menuUnfold = document.querySelector(".menu-unfold");
-
-    const clickOutMenuChangeStatus = (e) => {
-        if (e.target.matches(".menu") && !menuUnfold.classList.contains("menu-unfold-true")) {
-            menuUnfold.classList.toggle("menu-unfold-true");
-
-        } else if (!e.target.matches(".menu-unfold") && menuUnfold.classList.contains("menu-unfold-true")) {
-            menuUnfold.classList.toggle("menu-unfold-true");
-        }
-    };
-
-    window.addEventListener("click", clickOutMenuChangeStatus)
-    window.addEventListener("touchend", clickOutMenuChangeStatus)
-</script>
+<script defer src="/javascripts/main-animator.js"></script>

@@ -11,7 +11,7 @@ import passport from "passport";
 import passportConfig from "./app/config/passport.js";
 
 //route imports
-import indexRouter from "./routes/index-route.js";
+import homeRouter from "./routes/home-route.js";
 import cvRouter from "./routes/cv-route.js";
 import projectsRouter from "./routes/projects-route.js";
 import articlesRouter from "./routes/articles-route.js";
@@ -46,7 +46,7 @@ app.use(passport.session()); // persistent login sessions
 passportConfig();
 
 //routes
-app.use('/', indexRouter);
+app.use('/', homeRouter);
 app.use('/cv', cvRouter);
 app.use('/projects', projectsRouter);
 app.use('/articles', articlesRouter);
