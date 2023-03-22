@@ -19,7 +19,6 @@ router.get('/query', async function(req, res, next) {
     //if query string, the projects are filtered by the query string
     //if querry string is page, the projects are by pack of 10
 
-    let message = "Unvalid query string";
     let searchParams = {
         languages: [],
         page: 1,
@@ -28,45 +27,39 @@ router.get('/query', async function(req, res, next) {
             this.languages = languages;
             this.page = page;
             this.customSearch = customSearch;
+        },
+        toString() {
+            return "Languages: " + this.languages + " Page: " + this.page + " Custom search: " + this.customSearch;
         }
     }
 
     //default value
     if (!req.query.length) {
         searchParams.setParams([], 1);
-        message = "First page of projects";
     }
 
     //page
-    if (req.query.page && req.query.length === 1) {
-        searchParams.setParams([], req.query.page);
-        message = "All projects by page";
+    if (req.query.page) {
+        searchParams.page = req.query.page;
     }
 
     //language query
     if (req.query.languages) {
-        searchParams.setParams(req.query.languages.split(','), 1);
-        message = "Projects by languages";
-    }
-
-    //page and language query
-    if (req.query.languages && req.query.page) {
-        searchParams.setParams(req.query.languages.split(','), req.query.page);
-        message = "Projects by languages and page";
+        searchParams.languages = req.query.languages.split(',');
     }
 
     //todo: search bar query
     if (req.query.search) {
-        searchParams.setParams([], 1, req.query.search);
-        message = "Projects by search";
+        searchParams.customSearch = req.query.search;
     }
 
     //execute query
-    const queryResult = await getProjectsByLanguage(searchParams.languages, searchParams.page);
+    const queryResult = await getProjectsByLanguage(searchParams.languages, searchParams.page, searchParams.customSearch);
 
     //set the number of pages to display and the projects to display
     const maxPages = queryResult.maxPages;
     const projects = queryResult.projects;
+    const message = queryResult.toString();
 
     res.json({message: message, data: projects, maxPages: maxPages});
 });

@@ -8,6 +8,37 @@ const pageButtons = document.getElementsByClassName("page-selection__button");
 let pageNumberCurrentEl = document.getElementById("page-selection__number__current");
 let pageNumberMaxEl = document.getElementById("page-selection__number__max");
 
+let activeQuery = {
+    languages: [],
+    page: 1,
+    customSearch: "",
+    getActiveQueries() {
+        return {
+            languages: this.languages,
+            page: this.page,
+            customSearch: this.customSearch
+        }
+    },
+    reset() {
+        this.languages = [];
+        this.page = 1;
+        this.customSearch = "";
+    },
+    removeParam(param) {
+        if (param === "languages") {
+            this.languages = [];
+        } else if (param === "page") {
+            this.page = 1;
+        } else if (param === "customSearch") {
+            this.customSearch = "";
+        }
+    },
+    removeLanguage(language) {
+        this.languages.splice(this.languages.indexOf(language), 1);
+    }
+
+}
+let maxPageNumber; //Save the last page number to avoid unnecessary requests
 
 //render projects
 function renderProjects(projects) {
@@ -72,6 +103,7 @@ function selectorProtector(e) {
 
 function paginationButtonsProtector(currentPage, maxPages) {
     //update pagination
+    pageNumberCurrentEl.innerText = currentPage;
     pageNumberMaxEl.innerText = maxPages;
 
     //enable all buttons
@@ -80,12 +112,12 @@ function paginationButtonsProtector(currentPage, maxPages) {
     }
 
     //if current page is 1, disable previous button
-    if (currentPage === 1) {
+    if (currentPage === 1 || currentPage < 0) {
         document.getElementById("page-selection__button__previous").setAttribute("disabled", "true");
     }
 
     //if current page is max, disable next button
-    if (currentPage === maxPages) {
+    if (currentPage === maxPages || currentPage > maxPages) {
         document.getElementById("page-selection__button__next").setAttribute("disabled", "true");
     }
 }
@@ -109,42 +141,41 @@ function unCheckAllSelectors() {
     }
 }
 
-//buttons reset function
-function resetButtons(maxPages) {
-    //reset page number
-    pageNumberCurrentEl.innerText = 1;
-    pageNumberMaxEl.innerText = maxPages;
+async function fetchProjects() {
 
-    //buttons protector
-    paginationButtonsProtector(parseInt(pageNumberCurrentEl.innerText), maxPages);
-}
+    let query = "/projects/query?";
 
-async function querySelectorHandler(selectorId) {
-    //get language name from id
-    const language = selectorId.split("-")[1];
+    //get all active queries and query with all of them
+    const activeQueries = activeQuery.getActiveQueries();
 
-    //if "all" is selected, query all projects
-    if (language === "0") {
-        let projects = await fetch("/projects/query");
-        projects = await projects.json();
-        renderProjects(projects.data);
-        //buttons protector
-        paginationButtonsProtector(parseInt(pageNumberCurrentEl.innerText), projects.maxPages);
-        return;
+    //add active queries to url
+    if (activeQueries.languages.length > 0) {
+        query += "languages=" + activeQueries.languages.join(",") + "&";
+    }
+    if (activeQueries.page > 1) {
+        query += "page=" + activeQueries.page + "&";
+    }
+    if (activeQueries.customSearch !== "") {
+        query += "search=" + activeQueries.customSearch + "&";
     }
 
-    //get all selected languages and query with all of them
-    const activeSelectors = getActiveSelectors().join(",");
+    //remove last "&"
+    query = query.slice(0, -1);
 
-    //query all languages selected in a encoded list
-    let projects = await fetch("/projects/query?languages=" + activeSelectors);
+    let projects = await fetch(query);
     projects = await projects.json();
+
+    //save maxpage number
+    maxPageNumber = projects.maxPages;
+
+    //clear all cards
+    allCardsContainer.innerHTML = "";
 
     //rerender projects
     renderProjects(projects.data);
 
-    //reset buttons and pagination
-    resetButtons(projects.maxPages);
+    //pagination buttons protector
+    paginationButtonsProtector(activeQueries.page, projects.maxPages);
 }
 
 async function handleSelectors() {
@@ -154,8 +185,11 @@ async function handleSelectors() {
 
             selectorProtector(e);
 
+            const language = targetId.split("-")[1];
+
             if (e.target.checked) {
-                await querySelectorHandler(targetId);
+                //add language to active queries
+                activeQuery.languages.push(language);
             } else {
 
                 //if all is unchecked, remove all cards
@@ -170,38 +204,29 @@ async function handleSelectors() {
                     allCardsContainer.innerHTML = "";
                     pageNumberCurrentEl.innerText = 1;
                     pageNumberMaxEl.innerText = 1;
+
+                    //laguages empty
+                    activeQuery.languages = [];
+
                     return;
                 }
 
-                //if not all, query all languages selected in a encoded list
-                const activeSelectors = getActiveSelectors().join(",");
-                let projects = await fetch("/projects/query?languages=" + activeSelectors);
-                projects = await projects.json();
-                renderProjects(projects.data);
-
-                //reset buttons and pagination
-                resetButtons(projects.maxPages);
+                //remove language from active queries
+                activeQuery.removeLanguage(language);
             }
+
+            //if languages contains 0 (all), remove all languages
+            if (activeQuery.languages.includes("0")) {
+                activeQuery.removeParam("languages");
+            }
+
+            //set page to 1
+            activeQuery.page = 1;
+
+            //fetch projects
+            await fetchProjects();
         });
     }
-}
-
-function paginationHandler(target, maxPages) {
-
-    let currentPage = parseInt(pageNumberCurrentEl.innerText);
-    let pageOperand = +1;
-
-    //if previous button is clicked, decrement page number
-    if (target.id === "page-selection__button__previous") { pageOperand = -1; }
-
-    //update page number
-    pageNumberCurrentEl.innerText = (currentPage + pageOperand).toString();
-    pageNumberMaxEl.innerText = maxPages;
-
-    currentPage = parseInt(pageNumberCurrentEl.innerText);
-
-    //buttons protector
-    paginationButtonsProtector(currentPage, maxPages);
 }
 
 function pageHandle() {
@@ -211,35 +236,34 @@ function pageHandle() {
             //if desabled, return
             if (e.target.getAttribute("disabled") === "true") { return; }
 
-            pageNumberCurrentEl = document.getElementById("page-selection__number__current");
-            pageNumberMaxEl = document.getElementById("page-selection__number__max");
-
-            let pageOperand = +1;
+            let pageOperand = 1;
 
             //if previous button is clicked, decrement page number
             if (e.target.id === "page-selection__button__previous") { pageOperand = -1; }
 
-            const nextPage = parseInt(pageNumberCurrentEl.innerText) + pageOperand;
-
-            //clear all cards
-            allCardsContainer.innerHTML = "";
-
-            //get all selected languages and query with all of them
-            const activeSelectors = getActiveSelectors();
-            let currentRequest = "";
-            //if 'all' is selected, don't add any query
-            if (activeSelectors.length && activeSelectors[0] !== "0") {
-                currentRequest = `languages=${activeSelectors.join(",")}&`;
-            }
-
-            let projects = await fetch(`/projects/query?${currentRequest}page=${nextPage}`);
-            projects = await projects.json();
-            renderProjects(projects.data);
-
-            //handle pagination buttons and page number
-            paginationHandler(e.target, parseInt(projects.maxPages));
+            //set page query
+            activeQuery.page += pageOperand;
+            await fetchProjects();
         });
     }
+}
+
+function searchInputHandler() {
+    const searchInput = document.getElementById("projects-view__sidebar__search__input");
+    const doneTypingTimer = 600;
+    let typingTimer;
+
+    searchInput.addEventListener("input", async (e) => {
+        //wait 500ms since last input before querying
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(async () => {
+
+            //set search param
+            activeQuery.customSearch = e.target.value;
+
+            await fetchProjects();
+        }, doneTypingTimer);
+    });
 }
 
 const initQuery = async () => {
@@ -249,6 +273,9 @@ const initQuery = async () => {
     //render first page of projects
     renderProjects(firstPageProjects.data);
 
+    //firest save maxpage number
+    maxPageNumber = firstPageProjects.maxPages;
+
     //handle language selection
     await handleSelectors();
 
@@ -257,6 +284,8 @@ const initQuery = async () => {
 
     //handle pagination
     pageHandle();
+
+    searchInputHandler();
 }
 
 //on dom ready
