@@ -499,6 +499,45 @@ main h2 {
   width: 100%;
 }
 
+#social-link__header__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-grow: 1;
+}
+#social-link__header__container .social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #4D4D4C;
+}
+#social-link__header__container .social-link:hover {
+  opacity: 0.7;
+}
+
+#cv-download-button {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: #87ceeb;
+  border: none;
+  border-radius: 5px;
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #4D4D4C;
+}
+#cv-download-button:hover {
+  background-color: #4D4D4C;
+  color: #87ceeb;
+}
+
 #cv-header-content {
   display: flex;
   justify-content: center;

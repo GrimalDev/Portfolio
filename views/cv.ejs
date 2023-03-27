@@ -13,13 +13,7 @@
     <%- include("partials/threeJS") %>
 </head>
 <body>
-    <%-
-        include("partials/header", {
-                                        pageHeader: "Curriculum Vitae",
-                                        pageHeaderShort: "CV",
-                                        route: "/cv"
-                                    })
-    %>
+    <%- include("partials/header", { pageHeader: "Curriculum Vitae", pageHeaderShort: "CV", route: "/cv" }) %>
     <main>
         <div id="cv-header" class="home-section">
             <h1>Baptiste Grimaldi</h1>
@@ -30,7 +24,11 @@
                         <span>67000 Strasbourg</span>
                         <span>France</span>
                         <span>bapt.grimaldi@gmail.com</span>
-                        <span>https://github.com/GrimalDev</span>
+                        <span id="social-link__header__container">
+                            <a href="https://github.com/GrimalDev" target="_blank" rel="noreferrer noopener" class="social-link">Mon GitHub</a>
+                            /
+                            <a href="https://www.linkedin.com/in/baptiste-grimaldi-5a1b3b1a3/" target="_blank" rel="noreferrer noopener" class="social-link">Linkedin</a>
+                        </span>
                     </div>
                     <div>
                         <span>Développeur full-stack</span>
@@ -39,6 +37,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="home-section">
+            <a href="/media/curriculum/CV_BaptisteGrimaldi_v6.3.pdf" download="CV_BaptisteGrimaldi_v6.3.pdf" id="cv-download-button" target="_blank" rel="noreferrer noopener">Télécharger mon CV</a>
         </div>
     </main>
     <%- include("partials/footer") %>
