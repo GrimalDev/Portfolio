@@ -36,3 +36,4 @@ let clickOutMenuChangeStatus = (e) => {
 
 window.addEventListener("click", clickOutMenuChangeStatus)
 window.addEventListener("touchstart", clickOutMenuChangeStatus)
+

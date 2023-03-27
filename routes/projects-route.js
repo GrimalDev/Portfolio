@@ -2,7 +2,7 @@ import express from 'express';
 import {
     getProjectBySlug,
     getProjects,
-} from "../app/controllers/projectController.js";
+} from "../app/controllers/projectsController.js";
 import {getAllLanguages} from "../app/controllers/languageController.js";
 import markdownTranslate from "../app/models/markdown-translate.js";
 const router = express.Router();

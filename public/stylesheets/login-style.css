@@ -339,12 +339,12 @@ footer div {
   }
   .menu-unfold {
     width: 80%;
-    height: 20rem;
+    min-height: fit-content;
   }
   .menu-unfold ul {
     flex-direction: column;
     width: 90%;
-    height: fit-content;
+    min-height: fit-content;
     padding: 0;
   }
   .menu-unfold ul li {

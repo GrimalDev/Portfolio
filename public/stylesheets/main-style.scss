@@ -361,10 +361,12 @@ footer {
         flex-direction: column;
     }
     .menu-unfold {
+        width: 80%;
+        min-height: fit-content;
         ul {
             flex-direction: column;
             width: 90%;
-            height: fit-content;
+            min-height: fit-content;
             padding: 0;
 
             li {
@@ -382,9 +384,6 @@ footer {
                 }
             }
         }
-
-        width: 80%;
-        height: 20rem;
     }
 }
 
