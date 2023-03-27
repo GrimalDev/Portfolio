@@ -1,32 +1,32 @@
 import passport from "passport";
 import { Strategy as LocalStrategy} from 'passport-local'
 import {validPassword} from "../helpers/userHelpers.js";
-import con from "./configDB.js";
+import poolDB from "./configDB.js";
+import {getUserByUsername} from "../controllers/userController.js";
 
 /*passport IS*/
 const verifyCallback = async (username, password, done) => {
     //TODO: Pass message on auth failure
-    con.query('SELECT * FROM users WHERE username=?', [username], async function (error, results, fields) {
-        if (error) { return done(error) }
+    //get user from db
+    const result = await getUserByUsername(username);
 
-        //verify if user exists
-        if (results.length == 0) { return done(null, false); }
+    //verify if user exists
+    if (!result) { return done(null, false); }
 
-        //verify if password is good
-        const isValid = await validPassword(password, results[0].hash);
+    //verify if password is good
+    const isValid = await validPassword(password, result.hash);
 
-        //control the user object for the rest of the app
-        const user = {
-            id: results[0].id,
-            username: results[0].username,
-            // hash: results[0].hash,
-            role: results[0].role
-        };
+    //control the user object for the rest of the app
+    const user = {
+        id: result.id,
+        username: result.username,
+        // hash: result.hash,
+        role: result.role
+    };
 
-        if (!isValid) { return done(null, false); }
+    if (!isValid) { return done(null, false); }
 
-        return done(null, user);
-    });
+    return done(null, user);
 };
 
 export const passportConfig = () => {
@@ -42,7 +42,7 @@ export const passportConfig = () => {
 
     //This function is called when the user logs out
     passport.deserializeUser(function(userId, done) {
-        con.query('SELECT * FROM users where id = ?', [userId], function(error, rows) {
+        poolDB.query('SELECT * FROM users where id = ?', [userId], function(error, rows) {
             done(error, rows[0].id);
         });
     });

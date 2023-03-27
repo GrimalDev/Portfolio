@@ -10,11 +10,11 @@ const dbParams = {
     port    : process.env.DB_PORT
 };
 
-const con = mysql.createConnection(dbParams);
+const poolDB = mysql.createPool(dbParams);
 
-con.connect((err) => {
+poolDB.getConnection((err, connection) => {
     if (err) throw err;
     console.log("Connected to mysql database!");
 });
 
-export default con;
+export default poolDB;

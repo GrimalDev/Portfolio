@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="/stylesheets/veille-style.css">
+</head>
+<body>
+
+<%- include("partials/header", {pageHeader: "Veille technologique", pageHeaderShort: "Veille", route:"/veille"}) %>
+<main class="home-section">
+    <h1>Veille Technologique</h1>
+
+    <h2>Docker est-il l'avenir du déploiement ? (OUI)</h2>
+
+    <h3>Articles à ce propos</h3>
+    <div class="cards__main-container">
+        <% articles.forEach(article => {%>
+            <div class="card__container card__category__<%= article.categories %>">
+                <div class="card__image" style="background-image: url('/images/articles/<%= article.img %>')"></div>
+                <div class="card__body">
+                    <p class="card__title"><%= article.title %></p>
+                    <p class="card__text"><%= article.description %></p>
+                </div>
+                <a class="card__link" href="/articles/view/<%= article.slug %>"></a>
+            </div>
+        <% }) %>
+    </div>
+
+</main>
+
+<%- include("partials/footer") %>
+
+</body>
+</html>

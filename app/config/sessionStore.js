@@ -2,7 +2,7 @@ import MySQLStore from 'express-mysql-session';
 import session from "express-session";
 
 //session store and authentication configuration
-import con from "./configDB.js";
+import poolDB from "./configDB.js";
 
 const sessionStore = new MySQLStore({
     checkExpirationInterval: 900000,// How frequently expired sessions will be cleared; milliseconds.
@@ -16,7 +16,7 @@ const sessionStore = new MySQLStore({
             data: 'data'
         }
     }
-}, con);
+}, poolDB);
 
 const TWO_HOURS = 1000 * 60 * 60 * 2
 

@@ -1,0 +1,62 @@
+/*------------IMPORTS-----------*/
+@import "main-style";
+@import "header-style";
+
+main {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Roboto', serif;
+    font-style: normal;
+    margin-top: 3rem;
+    height: 100%;
+}
+
+
+h1 {
+    font-weight: 700;
+    line-height: 41px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #4D4D4C;
+}
+h2 {
+    font-weight: 700;
+    font-size: 35px !important;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: capitalize;
+    color: #4D4D4C;
+}
+h3 {
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+    color: #4D4D4C;
+    width: 70%;
+    padding-bottom: 1rem;
+    border-bottom: #803378 1px solid;
+    margin-top: 5vh;
+}
+
+/*------------PROJECTS CARDS-----------*/
+
+.cards__main-container {
+    min-height: fit-content;
+    margin-bottom: 15vh;
+    .card__container {
+        justify-content: space-between !important;
+        //display 3 cards per row
+        height: clamp(260px, 40vh, 400px) !important;
+        width: clamp(220px, 33vw, 350px) !important;
+    }
+}

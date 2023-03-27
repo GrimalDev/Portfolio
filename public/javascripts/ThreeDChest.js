@@ -5,7 +5,7 @@ let scene;
 let camera;
 let renderer;
 let model;
-const modelContainer = await document.querySelector('.ddd-head');
+const modelContainer = document.querySelector('.ddd-head');
 let canvasHeight = modelContainer.clientHeight;
 let canvasWidth = modelContainer.clientWidth;
 
@@ -18,7 +18,7 @@ let pointOfIntersection = new THREE.Vector3();
 const baseRotation = {
     x: 0.3,
     y: 2.2
-}
+};
 
 const init = async () => {
     scene = new THREE.Scene();
