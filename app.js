@@ -17,7 +17,7 @@ import projectsRouter from "./routes/projects-route.js";
 import articlesRouter from "./routes/articles-route.js";
 import examensRouter from "./routes/examens-route.js";
 import contactRouter from "./routes/contact-route.js";
-import veilleRouter from "./routes/veille-route.js";
+import veilleRouter from "./routes/veille-router.js";
 
 import registerRouter from "./routes/register-route.js";
 import loginRouter from "./routes/login-route.js";

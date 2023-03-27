@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="/stylesheets/contact-style.css">
+    <script defer src="/javascripts/contact-scripts.min.js"></script>
+</head>
+<body>
+
+<%- include("partials/header", {pageHeader: "Contact", pageHeaderShort: "Contact", route:"/contact"}) %>
+<main class="home-section">
+    <h1>contact</h1>
+
+    <form action="/contact" method="post" id="contact__form">
+        <div id="contact__form__status-message" class="hidden">Errors</div>
+
+        <label class="form__label" for="firstname">
+            <input type="text" class="form__input" name="firstname" id="firstname" placeholder="Votre prénom">
+        </label>
+
+        <label class="form__label" for="lastname">
+            <input type="text" class="form__input" name="lastname" id="lastname" placeholder="Votre nom">
+        </label>
+
+        <label class="form__label" for="email">
+            <input type="email" class="form__input" name="email" id="email" placeholder="Votre email">
+        </label>
+
+        <div class="message__container">
+            <div id="message__char-count">
+                <span id="message__char-count__index">0</span> / 500
+            </div>
+            <label class="form__label" for="message">
+                <textarea class="form__input form_textarea" name="message" id="message" placeholder="Votre message"></textarea>
+            </label>
+        </div>
+
+        <input id="form__submit" type="submit" value="Send">
+    </form>
+</main>
+
+<%- include("partials/footer") %>
+
+</body>
+</html>

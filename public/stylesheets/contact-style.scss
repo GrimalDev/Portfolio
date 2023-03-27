@@ -1,0 +1,168 @@
+/*------------IMPORTS-----------*/
+@import "main-style";
+@import "header-style";
+
+/*------------GENERAL-----------*/
+
+main {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Roboto', serif;
+    font-style: normal;
+    margin-top: 3rem;
+    height: 100%;
+}
+
+
+h1 {
+    font-size: clamp(20px, 3vw, 40px);
+    font-weight: 700;
+    line-height: 41px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #4D4D4C;
+}
+
+/*------------CONTACT-----------*/
+
+#contact__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    height: 100%;
+    margin: 10vh 0 50vh 0;
+    gap: 1rem;
+
+    #contact__form__status-message {
+        color: #ff4545;
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin: 0;
+        &.hidden {
+            color: transparent;
+        }
+    }
+
+    .form__label {
+        width: 100%;
+
+        .form__input {
+            width: 100%;
+            height: 2rem;
+            border: 1px solid #4D4D4C;
+            font-family: "Inter", serif;
+            border-radius: 5px;
+            padding: .5rem;
+            font-size: 1rem;
+            transition: ease-in .2s;
+            box-shadow: 0 0 10px 1px #d5d5d5;
+
+            &:focus {
+                outline: none;
+                box-shadow:
+                        0 0 10px 4px rgba(128, 51, 120, 0.24),
+                        0 0 5px 2px rgba(128, 51, 120, 0.47),
+                        0 0 2px 1px rgba(128, 51, 120, 0.69);
+            }
+
+            &.form_textarea {
+                height: 10rem;
+            }
+        }
+    }
+
+    .message__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+
+        #message__char-count {
+            font-size: .8rem;
+            color: #4D4D4C;
+            margin: .5rem 0 .2rem 0;
+        }
+
+        .form_textarea {
+            resize: none;
+        }
+    }
+
+    #form__submit {
+        width: clamp(100px, 20vw, 200px);
+        height: 2rem;
+        border: 0;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #4D4D4C;
+        transition: ease-in .2s;
+        background: $cream-bg;
+        box-shadow: 0 0 25px 1px #d5d5d5;
+        cursor: pointer;
+
+        &:hover {
+            background: #852b7d;
+            color: $cream-bg;
+        }
+    }
+}
+
+.status-bad {
+    box-shadow:
+            0 0 10px 4px rgba(255, 0, 0, 0.24),
+            0 0 5px 2px rgba(220, 0, 0, 0.47),
+            0 0 2px 1px rgba(189, 0, 0, 0.69) !important;
+    //shake animation
+    animation: shake 0.5s;
+}
+.status-good {
+    color: #5bd585 !important;
+}
+
+/*------------ANIMATIONS-----------*/
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}
