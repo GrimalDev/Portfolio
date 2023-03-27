@@ -16,6 +16,8 @@ import cvRouter from "./routes/cv-route.js";
 import projectsRouter from "./routes/projects-route.js";
 import articlesRouter from "./routes/articles-route.js";
 import examensRouter from "./routes/examens-route.js";
+import contactRouter from "./routes/contact-route.js";
+import veilleRouter from "./routes/veille-route.js";
 
 import registerRouter from "./routes/register-route.js";
 import loginRouter from "./routes/login-route.js";
@@ -51,6 +53,8 @@ app.use('/cv', cvRouter);
 app.use('/projects', projectsRouter);
 app.use('/articles', articlesRouter);
 app.use('/examens', examensRouter);
+app.use('/contact', contactRouter);
+app.use('/veille', veilleRouter);
 app.use('/admin', adminRouter);
 app.use('/account', loginRouter);
 app.use('/account', logoutRouter);

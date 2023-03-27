@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/stylesheets/project-single-style.css">
+    <title>Portfolio</title>
+</head>
+<body>
+<%- include("partials/header", {pageHeader: "E4 / E5", pageHeaderShort: "E4/E5", route:"/examens"}) %>
+
+<main>
+    <div class="project__image" style="background-image: url('/images/articles/<%= project.img %>')">
+        <div class="project__header">
+            <p class="project__title"><%= project.title %></p>
+            <p class="project__description"><%= project.description %></p>
+        </div>
+    </div>
+    <p class="project__body"><%- project.body %></p>
+</main>
+
+<%- include("partials/footer") %>
+</body>
+</html>

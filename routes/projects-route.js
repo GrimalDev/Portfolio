@@ -4,6 +4,7 @@ import {
     getProjects,
 } from "../app/controllers/projectController.js";
 import {getAllLanguages} from "../app/controllers/languageController.js";
+import markdownTranslate from "../app/models/markdown-translate.js";
 const router = express.Router();
 
 /* GET articles page. */
@@ -93,8 +94,12 @@ router.get('/query', async function(req, res, next) {
 });
 
 router.get('/view/:slug', async function(req, res, next) {
-  const project = await getProjectBySlug(req.params.slug);
-  res.json(project);
+    const project = await getProjectBySlug(req.params.slug);
+
+    //convert body from markdown to html
+    project.body = await markdownTranslate(project.body);
+
+    res.render('project-single', {project: project});
 });
 
 export default router;
