@@ -1,7 +1,7 @@
 import express from 'express';
 import {
     getProjectBySlug,
-    getProjectsByLanguage,
+    getProjects,
 } from "../app/controllers/projectController.js";
 import {getAllLanguages} from "../app/controllers/languageController.js";
 const router = express.Router();
@@ -23,13 +23,28 @@ router.get('/query', async function(req, res, next) {
         languages: [],
         page: 1,
         customSearch: "",
-        setParams(languages, page, customSearch = "") {
+        categories: [],
+        setParams(languages, page, customSearch = "", categories = []) {
             this.languages = languages;
             this.page = page;
             this.customSearch = customSearch;
+            this.categories = categories;
         },
         toString() {
-            return "Languages: " + this.languages + " Page: " + this.page + " Custom search: " + this.customSearch;
+            let languages = this.languages;
+            let page = this.page;
+            let customSearch = this.customSearch;
+            let categories = this.categories;
+            if (languages.length === 0) {
+                languages = "all";
+            }
+            if (customSearch === "") {
+                customSearch = "None";
+            }
+            if (this.categories.length === 0) {
+                categories = "all";
+            }
+            return `Languages: ${languages} + Page: ${page} + Custom search: ${customSearch} + Categories: ${categories}`;
         }
     }
 
@@ -48,18 +63,31 @@ router.get('/query', async function(req, res, next) {
         searchParams.languages = req.query.languages.split(',');
     }
 
-    //todo: search bar query
+    //custom search
     if (req.query.search) {
         searchParams.customSearch = req.query.search;
     }
 
+    //categories
+    if (req.query.categories) {
+        searchParams.categories = req.query.categories.split(',');
+    }
+
+    //query option for the database
+    const queryOptions = {
+        languages: searchParams.languages,
+        pageNumber: searchParams.page,
+        customSearch: searchParams.customSearch,
+        categories: searchParams.categories
+    }
+
     //execute query
-    const queryResult = await getProjectsByLanguage(searchParams.languages, searchParams.page, searchParams.customSearch);
+    const queryResult = await getProjects(queryOptions);
 
     //set the number of pages to display and the projects to display
-    const maxPages = queryResult.maxPages;
-    const projects = queryResult.projects;
-    const message = queryResult.toString();
+    const maxPages  = queryResult.maxPages;
+    const projects  = queryResult.projects;
+    const message   = searchParams.toString();
 
     res.json({message: message, data: projects, maxPages: maxPages});
 });

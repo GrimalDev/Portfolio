@@ -98,6 +98,9 @@ nav {
 }
 header nav > div > span {
     background: rgba(217, 217, 217, 0.48);
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .menu-unfold {
@@ -198,11 +201,82 @@ main {
     color: #718C00;
 }
 
-//.layer-back {
-//  position: absolute;
-//  height: 100%;
-//  width: 100%;
-//}
+/*------------PROJECT CARDS RENDER-----------*/
+
+.cards__main-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    height: fit-content;
+    min-height: 700px;
+    width: 90%;
+    perspective: 40px;
+
+    .card__container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: fit-content;
+        width: clamp(200px, 20vw, 350px);
+        box-shadow: 0 0 10px 1px #9d9d9d;
+        border-radius: 10px;
+        transition: transform .2s;
+        background-color: $cream-bg;
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px 3px #803378;
+            transition: ease-in .15s;
+        }
+
+        .card__link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .card__image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: clamp(calc(200px * .75), calc(20vw * .75), calc(350px * .75));
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card__body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            height: fit-content;
+            margin: 1rem 0;
+            padding-bottom: 2rem;
+        }
+
+        .card__title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: fit-content;
+            border-bottom: 1px solid #E5E5E5;
+        }
+
+        .card__text {
+            margin: 0 1rem;
+        }
+    }
+}
+
 
 /*------------FOOTER-----------*/
 

@@ -1,12 +1,15 @@
 /*-------------RENDER PROJECT CARDS FROM SEARCH PARAMS-------------*/
 //for card rendering
-const allCardsContainer = document.getElementById("cards__main-container");
+const allCardsContainer = document.getElementsByClassName("cards__main-container")[0];
 const allLanguageSelectors = document.getElementsByClassName("projects-view__sidebar__option__button");
 
 //for pagination
 const pageButtons = document.getElementsByClassName("page-selection__button");
 let pageNumberCurrentEl = document.getElementById("page-selection__number__current");
 let pageNumberMaxEl = document.getElementById("page-selection__number__max");
+
+//all languages available
+let allLanguages = [];
 
 let activeQuery = {
     languages: [],
@@ -61,6 +64,7 @@ function renderProjects(projects) {
         cardBody.classList.add("card__body");
         cardTitle.classList.add("card__title");
         cardText.classList.add("card__text");
+        cardLink.classList.add("card__link");
 
         //set image background
         cardImage.style.backgroundImage = "url('/images/articles/" + project.img + "')";
@@ -68,8 +72,10 @@ function renderProjects(projects) {
         //add attributes
         cardLink.setAttribute("href", "/projects/view/" + project.slug);
 
+        const languageName = allLanguages.find(language => language.id === project.languages_linked).name;
+
         //add text
-        cardTitle.innerText = project.title + " (" + project.languages_linked + ")";
+        cardTitle.innerText = project.title + " (" + languageName + ")";
         cardText.innerText = project.description;
 
         //append animation
@@ -269,6 +275,19 @@ function searchInputHandler() {
 const initQuery = async () => {
     let firstPageProjects = await fetch("/projects/query");
     firstPageProjects = await firstPageProjects.json();
+
+    //select all languages from list
+    let allLanguagesEl = document.getElementsByClassName("projects-view__sidebar__option__label");
+    for (let i = 0; i < allLanguagesEl.length; i++) {
+        let id = allLanguagesEl[i].getAttribute("for").split("-")[1];
+        id = parseInt(id);
+        let name = allLanguagesEl[i].innerText;
+        //add object to allLanguages based on id
+        allLanguages.push({
+            id: id,
+            name: name
+        });
+    }
 
     //render first page of projects
     renderProjects(firstPageProjects.data);

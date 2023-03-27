@@ -15,7 +15,7 @@ import homeRouter from "./routes/home-route.js";
 import cvRouter from "./routes/cv-route.js";
 import projectsRouter from "./routes/projects-route.js";
 import articlesRouter from "./routes/articles-route.js";
-import docRouter from "./routes/doc-route.js";
+import examensRouter from "./routes/examens-route.js";
 
 import registerRouter from "./routes/register-route.js";
 import loginRouter from "./routes/login-route.js";
@@ -50,7 +50,7 @@ app.use('/', homeRouter);
 app.use('/cv', cvRouter);
 app.use('/projects', projectsRouter);
 app.use('/articles', articlesRouter);
-app.use('/doc', docRouter);
+app.use('/examens', examensRouter);
 app.use('/admin', adminRouter);
 app.use('/account', loginRouter);
 app.use('/account', logoutRouter);

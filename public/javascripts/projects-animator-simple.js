@@ -1,5 +1,5 @@
 //------------Animation card perpective------------
-const cardsMainContainer = document.getElementById("cards__main-container");
+const cardsMainContainer = document.getElementsByClassName("cards__main-container")[0];
 const cards = document.getElementsByClassName("card__container");
 
 let counter = 0;
@@ -39,10 +39,20 @@ const update = (e) => {
             }
             continue;
         }
+
+        let xPosition = (mouse.y / cards[i].offsetHeight / 2).toFixed(2)
+        let yPosition = (mouse.x / cards[i].offsetWidth / 2).toFixed(2)
+
+        //card max rotation
+        if (xPosition > .2) xPosition = .2;
+        if (xPosition < -.2) xPosition = -.2;
+        if (yPosition > .2) yPosition = .2;
+        if (yPosition < -.2) yPosition = -.2;
+
         updateTransformStyle(
             cards[i],
-            (mouse.y / cards[i].offsetHeight / 2).toFixed(2),
-            (mouse.x / cards[i].offsetWidth / 2).toFixed(2)
+            xPosition,
+            yPosition
         );
     }
 }
