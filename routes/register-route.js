@@ -1,10 +1,11 @@
 import express from 'express';
 import {isAuth, isAdmin, userExists, genPassword} from "../app/helpers/userHelpers.js";
 import poolDB from "../app/config/configDB.js";
+import {logVisit} from "../app/controllers/logsController.js";
 const router = express.Router()
 
 /* GET doc page. */
-router.get('/register', isAuth, isAdmin, function(req, res, next) {
+router.get('/register', logVisit, isAuth, isAdmin, function(req, res, next) {
     res.render('register');
 });
 

@@ -22,6 +22,38 @@
             <input type="submit" value="submit">
         </form>
 
+        <h2>Selection de la date du log</h2>
+        <div class="time-select__inputs__container">
+            <form action="/admin/logs/select" method="post">
+                <input type="text" class="time-select__input" id="time-select__input__start" placeholder="Début" name="from">
+                <input type="text" class="time-select__input" id="time-select__input__end" placeholder="Fin" name="to">
+                <input type="submit" value="submit">
+            </form>
+        </div>
+
+        <h2>Les logs</h2>
+        <table border="1px solid black">
+            <tr>
+                <th>IP</th>
+                <th>URL</th>
+                <th>DATE</th>
+            </tr>
+            <% Object.values(logs).forEach(log => { %>
+                <tr>
+                    <td><%= log.ip %></td>
+                    <td><%= log.url %></td>
+                    <td>
+                        <%= log.visit_time %>
+                    </td>
+                    <td>
+                        <form action="/admin/logs/del" method="post">
+                            <input type="hidden" name="id" value="<%= log.id %>">
+                            <input type="submit" value="delete">
+                        </form>
+                    </td>
+                </tr>
+            <% });%>
+        </table>
     </main>
     <%- include("partials/footer") %>
 </body>

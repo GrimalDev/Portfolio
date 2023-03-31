@@ -1,9 +1,10 @@
 import express from 'express';
 import poolDB from "../app/config/configDB.js";
+import {logVisit} from "../app/controllers/logsController.js";
 const router = express.Router()
 
 /* GET cv page. */
-router.get('/', function(req, res, next) {
+router.get('/', logVisit, function(req, res, next) {
     res.render('cv');
 });
 

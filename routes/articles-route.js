@@ -2,12 +2,13 @@ import express from 'express';
 import poolDB from "../app/config/configDB.js";
 import markdownTranslate from "../app/models/markdown-translate.js";
 import {getArticleBySlug, getArticles} from "../app/controllers/articlesController.js";
+import {logVisit} from "../app/controllers/logsController.js";
 const router = express.Router()
 
 const sql = "SELECT * from articles";
 
 /* GET articles page. */
-router.get('/', function(req, res, next) {
+router.get('/', logVisit, function(req, res, next) {
   poolDB.query(sql, async (err, articles) => {
     if (err) throw err;
 
