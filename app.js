@@ -35,7 +35,14 @@ dotenv.config();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(logger('dev'));
+//use dev logger when not in production
+if (process.env.NODE_ENV !== 'production') {
+  app.use(logger('dev'));
+} else {
+  //log route visits
+  app.use(logVisit);
+}
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false })); // support encoded bodies
 app.use(express.static(path.join(__dirname, 'public')));
@@ -47,9 +54,6 @@ app.use(passport.session()); // persistent login sessions
 
 //passport initialization
 passportConfig();
-
-//log route visits
-app.use(logVisit);
 
 //routes
 app.use('/', homeRouter);
