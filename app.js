@@ -23,6 +23,7 @@ import registerRouter from "./routes/register-route.js";
 import loginRouter from "./routes/login-route.js";
 import logoutRouter from "./routes/logout-route.js";
 import adminRouter from "./routes/admin-route.js";
+import {logVisit} from "./app/controllers/logsController.js";
 
 const app = express();
 const listeningPort = 80
@@ -46,6 +47,9 @@ app.use(passport.session()); // persistent login sessions
 
 //passport initialization
 passportConfig();
+
+//log route visits
+app.use(logVisit);
 
 //routes
 app.use('/', homeRouter);

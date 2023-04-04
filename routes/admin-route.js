@@ -2,13 +2,12 @@ import express from 'express';
 import moment from "moment";
 import {isAuth, isAdmin} from "../app/helpers/userHelpers.js";
 import poolDB from "../app/config/configDB.js";
-import {logVisit} from "../app/controllers/logsController.js";
 const router = express.Router()
 
 /* GET cv page. */
-router.get('/', logVisit, isAuth, isAdmin, async function (req, res, next) {
+router.get('/', isAuth, isAdmin, async function (req, res, next) {
     //get logs from db
-    const logsQuery = "SELECT * FROM logs_visit";
+    const logsQuery = "SELECT * FROM logs_visit ORDER BY visit_time DESC LIMIT 10;";
     poolDB.query(logsQuery, async (err, logs) => {
         if (err) throw err;
 
@@ -17,7 +16,7 @@ router.get('/', logVisit, isAuth, isAdmin, async function (req, res, next) {
             let displayDate = logs[i].visit_time;
 
             //add two hours to the date to get the correct time
-            displayDate = displayDate.setHours(displayDate.getHours() + 2);
+            displayDate = displayDate.setHours(displayDate.getHours());
 
             //convert to local time in france
             displayDate = new Date(displayDate).toLocaleString("fr-FR", {timeZone: "Europe/Paris"});

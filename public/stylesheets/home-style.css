@@ -570,38 +570,16 @@ main .home-section {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
-  width: 70%;
+  width: 80%;
   max-width: 100rem;
   font-family: "Roboto", serif;
   font-style: normal;
   margin-bottom: 2.5rem;
   color: #4D4D4C;
 }
-#article-cards-all-container .article-card-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 15rem;
-  border: 0.8px solid rgba(177, 177, 177, 0.1);
-  border-radius: 5px;
-  padding: 1rem 1rem 2rem 1rem;
-  box-shadow: 5px 2px 10px rgba(169, 169, 169, 0.26);
-}
-#article-cards-all-container .article-card-container img {
-  width: 100%;
-}
-#article-cards-all-container .article-card-container .article-title {
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 23px;
-  text-transform: uppercase;
-  margin-top: 1.5rem;
-  color: #4D4D4C;
-}
-#article-cards-all-container .article-card-container .article-description {
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 19px;
+#article-cards-all-container .cards__main-container {
+  width: 100% !important;
+  justify-content: space-around;
 }
 #article-cards-all-container + div {
   font-family: "Inter", serif;

@@ -1,10 +1,9 @@
 import express from 'express';
 import {getProjects} from "../app/controllers/projectsController.js";
-import {logVisit} from "../app/controllers/logsController.js";
 const router = express.Router();
 
 /* GET articles page. */
-router.get('/', logVisit, async function (req, res, next) {
+router.get('/', async function (req, res, next) {
 
     const projects = await getProjects({
         categories: [4, 5],

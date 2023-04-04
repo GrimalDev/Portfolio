@@ -1,10 +1,9 @@
 import express from 'express';
 import {sendContactFormDB, verifyContactForm} from "../app/controllers/contactController.js";
-import {logVisit} from "../app/controllers/logsController.js";
 const router = express.Router()
 
 /* GET doc page. */
-router.get('/', logVisit, function(req, res, next) {
+router.get('/', function(req, res, next) {
     res.render('contact');
 });
 

@@ -2,6 +2,9 @@ import mysql from 'mysql';
 import dotenv from 'dotenv'
 dotenv.config();
 
+//When in production use "madiadb" as database host
+process.env.NODE_ENV === 'production' ? process.env.DB_HOST = 'mariadb' : process.env.DB_HOST = 'srv.grimaldev.local';
+
 const dbParams = {
     host    : process.env.DB_HOST,
     user    : process.env.DB_USER,

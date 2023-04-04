@@ -5,11 +5,10 @@ import {
 } from "../app/controllers/projectsController.js";
 import {getAllLanguages} from "../app/controllers/languageController.js";
 import markdownTranslate from "../app/models/markdown-translate.js";
-import {logVisit} from "../app/controllers/logsController.js";
 const router = express.Router();
 
 /* GET articles page. */
-router.get('/', logVisit, async function (req, res, next) {
+router.get('/', async function (req, res, next) {
 
     const languages = await getAllLanguages();
 
@@ -96,6 +95,12 @@ router.get('/query', async function(req, res, next) {
 
 router.get('/view/:slug', async function(req, res, next) {
     const project = await getProjectBySlug(req.params.slug);
+
+    //when no page is found, redirect to 404
+    if (!project) {
+        res.redirect('/error');
+        return;
+    }
 
     //convert body from markdown to html
     project.body = await markdownTranslate(project.body);

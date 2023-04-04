@@ -73,13 +73,18 @@
                 <h2>MY LATEST ARTICLES</h2>
             </div>
             <div id="article-cards-all-container">
-                <% lastArticles.forEach(obj => { %>
-                    <div class="article-card-container">
-                        <img src="/images/articles/<%= obj.img %>" alt="<%= obj.title %> image">
-                        <span class="article-title"><%= obj.title %></span>
-                        <span class="article-description"><%= obj.description %></span>
-                    </div>
-                <% }); %>
+                <div class="cards__main-container">
+                    <% lastArticles.forEach(article => { %>
+                        <div class="card__container card__category__<%= article.categories %>">
+                            <a class="card__link" href="/projects/view/<%= article.slug %>"></a>
+                            <div class="card__image" style="background-image: url('/images/articles/<%= article.img %>')"></div>
+                            <div class="card__body">
+                                <p class="card__title"><%= article.title %></p>
+                                <p class="card__text"><%= article.description %></p>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
             </div>
             <div><span id="articles-responsive-hover">HOVER</span><span id="articles-responsive-tap">TAP</span> TO SEE MORE</div>
         </div>
