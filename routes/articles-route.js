@@ -87,12 +87,15 @@ router.get('/query', async function(req, res, next) {
 });
 
 router.get('/view/:slug', async function(req, res, next) {
-  const project = await getArticleBySlug(req.params.slug);
+  const article = await getArticleBySlug(req.params.slug);
 
-  //convert body from markdown to html
-  project.body = await markdownTranslate(project.body);
+  //detect if the article is a rss article, if rss article, keep body as html
+  if (!article.description.includes("rss")) {
+    //convert body from markdown to html
+    article.body = await markdownTranslate(article.body);
+  }
 
-  res.render('project-single', {project: project});
+  res.render('project-single', {project: article});
 });
 
 export default router;

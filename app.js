@@ -37,8 +37,7 @@ app.set('view engine', 'ejs');
 
 //use dev logger when not in production
 if (process.env.NODE_ENV !== 'production') {
-  // app.use(logger('dev'));
-  app.use(logVisit);
+  app.use(logger('dev'));
 } else {
   //log route visits
   app.use(logVisit);

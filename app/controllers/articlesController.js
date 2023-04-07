@@ -1,5 +1,4 @@
 import poolDB from "../config/configDB.js";
-import mysql from "mysql";
 
 export async function getArticleBySlug(slug) {
     const sql = "SELECT * from articles WHERE slug = ?";
@@ -16,11 +15,11 @@ export async function getArticleBySlug(slug) {
 
 export async function getNumberOfPages(searchSQLQuery, nPerPage = 8) {
     let query = {
-        sql: "SELECT COUNT(*) as counter FROM articles",
+        sql: "SELECT COUNT(*) as counter FROM",
         values: [],
     };
 
-    query.sql += searchSQLQuery.sql.split("articles")[1];
+    query.sql += searchSQLQuery.sql.split("FROM")[1];
     query.values = searchSQLQuery.values;
 
     return new Promise((resolve, reject) => {
@@ -56,11 +55,12 @@ export async function getArticles(options) {
         pageNumber = 1;
     }
 
-    categories = categories.join(','); // join the categories array to a string
-
     // Build the SQL query
     const query = {
-        sql: 'SELECT * FROM articles',
+        sql: `SELECT articles.id as id, articles.slug, articles.title, articles.description, articles.body, articles.img, categories.id as categories_linked, articles.created_at
+                FROM articles
+                JOIN articles_links_to_categories ON articles.id = articles_links_to_categories.article_id
+                JOIN categories ON articles_links_to_categories.categorie_id = categories.id`,
         values: [],
     };
 
@@ -74,17 +74,16 @@ export async function getArticles(options) {
 
     //if categories is provided
     if (categories.length > 0) {
-        categories = '(' + categories + ')'; //wrap the categories in parenthesis
+        const categoriesPlaceholders = categories.map(() => "?").join(", "); // create placeholders for each category
 
         //if WHERE is not in sql query, put WHERE clause else put AND clause
-        if (query.sql.search("WHERE") === -1) {
-            query.sql += ' WHERE';
-        } else {
-            query.sql += ' AND';
-        }
+        const sqlLinkingWord = query.sql.search("WHERE") === -1 ? "WHERE" : "AND";
 
-        //TODO: bindparam instead of string concatenation
-        query.sql += " categories_linked IN " + categories;
+        // add the WHERE clause with placeholders to the existing query
+        query.sql += ` ${sqlLinkingWord} categories.id IN (${categoriesPlaceholders})`;
+
+        // add the category values to the existing values array
+        query.values = query.values.concat(categories);
     }
 
     //set the maximum number of pages to 1

@@ -57,9 +57,6 @@ export async function getProjects(options) {
         pageNumber = 1;
     }
 
-    languages = languages.join(','); // join the languages array to a string
-    categories = categories.join(','); // join the categories array to a string
-
     // Build the SQL query
     const query = {
         sql: 'SELECT * FROM projects',
@@ -76,31 +73,30 @@ export async function getProjects(options) {
 
     //if languages is provided
     if (languages.length > 0) {
-        languages = '(' + languages + ')'; //wrap the languages in parenthesis
+      const laguagesPlaceholders = languages.map(() => "?").join(", "); // create placeholders for each category
 
-        //if "WHERE" is not in sql query, put WHERE clause else put AND clause
-        if (query.sql.search("WHERE") === -1) {
-            query.sql += ' WHERE';
-        } else {
-            query.sql += ' AND';
-        }
-        //TODO: bindparam instead of string concatenation
-        query.sql += " languages_linked IN " + languages;
+      //if WHERE is not in sql query, put WHERE clause else put AND clause
+      const sqlLinkingWord = query.sql.search("WHERE") === -1 ? "WHERE" : "AND";
+
+      // add the WHERE clause with placeholders to the existing query
+      query.sql += ` ${sqlLinkingWord} languages_linked IN (${laguagesPlaceholders})`;
+
+      // add the category values to the existing values array
+      query.values = query.values.concat(languages);
     }
 
     //if categories is provided
     if (categories.length > 0) {
-        categories = '(' + categories + ')'; //wrap the categories in parenthesis
+      const categoriesPlaceholders = categories.map(() => "?").join(", "); // create placeholders for each category
 
-        //if WHERE is not in sql query, put WHERE clause else put AND clause
-        if (query.sql.search("WHERE") === -1) {
-            query.sql += ' WHERE';
-        } else {
-            query.sql += ' AND';
-        }
+      //if WHERE is not in sql query, put WHERE clause else put AND clause
+      const sqlLinkingWord = query.sql.search("WHERE") === -1 ? "WHERE" : "AND";
 
-        //TODO: bindparam instead of string concatenation
-        query.sql += " categories IN " + categories;
+      // add the WHERE clause with placeholders to the existing query
+      query.sql += ` ${sqlLinkingWord} categories IN (${categoriesPlaceholders})`;
+
+      // add the category values to the existing values array
+      query.values = query.values.concat(categories);
     }
 
     //set the maximum number of pages to 1
