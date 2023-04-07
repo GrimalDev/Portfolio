@@ -10,7 +10,7 @@ export function logVisit(req, res, next) {
 
     //if ip is from uptimebot or googlebot, don't save it in db
     //TODO: analyse it with whois
-    if (ipUsed === "::ffff:216.144.248.22" ) {
+    if (ipUsed === "216.144.248.22" || ipUsed === "::ffff:216.144.248.22") {
         next();
         return;
     }
