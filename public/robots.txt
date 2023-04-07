@@ -1,5 +1,6 @@
 User-agent: *
-Disallow:
+Disallow: /admin
+Disallow: /account
 
 User-agent: Googlebot
 Disallow:
