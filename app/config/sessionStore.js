@@ -26,10 +26,7 @@ export default session({
     resave: true,
     saveUninitialized: true,
     cookie: {
-        maxAge: TWO_HOURS,
-        secure : process.env.NODE_ENV === "production",
-        httpOnly: false,
-        sameSite: false
+        maxAge: TWO_HOURS
     },
     store: sessionStore,
 })

@@ -5,7 +5,7 @@ import {getUserById} from "../app/controllers/userController.js";
 const router = express.Router()
 
 /* GET doc page. */
-router.get('/login',isNotAuth, async function(req, res, next) {
+router.get('/login', isNotAuth, async function(req, res, next) {
     res.render('login');
 });
 

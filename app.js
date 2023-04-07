@@ -23,6 +23,7 @@ import registerRouter from "./routes/register-route.js";
 import loginRouter from "./routes/login-route.js";
 import logoutRouter from "./routes/logout-route.js";
 import adminRouter from "./routes/admin-route.js";
+import {logVisit} from "./app/controllers/logsController.js";
 
 const app = express();
 const listeningPort = 80
@@ -34,7 +35,14 @@ dotenv.config();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(logger('dev'));
+//use dev logger when not in production
+if (process.env.NODE_ENV !== 'production') {
+  app.use(logger('dev'));
+} else {
+  //log route visits
+  app.use(logVisit);
+}
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false })); // support encoded bodies
 app.use(express.static(path.join(__dirname, 'public')));
@@ -75,7 +83,13 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+
+  //if the error is a 404, render the 404 page
+  if (err.status === 404) {
+      res.render('not-found');
+  } else {
+      res.render('error');
+  }
 });
 
 app.listen(listeningPort, (err) => {

@@ -7,8 +7,6 @@ export async function getUserByUsername(username) {
             if (result.length === 0) { return resolve(null); }
             if (!result[0]) { return resolve(null); }
 
-            console.log(result);
-
             //control the user object for the rest of the app
             return resolve({
                 id: result[0].id,

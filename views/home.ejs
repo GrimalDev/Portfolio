@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="/stylesheets/home-style.css">
     <%- include("partials/threeJS") %>
     <script defer src="/javascripts/main-animator.min.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
     <header class="shadow-section">
@@ -69,13 +73,18 @@
                 <h2>MY LATEST ARTICLES</h2>
             </div>
             <div id="article-cards-all-container">
-                <% lastArticles.forEach(obj => { %>
-                    <div class="article-card-container">
-                        <img src="/images/articles/<%= obj.img %>" alt="<%= obj.title %> image">
-                        <span class="article-title"><%= obj.title %></span>
-                        <span class="article-description"><%= obj.description %></span>
-                    </div>
-                <% }); %>
+                <div class="cards__main-container">
+                    <% lastArticles.forEach(article => { %>
+                        <div class="card__container card__category__<%= article.categories %>">
+                            <a class="card__link" href="/projects/view/<%= article.slug %>"></a>
+                            <div class="card__image" style="background-image: url('/images/articles/<%= article.img %>')"></div>
+                            <div class="card__body">
+                                <p class="card__title"><%= article.title %></p>
+                                <p class="card__text"><%= article.description %></p>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
             </div>
             <div><span id="articles-responsive-hover">HOVER</span><span id="articles-responsive-tap">TAP</span> TO SEE MORE</div>
         </div>

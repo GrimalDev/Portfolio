@@ -14,15 +14,13 @@
 </head>
 <body>
 
-    <%- include("partials/header", {pageHeader: "ERROR", pageHeaderShort: "404", route:"/home"}) %>
+<%- include("partials/header", {pageHeader: "NON VALABLE", pageHeaderShort: "404", route:"/home"}) %>
 
-    <main>
-        <h1><%= message %></h1>
-        <h2><%= error.status %></h2>
-        <pre><%= error.stack %></pre>
-    </main>
+<main>
+    <h1 class="not-found">Aucune page trouvée</h1>
+</main>
 
-    <%- include("partials/footer") %>
+<%- include("partials/footer") %>
 
 </body>
 </html>

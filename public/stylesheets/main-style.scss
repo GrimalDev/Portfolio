@@ -245,7 +245,7 @@ main {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: clamp(calc(200px * .75), calc(20vw * .75), calc(350px * .75));
+            height: 100%;
             width: 100%;
             background-size: cover;
             background-position: center;

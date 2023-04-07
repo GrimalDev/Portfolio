@@ -1,0 +1,20 @@
+User-agent: *
+Disallow:
+
+User-agent: Googlebot
+Disallow:
+Crawl-delay: 5
+
+User-agent: Bingbot
+Disallow:
+Crawl-delay: 10
+
+User-agent: Slurp
+Disallow:
+Crawl-delay: 10
+
+User-agent: Yandex
+Disallow:
+Crawl-delay: 10
+
+Sitemap: https://www.example.com/sitemap.xml

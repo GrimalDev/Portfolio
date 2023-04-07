@@ -48,6 +48,21 @@ h3 {
     margin-top: 5vh;
 }
 
+#bts-description__content {
+    font-family: "Inter", serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: clamp(14px, 1.8vw, 20px);
+    line-height: 2rem;
+    color: #4D4D4C;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 90%;
+}
+
 /*------------PROJECTS CARDS-----------*/
 
 .cards__main-container {

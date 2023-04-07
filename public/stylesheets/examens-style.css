@@ -233,7 +233,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: clamp(150px, 15vw, 262.5px);
+  height: 100%;
   width: 100%;
   background-size: cover;
   background-position: center;
@@ -504,6 +504,21 @@ h3 {
   padding-bottom: 1rem;
   border-bottom: #803378 1px solid;
   margin-top: 5vh;
+}
+
+#bts-description__content {
+  font-family: "Inter", serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(14px, 1.8vw, 20px);
+  line-height: 2rem;
+  color: #4D4D4C;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 90%;
 }
 
 /*------------PROJECTS CARDS-----------*/
