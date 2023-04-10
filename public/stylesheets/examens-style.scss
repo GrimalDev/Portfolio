@@ -55,12 +55,14 @@ h3 {
     font-size: clamp(14px, 1.8vw, 20px);
     line-height: 2rem;
     color: #4D4D4C;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    width: 90%;
+    width: 65%;
+    margin-bottom: 10vh;
+}
+
+.important {
+    font-weight: 700;
+    color: #803378;
+    background-color: lightyellow;
 }
 
 /*------------PROJECTS CARDS-----------*/
@@ -73,5 +75,13 @@ h3 {
         //display 3 cards per row
         height: clamp(260px, 40vh, 400px) !important;
         width: clamp(220px, 33vw, 350px) !important;
+    }
+}
+
+/*------------RESPONSIVE-----------*/
+
+@media screen and (max-width: 768px) {
+    #bts-description__content {
+        width: 90%;
     }
 }

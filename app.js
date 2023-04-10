@@ -5,6 +5,7 @@ import {fileURLToPath} from 'url';
 import logger from "morgan";
 import dotenv from 'dotenv'
 import session from './app/config/sessionStore.js'
+import {logVisit} from "./app/controllers/logsController.js";
 
 //session store and authentication
 import passport from "passport";
@@ -23,7 +24,7 @@ import registerRouter from "./routes/register-route.js";
 import loginRouter from "./routes/login-route.js";
 import logoutRouter from "./routes/logout-route.js";
 import adminRouter from "./routes/admin-route.js";
-import {logVisit} from "./app/controllers/logsController.js";
+import sitemapRouter from "./routes/sitemap-route.js";
 
 const app = express();
 const listeningPort = 80
@@ -69,6 +70,7 @@ app.use('/account', logoutRouter);
 app.use('/account', registerRouter);
 app.use('/libs/threebuild', express.static(path.join(__dirname, 'node_modules/three/build')));
 app.use('/libs/threejsm', express.static(path.join(__dirname, 'node_modules/three/examples/jsm')));
+app.use('/sitemap', sitemapRouter);
 
 // catch 404 and forward to error handlerchest-model-v2.usdz
 app.use(function(req, res, next) {

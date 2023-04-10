@@ -1,20 +1,12 @@
 <!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Portfolio</title>
+    <%- include("partials/head", {title: "Portfolio Baptiste Grimaldi"}) %>
     <link rel="stylesheet" href="/stylesheets/home-style.css">
     <%- include("partials/threeJS") %>
-    <script defer src="/javascripts/main-animator.min.js"></script>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <script type="module" defer src="/javascripts/main-animator.min.js"></script>
 </head>
-<body>
+<body class="background-fill-light">
     <header class="shadow-section">
         <nav class="scroll-animate">
             <div>
@@ -43,16 +35,19 @@
             <div><span class="code-number">5.</span><span>&lt;br&gt;</span></div>
             <div><span class="code-number">6.</span><span class="code-center animate pop"><span class="fake-center-tag">&lt;center&gt;<span class="fake-span-tag">&lt;span&gt;</span></span>&lt;h1&gt;<h1>PORTFOLIO</h1>&lt;/h1&gt;<span class="fake-center-tag"><span class="fake-span-tag">&lt;/span&gt;</span>&lt;/center&gt;</span></span></div>
             <div><span class="code-number">7.</span><span class="code-center animate pop delay"><span class="fake-center-tag">&lt;center&gt;<span class="fake-span-tag">&lt;span&gt;</span></span>&lt;h1&gt;<h1><span>GRIMALDI BAPTISTE</span><span>GrimalDev</span></h1>&lt;/h1&gt;<span class="fake-center-tag"><span class="fake-span-tag">&lt;/span&gt;</span>&lt;/center&gt;</span></span></div>
-            <div><span class="code-number">8.</span><span>&lt;br&gt;</span></div>
-            <div><span class="code-number">9.</span><span>&lt;br&gt;</span></div>
-            <div><span class="code-number">10.</span><span>&lt;br&gt;</span></div>
+            <div class="header__center__container">
+                <div><span class="code-number">8.</span><span>&lt;br&gt;</span></div>
+                <div><span class="code-number">9.</span><span>&lt;br&gt;</span></div>
+                <div><span class="code-number">10.</span><span>&lt;br&gt;</span></div>
+<!--                <canvas class="ddd-head"></canvas>-->
+            </div>
             <div>
                 <span class="code-number">11.</span>
                 <span class="code-center animate">
                     <span class="fake-center-tag">&lt;center&gt;<span class="fake-span-tag">&lt;span&gt;</span></span>
                     &lt;h2&gt;
                     <span class="code-gray animate lure-to-scroll">
-                        <h2 id="header-formore-scroll">Scroll to see how this page was made</h2>
+                        <h2 id="header-formore-scroll">Scroll to learn more</h2>
                         <h2 id="header-formore-swipe">Swipe for more</h2>
                     </span>
                     &lt;/h2&gt;

@@ -1,16 +1,11 @@
 <!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include("partials/head", {title: "Missions d'examen BTS SIO SLAM"}) %>
     <link rel="stylesheet" href="/stylesheets/examens-style.css">
     <title>E4 / E5</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+
+    <script type="module" defer src="/javascripts/main-animator.min.js"></script>
 </head>
 <body>
 <%- include("partials/header", {pageHeader: "E4 / E5", pageHeaderShort: "E4/E5", route:"/examens"}) %>
@@ -53,15 +48,19 @@
 
     <h3>Le BTS SIO option SLAM</h3>
     <div id="bts-description__content">
-        Le BTS SIO (Services Informatiques aux Organisations) option SLAM (Solutions Logicielles et Applications Métier) est une formation professionnalisante de deux ans, qui vise à former des spécialistes en développement de logiciels et d'applications métiers.
-        <br>
-        Dans le cadre de cette formation, les étudiants sont amenés à passer deux épreuves importantes : l'épreuve E4 (Projet de développement d'une solution logicielle) et l'épreuve E5 (Analyse et Conception de Systèmes d'Information).
-        <br>
-        L'épreuve E4 consiste à réaliser un projet de développement d'une solution logicielle répondant à un cahier des charges précis. Cette épreuve permet aux étudiants de mettre en pratique les connaissances acquises au cours de leur formation, en travaillant en équipe sur un projet concret. Ils doivent notamment prendre en compte les besoins et les contraintes du client, ainsi que les normes et standards en vigueur.
-        <br>
-        Quant à l'épreuve E5, elle vise à évaluer les compétences des étudiants en matière d'analyse et de conception de systèmes d'information. Les étudiants doivent ainsi être capables d'analyser les besoins et les contraintes d'un client, de concevoir une solution adaptée, de rédiger un cahier des charges et de réaliser un prototype.
-        <br>
-        Ces deux épreuves sont donc essentielles pour valider le BTS SIO option SLAM et permettent aux étudiants de mettre en pratique les compétences qu'ils ont acquises tout au long de leur formation.
+        <p>Le BTS SIO (Services Informatiques aux Organisations) <span class="important">option SLAM (Solutions Logicielles et Applications Métier)</span> est une <span class="important">formation professionnalisante de deux ans</span>, qui vise à former des <span class="important">spécialistes en développement de logiciels et d'applications métiers</span>.</p>
+
+        <p>Dans le cadre de cette formation, les étudiants sont amenés à passer deux épreuves importantes :</p>
+        <ul>
+            <li><span class="important">l'épreuve E4 (Projet de développement d'une solution logicielle)</span></li>
+            <li><span class="important">l'épreuve E5 (Analyse et Conception de Systèmes d'Information)</span></li>
+        </ul>
+
+        <p><span class="important">L'épreuve E4</span> consiste à réaliser un projet de développement d'une solution logicielle répondant à un cahier des charges précis. Cette épreuve permet aux étudiants de mettre en pratique les connaissances acquises au cours de leur formation, en travaillant en équipe sur un projet concret. Ils doivent notamment prendre en compte les besoins et les contraintes du client, ainsi que les normes et standards en vigueur.</p>
+
+        <p>Quant à <span class="important">l'épreuve E5</span>, elle vise à évaluer les compétences des étudiants en matière d'analyse et de conception de systèmes d'information. Les étudiants doivent ainsi être capables d'analyser les besoins et les contraintes d'un client, de concevoir une solution adaptée, de rédiger un cahier des charges et de réaliser un prototype.</p>
+
+        <p>Ces deux épreuves sont donc essentielles pour valider le <span class="important">BTS SIO option SLAM</span> et permettent aux étudiants de mettre en pratique les compétences qu'ils ont acquises tout au long de leur formation.</p>
     </div>
 </main>
 
