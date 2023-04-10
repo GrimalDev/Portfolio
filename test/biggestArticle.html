@@ -1,0 +1,166 @@
+<p>I have been exploring Docker on Windows for a while because I think it is very promising that containers can run on the Windows platform as well. I’ve also written  a few posts already about Docker but this one is all about creating a Windows Docker Host on Azure and connect to it. Why does this deserve a blog post? Isn’t that next next finish and straightforward??</p>
+<p>Unfortunately no. And that probably exactly why Microsoft created this <a href="https://visualstudiogallery.msdn.microsoft.com/0f5b2caa-ea00-41c8-b8a2-058c7da0b3e4">extension for Visual Studio</a> which does that for you.</p>
+<p>The <a href="https://visualstudiogallery.msdn.microsoft.com/0f5b2caa-ea00-41c8-b8a2-058c7da0b3e4">extension in Visual Studio</a> allows you to publish a ASP.NET 5 application to Docker. When choosing that option you can create a new Virtual Machine on Azure. When you do that, a whole bunch of stuff is done. Magic. But in the end you can connect to your new and shiny Windows Docker Host.</p>
+<p>I did that, and it worked fine. But then I wanted to allow a colleague to connect to my machine. And I wanted to connect to another Windows Docker Host of someone else. Or publish my ASP.NET application to a Windows Server Container Image I had already created….And then it started to hurt. The magic did more than creating a VM, it also created certificates, injected them into the Virtual Machine and reconfigured the Docker host on this machine.</p>
+<p>Because I wanted to understand what happened I made it my goal to be able to connect to a Windows Docker host that I created without Visual Studio. At <a href="http://xpirit.com/">Xpirit</a> we have an Innovation Day every 2 months. During this day you can work on whatever you like and in the end present it to your colleagues. This was my project, and here are the results.</p>
+<h3>A  bit background on certficates</h3>
+<p>The Windows Docker Host is running in the cloud. Because you want to do things on this server remotely, your workstation (with the docker tools for windows installed, which you get with the VS extension), must have a connection to this machine. Because you need to interact with a remote machine, you need certifcates on the host machine and your own machine to be able to talk to each other.</p>
+<h3>Creating a fresh Virtual Machine and open the firewall</h3>
+<p>First I created a fresh Virtual Machine based on the Windows Server 2016 Core with Container Tech Preview 4 image on Azure</p>
+<ul>
+<li>Login to the azure portal –&gt; portal.azure.com</li>
+<li>Click New | Compute | Windows Server 2016 Core with Container Tech Preview 4<a href="https://osnabrugge.files.wordpress.com/2015/12/image9.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="https://osnabrugge.files.wordpress.com/2015/12/image_thumb9.png?w=604&#038;h=214" alt="image" width="604" height="214" border="0" /></a></li>
+<li>Choose Resource Manager as your deployment Model.</li>
+<li>Fill in the details. Notice the region where you are creating this, because you need that later.<br />
+<a href="https://osnabrugge.files.wordpress.com/2015/12/image10.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="https://osnabrugge.files.wordpress.com/2015/12/image_thumb10.png?w=604&#038;h=446" alt="image" width="604" height="446" border="0" /></a></li>
+<li>When the machine is created, open the Network Security Group and add an inbound rule for Docker. Port 2376 should opened up for communication with our Docker Host<br />
+<a href="https://osnabrugge.files.wordpress.com/2015/12/image11.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="https://osnabrugge.files.wordpress.com/2015/12/image_thumb11.png?w=604&#038;h=186" alt="image" width="604" height="186" border="0" /></a><a href="https://osnabrugge.files.wordpress.com/2015/12/image12.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="https://osnabrugge.files.wordpress.com/2015/12/image_thumb12.png?w=269&#038;h=604" alt="image" width="269" height="604" border="0" /></a></li>
+<li>Your machine is now up and running and ready to do some Docker stuff. When you connect with a RDP session, you can run the [docker] command and see that it lists the available commands</li>
+</ul>
+<p>&nbsp;</p>
+<h3></h3>
+<h3>Generate certficates for the region</h3>
+<p>Now we need to generate certificates. In the Docker extension in VS, this was all done in the background, but I want to make it explicit. We need to generate certificates that we will use for communication to Azure. I have created a Powershell script that generates the certificates for the location you specify. The script can be downloaded from <a href="https://github.com/renevanosnabrugge/WindowsDockerCerts.git">Github here</a>. It also includes a directory Tools which contain the tool OpenSSL.exe and OpenSSL.cnf. This tool will handle the certificate generation</p>
+<ul>
+<li>Create a new directory on your PC. e.g. c:\temp\dockerhost</li>
+<li>Run GenerateCerts.ps1 with the following parameters
+<ul>
+<li>-CertificatePassword &lt;password&gt;</li>
+<li>-OpenSSLExePath &lt;full path&gt; e.g. c:\temp\dockerhost\tools\openssl.exe</li>
+<li>-OpenSSLConfigPath &lt;full path&gt; e.g. c:\temp\dockerhost\tools\openssl.cnf</li>
+<li>-ResourceGroupLocation &lt;the location you specified for your Docker Host VM&gt; E.g. westeurope</li>
+</ul>
+</li>
+<li>After you have run the script, you have a directory certs with files in it. If you want to rerun, first delete the certificates in this folder otherwise they won’t be re-generated
+<pre class="code"><span style="color:blue;">.\GenerateCerts.ps1 </span><span style="color:navy;">-CertificatePassword </span><span style="color:darkred;">"password" </span><span style="color:navy;">-OpenSSLExePath 
+</span><span style="color:darkred;">"c:\temp\dockerhost\tools\openssl.exe" </span><span style="color:blue;">-OpenSSLConfigPath 
+</span><span style="color:darkred;">"c:\temp\dockerhost\tools\openssl.cnf" </span><span style="color:navy;">-ResourceGroupLocation </span><span style="color:darkred;">"westeurope" 
+</span></pre>
+</li>
+</ul>
+<h3>Upload certifcates to the Docker Host</h3>
+<p>Now that we have created the certificates, we want to upload them to the Docker Host. But how? Because we need certficates to communicate with the server and we first need to upload them. This part took me the longest to figure out, but I will try to explain.</p>
+<p>When Microsoft creates the Virtual Machine with the Docker extension, it uses a ARM (Azure Resource Manager Template). This template contains a parameter for a certificate and some scripts. When creating the image, it uploads the generated the generated certificates to a temporary Azure Storage Account and then “injects” them in the image that is created, This means the certificates are already in place when he image is generated.</p>
+<p>In our case we have a problem. But we can use <a href="http://www.powershellmagazine.com/2014/04/30/understanding-azure-custom-script-extension/">Powershell Custom Script Extensions</a> to “inject” stuff in to our Virtual Machine from a location that is trusted. So what we will do</p>
+<ul>
+<li>Create a Storage Account where the generated certificates can be stored</li>
+<li>Create a script that is executed on the host machine and copies the certificates to the right location</li>
+<li>Upload the certificates + PowerShell script to the storage account</li>
+<li>Use the PowerShell Custom Script Extension to inject the files from the storage account</li>
+</ul>
+<p>To make it a bit convenient I created a script (UploadFiles.ps1 in the <a href="https://github.com/renevanosnabrugge/WindowsDockerCerts.git">Git Repo</a>) for this as well, that looks like this (gfragment)</p>
+<pre class="code"><span style="color:blue;">Write-Host </span><span style="color:darkred;">"Create Storage Account"
+</span><span style="color:#ff4500;">$storageAccount </span><span style="color:#a9a9a9;">= </span><span style="color:blue;">New-AzureRmStorageAccount </span><span style="color:navy;">-ResourceGroupName 
+</span><span style="color:#ff4500;">$ResourceGroupName </span><span style="color:navy;">-Name </span><span style="color:#ff4500;">$StorageAccountName </span></pre>
+<pre class="code"><span style="color:navy;">-Type </span><span style="color:#8a2be2;">Standard_LRS </span><span style="color:navy;">-Location </span><span style="color:#ff4500;">$Location 
+
+</span><span style="color:blue;">Write-Host </span><span style="color:darkred;">"Get Storage Account"
+</span><span style="color:#ff4500;">$storageAccount </span><span style="color:#a9a9a9;">= </span><span style="color:blue;">Get-AzureRmStorageAccount </span><span style="color:navy;">-ResourceGroupName 
+</span><span style="color:#ff4500;">$ResourceGroupName </span><span style="color:navy;">-Name </span><span style="color:#ff4500;">$StorageAccountName
+
+</span><span style="color:blue;">Write-Host </span><span style="color:darkred;">"Retrieve Key"
+</span><span style="color:#ff4500;">$key </span><span style="color:#a9a9a9;">= </span><span style="color:blue;">Get-AzureRmStorageAccountKey </span><span style="color:navy;">-ResourceGroupName 
+</span><span style="color:#ff4500;">$ResourceGroupName </span><span style="color:navy;">-Name </span><span style="color:#ff4500;">$StorageAccountName
+
+</span><span style="color:blue;">Write-Host </span><span style="color:darkred;">"Create Storage Container"
+</span><span style="color:blue;">New-AzureStorageContainer </span><span style="color:navy;">-Name </span><span style="color:#8a2be2;">scripts </span><span style="color:navy;">-Context </span><span style="color:#ff4500;">$StorageAccount</span><span style="color:#a9a9a9;">.</span>Context
+<span style="color:blue;">Write-Host </span><span style="color:darkred;">"Upload Certificates + Init Script"
+</span><span style="color:blue;">Set-AzureStorageBlobContent </span><span style="color:navy;">-File </span><span style="color:darkred;">".\Helpers\Init.ps1" </span><span style="color:navy;">-Container 
+</span><span style="color:#8a2be2;">scripts </span><span style="color:navy;">-BlobType </span><span style="color:#8a2be2;">Block </span><span style="color:navy;">-Context </span><span style="color:#ff4500;">$storageAccount</span><span style="color:#a9a9a9;">.</span>Context
+</pre>
+<pre class="code"><span style="color:blue;">
+Set-AzureStorageBlobContent </span><span style="color:navy;">-File </span><span style="color:darkred;">".\certs\ca.pem" </span><span style="color:navy;">-Container 
+</span><span style="color:#8a2be2;">scripts </span><span style="color:navy;">-BlobType </span><span style="color:#8a2be2;">Block </span><span style="color:navy;">-Context </span><span style="color:#ff4500;">$storageAccount</span><span style="color:#a9a9a9;">.</span>Context</pre>
+<p>&nbsp;</p>
+<p><span style="font-family:Courier New;"><span style="color:blue;">Set-AzureStorageBlobContent </span><span style="color:navy;">-File</span><span style="color:darkred;">&#8220;.\certs\server-cert.pem&#8221;</span><span style="color:navy;">-Container</span></span></p>
+<p><span style="color:#8a2be2;">scripts</span><span style="color:navy;">-BlobType </span><span style="font-family:Courier New;"><span style="color:#8a2be2;">Block </span><span style="color:navy;">-Context </span><span style="color:#ff4500;">$storageAccount</span><span style="color:#a9a9a9;">.</span>Context</span></p>
+<p>&nbsp;</p>
+<p><span style="font-family:Courier New;"><span style="color:blue;">Set-AzureStorageBlobContent </span><span style="color:navy;">-File</span><span style="color:darkred;">&#8220;.\certs\server-key.pem&#8221;</span><span style="color:navy;">-Container</span></span></p>
+<p><span style="font-family:Courier New;"><span style="color:#8a2be2;">scripts &#8211;</span><span style="color:navy;">BlobType </span></span><span style="font-family:Courier New;"><span style="color:#8a2be2;">Block</span><span style="color:navy;">-Context</span><span style="color:#ff4500;">$storageAccount</span><span style="color:#a9a9a9;">.</span>Context</span></p>
+<p><span style="color:blue;">Write-Host</span><span style="font-family:Courier New;"><span style="color:darkred;">&#8220;Push into VM and execute Init.ps1 Script&#8221;</span></span></p>
+<p><span style="color:blue;">Set-AzureRmVMCustomScriptExtension –</span><span style="color:navy;">Name </span><span style="color:#8a2be2;">CSEDocker </span><span style="color:navy;">-Location</span><span style="color:#ff4500;">$Location </span><span style="color:navy;">-containername</span></p>
+<p><span style="font-family:Courier New;"><span style="color:#8a2be2;">scripts </span><span style="color:navy;">-ResourceGroupName </span><span style="color:#ff4500;">$ResourceGroupName </span><span style="color:navy;">-VMName </span><span style="color:#ff4500;">$VMName </span><span style="color:navy;">-StorageAccountName</span></span></p>
+<p><span style="font-family:Courier New;"><span style="color:#ff4500;">$StorageAccountName </span><span style="color:navy;">-FileName </span><span style="color:darkred;">&#8216;ca.pem&#8217;</span><span style="color:#a9a9a9;">,</span><span style="color:darkred;">&#8216;server-cert.pem&#8217;</span><span style="color:#a9a9a9;">,</span><span style="color:darkred;">&#8216;server-key.pem&#8217;</span><span style="color:#a9a9a9;">,</span><span style="color:darkred;">&#8216;Init.ps1&#8217;</span></span></p>
+<p><span style="color:navy;">-StorageAccountKey </span><span style="color:#ff4500;">$key</span><span style="color:#a9a9a9;">.</span>Key1 <span style="color:navy;">-Run</span><span style="color:darkred;"><span style="font-family:Courier New;">&#8216;Init.ps1&#8217;</span></span><br />
+The script that will be executed on the host is in the “helpers” directory that you pulled from <a href="https://github.com/renevanosnabrugge/WindowsDockerCerts.git">Github</a> and looks like this</p>
+<pre class="code"><span style="color:blue;">netsh </span><span style="color:#8a2be2;">advfirewall firewall add rule name="Open Port 80" dir=in 
+action=allow protocol=TCP localport=80
+</span><span style="color:blue;">netsh </span><span style="color:#8a2be2;">advfirewall firewall add rule name="Open Port 5000" dir=in 
+action=allow protocol=TCP localport=5000
+</span><span style="color:blue;">netsh </span><span style="color:#8a2be2;">advfirewall firewall add rule name="Open Port 6000" dir=in 
+action=allow protocol=TCP localport=6000
+</span><span style="color:blue;">netsh </span><span style="color:#8a2be2;">advfirewall firewall add rule name="Open Port 7000" dir=in 
+action=allow protocol=TCP localport=7000
+</span><span style="color:blue;">netsh </span><span style="color:#8a2be2;">advfirewall firewall add rule name="Open Port 7050" dir=in 
+action=allow protocol=TCP localport=7050
+</span><span style="color:blue;">netsh </span><span style="color:#8a2be2;">advfirewall firewall add rule name="Docker Secure Port" dir=in 
+action=allow protocol=TCP localport=2376
+
+</span><span style="color:blue;">Copy-Item </span><span style="color:darkred;">"</span><span style="color:#ff4500;">$PSScriptRoot</span><span style="color:darkred;">\ca.pem" "C:\ProgramData\Docker\certs.d\"
+</span><span style="color:blue;">Copy-Item </span><span style="color:darkred;">"</span><span style="color:#ff4500;">$PSScriptRoot</span><span style="color:darkred;">\server-cert.pem" "C:\ProgramData\Docker\certs.d\"
+</span><span style="color:blue;">Copy-Item </span><span style="color:darkred;">"</span><span style="color:#ff4500;">$PSScriptRoot</span><span style="color:darkred;">\server-key.pem" "C:\ProgramData\Docker\certs.d\"
+
+</span><span style="color:blue;">Restart-Service </span><span style="color:#8a2be2;">Docker 
+</span></pre>
+<p>what this script (helpers/init.ps1)  does:</p>
+<ul>
+<li>We open some ports on the Windows Docker host</li>
+<li>Copy the certificates to the right location for the docker daemon (c:\programdata\docker\certs.d\)</li>
+<li>Restart the docker service</li>
+</ul>
+<p>Now you know the inner workings of the scripts. Just execute it <img class="wlEmoticon wlEmoticon-smile" style="border-style:none;" src="https://osnabrugge.files.wordpress.com/2015/12/wlemoticon-smile.png?w=588" alt="Smile" /></p>
+<ul>
+<li>Start a powershell window and navigate to your directory</li>
+<li>Make sure you have the powershell module AzureRM installed
+<ul>
+<li>install-module AzureRM</li>
+<li>install-AzureRM</li>
+</ul>
+</li>
+<li>Run the command Login-AzureRMAccount and login in to your account</li>
+<li>Execute the script UploadFiles.ps1 with the following parameters
+<ul>
+<li>-ResourceGroupName the name of the resource group from your Windows Docker Host machine</li>
+<li>-VMName the name of your windows Docker host VM</li>
+<li>-Location the location of your Windows Docker Host machine</li>
+<li>-StorageAccountName the name of the storage accoount where the certficates will be uploaded to. This will be created in the same resource group (only lowercase no special characters!!)</li>
+</ul>
+</li>
+<li>The certficates are now uploaded</li>
+</ul>
+<h3></h3>
+<h3>Copy your certificates to the right folder on your local PC</h3>
+<p>Now the only thing that is left (but is crucial so do not forget), is to copy the generated certificates to the right folder on your PC. The docker certficates are located under the directory</p>
+<p><strong><span style="font-family:Courier New;">%userprofile%\.docker</span></strong> or the full path <span style="font-family:Courier New;"><strong>c:\users\username\.docker</strong></span></p>
+<p>If there are certficates already, make sure you make a backup</p>
+<h3></h3>
+<h3>Test the Docker Connection</h3>
+<p>Then the moment of truth. Test if it works.</p>
+<ul>
+<li>Open a Command prompt</li>
+<li>Check if the docker tools are installed by typing [docker]</li>
+<li>If so, type the following command</li>
+</ul>
+<p><span style="font-family:Courier New;">docker -–tlsverify  –H tcp://machinename.westeurope.cloudapp.azure.com:2376 images</span></p>
+<p>&nbsp;</p>
+<ul>
+<li>-H is the hostname, the public DNS name of your virtual machine and the port 2376</li>
+<li>&#8211;tlsverify ensures you use the certifcates</li>
+<li>As a shortcut you can set DOCKER_HOST to the tcp://dnsname:2376 in your environment variables. Then you can remove the –H switch</li>
+</ul>
+<p>If you see the two windows server core images listed, you are good to go !</p>
+<p><a href="https://osnabrugge.files.wordpress.com/2015/12/image13.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="https://osnabrugge.files.wordpress.com/2015/12/image_thumb13.png?w=604&#038;h=89" alt="image" width="604" height="89" border="0" /></a><br />
+<a href="https://github.com/renevanosnabrugge/WindowsDockerCerts">Get the sources from GitHub repo</a></p>
+<h4></h4>
+<p>References</p>
+<ul>
+<li><a href="https://visualstudiogallery.msdn.microsoft.com/0f5b2caa-ea00-41c8-b8a2-058c7da0b3e4">Docker Tools Extension in Visual Studio</a></li>
+<li><a href="https://github.com/Microsoft/DockerToolsDocs">Docker tools documentation</a></li>
+<li><a href="https://channel9.msdn.com/Series/Docker-for-NET-Developers">Docker Channel 9 videos</a></li>
+<li><a href="https://msdn.microsoft.com/virtualization/windowscontainers/containers_welcome">Windows Containers</a></li>
+<li><a href="https://roadtoalm.com/2015/08/07/running-a-visual-studio-build-vnext-agent-in-a-docker-container/">Running Visual Studio Build Agent in a Linux Docker Container</a></li>
+<li><a href="https://roadtoalm.com/2015/07/31/get-started-with-docker-on-azure-for-microsoft-developers-andor-linux-noobs/">Get started with Docker on Azure for Microsoft developers and/or Linux noobs</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/virtualization/windowscontainers/deployment/docker_windows">Deploy Docker on Windows</a></li>
+<li><a href="https://azure.microsoft.com/en-us/blog/automating-vm-customization-tasks-using-custom-script-extension/">Automating VM Customization tasks using Custom Script Extension</a></li>
+<li><a href="http://www.powershellmagazine.com/2014/04/30/understanding-azure-custom-script-extension/">Understanding Azure Custom Script Extension</a></li>
+</ul>
