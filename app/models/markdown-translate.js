@@ -1,5 +1,6 @@
 import Markdown from 'markdown-it';
 import hljs from 'highlight.js';
+import TurndownService from 'turndown';
 
 //Convert markdown into html
 export default async function markdownTranslate(mdText) {
@@ -23,6 +24,12 @@ export default async function markdownTranslate(mdText) {
     }
 
     return await md.render(mdText);
+}
+
+//convert html into markdown
+export async function htmlToMarkdown(htmlString) {
+  const turndownService = new TurndownService()
+  return await turndownService.turndown(htmlString);
 }
 
 //TODO: add the ability to write articles in markdown and display to webpage

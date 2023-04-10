@@ -69,18 +69,6 @@ const animate = () => {
     render();
 };
 
-window.onload = init;
-
-// window.addEventListener("mousemove", onMouseMove, false);
-// window.addEventListener("resize", onWindowResize, false);
-//
-// function onWindowResize() {
-//     const modelContainerTemp = document.querySelector('.ddd-head');
-//     camera.aspect = modelContainerTemp.clientWidth / modelContainerTemp.clientHeight;
-//     camera.updateProjectionMatrix();
-//     renderer.setSize(modelContainerTemp.clientWidth, modelContainerTemp.clientHeight, false);
-// }
-
 function onMouseMove(event){
     mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
     mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;

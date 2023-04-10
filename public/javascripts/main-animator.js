@@ -35,5 +35,55 @@ let clickOutMenuChangeStatus = (e) => {
 };
 
 window.addEventListener("click", clickOutMenuChangeStatus)
-window.addEventListener("touchstart", clickOutMenuChangeStatus)
 
+//------------darkreader------------
+import darkreader from "https://cdn.jsdelivr.net/npm/darkreader@4.9.58/+esm";
+
+function darkReaderInit() {
+  //create element button darkreader
+  const darkReaderButton = document.createElement("button");
+  //class darkreader-button and darkreader
+  darkReaderButton.className = "darkreader-button";
+  darkReaderButton.setAttribute("aria-label", "Activate dark mode");
+  darkReaderButton.setAttribute("aria-checked", "false");
+  darkReaderButton.setAttribute("role", "checkbox");
+  //add the button to the dom for every page
+  document.body.appendChild(darkReaderButton);
+
+  //detect touch screen
+  darkReaderButton.addEventListener("click", darkReaderEvent);
+
+  // Enable when the system color scheme is dark.
+  darkreader.auto(false);
+}
+
+function darkReaderEvent(e) {
+  e.preventDefault();
+
+  const darkReaderButton = e.target;
+
+  //change aria-checked
+  darkReaderButton.setAttribute(
+    "aria-checked",
+    darkReaderButton.getAttribute("aria-checked") === "true" ? "false" : "true"
+  );
+
+  //trigger body animation based on aria-checked
+  if (darkReaderButton.getAttribute("aria-checked") === "true") {
+    document.body.classList.remove("background-fill-light");
+    document.body.classList.add("background-fill-dark");
+
+    darkreader.enable({
+      brightness: 100,
+      contrast: 90,
+      sepia: 10
+    });
+  } else {
+    document.body.classList.remove("background-fill-dark");
+    document.body.classList.add("background-fill-light");
+
+    darkreader.disable();
+  }
+}
+
+window.addEventListener("load", darkReaderInit);

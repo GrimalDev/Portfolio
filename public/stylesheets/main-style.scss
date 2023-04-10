@@ -26,12 +26,12 @@
 
 html {
     scroll-behavior: smooth;
+    background-color: $cream-bg;
 }
 
 body, html {
     padding: 0;
     margin: 0;
-    background-color: $cream-bg;
 }
 
 body {
@@ -41,6 +41,11 @@ body {
     > * {
         flex-shrink: 0;
     }
+}
+
+nav *, .darkreader-button { //touchscreens and simulated touchscreens (e.g. Chrome DevTools) will not trigger hover
+    //    deactivate selection
+    user-select: none;
 }
 
 .opacity-hover:hover {
@@ -77,6 +82,60 @@ body {
 
 *::before, *::after {
     position: absolute;
+}
+
+body.background-fill-light {
+    background-color: $cream-bg;
+    transition: background-color .5s ease-in-out;
+}
+body.background-fill-dark {
+    background-color: $dark-bg;
+    transition: background-color .5s ease-in-out;
+}
+
+.darkreader-button {
+    position: fixed;
+    bottom: 64px;
+    right: 32px;
+    z-index: 100;
+    background-color: #fff;
+    border: 1px solid rgba(77, 77, 76, 0.05);
+    box-shadow: 0 20px 30px rgba(0,0,0,.1);
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &::after {
+        content: "🌓";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        font-size: 20px;
+        height: fit-content;
+        width: fit-content;
+        transform: translate(-50%, -50%);
+    }
+    &:hover {
+        background-color: rgba(217, 217, 217, 0.48);
+    }
+    &[aria-checked="true"] {
+        animation: backgroundFillLight .3s ease 0s both;
+        z-index: 100;
+        background-color: #da0000 !important;
+        &:hover {
+            background-color: #100f2c !important;
+        }
+    }
+    &[aria-checked="false"] {
+        animation: backgroundFillDark .3s ease 0s both;
+        background-color: #100f2c !important;
+        &:hover {
+            background-color: #da0000 !important;
+        }
+    }
 }
 
 /*------------NAV-----------*/
@@ -179,7 +238,7 @@ main {
     align-items: center;
     justify-content: center;
     padding-block: 2rem;
-    background-color: $cream-bg;
+
     h1 {
         font-size: clamp(20px, 3vw, 40px);
     }
@@ -245,7 +304,7 @@ main {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100%;
+            height: clamp(270px, 20vh, 350px);
             width: 100%;
             background-size: cover;
             background-position: center;
@@ -426,4 +485,17 @@ footer {
         opacity: 0;
         transform: translateX(100%);
     }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .darkreader-button {display: none !important}
+}
+
+//on touch screens
+@media (hover: none) {
+    //nav *, .darkreader-button {
+    //    pointer-events: none;
+    ////    deactivate selection
+    //    user-select: none;
+    //}
 }

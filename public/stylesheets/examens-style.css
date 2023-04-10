@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*------------IMPORTS-----------*/
 /*------------FONTS-----------*/
 @font-face {
@@ -19,12 +20,12 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #fbfbfb;
 }
 
 body, html {
   padding: 0;
   margin: 0;
-  background-color: #fbfbfb;
 }
 
 body {
@@ -34,6 +35,10 @@ body {
 }
 body > * {
   flex-shrink: 0;
+}
+
+nav *, .darkreader-button {
+  user-select: none;
 }
 
 .opacity-hover:hover {
@@ -68,6 +73,61 @@ body > * {
 
 *::before, *::after {
   position: absolute;
+}
+
+body.background-fill-light {
+  background-color: #fbfbfb;
+  transition: background-color 0.5s ease-in-out;
+}
+
+body.background-fill-dark {
+  background-color: #1B1F24;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.darkreader-button {
+  position: fixed;
+  bottom: 64px;
+  right: 32px;
+  z-index: 100;
+  background-color: #fff;
+  border: 1px solid rgba(77, 77, 76, 0.05);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.darkreader-button::after {
+  content: "🌓";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 20px;
+  height: fit-content;
+  width: fit-content;
+  transform: translate(-50%, -50%);
+}
+.darkreader-button:hover {
+  background-color: rgba(217, 217, 217, 0.48);
+}
+.darkreader-button[aria-checked=true] {
+  animation: backgroundFillLight 0.3s ease 0s both;
+  z-index: 100;
+  background-color: #da0000 !important;
+}
+.darkreader-button[aria-checked=true]:hover {
+  background-color: #100f2c !important;
+}
+.darkreader-button[aria-checked=false] {
+  animation: backgroundFillDark 0.3s ease 0s both;
+  background-color: #100f2c !important;
+}
+.darkreader-button[aria-checked=false]:hover {
+  background-color: #da0000 !important;
 }
 
 /*------------NAV-----------*/
@@ -169,7 +229,6 @@ main {
   align-items: center;
   justify-content: center;
   padding-block: 2rem;
-  background-color: #fbfbfb;
 }
 .home-section h1 {
   font-size: clamp(20px, 3vw, 40px);
@@ -233,7 +292,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  height: clamp(270px, 20vh, 350px);
   width: 100%;
   background-size: cover;
   background-position: center;
@@ -400,6 +459,11 @@ footer div {
     transform: translateX(100%);
   }
 }
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .darkreader-button {
+    display: none !important;
+  }
+}
 nav {
   position: fixed;
   width: 100%;
@@ -513,12 +577,14 @@ h3 {
   font-size: clamp(14px, 1.8vw, 20px);
   line-height: 2rem;
   color: #4D4D4C;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  width: 90%;
+  width: 65%;
+  margin-bottom: 10vh;
+}
+
+.important {
+  font-weight: 700;
+  color: #803378;
+  background-color: lightyellow;
 }
 
 /*------------PROJECTS CARDS-----------*/
@@ -530,6 +596,13 @@ h3 {
   justify-content: space-between !important;
   height: clamp(260px, 40vh, 400px) !important;
   width: clamp(220px, 33vw, 350px) !important;
+}
+
+/*------------RESPONSIVE-----------*/
+@media screen and (max-width: 768px) {
+  #bts-description__content {
+    width: 90%;
+  }
 }
 
 /*# sourceMappingURL=examens-style.css.map */

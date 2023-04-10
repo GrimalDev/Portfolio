@@ -1,5 +1,5 @@
 import express from 'express';
-const router = express.Router()
+const router = express.Router();
 import poolDB from "../app/config/configDB.js";
 
 let sql = "SELECT * FROM (SELECT * FROM articles ORDER BY id DESC LIMIT 3) as r ORDER BY id"
