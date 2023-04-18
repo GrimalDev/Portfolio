@@ -114,6 +114,15 @@ h1 {
             background: #852b7d;
             color: $cream-bg;
         }
+        &[disabled] {
+            background: #d5d5d5;
+            color: #4D4D4C;
+            cursor: not-allowed;
+            &:hover {
+                background: #d5d5d5;
+                color: #4D4D4C;
+            }
+        }
     }
 }
 

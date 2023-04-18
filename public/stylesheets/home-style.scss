@@ -206,8 +206,7 @@ main {
     display: flex;
     justify-content: space-between;
     gap: 2rem;
-    width: 80%;
-    max-width: 100rem;
+    width: 100%;
     font-family: 'Roboto', serif;
     font-style: normal;
     margin-bottom: 2.5rem;
@@ -216,6 +215,10 @@ main {
     .cards__main-container {
         width: 100% !important;
         justify-content: space-around;
+        .card__container {
+            width: clamp(300px, 30vw, 400px) !important;
+            min-width: unset !important;
+        }
     }
 
     & + div {

@@ -1,0 +1,21 @@
+/*------------IMPORTS-----------*/
+@import "main-style";
+@import "header-style";
+
+/*------------GENERAL-----------*/
+
+main {
+    margin-top: 3rem;
+    width: 80% !important;
+    margin-inline: auto;
+    font-family: 'Roboto', serif;
+    font-style: normal;
+    color: #4D4D4C;
+}
+
+/*------------RESPONSIVE-----------*/
+@media screen and (max-width: 768px) {
+    main {
+        width: 98%;
+    }
+}
