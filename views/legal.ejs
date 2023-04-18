@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <%- include("partials/head", {title: "Articles Baptiste Grimaldi"}) %>
-    <link rel="stylesheet" href="/stylesheets/articles-style.css">
+    <%- include("partials/head", {title: "Legal Baptiste Grimaldi"}) %>
+    <link rel="stylesheet" href="/stylesheets/legal-style.css">
 
     <script type="module" defer src="/javascripts/main-animator.min.js"></script>
 </head>
@@ -10,8 +10,8 @@
 
 <%- include("partials/header", {pageHeader: "Mention légale", pageHeaderShort: "Legal", route:"/legal"}) %>
 
-<main class="home-section">
-    <h1>Mentions Légales</h1>
+<main>
+    <h1>Mention Légale</h1>
     <p>En application de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, il est précisé aux utilisateurs du site [nom de votre site] l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi :</p>
     <h2>Hébergeur :</h2>
     <p>Nom : GrimalDev</p>
@@ -39,7 +39,11 @@
 
     <h2>Propriété intellectuelle :</h2>
     <p>Toute utilisation, reproduction, diffusion, commercialisation, modification de toute ou partie du site portfolio.baptistegrimaldi.info, sans autorisation de GrimalDev est prohibée et pourra entraîner des actions et poursuites judiciaires telles que notamment prévues par le Code de la propriété intellectuelle et le Code civil.</p>
-    <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/legalcode">Attribution-NonCommercial-ShareAlike 2.0 Generic (CC BY-NC-SA 2.0)</a>
+    <span>
+        <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/legalcode">Attribution-NonCommercial-ShareAlike 2.0 Generic (CC BY-NC-SA 2.0)</a>
+        &nbsp|&nbsp
+        <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/">Version lisible</a>
+    </span>
 </main>
 
 <%- include("partials/footer") %>
