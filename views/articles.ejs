@@ -17,7 +17,7 @@
     <div id="article-cards-all-container">
         <% articles.forEach(async (article) => { %>
             <div class="article-card-container home-section shadow-section">
-                <img src="/images/articles/<%= article.img %>" alt="<%= article.title %> image">
+                <img src="/articles_media/direct_images/<%= article.img %>" alt="<%= article.title %> image">
                 <h2 class="article-title"><%= article.title %></h2>
                 <h3 class="article-description"><%= article.description %></h3>
                 <div class="article-content"><%-article.body%></div>
