@@ -114,9 +114,5 @@ dist
 #test
 test/
 
-#Ignore css, only keep scss for the git repo
-public/stylesheets/*.css
-public/stylesheets/*.css.map
-
 articles_html
 articles_media
