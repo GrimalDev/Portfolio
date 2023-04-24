@@ -41,7 +41,7 @@ header {
     h1 {
         margin: 0;
         width: fit-content;
-        color: #4D4D4C;
+        color: $light-black;
         font-weight: 500;
         font-size: clamp(20px, 3vw, 40px);
         line-height: 50px;
@@ -116,6 +116,7 @@ header nav {
     height: 2.5rem;
     padding-bottom: 1rem;
     transition: top .3s;
+    background-color: transparent !important;
     > div {
         display: flex;
         justify-content: space-between;
@@ -128,12 +129,12 @@ header nav {
         #portfolio-head-icon {
             color: #C82829;
             text-decoration: underline;
-            text-decoration-color: #4D4D4C;
+            text-decoration-color: $light-black;
             background: rgba(217, 217, 217, 0.48);
         }
         > span {
             text-decoration-line: underline;
-            text-decoration-color: #4D4D4C;
+            text-decoration-color: $light-black;
             background: rgba(217, 217, 217, 0.48);
             height: fit-content;
             cursor: pointer;
@@ -189,7 +190,7 @@ main {
         font-weight: 700;
         font-size: clamp(20px, 3vw, 40px);
         line-height: 48px;
-        color: #4D4D4C;
+        color: $light-black;
         z-index: 10;
     }
     h2:last-child {
@@ -207,16 +208,19 @@ main {
     justify-content: space-between;
     gap: 2rem;
     width: 100%;
+    height: fit-content !important;
     font-family: 'Roboto', serif;
     font-style: normal;
     margin-bottom: 2.5rem;
-    color: #4D4D4C;
+    color: $light-black;
 
     .cards__main-container {
         width: 100% !important;
+        min-height: unset !important;
         justify-content: space-around;
         .card__container {
-            width: clamp(300px, 30vw, 400px) !important;
+            width: clamp(200px, 25vw, 270px) !important;
+            height: clamp(350px, 30vh, 370px) !important;
             min-width: unset !important;
         }
     }
@@ -227,7 +231,7 @@ main {
         font-weight: 500;
         font-size: 32px;
         line-height: 39px;
-        color: #4D4D4C;
+        color: $light-black;
     }
 }
 
@@ -254,7 +258,7 @@ main {
     h1, h2 {
         font-weight: 700;
         line-height: 39px;
-        color: #4D4D4C;
+        color: $light-black;
     }
     #technologies-responsive-tap {
         display: none;
@@ -350,7 +354,7 @@ main {
                 background-color: rgba(217, 217, 217, 0.48);
                 padding: 0 1rem 0 1rem;
                 text-decoration: underline !important;
-                text-decoration-color: #4D4D4C !important;
+                text-decoration-color: $light-black !important;
             }
         }
         #portfolio-head-icon {

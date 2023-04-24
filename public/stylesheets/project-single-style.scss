@@ -22,17 +22,17 @@ h1, .project__title {
     align-items: center;
     text-align: center;
     text-transform: uppercase;
-    color: #4D4D4C;
+    color: $light-black;
 }
-h2, .project__description {
+h2, .project__description > * {
     font-size: clamp(16px, 2vw, 24px);
     font-weight: 700;
     line-height: 30px;
     display: flex;
     align-items: center;
     text-align: center;
-    text-transform: capitalize;
-    color: #4D4D4C;
+    color: $light-black;
+    gap: .5rem;
 }
 h3 {
     font-weight: 500;
@@ -42,7 +42,7 @@ h3 {
     align-items: center;
     justify-content: center;
     text-transform: capitalize;
-    color: #4D4D4C;
+    color: $light-black;
     width: 70%;
     padding-bottom: 1rem;
     border-bottom: #803378 1px solid;
@@ -82,8 +82,16 @@ h3 {
     font-weight: 400;
     font-size: 20px;
     line-height: 25px;
-    color: #4D4D4C;
+    color: $light-black;
     width: 90%;
-    min-height: fit-content;
-}
+    height: fit-content;
+    min-height: 50rem;
+    display: flex;
+    flex-direction: column;
 
+    iframe {
+        width: 100%;
+        border: none;
+        overflow: hidden;
+    }
+}

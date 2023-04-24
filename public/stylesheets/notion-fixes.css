@@ -1,0 +1,4 @@
+/*NOTION INTEGRATION CSS QUICK FIXES*/
+.bookmark.source {
+    overflow: hidden !important;
+}

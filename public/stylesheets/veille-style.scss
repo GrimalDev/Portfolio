@@ -24,15 +24,102 @@ h1 {
     align-items: center;
     text-align: center;
     text-transform: uppercase;
-    color: #4D4D4C;
+    color: $light-black;
 }
-
-/*------------CARDS-----------*/
 
 h3 {
     margin-top: 5vh;
 }
 
 .cards__main-container {
-    margin-bottom: 25vh;
+    margin-bottom: 10vh;
+}
+
+/*------------exams menu nav-----------*/
+
+.exams-menu__navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    margin-top: 2vh;
+    .exams-menu__items__container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        height: fit-content;
+        margin: 0;
+        padding: 0;
+        gap: 1rem;
+        .exams-menu__item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: fit-content;
+            height: fit-content;
+            padding: 1rem;
+            margin: 0;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            &:hover .exams-menu__item__title {
+                color: white !important;
+                background-color: #803378;
+            }
+            .exams-menu__item__link {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+                color: $light-black;
+                text-decoration: none;
+                .exams-menu__item__illustration {
+                    width: 4rem;
+                    height: 4rem;
+                }
+                span.exams-menu__item__illustration {
+                    font-family: "Roboto", serif;
+                    font-weight: 500;
+                    font-size: 4rem;
+                    line-height: 4rem;
+                    text-align: center;
+                    text-transform: capitalize;
+                    color: black;
+                }
+                .exams-menu__item__title {
+                    font-family: "Roboto", serif;
+                    font-weight: 300;
+                    font-size: 20px;
+                    line-height: 20px;
+                    text-align: center;
+                    text-transform: capitalize;
+                    color: $light-black;
+                    border-radius: 10px;
+                    padding: 0.5rem;
+                    transition: background-color 0.3s ease-in-out;
+                }
+            }
+        }
+    }
+}
+
+/*------------RESPONSIVE-----------*/
+
+//media 524
+@media screen and (max-width: 524px) {
+    .exams-menu__item {
+        flex-basis: 100% !important;
+    }
+}
+
+//media 1015
+@media screen and (max-width: 1015px) {
+    .exams-menu__items__container {
+        flex-wrap: wrap;
+        .exams-menu__item {
+            flex-basis: 45%;
+        }
+    }
 }

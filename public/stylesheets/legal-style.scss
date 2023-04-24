@@ -5,12 +5,11 @@
 /*------------GENERAL-----------*/
 
 main {
-    margin-top: 3rem;
     width: 80% !important;
-    margin-inline: auto;
+    margin: 3rem auto;
     font-family: 'Roboto', serif;
     font-style: normal;
-    color: #4D4D4C;
+    color: $light-black;
 }
 
 /*------------RESPONSIVE-----------*/

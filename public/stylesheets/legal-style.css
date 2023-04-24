@@ -613,172 +613,20 @@ nav > div #portfolio-head-icon img {
     display: none !important;
   }
 }
+/*------------GENERAL-----------*/
 main {
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  width: 80% !important;
+  margin: 3rem auto;
   font-family: "Roboto", serif;
   font-style: normal;
-  margin-top: 3rem;
-  height: 100%;
-}
-
-h1 {
-  font-weight: 700;
-  line-height: 41px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  text-transform: uppercase;
   color: #4D4D4C;
-}
-
-h2 {
-  font-weight: 700;
-  font-size: 35px !important;
-  line-height: 30px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  text-transform: capitalize;
-  color: #4D4D4C;
-}
-
-h3 {
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-transform: capitalize;
-  color: #4D4D4C;
-  width: 70%;
-  padding-bottom: 1rem;
-  border-bottom: #803378 1px solid;
-  margin-top: 5vh;
-}
-
-/*------------exams menu nav-----------*/
-.exams-menu__navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: fit-content;
-  margin-top: 2vh;
-}
-.exams-menu__navigation .exams-menu__items__container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  height: fit-content;
-  margin: 0;
-  padding: 0;
-  gap: 1rem;
-}
-.exams-menu__navigation .exams-menu__items__container .exams-menu__item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: fit-content;
-  height: fit-content;
-  padding: 1rem;
-  margin: 0;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-.exams-menu__navigation .exams-menu__items__container .exams-menu__item:hover .exams-menu__item__title {
-  color: white !important;
-  background-color: #803378;
-}
-.exams-menu__navigation .exams-menu__items__container .exams-menu__item .exams-menu__item__link {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  color: #4D4D4C;
-  text-decoration: none;
-}
-.exams-menu__navigation .exams-menu__items__container .exams-menu__item .exams-menu__item__link .exams-menu__item__illustration {
-  width: 4rem;
-  height: 4rem;
-}
-.exams-menu__navigation .exams-menu__items__container .exams-menu__item .exams-menu__item__link span.exams-menu__item__illustration {
-  font-family: "Roboto", serif;
-  font-weight: 500;
-  font-size: 4rem;
-  line-height: 4rem;
-  text-align: center;
-  text-transform: capitalize;
-  color: black;
-}
-.exams-menu__navigation .exams-menu__items__container .exams-menu__item .exams-menu__item__link .exams-menu__item__title {
-  font-family: "Roboto", serif;
-  font-weight: 300;
-  font-size: 20px;
-  line-height: 20px;
-  text-align: center;
-  text-transform: capitalize;
-  color: #4D4D4C;
-  border-radius: 10px;
-  padding: 0.5rem;
-  transition: background-color 0.3s ease-in-out;
-}
-
-/*------------PROJECTS CARDS-----------*/
-.cards__main-container {
-  min-height: fit-content;
-  margin-bottom: 15vh;
-}
-.cards__main-container .card__container {
-  justify-content: space-between !important;
-  position: relative;
-}
-.cards__main-container .card__container .card__download {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  height: 2.4rem;
-  width: 2.4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 50;
-  border-radius: 10px;
-  background-color: #fbfbfb;
-  padding: 0.4rem;
-}
-.cards__main-container .card__container .card__download img {
-  height: 100%;
-  width: 100%;
-}
-.cards__main-container .card__container .card__download:hover {
-  cursor: pointer;
-  background-color: #803378;
 }
 
 /*------------RESPONSIVE-----------*/
-@media screen and (max-width: 524px) {
-  .exams-menu__item {
-    flex-basis: 100% !important;
-  }
-}
 @media screen and (max-width: 768px) {
-  #bts-description__content {
-    width: 90%;
-  }
-}
-@media screen and (max-width: 1015px) {
-  .exams-menu__items__container {
-    flex-wrap: wrap;
-  }
-  .exams-menu__items__container .exams-menu__item {
-    flex-basis: 45%;
+  main {
+    width: 98%;
   }
 }
 
-/*# sourceMappingURL=examens-style.css.map */
+/*# sourceMappingURL=legal-style.css.map */
