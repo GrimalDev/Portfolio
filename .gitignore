@@ -117,3 +117,6 @@ test/
 #Ignore css, only keep scss for the git repo
 *.css
 *.css.map
+
+articles_html
+articles_media
