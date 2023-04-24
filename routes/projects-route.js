@@ -5,6 +5,7 @@ import {
 } from "../app/controllers/projectsController.js";
 import {getAllLanguages} from "../app/controllers/languageController.js";
 import markdownTranslate from "../app/models/markdown-translate.js";
+import * as fs from "fs";
 const router = express.Router();
 
 /* GET articles page. */
@@ -94,18 +95,34 @@ router.get('/query', async function(req, res, next) {
 });
 
 router.get('/view/:slug', async function(req, res, next) {
-    const project = await getProjectBySlug(req.params.slug);
+  const project = await getProjectBySlug(req.params.slug);
 
-    //when no page is found, redirect to 404
-    if (!project) {
-        res.redirect('/error');
-        return;
+  //when no page is found, redirect to 404
+  if (!project) {
+      res.redirect('/error');
+      return;
+  }
+
+  //If the body contains {{fooFilePath}} it will be replaced by the content of the file foo.html file path file
+  //The root is the articles folder (public/articles_media/direct_images)
+  const regex = /\{\{\!\!.*?\!\!\}\}/g;
+  if (project.body.match(regex)) {
+    const matches = project.body.match(regex);
+    for (let i = 0; i < matches.length; i++) {
+      const filePath = matches[i].replace("{{!!", "").replace("!!}}", "");
+
+      // replace the placeholder with the actual html content of the html in the projects path in an iframe with notion fix stylesheet
+      const iframe = `<iframe src="/articles_html/${filePath}" id="article-body__iframe"></iframe>`;
+      project.body = project.body.replace(matches[i], iframe);
     }
-
+  } else {
     //convert body from markdown to html
     project.body = await markdownTranslate(project.body);
+  }
 
-    res.render('project-single', {project: project});
+  //convert the description from markdown to html
+  project.description = await markdownTranslate(project.description);
+
+  res.render('project-single', {project: project});
 });
-
 export default router;

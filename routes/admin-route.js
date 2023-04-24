@@ -1,6 +1,6 @@
 import express from 'express';
 import moment from "moment";
-import {isAuth, isAdmin} from "../app/helpers/userHelpers.js";
+import {isAuth, isAdmin} from "../app/models/userHelpers.js";
 import poolDB from "../app/config/configDB.js";
 const router = express.Router()
 

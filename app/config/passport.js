@@ -1,6 +1,6 @@
 import passport from "passport";
 import { Strategy as LocalStrategy} from 'passport-local'
-import {validPassword} from "../helpers/userHelpers.js";
+import {validPassword} from "../models/userHelpers.js";
 import poolDB from "./configDB.js";
 import {getUserByUsername} from "../controllers/userController.js";
 

@@ -5,9 +5,22 @@ export async function getArticleBySlug(slug) {
     return new Promise((resolve, reject) => {
         poolDB.query(sql, [slug], (err, result) => {
             if (err) {
-                reject(err);
+                return reject(err);
             } else {
-                resolve(result[0]);
+                return resolve(result[0]);
+            }
+        });
+    });
+}
+
+export async function getArticleById(id) {
+    const sql = "SELECT * from articles WHERE id = ?";
+    return new Promise((resolve, reject) => {
+        poolDB.query(sql, [id], (err, result) => {
+            if (err) {
+                return reject(err);
+            } else {
+                return resolve(result[0]);
             }
         });
     });
@@ -25,9 +38,9 @@ export async function getNumberOfPages(searchSQLQuery, nPerPage = 8) {
     return new Promise((resolve, reject) => {
         poolDB.query(query.sql, query.values, (err, result) => {
             if (err) {
-                reject(err);
+                return reject(err);
             } else {
-                resolve(Math.ceil(result[0].counter / nPerPage));
+                return resolve(Math.ceil(result[0].counter / nPerPage));
             }
         });
     });
@@ -60,7 +73,7 @@ export async function getArticles(options) {
         sql: `SELECT articles.id as id, articles.slug, articles.title, articles.description, articles.body, articles.img, categories.id as categories_linked, articles.created_at
                 FROM articles
                 JOIN articles_links_to_categories ON articles.id = articles_links_to_categories.article_id
-                JOIN categories ON articles_links_to_categories.categorie_id = categories.id`,
+                JOIN categories ON articles_links_to_categories.category_id = categories.id`,
         values: [],
     };
 
@@ -113,6 +126,9 @@ export async function getArticles(options) {
         query.sql += ' LIMIT ? OFFSET ?';
     }
 
+    //order by date
+    query.sql += ' ORDER BY articles.created_at DESC';
+
     return new Promise((resolve, reject) => {
         // Get the articles
         poolDB.query(query.sql, query.values, async (err, articles) => {
@@ -123,4 +139,95 @@ export async function getArticles(options) {
             return resolve({ articles: articles, maxPages: maxPages });
         });
     });
+}
+
+export async function saveArticle(article) {
+    const sql = "INSERT INTO articles SET ?";
+    return new Promise((resolve, reject) => {
+        poolDB.query(sql, [article], (err, result) => {
+            if (err) {
+                return reject(err);
+            } else {
+                return resolve(result);
+            }
+        });
+    });
+}
+
+export async function updateArticle(article) {
+  const sql = "UPDATE articles SET ? WHERE id = ?";
+  return new Promise((resolve, reject) => {
+    poolDB.query(sql, [article, article.id], (err, result) => {
+      if (err) {
+        return reject(err);
+      } else {
+        return resolve(result);
+      }
+    });
+  });
+}
+
+export async function deleteArticle(id) {
+  const sql = "DELETE FROM articles WHERE id = ?";
+  return new Promise((resolve, reject) => {
+    poolDB.query(sql, [id], (err, result) => {
+      if (err) {
+        return reject(err);
+      } else {
+        return resolve(result);
+      }
+    });
+  });
+}
+
+export async function getCategories() {
+  const sql = "SELECT * FROM categories";
+  return new Promise((resolve, reject) => {
+    poolDB.query(sql, (err, result) => {
+      if (err) {
+        return reject(err);
+      } else {
+        return resolve(result);
+      }
+    });
+  });
+}
+
+export async function getCategoriesByArticleId(id) {
+  const sql = "SELECT categories.id, categories.name FROM categories JOIN articles_links_to_categories ON categories.id = articles_links_to_categories.category_id WHERE articles_links_to_categories.article_id = ?";
+  return new Promise((resolve, reject) => {
+    poolDB.query(sql, [id], (err, result) => {
+      if (err) {
+        return reject(err);
+      } else {
+        return resolve(result);
+      }
+    });
+  });
+}
+
+export async function getRSSArticlesByWeek(week) {
+  const sql = "SELECT articles.id, articles.slug, articles.title, articles.description, articles.body, articles.img, articles.created_at FROM articles JOIN articles_links_to_categories altc on articles.id = altc.article_id JOIN categories on categories.id = altc.category_id WHERE categories.id = 9  AND WEEKOFYEAR(articles.created_at) = ?";
+  return new Promise((resolve, reject) => {
+    poolDB.query(sql, [week], (err, result) => {
+      if (err) {
+        return reject(err);
+      } else {
+        return resolve(result);
+      }
+    });
+  });
+}
+
+export async function addArticleToCategory(articleId, categoryId) {
+  const sql = "INSERT INTO articles_links_to_categories SET ?";
+  return new Promise((resolve, reject) => {
+    poolDB.query(sql, [{ article_id: articleId, category_id: categoryId }], (err, result) => {
+      if (err) {
+        return reject(err);
+      } else {
+        return resolve(result);
+      }
+    });
+  });
 }

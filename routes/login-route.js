@@ -1,6 +1,6 @@
 import express from 'express';
 import passport from "passport";
-import {isAuth, isNotAuth} from "../app/helpers/userHelpers.js";
+import {isAuth, isNotAuth} from "../app/models/userHelpers.js";
 import {getUserById} from "../app/controllers/userController.js";
 const router = express.Router()
 

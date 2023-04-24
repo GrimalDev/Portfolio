@@ -2,6 +2,7 @@ import express from 'express';
 import poolDB from "../app/config/configDB.js";
 import markdownTranslate from "../app/models/markdown-translate.js";
 import {getArticleBySlug, getArticles} from "../app/controllers/articlesController.js";
+import * as fs from "fs";
 const router = express.Router()
 
 const sql = "SELECT * from articles";
@@ -14,6 +15,7 @@ router.get('/', function(req, res, next) {
     //loop through articles and convert boy md to html
     for (let i = 0; i < articles.length; i++) {
       articles[i].body = await markdownTranslate(articles[i].body);
+      articles[i].description = await markdownTranslate(articles[i].description);
     }
 
     res.render('articles', {articles: articles});
@@ -83,17 +85,40 @@ router.get('/query', async function(req, res, next) {
   const articles  = queryResult.articles;
   const message   = searchParams.toString();
 
+  //convert the body and the description from markdown to html
+  for (let i = 0; i < articles.length; i++) {
+    articles[i].body = await markdownTranslate(articles[i].body);
+    articles[i].description = await markdownTranslate(articles[i].description);
+  }
+
   res.json({message: message, data: articles, maxPages: maxPages});
 });
 
 router.get('/view/:slug', async function(req, res, next) {
   const article = await getArticleBySlug(req.params.slug);
 
-  //detect if the article is a rss article, if rss article, keep body as html
-  if (!article.description.includes("rss")) {
-    //convert body from markdown to html
+  if (!article) {
+    res.render('not-found');
+    return;
+  }
+
+  //If the body contains {{!!fooFilePath!!}} it will be replaced by the content of the file foo.html file path file
+  //The root is the articles folder (public/articles_media/direct_images)
+  const regex = /\{\{\!\!.*?\!\!\}\}/g;
+  if (article.body.match(regex)) {
+    const matches = article.body.match(regex);
+    for (let i = 0; i < matches.length; i++) {
+      const filePath = matches[i].replace("{{!!", "").replace("!!}}", "");
+
+      //replace de placeholder with the actual html content of the html in the articles path in an iframe
+      article.body = article.body.replace(matches[i], `<iframe src="/articles_html/${filePath}" id="article-body__iframe"></iframe>`);
+    }
+  } else {
     article.body = await markdownTranslate(article.body);
   }
+
+  //convert the description from markdown to html
+  article.description = await markdownTranslate(article.description);
 
   res.render('project-single', {project: article});
 });

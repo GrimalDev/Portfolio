@@ -1,5 +1,5 @@
 import express from 'express';
-import {isAuth, isAdmin, userExists, genPassword} from "../app/helpers/userHelpers.js";
+import {isAuth, isAdmin, userExists, genPassword} from "../app/models/userHelpers.js";
 import poolDB from "../app/config/configDB.js";
 const router = express.Router()
 

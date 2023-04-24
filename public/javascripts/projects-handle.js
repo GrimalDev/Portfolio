@@ -67,7 +67,7 @@ function renderProjects(projects) {
         cardLink.classList.add("card__link");
 
         //set image background
-        cardImage.style.backgroundImage = "url('/images/articles/" + project.img + "')";
+        cardImage.style.backgroundImage = "url('/articles_media/direct_images/" + project.img + "')";
 
         //add attributes
         cardLink.setAttribute("href", "/projects/view/" + project.slug);

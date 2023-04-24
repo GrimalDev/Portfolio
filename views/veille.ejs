@@ -14,19 +14,63 @@
 
     <h2>Docker est-il l'avenir du déploiement ? (OUI)</h2>
 
+    <a href="#more-about-veille">C'est quoi la veille technologique?</a>
+
+    <div class="exams-menu__navigation">
+        <ul class="exams-menu__items__container">
+            <li class="exams-menu__item">
+                <a href="#more-about-veille" class="exams-menu__item__link" title="En savoir plus sur la veille pour les examens du BTS SIO">
+                    <img class="exams-menu__item__illustration" src="/images/question-marks.webp" alt="question marks">
+                    <span class="exams-menu__item__title">La veille</span>
+                </a>
+            </li>
+            <li class="exams-menu__item">
+                <a href="/projects/view/veille-technologique-bts-sio" class="exams-menu__item__link" title="En savoir plus sur ma veille">
+                    <span class="exams-menu__item__illustration">E4</span>
+                    <span class="exams-menu__item__title">Documentation</span>
+                </a>
+            </li>
+            <li class="exams-menu__item">
+                <a href="/articles_media/pdf/presentationE4-v3-Baptiste-Grimaldi.pdf" download="presentationE4-v3-Baptiste-Grimaldi.pdf" target="_blank" rel="noreferrer noopener" class="exams-menu__item__link" title="Télécharger mes présentations">
+                    <img class="exams-menu__item__illustration" src="/images/presentation-board.webp" alt="presentation board">
+                    <span class="exams-menu__item__title">Mes présentations</span>
+                </a>
+            </li>
+            <li class="exams-menu__item">
+                <a href="/articles_media/pdf/tableau-synthèse-E4-BaptisteGrimaldi.pdf" download="tableau-synthèse-E4-BaptisteGrimaldi.pdf" target="_blank" rel="noreferrer noopener" class="exams-menu__item__link" title="Télécharger mon tableau de synthèse du BTS SIO">
+                    <img class="exams-menu__item__illustration" src="/images/data-table-logo.webp" alt="ressources">
+                    <span class="exams-menu__item__title">Tableau de synthèse</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
     <h3>Articles à ce propos</h3>
     <div class="cards__main-container">
         <% articles.forEach(article => {%>
             <div class="card__container card__category__<%= article.categories %>">
-                <div class="card__image" style="background-image: url('/images/articles/<%= article.img %>')"></div>
+                <div class="card__image" style="background-image: url('/articles_media/direct_images/<%= article.img %>')"></div>
                 <div class="card__body">
                     <p class="card__title"><%= article.title %></p>
-                    <p class="card__text"><%= article.description %></p>
+                    <p class="card__text"><%- article.description %></p>
                 </div>
                 <a class="card__link" href="/articles/view/<%= article.slug %>"></a>
             </div>
         <% }) %>
     </div>
+
+    <section id="more-about-veille" class="bts-description__content">
+        <h3>La veille technologique dans le cadre d'un BTS SIO option SLAM</h3>
+        <p>La veille technologique est une pratique indispensable pour rester à jour sur les nouvelles technologies, les tendances du marché et les innovations dans le domaine de l'informatique. Elle consiste à surveiller de manière active et régulière les sources d'information pour détecter les évolutions technologiques qui peuvent impacter les entreprises et les utilisateurs.</p>
+        <p>Dans le cadre du BTS SIO option SLAM (Solutions Logicielles et Applications Métiers), la veille technologique est particulièrement importante car elle permet de :</p>
+        <ul>
+            <li><span class="important">Détecter les nouvelles technologies et tendances du marché :</span> En effectuant une veille régulière, les étudiants peuvent identifier les nouvelles technologies et tendances émergentes qui peuvent être intégrées dans les solutions logicielles et applications métiers.</li>
+            <li><span class="important">Se tenir informé des évolutions dans les langages de programmation et les outils :</span> La veille technologique permet de suivre les mises à jour des langages de programmation et des outils pour être en mesure de choisir les meilleures solutions techniques.</li>
+            <li><span class="important">Identifier les bonnes pratiques et les normes :</span> En surveillant les informations pertinentes, les étudiants peuvent comprendre les bonnes pratiques et les normes pour le développement des applications et logiciels.</li>
+            <li><span class="important">Anticiper les évolutions du marché et de la demande :</span> En connaissant les tendances du marché, les étudiants peuvent anticiper les évolutions et adapter les solutions logicielles et applications métiers en conséquence.</li>
+        </ul>
+        <p>Pour effectuer une veille technologique efficace, il est important de diversifier les sources d'information en utilisant des blogs, des sites spécialisés, des newsletters, des réseaux sociaux, etc. Il est également important de trier les informations pour ne pas être submergé et de les partager avec les autres membres de l'équipe pour faciliter la prise de décision.</p>
+    </section>
 
 </main>
 
