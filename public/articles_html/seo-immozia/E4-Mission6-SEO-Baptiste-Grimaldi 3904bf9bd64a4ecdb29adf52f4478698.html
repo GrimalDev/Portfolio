@@ -1,0 +1,685 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>E4-Mission6-SEO-Baptiste-Grimaldi</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3904bf9b-d64a-4ecd-b29a-df52f4478698" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="E4-Mission6-SEO-Baptiste-Grimaldi%203904bf9bd64a4ecdb29adf52f4478698/money-graph-with-up-arrow.png"/></div><h1 class="page-title">E4-Mission6-SEO-Baptiste-Grimaldi</h1></header><div class="page-body"><h1 id="4a22e1bf-e72c-47d5-a166-c45f1b03b2df" class="">Liens utiles:</h1><figure id="4153a3fb-d3ef-4e28-bb6b-b0ce38654ca3"><a href="https://immozia.com/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Immozia est une intelligence artificielle qui rassemble l’ensemble des annonces des agences immobilières en ligne sur un seul moteur de recherche.</div><div class="bookmark-description">Immozia est une intelligence artificielle. Recherche de biens immobiliers à la vente et à la location. Moteur de recherche immo. Vente maison autour de moi. Location appartement.</div></div><div class="bookmark-href"><img src="https://immozia.com/public/assets/favicon.ico" class="icon bookmark-icon"/>https://immozia.com/</div></div></a><figcaption>Rendu de la Landing pageArticle de mon portfolio</figcaption></figure><figure id="a7eb1769-d9f3-445f-933c-e01c7ed48610"><div class="source"><a href="https://immozia.com/">https://immozia.com/</a></div></figure><figure id="b3faa90a-2bfd-4cb8-8999-d9bdb81dae4b"><a href="https://portfolio.baptistegrimaldi.info/projects/view/seo-immozia" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Article SEO</div><div class="bookmark-description">Check out the portfolio of Baptiste Grimaldi, a full-stack web developer specializing in creating dynamic and responsive websites. Explore his projects and contact him for your next web development project.</div></div><div class="bookmark-href"><img src="https://portfolio.baptistegrimaldi.info/apple-touch-icon.png" class="icon bookmark-icon"/>https://portfolio.baptistegrimaldi.info/projects/view/seo-immozia</div></div></a></figure><hr id="a5757f2f-abf9-4027-94dc-c7e0e301f1bf"/><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="119c87a0-4616-4030-9b49-959c0c70fd67"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">SOMMAIRE<nav id="7d4aa764-a191-4735-931f-cbbbebdffa09" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4a22e1bf-e72c-47d5-a166-c45f1b03b2df">Liens utiles:</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8974ee4a-1378-4081-b6d0-d360be0252ed">1. <strong>Cahier des charges</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#26e6a524-b650-4910-9e84-f939fe28de4e">1.1 <strong>Introduction</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#be81f699-d7a3-455d-86e1-2a1656d0d1c0">Définition du SEO</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#07eb82b2-330c-45ae-b707-31e11fa3d5c0">1.2 <strong>Expression fonctionnelle du besoin</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19563c61-deed-49cc-bd41-2feed1de4916">1.3 <strong>Contraintes</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#476451b9-d4db-41ca-9b03-696584b0e085">2. <strong>Description des environnements</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4c15a5c4-f2e8-46c3-aa10-cc667e819170">3. <strong>Méthodologie</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1e0c40d9-f9c8-410d-a400-91b5e7e3ba66">3.1 <strong>Méthodologie et versioning</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#16542704-5705-4e5e-8b1b-3b480b8ee0bf"><strong>Bonnes pratiques</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a1e839e6-6b1a-4e4c-a462-4e09965969e6"><strong>Deux options principales:</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3fda61f5-c71b-440b-90c5-3fcee4208863">Deux exemples de stratégies de branching</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c6e83637-bae6-4864-8ce0-33ea96a26b0f">3.2 <strong>Gestion des tests de la solution</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2a9afd54-f190-41e1-8442-745a64c3f8e9">Note sur les mauvaises pratiques du SEO</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#220b033f-c0f6-4514-b68a-92e6c6aba29a">3.3 <strong>Rédaction de la documentation</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9ffed896-34b8-4719-bdb3-467fb1a51c90">3.4 <strong>Gestion de projet</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d1eee103-a522-4274-8457-93271bf78b6c">4. <strong>Mise en oeuvre</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#602143f2-c1e8-4edf-8d66-f972b8ebbbbb">4.1 Recherche de Mots-clés</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#94e3207f-e772-4207-a838-45eb839aad4a">Les balises meta keywords</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3aa57e07-413c-436c-86a4-64f1492c6db5">Note sur l’utilisation de google trends pour la recherche de mots clés</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#84f40a85-2718-4fdd-bef4-1644049975e0">4.2 Optimisation On-Page</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#db1138f7-ccb6-4e46-99e7-dcbea942daf2">Note sur les vitesses le chargement</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#852b38ca-b9b1-4288-89b6-4b9e8d05f96c">Note sur l’outil lighthouse</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#092625ab-21a1-466e-a30f-7c26f76f2861">4.3 Optimisation Off-Page</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7840db1e-a206-42dc-a9d3-38ff74e90dc9">4.3 Analyse et Suivi</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#97821d04-fe12-486d-855a-46035043eb82">Les outils</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3aab4fb9-a4f9-4d86-8484-4b029daec549">6. <strong>Bilan du projet</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9887bcfb-79fa-481d-9086-9ea3d90b69b5">6.1 <strong>Validation des exigences point par point</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#926ee9f4-f59d-4d6d-9be9-82dc30d02630">6.2 <strong>Axes d&#x27;amélioration</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7372cd79-4ef8-49ff-853b-22637ce13baa">Note sur le PWA</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#571e33a7-63e5-4eaa-9a30-5792215a1d12">6.3 <strong>Compétences acquises</strong></a></div></nav></div></figure><h1 id="8974ee4a-1378-4081-b6d0-d360be0252ed" class="">1. <strong>Cahier des charges</strong></h1><h2 id="26e6a524-b650-4910-9e84-f939fe28de4e" class="">1.1 <strong>Introduction</strong></h2><p id="72ea3642-df54-4022-8c43-83fa162c5e05" class="">Lors de ma deuxième année de BTS SIO en alternance, j&#x27;ai été amené à accompagner la création d&#x27;une mission phare de l&#x27;entreprise Oxianet : la création d&#x27;un nouveau site de recherche immobilière.
+Une <mark class="highlight-blue_background"><a href="https://portfolio.baptistegrimaldi.info/projects/view/interface-de-recherche-immobilere">autre de mes missions</a></mark> a pour sujet l&#x27;interface dont je fais le référencement dans cette documentation.</p><h3 id="be81f699-d7a3-455d-86e1-2a1656d0d1c0" class="">Définition du SEO</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="035589e7-7f2e-4d3a-906f-e4d3287af7e8"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Le SEO (Search Engine Optimization) est une technique de marketing numérique qui vise à améliorer la visibilité et le classement d&#x27;un site web dans les résultats de recherche organiques des moteurs de recherche tels que Google. Le but est d&#x27;optimiser le contenu et la structure du site web pour qu&#x27;il soit plus facilement compris par les moteurs de recherche, ce qui peut améliorer la qualité du trafic entrant sur le site et augmenter la probabilité de conversion.</div></figure><h2 id="07eb82b2-330c-45ae-b707-31e11fa3d5c0" class="">1.2 <strong>Expression fonctionnelle du besoin</strong></h2><p id="ef28b752-2ca9-47c0-ad08-943d685da93c" class="">Le développement de l&#x27;interface de recherche n&#x27;est pas terminé, mais l&#x27;entreprise souhaite déjà commencer son référencement pour que les robots de Google détectent déjà une identité numérique.</p><p id="38c9765f-a0cf-4d68-b4c9-340c668ece0b" class="">Le but est de réussir dès maintenant à relier un nom de domaine à une identité numérique, en permettant à Google de récupérer toutes les informations dont ils ont besoin pour nous enregistrer dans leurs bases de données.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2f86bb5e-7366-4e7d-8459-214e62a12b3e"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Le développement de l’interface de recherche n’est pas terminé mais l’entreprise souhaite déjà commencer son référencement pour les robots de google détecte déjà un identité numérique. Le but est de réussir à dès maintenant, relier un nom de domaine à une identité numérique en permettant à google de récupérer toutes les information qu’ils leur faut pour nous enregistrer dan leurs bases de données.</div></figure><p id="3ffe4450-5116-476e-930d-a681e64e5120" class=""><mark class="highlight-yellow_background">Les besoins de l&#x27;entreprise sont les suivants :</mark></p><ul id="f89b6c8b-d6e3-46ab-8634-0bfe6bb04a95" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">Commencer le référencement de l&#x27;interface de recherche immobilière dès maintenant</mark></li></ul><ul id="5b373699-9a7e-48e8-99b7-c4e5abc471cb" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">Relier un nom de domaine à une identité numérique</mark></li></ul><ul id="054e9140-8e85-4bae-86f7-480ace0fc103" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">Permettre à Google de récupérer toutes les informations nécessaires pour enregistrer l&#x27;entreprise dans leurs bases de données</mark></li></ul><p id="8e1c3d91-dc4f-43fe-8e02-7a28b94caefd" class="">
+</p><figure id="a986cb67-95ec-4395-b4ce-0883b756d3bf" class="image"><a href="E4-Mission6-SEO-Baptiste-Grimaldi%203904bf9bd64a4ecdb29adf52f4478698/Untitled.png"><img style="width:528px" src="E4-Mission6-SEO-Baptiste-Grimaldi%203904bf9bd64a4ecdb29adf52f4478698/Untitled.png"/></a></figure><h2 id="19563c61-deed-49cc-bd41-2feed1de4916" class="">1.3 <strong>Contraintes</strong></h2><p id="e30b2cd6-d2f7-42aa-bf10-faa7c2960c3c" class="">Le site principale étant encore en développement, il faut donc créer une page qu’on appelle une “landing page&quot;.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="9ab4100d-b9b4-4174-a7a7-ba7072ef8e73"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Une landing page est une page web unique créée dans le but de convertir les visiteurs en prospects ou en clients. Elle est souvent utilisée pour promouvoir un produit ou un service, et est conçue pour encourager les visiteurs à effectuer une action spécifique, telle que remplir un formulaire ou acheter un produit. La landing page peut être utilisée en remplacement ou en complément d&#x27;une page d&#x27;accueil traditionnelle pour améliorer les taux de conversion et atteindre des objectifs commerciaux spécifiques.</div></figure><p id="dbb578bc-90b7-475c-be25-6768d2f0468d" class="">Dans ce cas la <em>landing page</em> est temporaire et sera intégré au site final par la suite.</p><p id="4c214720-5b74-4e40-bd51-67c629b68643" class="">La difficulté est donc de correctement définir le projet aussi tôt dans son avancé. Il faut trouver les bons mots clés, trouver les bonnes description et textes qui seront affichés.</p><h1 id="476451b9-d4db-41ca-9b03-696584b0e085" class="">2. <strong>Description des environnements</strong></h1><p id="1138b49a-fcf6-4eda-81e1-8e695e3bc269" class="">L&#x27;environnement de développement utilisé pour la réalisation de ce projet est construit avec les conteneurs suivants :</p><ul id="99014c76-44b0-406f-a231-d74a442ca462" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">Un conteneur Apache pour le serveur web</mark></li></ul><ul id="d9331466-3c53-4432-90a6-0b1a2540a3a6" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">Un conteneur MySQL pour la base de données</mark></li></ul><ul id="1f6335c5-c645-4af4-a6a7-f8fa80ac274a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">Un conteneur PHP pour le langage de programmation</mark></li></ul><p id="34cc7834-4784-408a-afb9-320fff13021e" class=""><strong>Ces conteneurs ont été configurés avec les versions les plus récentes de chaque logiciel, et ont été configurés pour communiquer entre eux via un réseau interne Docker.</strong></p><figure id="dec6179b-2b54-4b46-97ea-36f368db465e" class="image"><a href="E4-Mission6-SEO-Baptiste-Grimaldi%203904bf9bd64a4ecdb29adf52f4478698/Untitled%201.png"><img style="width:432px" src="E4-Mission6-SEO-Baptiste-Grimaldi%203904bf9bd64a4ecdb29adf52f4478698/Untitled%201.png"/></a></figure><h1 id="4c15a5c4-f2e8-46c3-aa10-cc667e819170" class="">3. <strong>Méthodologie</strong></h1><h2 id="1e0c40d9-f9c8-410d-a400-91b5e7e3ba66" class="">3.1 <strong>Méthodologie et versioning</strong></h2><p id="f5059048-1ec7-4e25-84b6-954872a1341a" class="">Les différentes versions sont gérés par un système de git et mis en ligne en privé sur GitHub.</p><p id="a6166ef4-0522-4c05-99eb-b3270e533469" class="">
+</p><p id="c39c3d76-6516-4be8-92e1-1317a30ad5b8" class=""><strong><mark class="highlight-yellow_background">Voici une documentation que j’ai rédigé en entreprise sur les bonnes pratiques de l’utilisation de git:</mark></strong></p><h3 id="16542704-5705-4e5e-8b1b-3b480b8ee0bf" class=""><strong>Bonnes pratiques</strong></h3><ul id="171ed0ac-58e1-4cb1-9a38-64b319cce71b" class="bulleted-list"><li style="list-style-type:disc">Ne commitez que des choses sur les mêmes sujets (style, front, back, etc...)</li></ul><ul id="a0a960ef-737a-4fdf-9c42-6f5d2496fa75" class="bulleted-list"><li style="list-style-type:disc">Si vous ne pouvez pas écrire de messages de commit concis, cela indique trop de sujets dans le même commit.</li></ul><ul id="179b4648-69fc-45b3-bddf-5bb5d708e8b8" class="bulleted-list"><li style="list-style-type:disc">Utilisez un titre et un corps avec seulement la commande commit et en ajoutant une ligne vide entre le titre et le corps.</li></ul><blockquote id="651397c7-1897-4632-8f94-ea9aac30f48f" class="">git commit
+::
+TITRE<p id="aff9414b-75a8-4913-a22b-22d9c6bf72b8" class="">CORPS
+\# rest comments</p></blockquote><p id="75b07757-acf7-408e-b352-0962251e31cb" class=""><strong>Stratégies de branching</strong></p><ul id="c80850d6-0fc7-435c-b053-5e3f6551989f" class="bulleted-list"><li style="list-style-type:disc">Une convention écrite pour organiser l&#x27;équipe.</li></ul><h3 id="a1e839e6-6b1a-4e4c-a462-4e09965969e6" class=""><strong>Deux options principales:</strong></h3><ol type="1" id="150023a9-3a4b-4c6d-83a5-1d70eff98fe1" class="numbered-list" start="1"><li>Développement <strong>Mainline</strong>:<ul id="eec38480-66d8-42bb-856c-ad551cd6ab1b" class="bulleted-list"><li style="list-style-type:disc"><strong>quelques</strong> branches</li></ul><ul id="b1622061-79d1-46aa-aeec-f56c1da37057" class="bulleted-list"><li style="list-style-type:disc">commits relativement petits</li></ul><ul id="141e7b65-1725-4f0c-a101-4bf1c23a22af" class="bulleted-list"><li style="list-style-type:disc">normes de test de haute qualité</li></ul><ul id="5d663259-aec4-442d-a4f1-a2e1a5386f38" class="bulleted-list"><li style="list-style-type:disc"></li></ul></li></ol><ol type="1" id="19971d5c-c4f5-4043-8073-74518da72bc1" class="numbered-list" start="2"><li>Branches <strong>State</strong>, <strong>Release</strong> et <strong>Feature</strong><ul id="ee724246-dd0c-43f3-b9dc-6136d1f25984" class="bulleted-list"><li style="list-style-type:disc"><strong>Deux</strong> types de branches différents qui remplissent des types de travail différents<ol type="1" id="d76d6954-a37b-4cbc-9291-8b13365b2678" class="numbered-list" start="1"><li><strong>Long</strong>Running<ul id="4500644c-266a-4d54-95c0-8104caa8a77e" class="bulleted-list"><li style="list-style-type:disc">existe tout au long de la vie du projet</li></ul><ul id="6bbab11c-387a-44d3-a997-c1f13e0952e7" class="bulleted-list"><li style="list-style-type:disc">souvent, ils reflètent les &quot;étapes&quot; de votre cycle de vie de développement</li></ul></li></ol><ol type="1" id="64f16010-ee45-4ed8-b311-0bf37a69e28c" class="numbered-list" start="2"><li><strong>Short</strong> Running<ul id="06368247-9a7b-4d81-925f-dbaa49bf162c" class="bulleted-list"><li style="list-style-type:disc">pour les nouvelles fonctionnalités, les corrections de bogues, le refactoring, les expériences</li></ul><ul id="2a7b5a90-9779-4455-ba13-a7ad7e2c9260" class="bulleted-list"><li style="list-style-type:disc">sera supprimé après l&#x27;intégration (fusion/rebase)</li></ul></li></ol></li></ul></li></ol><h3 id="3fda61f5-c71b-440b-90c5-3fcee4208863" class="">Deux exemples de stratégies de branching</h3><ol type="1" id="b875d46e-699d-48ef-be5b-dfbb3676a233" class="numbered-list" start="1"><li>GitHub Flow<ul id="ed8fd6f3-a861-411d-be72-3a12895836d3" class="bulleted-list"><li style="list-style-type:disc">très simple, très léger : seulement long-running</li></ul><ul id="aa69e681-44fc-47c1-9391-ac5ff05a9efe" class="bulleted-list"><li style="list-style-type:disc">branche (&quot;main&quot;) + branches de fonctionnalités</li></ul></li></ol><ol type="1" id="0d4e3984-a316-4d8d-8b1c-df5eed68a291" class="numbered-list" start="2"><li><mark class="highlight-yellow_background">GitFlow</mark><ul id="39b0a2e7-a976-4759-bf91-318f00821aac" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">plus de structure, plus de règles</mark></li></ul><ul id="2f5ac7e7-9e72-4b7d-8224-c29aed02321a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">long-running : &quot;main&quot; + &quot;develop&quot;</mark></li></ul><ul id="ac1e5dc0-0412-45be-a980-64e98068abfd" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">de courte durée : fonctionnalités, versions, correctifs</mark></li></ul></li></ol><h2 id="c6e83637-bae6-4864-8ce0-33ea96a26b0f" class="">3.2 <strong>Gestion des tests de la solution</strong></h2><h3 id="2a9afd54-f190-41e1-8442-745a64c3f8e9" class="">Note sur les mauvaises pratiques du SEO</h3><figure id="b623c193-b012-4aaa-ac4f-cadbe9654ecf" class="image"><a href="E4-Mission6-SEO-Baptiste-Grimaldi%203904bf9bd64a4ecdb29adf52f4478698/Untitled%202.png"><img style="width:528px" src="E4-Mission6-SEO-Baptiste-Grimaldi%203904bf9bd64a4ecdb29adf52f4478698/Untitled%202.png"/></a></figure><p id="32958737-1e33-4b04-9f4e-ea8e2fc11168" class="">
+</p><p id="875dbd41-6a4d-4dfb-b42f-f425ae87260b" class="">Il est important de souligner que certaines pratiques de référencement peuvent être considérées comme &quot;black hat&quot; et sont donc à éviter. Parmi les pratiques à éviter, on trouve :</p><ul id="864a355a-c534-4274-8c15-1af5e6d4e061" class="bulleted-list"><li style="list-style-type:disc">Le bourrage de mots-clés : l&#x27;utilisation excessive de mots-clés dans le contenu, les titres et les descriptions peut être considérée comme du spam et entraîner une pénalité de la part des moteurs de recherche.</li></ul><ul id="0a407928-6443-4d5e-a9ed-b9e5429817d4" class="bulleted-list"><li style="list-style-type:disc">La duplication de contenu : la copie de contenu d&#x27;autres sites web peut entraîner une pénalité de la part des moteurs de recherche.</li></ul><ul id="87c7d1ea-4269-44aa-ab89-f8a14b337a52" class="bulleted-list"><li style="list-style-type:disc">Les liens artificiels : l&#x27;achat de liens vers votre site web peut entraîner une pénalité de la part des moteurs de recherche.</li></ul><ul id="816effb0-d1c9-47d1-9b57-43ceb7df9859" class="bulleted-list"><li style="list-style-type:disc">Le contenu de faible qualité : le contenu qui est mal écrit, peu informatif ou de faible qualité peut entraîner une pénalité de la part des moteurs de recherche.</li></ul><p id="cc790fbb-9a16-4aed-8eac-bb332cd2f463" class="">
+</p><p id="95566528-ed1c-4b9f-b61d-4287f3c64840" class="">Il est important de se concentrer sur la création de contenu de haute qualité et sur l&#x27;utilisation de techniques de référencement éthiques pour améliorer le classement de votre site web dans les résultats de recherche.</p><h2 id="220b033f-c0f6-4514-b68a-92e6c6aba29a" class="">3.3 <strong>Rédaction de la documentation</strong></h2><p id="3ec7b292-c2ae-4293-8c0d-4d3dc5098d74" class="">La documentation est maintenu sur un notion de groupe. Cette année, j’ai mis en place un notion pour toute l’équipe. C’est un espace partagé avec des pages pour tout les aspect de l’organisation du projet immozia.</p><p id="de5105e7-92ea-4a91-a963-f3755ef45c06" class="">Après chaque phase de développement, la documentation adéquate est rédigée sur le wiki ingénieur du Notion. Cette documentation inclut des informations sur les fonctionnalités développées, les modifications apportées au code et les tests effectués. Elle est organisée de manière cohérente et facile à naviguer, de sorte que l&#x27;équipe de développement puisse facilement trouver les informations dont elle a besoin.</p><p id="f5ef8255-cae1-438c-afaa-6da7fd6af5bb" class="">Le wiki ingénieur du Notion est un espace partagé pour l&#x27;équipe de développement où sont stockées toutes les informations liées au projet. Il s&#x27;agit d&#x27;un outil de collaboration qui permet à chaque membre de l&#x27;équipe de contribuer à la documentation et de la mettre à jour au fur et à mesure que le projet avance. La documentation est rédigée en utilisant une syntaxe de balisage simple pour faciliter la lecture et la compréhension.</p><p id="35fffdd8-dac6-4f3a-a546-000cc84242e5" class="">La documentation inclut également des captures d&#x27;écran et des exemples de code pour illustrer les fonctionnalités développées et les modifications apportées. Cela permet à l&#x27;équipe de développement de comprendre rapidement les changements apportés au code et de voir comment les nouvelles fonctionnalités ont été implémentées.</p><p id="acd85f88-24a5-4573-b32e-d40ff10e4cd3" class="">En somme, la rédaction de la documentation est une étape importante du processus de développement. Elle permet à l&#x27;équipe de développement de se tenir informée des modifications apportées au code et des nouvelles fonctionnalités développées, et de garantir que toutes les informations pertinentes sont stockées dans un endroit centralisé et facilement accessible.</p><figure id="ad824069-90d3-47bd-9c5c-60116c5ffff1" class="image"><a href="E4-Mission6-SEO-Baptiste-Grimaldi%203904bf9bd64a4ecdb29adf52f4478698/Screenshot_2023-04-22_at_17.52.50.png"><img style="width:480px" src="E4-Mission6-SEO-Baptiste-Grimaldi%203904bf9bd64a4ecdb29adf52f4478698/Screenshot_2023-04-22_at_17.52.50.png"/></a><figcaption>Extrait du wiki-ingénieurie</figcaption></figure><h2 id="9ffed896-34b8-4719-bdb3-467fb1a51c90" class="">3.4 <strong>Gestion de projet</strong></h2><p id="9a78c159-9563-45b9-9d0a-b8c473b3a051" class="">Pour la gestion du projet, l&#x27;équipe utilise Notion pour stocker une base de données de tâches. Cette base de données est utilisée pour suivre l&#x27;avancement du projet et pour assigner des tâches à différents membres de l&#x27;équipe.</p><p id="8e7c57f2-530e-47a6-8d08-b92c9870757b" class=""><mark class="highlight-yellow_background">Notion permet également d&#x27;utiliser différentes visualisations pour la gestion de projet, telles que le tableau Kanban ou le diagramme de Gantt. Le tableau Kanban est utilisé pour suivre l&#x27;avancement des tâches, tandis que le diagramme de Gantt est utilisé pour visualiser les dépendances entre les tâches et les jalons du projet.</mark></p><p id="85da1e4c-3393-49aa-903e-34f5089fa5f0" class="">En utilisant Notion pour la gestion de projet, l&#x27;équipe peut travailler de manière collaborative, en temps réel, et avoir une vue d&#x27;ensemble de l&#x27;avancement du projet. Les mises à jour sont synchronisées en temps réel, ce qui permet à chaque membre de l&#x27;équipe de rester informé des dernières modifications apportées au projet.</p><p id="db205a17-94b1-4d2c-976f-899b12deee08" class="">En somme, Notion est un outil de gestion de projet efficace pour l&#x27;équipe de développement d&#x27;Immozia. Il permet de stocker une base de données de tâches, de suivre l&#x27;avancement du projet et d&#x27;utiliser différentes visualisations pour la gestion de projet. En utilisant Notion, l&#x27;équipe peut travailler de manière collaborative et avoir une vue d&#x27;ensemble de l&#x27;avancement du projet.</p><p id="7bdca8de-804e-4631-8f2d-30d42e90e386" class="">
+</p><figure id="3245eef6-e522-4804-bac0-a924249c900a" class="image"><a href="E4-Mission6-SEO-Baptiste-Grimaldi%203904bf9bd64a4ecdb29adf52f4478698/Screenshot_2023-04-22_at_17.57.13.png"><img style="width:1490px" src="E4-Mission6-SEO-Baptiste-Grimaldi%203904bf9bd64a4ecdb29adf52f4478698/Screenshot_2023-04-22_at_17.57.13.png"/></a></figure><h1 id="d1eee103-a522-4274-8457-93271bf78b6c" class="">4. <strong>Mise en oeuvre</strong></h1><p id="34400452-5bfa-43c1-afa2-e00b69bfb5c6" class=""><strong>Pour la mise en œuvre de la théorie du référencement, tout se rapporte à un bon travail d&#x27;équipe :</strong></p><ul id="f966b1cb-ddab-453f-b6cc-9b2a811a9857" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">La direction </mark>: La direction ainsi que le reste de l&#x27;équipe se retrouvent dans un premier temps afin de définir une orientation pour le projet Immozia. La question est : comment veut-on que le public nous voie ?</li></ul><ul id="6577d56c-88ac-4c57-bb8e-5d3ec1f9e7a6" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">Le pôle de communication</mark> : Ici, on brode autour de la question. On écrit les articles qui vont apparaître sur le site (<a href="https://portfolio.baptistegrimaldi.info/articles_html/interface-de-recherche-immobilere/E4-Mission5-Interface-recherche-immobilier-Baptiste-Grimaldi.html#1780d778-22d4-4450-8901-e7169f06ae9b">voir plus</a>). On définit la liste de mots clés et les textes sur lesquels on veut que Google se concentre.</li></ul><ul id="af5f8ca3-ff29-4a21-baff-142555d7179d" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">Les développeurs </mark>: C&#x27;est la mise en pratique. Ceci est mon rôle principal (même si je participe sur tous les axes). Je mets en pratique les textes de la com. Mon rôle va être de leur confirmer ou non que ces textes vont être positifs pour le SEO ou non. J&#x27;applique aussi les bonnes pratiques de développement web pour le SEO. C&#x27;est lors de cette phase que la façon dont un robot (les robots de Google) va percevoir le site.</li></ul><h2 id="602143f2-c1e8-4edf-8d66-f972b8ebbbbb" class="">4.1 Recherche de Mots-clés</h2><p id="42026fac-04af-4262-bc17-44b94c6c2a6f" class="">La recherche de mots-clés est une étape cruciale pour optimiser le référencement du site web d&#x27;Immozia.</p><p id="047f293f-0e5f-47c2-bad7-9ddb5c6a35e5" class="">Il s&#x27;agit de déterminer les termes que les internautes sont susceptibles de taper dans leur moteur de recherche pour trouver des sites web tels que celui d&#x27;Immozia.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1cdc832f-3fc0-4ebb-8253-e9e9b259c1e2"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Il est important de choisir des mots-clés pertinents et de les insérer dans le contenu de manière stratégique pour améliorer le classement du site dans les résultats de recherche.</div></figure><ul id="47e89361-45c5-4bb1-bfad-2d6ec6c7ee54" class="bulleted-list"><li style="list-style-type:disc">Déterminer les mots-clés pertinents pour le site web d&#x27;Immozia en utilisant des outils de recherche de mots-clés tels que Google trends pour trouver des termes pertinents et connaître leur volume de recherche mensuel. Prendre en compte la concurrence pour ces mots-clés.</li></ul><ul id="26be19de-4577-4169-ab19-9f3da5eced30" class="bulleted-list"><li style="list-style-type:disc">Insérer les mots-clés de manière stratégique dans le contenu en utilisant les mots-clés dans les titres, les méta descriptions.</li></ul><p id="1b067baf-5db3-42c4-810a-2ffc14dfaf31" class="">
+</p><h3 id="94e3207f-e772-4207-a838-45eb839aad4a" class="">Les balises meta keywords</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1c07ab0a-5489-478c-9c92-48710d2c3e51"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Les balises meta keywords sont des balises méta qui étaient utilisées auparavant pour indiquer à Google et aux autres moteurs de recherche les mots clés pertinents pour une page web. Cependant, ces balises étaient souvent utilisées de manière abusive, en ajoutant de nombreux mots clés non pertinents pour tromper les moteurs de recherche.</div></figure><p id="3bf89271-7a70-4566-9035-862f493c6400" class="">Les balises meta keywords ne sont plus utilisées car elles ont été souvent utilisées de manière abusive, en ajoutant de nombreux mots clés non pertinents pour tromper les moteurs de recherche. Les moteurs de recherche, tels que Google, ont donc cessé de les prendre en compte dans leur algorithme de référencement. Aujourd&#x27;hui, l&#x27;utilisation des mots-clés dans le contenu de la page est plus importante pour le référencement que l&#x27;utilisation des balises meta keywords.</p><p id="9644faa6-a92a-40c0-843a-06be31edef69" class="">J’invite à lire cet article sur les balises meta:</p><figure id="3308a92b-8860-4a76-85d0-0daba9bee219"><a href="https://fr.semrush.com/blog/meta-keywords-en-seo/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Meta Keywords : Faut-il encore les utiliser ?</div><div class="bookmark-description">Faut-il utiliser les balises meta keywords ? Sont-elles utiles ? Ce sont des questions que les gens se posent souvent, et avec les informations beaucoup plus anciennes qu‘on peut trouver sur le web aujourd‘hui, beaucoup de débutants dans le référencement ne savent pas s‘ils doivent utiliser la balise meta keyword ou non.</div></div><div class="bookmark-href"><img src="https://static.semrush.com/semblog-next-static/favicon/apple-touch-icon.png" class="icon bookmark-icon"/>https://fr.semrush.com/blog/meta-keywords-en-seo/</div></div><img src="https://static.semrush.com/blog/uploads/media/ca/82/ca826e643e15242b6933b8223340a141/FR-Que-sont-les-meta-keywords-sm.png" class="bookmark-image"/></a></figure><h3 id="3aa57e07-413c-436c-86a4-64f1492c6db5" class="">Note sur l’utilisation de google trends pour la recherche de mots clés</h3><p id="1a295995-3fa1-40af-992c-3d3f82267170" class="">Google Trends est un outil gratuit qui permet de déterminer les tendances de recherche des internautes pour un mot-clé ou une expression donnée. Cet outil peut être utilisé pour trouver des mots-clés pertinents pour le site d&#x27;Immozia, en déterminant les termes souvent recherchés par les internautes dans leur moteur de recherche.</p><p id="328e8a2a-57d0-43bd-afaf-40d84b66dbbd" class=""><strong>Pour utiliser Google Trends:</strong></p><p id="941abe03-37a1-4c55-9ac1-3992b6888154" class="">Il suffit de saisir le mot-clé ou l&#x27;expression que vous souhaitez analyser, et l&#x27;outil affichera les tendances de recherche pour cette requête sur une période donnée. Vous pouvez également afficher les tendances de recherche pour plusieurs mots-clés en même temps, afin de comparer leur popularité relative.</p><figure id="dd691aa4-1bc7-4fe7-83c0-af0a284fda8e" class="image"><a href="E4-Mission6-SEO-Baptiste-Grimaldi%203904bf9bd64a4ecdb29adf52f4478698/Screenshot_2023-04-23_at_17.24.39.png"><img style="width:576px" src="E4-Mission6-SEO-Baptiste-Grimaldi%203904bf9bd64a4ecdb29adf52f4478698/Screenshot_2023-04-23_at_17.24.39.png"/></a></figure><h2 id="84f40a85-2718-4fdd-bef4-1644049975e0" class="">4.2 Optimisation On-Page</h2><ul id="e6c3f5d6-fb9c-47e4-9f4b-ab12fe567695" class="bulleted-list"><li style="list-style-type:disc">Optimisation des titres et méta descriptions</li></ul><ul id="5437c09d-9b83-4459-9881-7f1d7beec0f4" class="bulleted-list"><li style="list-style-type:disc">Utilisation de balises H1 et H2</li></ul><ul id="2284e33a-70e0-45fd-bd6f-7d654b4fb6ba" class="bulleted-list"><li style="list-style-type:disc">Optimisation des images</li></ul><ul id="35f583fd-70f8-4cbd-a366-b9acd3e4df63" class="bulleted-list"><li style="list-style-type:disc">Amélioration de la vitesse de chargement</li></ul><p id="563b30a7-5c7b-43df-8abd-7cc160776024" class="">
+</p><p id="2b9caa1b-b2a1-4437-a16f-0dce05765856" class=""><mark class="highlight-yellow_background">Les optimisations on-page sont importantes car elles sont sous le contrôle du propriétaire du site web.</mark></p><p id="13ac188a-40ae-4322-9522-6896557344f3" class="">En optimisant le contenu, la structure et les éléments du site web pour qu&#x27;ils soient plus faciles à comprendre pour les moteurs de recherche, on peut améliorer la qualité du trafic entrant sur le site et augmenter la probabilité de conversion.</p><p id="9179f329-e9bb-4751-8fd1-f4b2d50ff568" class="">Les optimisations on-page peuvent également contribuer à améliorer l&#x27;expérience utilisateur en rendant le site web plus facile à naviguer et plus rapide à charger.</p><p id="577b07f0-7ced-4daa-87b7-3d924abf7a8a" class="">Elles permettent de maximiser la visibilité du site web dans les résultats de recherche organiques des moteurs de recherche tels que Google.</p><p id="2b7d60d8-133b-4842-911e-1e0d6c0e3ce9" class="">J’invite à lire cet article sur les balises les plus importantes:</p><figure id="a9315e12-9b9e-4718-b48c-bcc5f2b14b65"><a href="https://www.searchenginejournal.com/important-tags-seo/156440/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">10 Most Important Meta Tags You Need to Know for SEO</div><div class="bookmark-description">Some tags are vital for SEO. Others have little or no impact on rankings. Here&#x27;s every type of meta tag you need to know about.</div></div><div class="bookmark-href"><img src="https://www.searchenginejournal.com/wp-content/uploads/2020/01/sej-5e26ffd8aa1d8.png" class="icon bookmark-icon"/>https://www.searchenginejournal.com/important-tags-seo/156440/</div></div><img src="https://www.searchenginejournal.com/wp-content/uploads/2020/07/important-meta-tags-5f203655f1aa8.jpg" class="bookmark-image"/></a></figure><h3 id="db1138f7-ccb6-4e46-99e7-dcbea942daf2" class="">Note sur les vitesses le chargement</h3><p id="259d31d9-74b0-45ab-b6bd-ccec39aaeea7" class="">Il existe plusieurs techniques pour améliorer les temps de chargement d&#x27;un site web en PHP, HTML, JS et CSS. Voici quelques-unes des meilleures pratiques :</p><ul id="2d9efb56-3fa3-426f-9c0b-3d08c3eb79a6" class="bulleted-list"><li style="list-style-type:disc">Optimisation des images : Les images sont souvent la principale cause de ralentissement des sites web. Pour réduire leur impact, il est recommandé de les compresser et de les redimensionner avant de les télécharger sur le site. Il est également possible d&#x27;utiliser des formats d&#x27;image plus légers, comme WebP ou AVIF, qui offrent une qualité similaire à celle du JPEG avec une taille de fichier plus petite.</li></ul><ul id="45a7e40c-e6d7-4632-9062-8f0925200da3" class="bulleted-list"><li style="list-style-type:disc">Utilisation d&#x27;un système de cache : Le cache permet de stocker les fichiers statiques (CSS, JS, images...) sur le disque dur de l&#x27;utilisateur afin de réduire le temps de chargement. Il est recommandé d&#x27;utiliser un système de cache côté serveur, comme Memcached ou Redis, pour améliorer les performances.</li></ul><ul id="8b9d0edd-2ea9-49c1-a166-687e17acd539" class="bulleted-list"><li style="list-style-type:disc">Minification du code : La minification consiste à supprimer tous les espaces et les commentaires inutiles du code HTML, CSS et JS. Cela permet de réduire la taille des fichiers et donc de réduire les temps de chargement.</li></ul><ul id="3c47841c-8722-449a-aff2-02fd2799bce5" class="bulleted-list"><li style="list-style-type:disc">Utilisation de CDN : Les CDN (Content Delivery Networks) permettent de distribuer les fichiers statiques sur des serveurs situés dans le monde entier, afin de réduire le temps de chargement pour les utilisateurs situés loin du serveur d&#x27;origine.</li></ul><ul id="c267b5cf-6879-4767-83e4-1fe83154f983" class="bulleted-list"><li style="list-style-type:disc">Utilisation de Gzip : Gzip est une technique de compression des fichiers qui permet de réduire leur taille de manière significative. Il est recommandé d&#x27;utiliser Gzip pour compresser les fichiers HTML, CSS et JS.</li></ul><ul id="2c087059-1c2c-4d3e-bb9a-dcd501ba72f3" class="bulleted-list"><li style="list-style-type:disc">Suppression des scripts inutiles : Les scripts inutiles, comme les scripts de suivi ou les publicités, peuvent ralentir considérablement les temps de chargement. Il est recommandé de supprimer les scripts inutiles pour améliorer les performances.</li></ul><p id="a1fabd15-36a7-4303-8b73-2b3bed7972d5" class="">En suivant ces bonnes pratiques, il est possible d&#x27;améliorer considérablement les temps de chargement d&#x27;un site web en PHP, HTML, JS et CSS.</p><h3 id="852b38ca-b9b1-4288-89b6-4b9e8d05f96c" class="">Note sur l’outil lighthouse</h3><p id="48ceccb7-232e-402a-96bc-0777069c0e61" class="">Lighthouse est un outil open source développé par Google qui permet d&#x27;analyser la qualité des pages web et d&#x27;identifier les problèmes de performance, d&#x27;accessibilité, de bonnes pratiques et de référencement naturel. Lighthouse s&#x27;intègre facilement à Google Chrome et peut être utilisé pour analyser à la fois des pages web en local et des pages web en ligne.</p><p id="4e6c4113-edd1-42b8-b1a1-47a99df62696" class="">Lighthouse effectue des audits sur plusieurs aspects de la page web, notamment :</p><ul id="0c878d48-2a30-427a-b801-68dd8e59512b" class="bulleted-list"><li style="list-style-type:disc">La performance : Lighthouse analyse la vitesse de chargement de la page web et identifie les problèmes de performance qui peuvent ralentir le chargement de la page.</li></ul><ul id="5ad5ab84-6151-4528-a2b0-a771c0a4113a" class="bulleted-list"><li style="list-style-type:disc">L&#x27;accessibilité : Lighthouse analyse l&#x27;accessibilité de la page web pour les personnes ayant des handicaps et identifie les problèmes qui peuvent empêcher ces personnes d&#x27;accéder au contenu de la page.</li></ul><ul id="80ad867c-dd29-43aa-851b-97da70f03d0e" class="bulleted-list"><li style="list-style-type:disc">Les bonnes pratiques : Lighthouse analyse les bonnes pratiques de développement web et identifie les problèmes qui peuvent affecter la qualité du code de la page.</li></ul><ul id="5c65599a-7775-4a86-86f3-0f260388fada" class="bulleted-list"><li style="list-style-type:disc">Le référencement naturel : Lighthouse analyse les caractéristiques de la page web qui peuvent affecter son classement dans les résultats de recherche, notamment les balises meta, les titres et les méta descriptions.</li></ul><p id="f696251e-8a82-4f15-a6be-d985f07097b5" class="">Lighthouse fournit également des recommandations pour améliorer la qualité de la page web et résoudre les problèmes identifiés par l&#x27;outil. En utilisant Lighthouse pour analyser les pages web, les développeurs peuvent améliorer la qualité de leur code et optimiser leur site pour offrir une meilleure expérience utilisateur.</p><h2 id="092625ab-21a1-466e-a30f-7c26f76f2861" class="">4.3 Optimisation Off-Page</h2><ul id="d7f54828-ffef-480d-b688-6e512dec86d4" class="bulleted-list"><li style="list-style-type:disc">Link building</li></ul><ul id="8375a829-bc9a-4cfe-9f38-83d311b9385f" class="bulleted-list"><li style="list-style-type:disc">Social Media</li></ul><ul id="ba0a67ec-01c1-419d-bf5d-5eefa6247860" class="bulleted-list"><li style="list-style-type:disc">Améliorer la réputation en ligne</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="11bd1e68-e729-4e33-9da2-a9981a70f0a0"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Les optimisations off-page sont importantes car elles ont un impact direct sur la réputation en ligne du site web et sur sa visibilité dans les résultats de recherche. Les optimisations off-page se concentrent sur les facteurs externes au site web, tels que les liens entrants, les mentions sur les réseaux sociaux et la réputation en ligne de l&#x27;entreprise.</div></figure><p id="f050d1f3-c210-4777-8b50-641da8df9797" class=""><mark class="highlight-yellow_background"><strong>Le link building</strong></mark>, qui consiste à obtenir des liens entrants vers le site web à partir d&#x27;autres sites web de qualité, est l&#x27;un des aspects les plus importants des optimisations off-page. Les liens entrants de qualité peuvent améliorer le classement du site web dans les résultats de recherche et augmenter le trafic entrant sur le site.</p><p id="a7d92dde-4c71-4bdb-bdc3-b9071fa5910f" class=""><mark class="highlight-yellow_background"><strong>Les réseaux sociaux</strong></mark> peuvent également jouer un rôle important dans l&#x27;optimisation off-page. Les mentions sur les réseaux sociaux peuvent aider à améliorer la visibilité du site web et à augmenter le trafic entrant. Les mentions sur les réseaux sociaux peuvent également améliorer la réputation en ligne de l&#x27;entreprise en montrant que d&#x27;autres personnes sont intéressées par le site web et le contenu qu&#x27;il propose.</p><p id="1a5175b5-2e8a-44e9-b6b1-39b001b2a745" class="">Enfin, <strong><mark class="highlight-yellow_background">la réputation en ligne </mark></strong>de l&#x27;entreprise peut avoir un impact direct sur le référencement du site web. Les entreprises ayant une bonne réputation en ligne ont tendance à obtenir des liens entrants de qualité plus facilement, ce qui peut améliorer le classement du site web dans les résultats de recherche.</p><p id="d82f3ca7-e5a5-4282-b691-d454015f55d2" class="">
+</p><p id="1a10ee63-649d-4abf-85a2-a6ffa69cbcbb" class=""><mark class="highlight-yellow_background">Pour mettre en place ces différents points, c’est l’équipe de communication qui s’en charge. ils utilisent les outils à leurs disposition et leurs aisance avec les réseaux sociaux pour que google ai plus lien vers immozia.</mark></p><h2 id="7840db1e-a206-42dc-a9d3-38ff74e90dc9" class="">4.3 Analyse et Suivi</h2><ul id="7c413719-bff0-45ad-87b7-ce663c855d07" class="bulleted-list"><li style="list-style-type:disc">Mesurer les performances SEO</li></ul><ul id="5ed1c622-c8e1-4696-9776-a49d60bc415a" class="bulleted-list"><li style="list-style-type:disc">Surveiller les classements de mots clés (SemRush)</li></ul><ul id="a6a7404a-7d68-4f03-a0d7-541854382dd7" class="bulleted-list"><li style="list-style-type:disc">Effectuer un audit SEO</li></ul><p id="761898bb-c9a6-468e-b135-388b8dac45ed" class="">
+</p><figure id="1019c851-46db-4bba-ac0b-6ff42c326371" class="image"><a href="E4-Mission6-SEO-Baptiste-Grimaldi%203904bf9bd64a4ecdb29adf52f4478698/Screenshot_2023-04-23_at_17.57.47.png"><img style="width:1063px" src="E4-Mission6-SEO-Baptiste-Grimaldi%203904bf9bd64a4ecdb29adf52f4478698/Screenshot_2023-04-23_at_17.57.47.png"/></a><figcaption>Interface de Sem Rush pour la recherche de immozia.com</figcaption></figure><p id="74385b09-3b3f-4020-aa80-1a10f39dfd3e" class="">Il est important de monitorer son statut de référencement pour plusieurs raisons. Tout d&#x27;abord, cela permet de s&#x27;assurer que les optimisations de référencement sont efficaces et qu&#x27;elles améliorent le classement du site web dans les résultats de recherche. En surveillant les classements de mots clés et les performances SEO, il est possible d&#x27;identifier les aspects du site web qui nécessitent des améliorations supplémentaires et de mettre en place des stratégies pour améliorer le positionnement du site web.</p><p id="cf73be25-7b77-4cfb-8c7b-ee895e518af2" class="">En outre, la surveillance du statut de référencement permet de détecter rapidement les problèmes techniques qui peuvent affecter le classement du site web dans les résultats de recherche. Par exemple, si le site web subit une pénalité de la part des moteurs de recherche en raison de l&#x27;utilisation de techniques de référencement non éthiques, il est important de le savoir rapidement pour prendre les mesures nécessaires pour résoudre le problème.</p><p id="7a874678-2732-4d48-8d2f-56652ac027a4" class="">Enfin, la surveillance du statut de référencement permet de suivre les performances du site web par rapport à ses concurrents. En surveillant les classements de mots clés et les performances SEO des concurrents, il est possible d&#x27;identifier les opportunités de croissance et de mettre en place des stratégies pour améliorer la position du site web par rapport à ses concurrents.</p><p id="38d98e88-7de0-43f1-b881-73240da2768f" class="">En somme, la surveillance du statut de référencement est importante pour s&#x27;assurer que les optimisations de référencement sont efficaces, détecter rapidement les problèmes techniques, et suivre les performances du site web par rapport à ses concurrents.</p><h3 id="97821d04-fe12-486d-855a-46035043eb82" class="">Les outils</h3><p id="6b460757-f7d2-4a74-baf8-63f2cc7ef361" class="">Il existe énormément d’outils pour analyser son SEO, voici ceux que j’ai retenu:</p><ul id="4270fcc1-a22b-41db-9ef0-a3e4e85e0082" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>LightHouse</strong></mark> est un outil open-source proposé par Google qui permet d&#x27;analyser la qualité d&#x27;un site web en termes de performance, d&#x27;accessibilité et de bonnes pratiques SEO. Il fournit des rapports détaillés sur les domaines dans lesquels le site peut être amélioré.<figure id="9bb169c7-b7bb-4102-9445-0c91731a9102"><a href="https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk/related?hl=fr" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Lighthouse</div></div><div class="bookmark-href"><img src="https://ssl.gstatic.com/chrome/webstore/images/icon_144px.png" class="icon bookmark-icon"/>https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk/related?hl=fr</div></div><img src="https://lh3.googleusercontent.com/JsGtt7BHEbHhQl5OzJikROL49WGoN0fBNcU_mvLRjWqx7nm7r7rzdG0DpET4qcK1FhNkFpcKf600G-Eoxx-_q3D4iA=w128-h128-e365-rj-sc0x00ffffff" class="bookmark-image"/></a></figure></li></ul><ul id="7053c6ac-267b-42de-b709-e2bf8da24ca0" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>Google Trends</strong></mark> est un outil gratuit fourni par Google qui permet de visualiser les tendances de recherche pour les mots clés. Il peut aider à identifier les mots clés les plus populaires et à ajuster les stratégies de référencement en conséquence.<figure id="c41bff60-3455-4018-8f2b-02f505ebb104"><a href="https://trends.google.com/home" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Google Trends</div></div><div class="bookmark-href"><img src="https://ssl.gstatic.com/trends/favicon.ico" class="icon bookmark-icon"/>https://trends.google.com/home</div></div></a></figure></li></ul><ul id="109862d8-2b9e-4e61-bb07-cfc0e6360e51" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>Semrush</strong></mark> est une suite complète d&#x27;outils de marketing en ligne qui permettent d&#x27;analyser la concurrence, de rechercher des mots clés, de suivre le classement des mots clés, de réaliser des audits SEO et de découvrir de nouvelles opportunités de marketing en ligne.<figure id="ace01c3f-65c9-4f28-b3f9-a3b5f70d3fb0"><a href="https://fr.semrush.com/projects/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Semrush - le marketing en ligne peut être facile</div><div class="bookmark-description">Faites de l’algorithme un ami. Améliorez la visibilité en ligne de votre entreprise grâce à plus de 55 outils pour le SEO, le PPC, le contenu, les médias sociaux, la recherche concurrentielle, et plus encore.</div></div><div class="bookmark-href"><img src="https://fr.semrush.com/__static__/apple-touch-icon.png" class="icon bookmark-icon"/>https://fr.semrush.com/projects/</div></div><img src="https://static.semrush.com/wt-static/semrush-com.png" class="bookmark-image"/></a></figure></li></ul><ul id="6a1ee8c1-82a3-4279-96c8-9a75eb979f32" class="bulleted-list"><li style="list-style-type:disc"><strong>Google Analytics</strong> est un outil d&#x27;analyse de site web fourni par Google qui permet de suivre le trafic du site, les sources de trafic, les taux de rebond, la durée de session et de nombreuses autres métriques liées au trafic du site. Il peut aider à ajuster les stratégies de référencement en conséquence.<figure id="836a16d6-ccc8-438d-9fd3-db45269bb035"><a href="https://analytics.google.com/analytics/web/#/p358069532/reports/intelligenthome" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title"></div></div><div class="bookmark-href">https://analytics.google.com/analytics/web/#/p358069532/reports/intelligenthome</div></div></a></figure></li></ul><h1 id="3aab4fb9-a4f9-4d86-8484-4b029daec549" class="">6. <strong>Bilan du projet</strong></h1><h2 id="9887bcfb-79fa-481d-9086-9ea3d90b69b5" class="">6.1 <strong>Validation des exigences point par point</strong></h2><p id="c5d81188-ae0e-41ce-8328-54adb11d6e26" class="">Le référencement est un processus qui nécessite du temps et de la patience. Les résultats ne sont pas immédiats, car il faut du temps pour indexer les pages web et les classer en fonction de leur pertinence.</p><p id="0f7cd988-ca8b-4427-b60b-4922abd00574" class=""><mark class="highlight-yellow_background">Le seul moyen de suivre l&#x27;évolution du référencement est d&#x27;utiliser des outils comme Lighthouse, qui permettent de mesurer le score de référencement d&#x27;un site web.</mark></p><p id="d70aa83c-7dff-4752-b43d-b0a0b4ae7a09" class=""><em>Cependant, il est important de comprendre que le référencement ne se limite pas à l&#x27;utilisation de ces outils, mais nécessite également une compréhension approfondie des mots-clés et de la stratégie de contenu. Il est donc recommandé de travailler en collaboration avec des experts en référencement pour obtenir les meilleurs résultats possibles.</em></p><p id="c6e219f7-7853-4c8f-8013-ebdf852cf54b" class="">En outre, il est important de souligner que le référencement ne se limite pas à l&#x27;optimisation on-page, mais inclut également des aspects off-page tels que le link building, les mentions sur les réseaux sociaux et la réputation en ligne de l&#x27;entreprise.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="259fb8ce-3d9a-431d-829f-91448c9ce397"><div style="font-size:1.5em"><span class="icon">☝</span></div><div style="width:100%">Ces aspects sont importants car ils ont un impact direct sur la réputation en ligne du site web et sur sa visibilité dans les résultats de recherche. En surveillant régulièrement le statut de référencement, il est possible d&#x27;identifier les aspects du site web qui nécessitent des améliorations supplémentaires et de mettre en place des stratégies pour améliorer le positionnement du site web.</div></figure><h2 id="926ee9f4-f59d-4d6d-9be9-82dc30d02630" class="">6.2 <strong>Axes d&#x27;amélioration</strong></h2><figure id="96ce6590-407d-4fa1-af5f-8d3296cb7c5e" class="image"><a href="E4-Mission6-SEO-Baptiste-Grimaldi%203904bf9bd64a4ecdb29adf52f4478698/Screenshot_2023-04-23_at_18.01.30.png"><img style="width:528px" src="E4-Mission6-SEO-Baptiste-Grimaldi%203904bf9bd64a4ecdb29adf52f4478698/Screenshot_2023-04-23_at_18.01.30.png"/></a><figcaption>Rapport de lighthouse</figcaption></figure><ul id="25021184-1839-46cc-9531-a7200eb5a5f7" class="bulleted-list"><li style="list-style-type:disc">Performance<ul id="b107a455-4d50-4584-8b3b-d2c02159e323" class="bulleted-list"><li style="list-style-type:circle">94 est un bon score mais montre peux être des problèmes de chargements d’icônes ou d’images<figure id="f7c6d9ea-7cf8-4d45-a5ce-46b66df83e3c" class="image"><a href="E4-Mission6-SEO-Baptiste-Grimaldi%203904bf9bd64a4ecdb29adf52f4478698/Screenshot_2023-04-23_at_18.06.15.png"><img style="width:1123px" src="E4-Mission6-SEO-Baptiste-Grimaldi%203904bf9bd64a4ecdb29adf52f4478698/Screenshot_2023-04-23_at_18.06.15.png"/></a><figcaption>Analyse avec les dev tools de google chrome</figcaption></figure><p id="03bd7ed6-3041-4e91-b41f-0e895e64ca57" class="">On peux voir un problème sur la banniere.jpg.</p></li></ul></li></ul><ul id="e1e7c3b7-e2ae-401c-a71d-4264e1797eba" class="bulleted-list"><li style="list-style-type:disc">Accessibilité<ul id="443278a5-723a-4b94-9011-b689a897a3a8" class="bulleted-list"><li style="list-style-type:circle">L’outil nous dit que ce paramètre indique: Ces vérifications mettent en évidence les possibilités d&#x27;améliorer l&#x27;accessibilité de votre application web. Seul un sous-ensemble de problèmes d&#x27;accessibilité peut être détecté automatiquement, il est donc également recommandé de procéder à des tests manuels.<figure id="93bda421-868f-47f1-961b-a7d551fd6c7b" class="image"><a href="E4-Mission6-SEO-Baptiste-Grimaldi%203904bf9bd64a4ecdb29adf52f4478698/Screenshot_2023-04-23_at_18.08.50.png"><img style="width:804px" src="E4-Mission6-SEO-Baptiste-Grimaldi%203904bf9bd64a4ecdb29adf52f4478698/Screenshot_2023-04-23_at_18.08.50.png"/></a><figcaption>On voit ici qu’il manque un label avec cet input.</figcaption></figure></li></ul></li></ul><ul id="ac9077ef-008c-4ba9-ad18-d0b4b7784fbc" class="bulleted-list"><li style="list-style-type:disc">Best practices<ul id="24c2d307-80c2-44a7-bab5-a2fedb0b8384" class="bulleted-list"><li style="list-style-type:circle">100%</li></ul></li></ul><ul id="565b9421-ba2f-43ed-b6c4-138b0b004b4c" class="bulleted-list"><li style="list-style-type:disc">SEO<ul id="ac6cb0b0-e296-4cb4-84c5-d6e8e1050d25" class="bulleted-list"><li style="list-style-type:circle">100%, les optimisations de bases sont bonnes.</li></ul></li></ul><ul id="064ba872-d9c7-44e9-9f0d-b31182ebd31e" class="bulleted-list"><li style="list-style-type:disc">PWA<ul id="82da1198-29d0-41e6-9588-693db77f8cb6" class="bulleted-list"><li style="list-style-type:circle">Le PWA n’est ici pas l’objectif.</li></ul></li></ul><h3 id="7372cd79-4ef8-49ff-853b-22637ce13baa" class="">Note sur le PWA</h3><p id="351371b8-de73-4a23-9abc-1d3186965d4f" class="">Les Progressive Web Apps (PWA) sont des applications web qui offrent une expérience utilisateur similaire à celle des applications mobiles natives. Les PWA peuvent être installées sur l&#x27;écran d&#x27;accueil d&#x27;un appareil mobile et offrent des fonctionnalités telles que des notifications push et un accès hors ligne.</p><h2 id="571e33a7-63e5-4eaa-9a30-5792215a1d12" class="">6.3 <strong>Compétences acquises</strong></h2><p id="724c5893-2ccb-4831-8746-a8d8691598c8" class="">Ce projet m’apporte beaucoup, avant de me pencher autant sur le SEO je ne pensais pas que cela était aussi technique. Se pencher sur le SEO demande une certaine rigueur et un ensemble de connaissance. C’est un sujet d’actualité et est très pertinent, je compte me pencher dessus de plus en plus.
+Je n’en suis que au début de tout ce que je peux apprendre et en suis parfaitement conscient.</p><p id="4df536ae-e405-49f5-8076-b2023d25c835" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="33bbbf3f-8ffc-4509-9ff9-be95d6bec854"><div style="font-size:1.5em"><span class="icon">👉</span></div><div style="width:100%">Cette documentation est la propriété intellectuelle de Grimaldi Baptiste. 
+<a href="https://portfolio.baptistegrimaldi.info/legal"><mark class="highlight-red_background"><span style="border-bottom:0.05em solid">portfolio.baptistegrimaldi.info/legal</span></mark></a></div></figure></div></article></body></html>

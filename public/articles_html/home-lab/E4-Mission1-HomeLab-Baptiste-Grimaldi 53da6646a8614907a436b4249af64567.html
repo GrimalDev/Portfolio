@@ -1,0 +1,675 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>E4-Mission1-HomeLab-Baptiste-Grimaldi</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="53da6646-a861-4907-a436-b4249af64567" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://www.notion.so/icons/server_red.svg"/></div><h1 class="page-title">E4-Mission1-HomeLab-Baptiste-Grimaldi</h1></header><div class="page-body"><h1 id="35b2523d-1fa0-4f76-aad7-88806e415da5" class="">Liens utiles:</h1><figure id="b741cc40-09ca-4a32-b7e9-72b433122040"><a href="https://portfolio.baptistegrimaldi.info/projects/view/home-lab" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Article Home-Lab</div><div class="bookmark-description">Check out the portfolio of Baptiste Grimaldi, a full-stack web developer specializing in creating dynamic and responsive websites. Explore his projects and contact him for your next web development project.</div></div><div class="bookmark-href"><img src="https://portfolio.baptistegrimaldi.info/apple-touch-icon.png" class="icon bookmark-icon"/>https://portfolio.baptistegrimaldi.info/projects/view/home-lab</div></div></a><figcaption>Article de mon portfolio</figcaption></figure><hr id="26e488b3-589b-4962-a72e-75acf78e9ef8"/><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f97b16bd-587e-4589-b582-927d9d57275f"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><mark class="highlight-teal_background">SOMMAIRE</mark><nav id="36dd8fc6-6a61-4b45-98d5-05d8f74a15f7" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#35b2523d-1fa0-4f76-aad7-88806e415da5">Liens utiles:</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b5bf579d-f9a4-4d8b-be39-bb4aff6cf747">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d842dd58-e6dc-46e1-a75f-31c7f50b72e9">Contexte de la mission</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9bca9c26-5c00-47e6-ba3c-fdb54f089c1b">Objectifs de la mission</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bbc73ab8-ea7e-4edc-ab0c-d1c2cb4a2dff">Présentation de l’infrastructure</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#618bcbe5-8018-4b1a-9431-a6ec9dd55765">Schéma de liaison</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3a35d59d-421c-46e8-9715-314c0ad81c4c">Tableau de références</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#af9e7c2b-eb10-4490-8f14-71e9c359b327">Configurations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#baeeeffd-07ed-43ef-8a98-333cb08bc1b9">Note sur l’ip dynamique.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#87adb899-937a-4f22-aed9-6e7d94774cfc">Configuration de la Livebox 4</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#cbd5c0f0-17ae-4a15-9dcd-f54f54fef54b">PPPoE</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b406a7f9-389f-4f4d-8f66-10bddfebf5b8">DHCP sur le Vlan de Orange</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b15bd9ba-5f9b-404a-a792-0411208d793e">Configuration du routeur pfSense</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f9b39e89-9daa-4fad-9169-8af54a785ea2">Configuration du VPN OpenVPN pour l&#x27;accès à distance sécurisé</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3bd846db-fa8e-41f5-9489-06a5233e805a">Le pare-feu de pfSense</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3112c5fa-02f8-447e-ba24-a04ff7ce06e0">Redirection vers les serveurs web</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#72a5fde9-f175-41b5-8d42-81231c0e2f49">Configuration du serveur Ubuntu</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#0f2b279d-1f3a-488a-8492-ec9baf91ce5f">Traefik</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#08dc11a2-afb3-4049-932b-d2314bcdae59">Connexions par ssh avec RSA</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#61cc2d3a-0729-4682-8fb3-44cf306292c6">Endless shh</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2b654fd8-f48f-4a34-a23e-a7a523be855b">Les prisons ssh et sftp</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#835eb4df-da21-4c3a-bf50-1fa79b7b7c0f">Backups</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#21a7e70f-4a18-4951-81fd-d5f22783832a">Configuration du DNS BIND9</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#382f28bd-315c-4462-9f8b-4bcde409d5b1">Configuration du serveur DNS BIND9</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#01fd836a-ec7d-45cd-8d55-ed5babd38f15">Configuration du serveur HomeBridge</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#573c6408-e7ce-40a3-88fa-aefc3de9f36d">Configuration du serveur OctoPrint</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#694a5072-985f-4e3e-b675-27f9eb01a250">Configuration du serveur de cloud gaming</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5a5d147a-ec10-489b-ad6f-84ebd753a74e">Architecture</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#03966d0c-db3c-4a41-ae88-2f0eab681111">Haute disponibilité</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e6e190e3-7bc6-4217-8d57-a6aadc650592">Point Environnemental</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dc5f3d81-d167-4f20-b126-5a853509c286">Impact du numérique sur l&#x27;environnement</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d7565576-c246-42a0-aa3a-aacfc86ecb0d">Avancée du numérique responsable</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f454aaa4-9470-444c-94f4-9ddf42c8aed9">Implication personnelle dans la conception de l&#x27;infrastructure</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#13264ef2-edaa-4a5e-b871-3a2c8aa0256e">Monitoring</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ed84f436-3132-482e-ba70-11d0138b9e99">Uptime Robot</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b8e7ec67-7fbd-4f8b-a931-3ca1ca216577">NetData Cloud &amp; mails</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#25c19329-fec8-4512-b786-7dd90164a6d1">Traefik &amp; ssl</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d53d48fa-d895-4dce-9dee-ac53c9ef06c8">Conclusion</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b183789a-9ef3-405c-b5b1-20d6a356d30d">Résumé de la mission</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ba2e94e7-b6fd-416d-9379-edd6ff2aa357">Bilan et perspectives d&#x27;avenir</a></div></nav></div></figure><h1 id="b5bf579d-f9a4-4d8b-be39-bb4aff6cf747" class="">Introduction</h1><hr id="e66c2122-890b-4c01-86b2-19e4b1e3700c"/><h2 id="d842dd58-e6dc-46e1-a75f-31c7f50b72e9" class="">Contexte de la mission</h2><p id="d107d9fc-aac1-467d-8ffd-c1cc65961b23" class="">Dans le cadre d’une volonté d’en apprendre plus sur les bonnes pratiques en réseau, et sur ce que l’on appel plus généralement du DevOps, j’ai commencé mon propre HomeLab qui est maintenant une architecture stable type entreprise.</p><p id="c65b27a6-ccf3-4dac-a74c-294191acb1a8" class="">Un HomeLab est une infrastructure de laboratoire informatique personnel que l&#x27;on peut installer chez soi. Elle peut être utilisée pour apprendre et expérimenter de nouvelles technologies, tester de nouvelles configurations, ou pour développer des projets personnels ou professionnels. Un HomeLab peut être composé de différents éléments, tels que des routeurs, des serveurs, des NAS, des équipements de surveillance, etc. L&#x27;objectif est de créer un environnement de test et de développement pour les technologies de l&#x27;information et de la communication.</p><h2 id="9bca9c26-5c00-47e6-ba3c-fdb54f089c1b" class="">Objectifs de la mission</h2><p id="c46beb96-ef01-464a-b1ec-57fa2816e65c" class="">Les objectifs de cette mission étaient de créer un HomeLab pour apprendre et expérimenter de nouvelles technologies, ainsi que de développer des projets personnels ou professionnels.</p><p id="43ea345f-d580-442c-9331-abe5524c33c1" class="">Je voulais une infrastructure avec des composants que je n’aurais pas à acheter ou alors avec un très bon rapport qualité prix.</p><h2 id="bbc73ab8-ea7e-4edc-ab0c-d1c2cb4a2dff" class="">Présentation de l’infrastructure</h2><p id="a37203c1-b78b-4d93-83fd-b2fc2b6fb15a" class=""><strong>Mon architecture actuelle est définit par les les éléments suivants:</strong></p><ul id="7d6a204b-e9ea-4316-b077-69ae5ac114e1" class="bulleted-list"><li style="list-style-type:disc">Une Livebox 4 avec un boitier ONT: Celle-ci ne sert qu’a passer le trafique vers mon routeur pfSense. Elle est configurée avec une DMZ pointant vers mon routeur pfSense.</li></ul><ul id="ce41f755-8e20-4d5d-958b-cda5ccad5b41" class="bulleted-list"><li style="list-style-type:disc">Un routeur pfSense sur une carte mère d’un hp 240 g7 configuré pour renforcer la protection de mon réseau interne comme externe. Un serveur OpenVPN est configuré dessus et utilise la base de donnée utilisateur du pfSense. Le serveur OpenVPN est configuré pour utiliser des certificats ainsi qu’un couple nom d’utilisateur et mot de passe pour l’authentification.</li></ul><ul id="9555c3a6-7465-42f0-aa33-05ffd0184c28" class="bulleted-list"><li style="list-style-type:disc">Un serveur sous ubuntu serveur LTS 22 sur une carte mère d’un hp 240 g7. Dessus tourne un ensemble de script docker. Ceci est le sujet d’une de mes mission E4 dans le cadre de mon BTS SIO option SLAM.
+Un Traefik et déployé sur ce serveur pour gérer le load balancing de mes docker ainsi que les certificats ssl avec OVH et let’s encrypt. Le serveur et construit pour créer des prisons pour des utilisateurs sftp.</li></ul><ul id="022387cd-a34f-4026-8ea2-b7fbdcbfbfbd" class="bulleted-list"><li style="list-style-type:disc">Un DNS local sous BIND9</li></ul><ul id="0036704b-6ba1-4ef9-8125-db69b9175f7d" class="bulleted-list"><li style="list-style-type:disc">Un NAS Qnap TS412 configuré pour le iscsi pour la sauvegarde et la redondance de mon serveur web.</li></ul><ul id="1a2d7bd2-fa62-4713-8c5c-e51f1ac7d9f2" class="bulleted-list"><li style="list-style-type:disc">Un serveur HomeBridge pour transformer ma maison connectée sous FlexHom en maison HomeKit.</li></ul><ul id="f5bd2446-898f-426c-8e3e-a9c7a2c2dee5" class="bulleted-list"><li style="list-style-type:disc">Un serveur OctoPrint pour mon imprimante 3D</li></ul><ul id="3e853621-3433-485f-a2e8-d52cc2df262a" class="bulleted-list"><li style="list-style-type:disc">Un serveur de cloud gaming utilisant le serveur OpenVPN.</li></ul><ul id="62d9a9db-101c-494c-983f-9da55ed70e2c" class="bulleted-list"><li style="list-style-type:disc">Un Netgear WAX214 - AX1800 WiFi 6 Dual Band PoE. C’est un très bon access point d’un niveau d’entreprise, avec un bon rapport qualité-prix.</li></ul><h2 id="618bcbe5-8018-4b1a-9431-a6ec9dd55765" class="">Schéma de liaison</h2><p id="5a864be5-24ed-406a-a686-23c13931902f" class="">
+</p><figure id="5627cfd7-47a6-48d4-bfbd-feb4c1d760ea" class="image"><a href="E4-Mission1-HomeLab-Baptiste-Grimaldi%2053da6646a8614907a436b4249af64567/hom-network.drawio.png"><img style="width:576px" src="E4-Mission1-HomeLab-Baptiste-Grimaldi%2053da6646a8614907a436b4249af64567/hom-network.drawio.png"/></a><figcaption>Schéma conventionnel</figcaption></figure><h2 id="3a35d59d-421c-46e8-9715-314c0ad81c4c" class="">Tableau de références</h2><table id="8674527b-37cb-4f17-9723-640601ff612f" class="simple-table"><tbody><tr id="dcb1f832-c5c8-4f56-9b0d-d5832061a6ed"><td id="Ltvr" class="" style="width:329.09375px"><mark class="highlight-blue_background"><strong>Matériel</strong></mark></td><td id="&lt;kq_" class="" style="width:345.453125px"><mark class="highlight-blue_background"><strong>Référence</strong></mark></td></tr><tr id="8e4e1536-0d74-4d07-885f-23d452d18c0a"><td id="Ltvr" class="" style="width:329.09375px">Accès réseau publique</td><td id="&lt;kq_" class="" style="width:345.453125px">Livebox 4 + ONT</td></tr><tr id="e1a51d02-1593-4d26-ae9f-31a9d8f9f6d4"><td id="Ltvr" class="" style="width:329.09375px">Routeur pfSense</td><td id="&lt;kq_" class="" style="width:345.453125px">HP 240 G7</td></tr><tr id="b0181c22-2a75-41fe-ac93-aa53ee7a106b"><td id="Ltvr" class="" style="width:329.09375px">Serveur Ubuntu</td><td id="&lt;kq_" class="" style="width:345.453125px">HP 240 G7</td></tr><tr id="68a75bb0-f8ef-4b1d-9ca4-be94afe74829"><td id="Ltvr" class="" style="width:329.09375px">DNS</td><td id="&lt;kq_" class="" style="width:345.453125px">BIND9 en docker</td></tr><tr id="51558c6a-0454-458f-b565-b5f496d942a7"><td id="Ltvr" class="" style="width:329.09375px">NAS</td><td id="&lt;kq_" class="" style="width:345.453125px">Qnap TS412</td></tr><tr id="9d02f147-1e52-4431-b24d-7f34ca7041d3"><td id="Ltvr" class="" style="width:329.09375px">Serveur HomeBridge</td><td id="&lt;kq_" class="" style="width:345.453125px">Raspberry pi WH 2</td></tr><tr id="86867c97-3226-4f0d-8110-5225890a4b37"><td id="Ltvr" class="" style="width:329.09375px">Serveur OctoPrint</td><td id="&lt;kq_" class="" style="width:345.453125px">Raspberry pi WH 2</td></tr><tr id="742398de-5c2c-4001-8ee7-851acd9513b3"><td id="Ltvr" class="" style="width:329.09375px">Point d’accès WIFI</td><td id="&lt;kq_" class="" style="width:345.453125px">Netgear WAX214 AX1800 WiFi 6</td></tr></tbody></table><h1 id="af9e7c2b-eb10-4490-8f14-71e9c359b327" class="">Configurations</h1><hr id="bad4f341-09b5-4712-aae0-0cdb361f033d"/><h2 id="baeeeffd-07ed-43ef-8a98-333cb08bc1b9" class="">Note sur l’ip dynamique.</h2><p id="3fa086e0-408a-4896-abed-9523d50ed155" class="">Dans la démarche d’économie et de garder le plus de mon anciens système, un problématique c’est posée: Comment résoudre le problème de l’IPv4 dynamique sous payer?</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="5a999c7b-a914-459e-ac36-99c050d71acb"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Chez Orange, une IP dynamique est une adresse IP qui change régulièrement. Elle est attribuée aux particuliers qui n&#x27;ont pas souscrit à l&#x27;option &quot;IP fixe&quot;. Cela signifie que l&#x27;adresse IP publique de votre box internet peut changer à chaque connexion ou toutes les quelques heures. Cela peut poser des problèmes si vous souhaitez accéder à votre réseau de l&#x27;extérieur ou si vous utilisez des services qui nécessitent une adresse IP fixe, tels que les serveurs web ou les services VPN. Pour contourner ce problème, il est possible de souscrire à l&#x27;option &quot;IP fixe&quot; auprès de votre fournisseur d&#x27;accès internet. Cette option permet d&#x27;obtenir une adresse IP publique fixe pour votre box internet, ce qui facilite l&#x27;accès à votre réseau de l&#x27;extérieur.</div></figure><figure id="c836e378-9168-4c13-befd-47596239ab2c" class="image"><a href="E4-Mission1-HomeLab-Baptiste-Grimaldi%2053da6646a8614907a436b4249af64567/dns-cascade.png"><img style="width:768px" src="E4-Mission1-HomeLab-Baptiste-Grimaldi%2053da6646a8614907a436b4249af64567/dns-cascade.png"/></a></figure><h2 id="87adb899-937a-4f22-aed9-6e7d94774cfc" class="">Configuration de la Livebox 4</h2><p id="2295d953-13e8-446a-b1d9-7f305380e300" class="">La configuration de la Livebox 4 consiste principalement à activer le mode DMZ pour rediriger tout le trafic vers le routeur pfSense. Pour cela, il faut se connecter à l&#x27;interface de la Livebox 4 et activer le mode DMZ, puis indiquer l&#x27;adresse IP locale du routeur pfSense.</p><p id="f3467e82-20c9-4afd-bd94-20299b476327" class="">Il va de paire que l’ip du routeur pfSense est fixe sur la box orange</p><figure id="08b6ae34-848c-43ad-a823-deb40b579c50" class="image" style="text-align:center"><a href="E4-Mission1-HomeLab-Baptiste-Grimaldi%2053da6646a8614907a436b4249af64567/Screenshot_2023-04-17_at_18.52.52.png"><img style="width:552px" src="E4-Mission1-HomeLab-Baptiste-Grimaldi%2053da6646a8614907a436b4249af64567/Screenshot_2023-04-17_at_18.52.52.png"/></a><figcaption>La DMZ sur la livebox</figcaption></figure><p id="a8ddc6eb-8fbb-4624-aa4a-cc81fa0411e7" class="">En outre, il est recommandé de désactiver les fonctionnalités de routage et de firewall de la Livebox 4 pour éviter tout conflit avec le routeur pfSense.</p><p id="042217ad-b557-4f2a-9aa6-e0ce6273ec26" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="d9f369c4-9b42-498d-9d44-ee1bc1484f4d"><div style="font-size:1.5em"><span class="icon">🚧</span></div><div style="width:100%">Le remplacement d&#x27;une Livebox par un routeur personnel sur une fibre Orange peut ne pas être autorisé par votre fournisseur d&#x27;accès internet. Vérifiez les conditions d&#x27;utilisation de votre abonnement avant de procéder.</div></figure><p id="487ddaaf-4ccc-4cdd-80a3-9efe8c015b80" class="">Si vous êtes autorisé à remplacer votre Livebox par un routeur personnel, voici les étapes à suivre:</p><h3 id="cbd5c0f0-17ae-4a15-9dcd-f54f54fef54b" class="">PPPoE</h3><ol type="1" id="4ac45fa5-a362-431d-9b89-ed2298c9a806" class="numbered-list" start="1"><li>Configurez votre routeur personnel avec les mêmes identifiants que votre Livebox. Vous pouvez trouver ces informations dans l&#x27;interface de gestion de votre Livebox.</li></ol><ol type="1" id="a6bc5200-b11c-4cd6-8b03-eb01d32c292a" class="numbered-list" start="2"><li>Configurez votre routeur pour qu&#x27;il utilise le protocole PPPoE avec les mêmes identifiants que votre Livebox.</li></ol><ol type="1" id="fdedf541-3c27-40c5-a8d7-77ffd494e683" class="numbered-list" start="3"><li>Configurez votre routeur pour qu&#x27;il utilise les mêmes adresses IP que votre Livebox.</li></ol><ol type="1" id="27aaeebb-ca09-4dc4-b8e0-e8eba21215ec" class="numbered-list" start="4"><li>Configurez votre routeur pour qu&#x27;il utilise les mêmes paramètres DNS que votre Livebox.</li></ol><ol type="1" id="f1562beb-e722-4c3a-bc51-97cf94d17e72" class="numbered-list" start="5"><li>Configurez votre routeur pour qu&#x27;il utilise les mêmes paramètres de sécurité que votre Livebox (WPA, clé de sécurité, etc.).</li></ol><ol type="1" id="f93ff898-67d2-4ba8-9e2b-3654e9ce5c7b" class="numbered-list" start="6"><li>Connectez votre routeur personnel à votre fibre optique en utilisant le câble fourni par Orange.</li></ol><h3 id="b406a7f9-389f-4f4d-8f66-10bddfebf5b8" class="">DHCP sur le Vlan de Orange</h3><p id="51af5475-3061-484c-a49c-0a57b5427353" class="">je renvoi à: <a href="https://wiki.virtit.fr/doku.php/kb:linux:pfsense:remplacer_sa_box_orange_par_un_pfsense">https://wiki.virtit.fr/doku.php/kb:linux:pfsense:remplacer_sa_box_orange_par_un_pfsense</a></p><p id="52f1ad54-a924-4a64-a363-3383fb83078f" class="">Ou bien l’excellent forum:</p><p id="e98fd459-9240-499b-8f11-c7e8c67892a7" class=""><a href="http://lafibre.info">lafibre.info</a></p><p id="71998479-1477-410a-ba9f-fd4d4090137e" class="">Actuellement ma Livebox est encore utilisé car je n’avais pas réussi a récupéré le PPPoE. Ma Livebox recevant son adresse IP de la part de orange sous DHCP, il faut modifier récupérer une requête DHCP de la part de orange, en analyser la trame et en extraire certaines authentification en hexadécimal.</p><h2 id="b15bd9ba-5f9b-404a-a792-0411208d793e" class="">Configuration du routeur pfSense</h2><p id="2f587fe0-b147-4050-92b3-496a9171b39c" class="">Le routeur pfSense joue un rôle clé dans l&#x27;infrastructure HomeLab. Il est utilisé pour renforcer la sécurité du réseau interne et externe.</p><p id="be46fe41-f4ce-4eaa-8cf0-641cd3d4646c" class="">Je précise qu’aucunes sauvegardes ni de redondance n’est mise en place. Néanmoins, la configuration de base de mon routeur est exporté et stocké séparément du bâtiment. </p><p id="8c1b03d6-716d-4a5d-8c05-fb0e237be7f7" class="">La configuration du routeur pfSense réside sur ces axes principaux:</p><ul id="e55df384-af23-44bb-a5de-fb789971d476" class="bulleted-list"><li style="list-style-type:disc">Configuration du VPN OpenVPN pour l&#x27;accès à distance sécurisé</li></ul><ul id="7e41e98d-2f9c-470c-9d72-d8311bc1215c" class="bulleted-list"><li style="list-style-type:disc">Configuration des règles de pare-feu pour la protection du réseau</li></ul><ul id="63fdd902-ff08-4455-8f1a-df9068229bad" class="bulleted-list"><li style="list-style-type:disc">Redirection vers les serveurs web</li></ul><ul id="b66aae5f-8b88-44f2-8877-265245be4b1f" class="bulleted-list"><li style="list-style-type:disc">Configuration de la surveillance réseau avec les outils de monitoring</li></ul><h3 id="f9b39e89-9daa-4fad-9169-8af54a785ea2" class="">Configuration du VPN OpenVPN pour l&#x27;accès à distance sécurisé</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="8daa5124-8c89-49d9-bb54-4b060d1bc170"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">OpenVPN est un logiciel de réseau privé virtuel (VPN) open source utilisé pour créer des connexions sécurisées et chiffrées sur Internet. Il est utilisé pour fournir un accès à distance sécurisé à l&#x27;infrastructure HomeLab.</div></figure><p id="77f40f7a-828f-4ba5-a40c-5f10dc440cb6" class="">L&#x27;authentification par certificat est une méthode d&#x27;authentification forte qui utilise des certificats pour identifier les clients VPN. Cette méthode d&#x27;authentification est plus sécurisée que l&#x27;authentification par mot de passe car elle ne nécessite pas l&#x27;échange de mots de passe sur Internet.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="bfad22c4-74eb-40f6-a6d4-5450b6eedd78"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Un certificat est un fichier numérique qui contient les informations d&#x27;identification d&#x27;un utilisateur. Dans le cas d&#x27;OpenVPN, un certificat est utilisé pour identifier un client VPN. L&#x27;authentification par certificat est une méthode d&#x27;authentification forte qui utilise des certificats pour identifier les clients VPN. Cette méthode d&#x27;authentification est plus sécurisée que l&#x27;authentification par mot de passe car elle ne nécessite pas l&#x27;échange de mots de passe sur Internet.</div></figure><p id="98f7f56e-8494-4691-bd64-afb7837dd556" class="">Le processus de création d&#x27;un certificat pour OpenVPN implique la création d&#x27;un certificat racine, d&#x27;un certificat de serveur et d&#x27;un certificat de client. Le certificat racine est signé par l&#x27;autorité de certification (CA) et est utilisé pour créer des certificats de serveur et de client. Le certificat de serveur est utilisé pour identifier le serveur OpenVPN auprès des clients VPN et le certificat de client est utilisé pour identifier les clients VPN auprès du serveur OpenVPN.</p><figure id="c3788a6a-a07d-46a1-8d27-a638dbb4d4b5" class="image"><a href="E4-Mission1-HomeLab-Baptiste-Grimaldi%2053da6646a8614907a436b4249af64567/Screenshot_2023-04-17_at_19.13.47.png"><img style="width:942px" src="E4-Mission1-HomeLab-Baptiste-Grimaldi%2053da6646a8614907a436b4249af64567/Screenshot_2023-04-17_at_19.13.47.png"/></a><figcaption>Autorité de certification</figcaption></figure><p id="326799ea-148c-4caa-85e2-16e8eb56b427" class="">Les certificats sont créés à l&#x27;aide d&#x27;un outil appelé EasyRSA, qui est inclus dans le package OpenVPN. Le processus de création de certificats est assez complexe et nécessite une connaissance approfondie de la configuration d&#x27;OpenVPN et de la création de certificats. Il est recommandé de suivre un guide détaillé pour créer des certificats pour OpenVPN.</p><p id="442c40dc-f879-4258-af34-7f0e4fe7c02d" class="">Une fois que les certificats sont créés, ils doivent être distribués aux clients VPN. Les clients VPN doivent installer le certificat de serveur sur leur ordinateur pour se connecter au serveur OpenVPN. Les certificats de client sont distribués individuellement aux clients VPN pour leur permettre de s&#x27;authentifier auprès du serveur OpenVPN.</p><p id="e7ea3b21-f23b-4106-8420-ca6afe1917e1" class="">Il est important de noter que les certificats doivent être protégés avec des mots de passe forts pour garantir la sécurité du système VPN.</p><figure id="45063cc9-ce2e-463d-a237-acab45d70d85" class="image"><a href="E4-Mission1-HomeLab-Baptiste-Grimaldi%2053da6646a8614907a436b4249af64567/Screenshot_2023-04-17_at_19.15.05.png"><img style="width:943px" src="E4-Mission1-HomeLab-Baptiste-Grimaldi%2053da6646a8614907a436b4249af64567/Screenshot_2023-04-17_at_19.15.05.png"/></a><figcaption>Deux serveurs VPN</figcaption></figure><p id="544509da-0665-4b0a-99ba-39437a4b12cc" class="">Ici, deux serveurs VPN sont utilisés, un pour l’administrateur, et l’autre pour les utilisateurs de mes serveurs. <em>(ex: connexion sftp).</em> Cela me permet d’appliquer des règles de pare-feu spécifique à certains réseaux OpenVPN.</p><h3 id="3bd846db-fa8e-41f5-9489-06a5233e805a" class="">Le pare-feu de pfSense</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="65a17b93-ba63-4e82-a544-9489ce734d62"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Un <strong>pare-feu </strong>?<p id="1462c6bc-4919-4ba0-b072-8ead0b3288ac" class="">Un pare-feu est un dispositif de sécurité qui contrôle les connexions réseau entrantes et sortantes. Il est utilisé pour protéger un réseau contre les attaques informatiques et pour surveiller le trafic réseau. Les pare-feux peuvent être configurés pour bloquer les connexions non autorisées et pour alerter les administrateurs système en cas de tentative d&#x27;accès non autorisé au réseau. Les pare-feux sont souvent utilisés en combinaison avec d&#x27;autres dispositifs de sécurité, tels que des systèmes de détection d&#x27;intrusion et des antivirus.</p></div></figure><p id="b6d551d9-f4c3-4468-89b3-65b532fff48c" class="">Le pare-feu de pfSense est utilisé pour protéger le réseau interne et externe de l&#x27;infrastructure HomeLab. Le pare-feu permet de bloquer les connexions non autorisées et de surveiller le trafic réseau.</p><p id="5e90d879-64c2-4659-9fa5-358a0c246f58" class="">Le pare-feu de pfSense est configuré à l&#x27;aide de règles qui définissent les connexions réseau autorisées et bloquées. Les règles sont configurées en fonction des adresses IP, des ports et des protocoles réseau.</p><p id="5e84f45e-061d-4d4d-af12-cb7e2a44612a" class="">Les règles de pare-feu sont organisées en groupes appelés &quot;alias&quot;. Les alias sont des groupes de règles qui peuvent être utilisés pour simplifier la configuration du pare-feu. Les alias permettent de regrouper des adresses IP, des ports et des protocoles réseau similaires.</p><p id="b2aa14cf-d570-4334-8c0c-bd1116509b43" class="">Les règles de pare-feu sont configurées dans l&#x27;interface web de pfSense. Pour créer une nouvelle règle de pare-feu, il faut sélectionner l&#x27;interface réseau à laquelle la règle s&#x27;applique, spécifier l&#x27;adresse IP source, l&#x27;adresse IP de destination, le port et le protocole de la connexion. Il est également possible de spécifier un alias pour la source, la destination, le port et le protocole.</p><p id="56119c18-9a1f-497f-9a4c-7508094f431d" class="">Le pare-feu de pfSense est configuré pour bloquer les connexions non autorisées et pour surveiller le trafic réseau. Les journaux du pare-feu sont consultables dans l&#x27;interface web de pfSense.</p><p id="b432b19c-375c-4dbb-a285-144da9578765" class="">Il est important de noter que la configuration du pare-feu de pfSense peut être complexe et nécessite une connaissance approfondie de la configuration de pfSense et du pare-feu en général. Il est recommandé de suivre un guide détaillé pour configurer le pare-feu de pfSense.</p><h3 id="3112c5fa-02f8-447e-ba24-a04ff7ce06e0" class="">Redirection vers les serveurs web</h3><p id="7dc0b594-617a-45c8-ad43-78f689daf76e" class="">La configuration de la redirection vers les serveurs web est effectuée à l&#x27;aide de la fonctionnalité de redirection NAT (Network Address Translation) de pfSense. La redirection NAT permet de rediriger le trafic entrant d&#x27;une adresse IP et d&#x27;un port donnés vers une adresse IP et un port différents.</p><p id="e83e0340-cf67-4823-a3be-c24f8ea1b1f2" class="">La redirection du trafic des ports 80 et 443 vers le serveur web est nécessaire pour permettre aux utilisateurs d&#x27;accéder au site web via le protocole HTTP et HTTPS. Le port 80 est utilisé pour les connexions HTTP non sécurisées, tandis que le port 443 est utilisé pour les connexions HTTPS sécurisées. En redirigeant le trafic des ports 80 et 443 vers le serveur web, toutes les requêtes HTTP et HTTPS destinées à l&#x27;adresse IP publique de l&#x27;infrastructure HomeLab seront envoyées au serveur web. Le serveur web pourra alors traiter les requêtes et renvoyer les pages web demandées aux utilisateurs. Il est important de noter que la redirection du trafic des ports 80 et 443 doit être configurée de manière sécurisée pour éviter les attaques de type man-in-the-middle ou les injections de code malveillant. Il est recommandé d&#x27;utiliser des certificats SSL pour chiffrer les connexions HTTPS et de configurer des règles de pare-feu pour bloquer les connexions non autorisées.</p><h2 id="72a5fde9-f175-41b5-8d42-81231c0e2f49" class="">Configuration du serveur Ubuntu</h2><p id="a1965d3a-cdb9-49f0-a0ab-1701e1b3e72e" class="">Le serveur Ubuntu est utilisé pour exécuter des scripts Docker et pour fournir une plate-forme de développement pour des projets personnels ou professionnels. Le serveur est équipé de Traefik pour gérer le load balancing de mes docker et pour gérer les certificats SSL avec OVH et Let&#x27;s Encrypt. Le serveur est également configuré pour créer des prisons pour des utilisateurs SFTP.</p><h3 id="0f2b279d-1f3a-488a-8492-ec9baf91ce5f" class="">Traefik</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="51ac40bb-be90-4ee1-9268-6d081ed760a9"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Traefik est un reverse proxy et un load balancer open source conçu pour gérer le trafic HTTP et TCP. Il est utilisé pour distribuer le trafic entre plusieurs serveurs web afin d&#x27;améliorer les performances et la disponibilité des applications. Traefik prend en charge plusieurs protocoles, tels que HTTP, HTTPS, TCP, UDP et WebSocket, et peut être configuré pour fonctionner avec des conteneurs Docker, des instances Amazon EC2, des serveurs bare-metal, etc. Il est également équipé de fonctionnalités de surveillance et de journalisation pour aider les administrateurs système à diagnostiquer les problèmes de réseau.</div></figure><p id="0ed2f125-dc54-4053-9bd2-9151b97fff64" class="">Traefik est actuellement configuré dans une docker avec une configuration persistante et redondante.</p><p id="3ae038fd-2775-450f-a13b-e7e909782cfe" class="">Acceuil des requêtes web: Les requêtes web venant de la zone DNS <a href="http://baptistegrimaldi.info">baptistegrimaldi.info</a> sont redirigées en fonction du sous-domaine. Dans la configuration de la zone DNS, tout les sous-domaines redirigent vers mon réseau, le load-balancer de Traefik redirige ensuite vers le service concerné.</p><h3 id="08dc11a2-afb3-4049-932b-d2314bcdae59" class="">Connexions par ssh avec RSA</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="02eac2aa-b686-495a-8859-0092650c9d9d"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Le protocole SSH (Secure Shell) est un protocole de communication sécurisé qui permet aux utilisateurs d&#x27;accéder à un ordinateur distant de manière sécurisée. Il permet aux utilisateurs de se connecter à un ordinateur distant et d&#x27;exécuter des commandes à distance. Les connexions SSH sont chiffrées, ce qui les rend plus sûres que les connexions telnet ou FTP.</div></figure><p id="db81a259-4f46-469f-9c46-641e4ac0fdef" class="">Le protocole SSH utilise une infrastructure de clés publiques et privées pour authentifier les utilisateurs. Lorsqu&#x27;un utilisateur se connecte à un ordinateur distant via SSH, le serveur vérifie que l&#x27;utilisateur dispose d&#x27;une clé privée correspondante à la clé publique stockée sur le serveur. Si la clé privée est valide, l&#x27;utilisateur est autorisé à se connecter.</p><p id="218a09fc-f372-48ff-9e56-188d2c2ed66c" class="">Le protocole SSH prend en charge plusieurs algorithmes de chiffrement, tels que AES, Blowfish, 3DES, etc. Il est également équipé de fonctionnalités de compression de données pour améliorer les performances de la connexion.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="5408ad0b-3663-46e9-9744-96eeb62aef4a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">La clé RSA est un algorithme de chiffrement asymétrique utilisé pour la génération de paires de clés publique/privée. La paire de clés RSA est utilisée pour chiffrer et déchiffrer des données sensibles, telles que des mots de passe et des informations d&#x27;authentification. La clé publique est utilisée pour chiffrer les données, tandis que la clé privée est utilisée pour déchiffrer les données.</div></figure><p id="e9cfd3e2-04f4-4776-9cd2-ff6bf4a67e45" class="">Il est important de noter que la configuration de SSH peut être complexe et nécessite une connaissance approfondie de la sécurité des systèmes informatiques. Il est recommandé de suivre un guide détaillé pour configurer SSH correctement.</p><figure id="a8953564-eef0-48b3-af4a-fcb09b8d7121" class="image"><a href="E4-Mission1-HomeLab-Baptiste-Grimaldi%2053da6646a8614907a436b4249af64567/Screenshot_2023-04-17_at_20.33.47.png"><img style="width:432px" src="E4-Mission1-HomeLab-Baptiste-Grimaldi%2053da6646a8614907a436b4249af64567/Screenshot_2023-04-17_at_20.33.47.png"/></a><figcaption>Base de configuration de sécurité ssh</figcaption></figure><p id="9d137415-aeb2-4d74-bd9d-6db623472afd" class="">La propriété <code>RekeyLimit</code> du fichier de configuration <code>sshd_config</code> permet de spécifier la fréquence à laquelle les clés de chiffrement sont renégociées pour les connexions SSH. Cette propriété est utilisée pour améliorer la sécurité des connexions SSH en réduisant le risque d&#x27;attaques par force brute et de compromission de clés.</p><p id="d77fe57e-01c1-476a-8629-994288dcdf61" class="">La propriété <code>RekeyLimit</code> prend deux paramètres: le premier paramètre spécifie le temps écoulé avant qu&#x27;une clé de chiffrement ne soit renégociée, et le second paramètre spécifie la quantité de données échangées avant qu&#x27;une clé de chiffrement ne soit renégociée. Par exemple, la propriété <code>RekeyLimit 1G 1h</code> signifie que les clés de chiffrement seront renégociées toutes les heures ou après l&#x27;échange de 1 Go de données, selon la première limite atteinte.</p><p id="3f828c12-de2c-4934-96d1-20207b1f8d4b" class="">Il est important de configurer correctement la propriété <code>RekeyLimit</code> pour garantir la sécurité des connexions SSH. Une valeur trop basse peut entraîner une surcharge de trafic et une baisse de performance, tandis qu&#x27;une valeur trop élevée peut compromettre la sécurité des connexions SSH. Il est recommandé de suivre les bonnes pratiques de sécurité pour configurer la propriété <code>RekeyLimit</code>, en fonction des besoins spécifiques de chaque système.</p><p id="d4e6558c-5869-4f24-8f09-f644e92851ac" class=""><strong>On note les propriété suivantes et leurs paramètres:</strong></p><table id="1cbaee26-8627-4868-970d-f42f93d4575f" class="simple-table"><tbody><tr id="e1137281-48e4-44d4-aefc-5595864d3020"><td id="mxgC" class="">Propriété</td><td id="cLM{" class="">valeur</td></tr><tr id="eb06741c-5210-4fe5-8c42-b2f1220c70f9"><td id="mxgC" class="">PermitRootLogin</td><td id="cLM{" class="">prohibit-password</td></tr><tr id="de10fae6-8c3a-4b7a-87bd-8ab6321e2eef"><td id="mxgC" class="">MaxAuthTries</td><td id="cLM{" class="">6</td></tr><tr id="d1cd0013-9e1e-4aab-a73c-ae740566387d"><td id="mxgC" class="">PubkeyAuthentication</td><td id="cLM{" class="">yes</td></tr></tbody></table><h3 id="61cc2d3a-0729-4682-8fb3-44cf306292c6" class="">Endless shh</h3><p id="872f4b92-bf01-4ba9-b914-c8f2e18397e3" class="">La librairie Endless SSH est une librairie open-source pour Linux qui permet de maintenir des connexions SSH persistantes. Elle permet notamment de reconnecter automatiquement une session SSH en cas de perte de connexion, de redémarrage ou de mise en veille de l&#x27;ordinateur client ou du serveur distant.</p><p id="952684d9-079a-43f4-b6ba-3a0ac1a7d7bb" class="">Il est possible d&#x27;utiliser la librairie Endless SSH comme honeypot pour détecter les tentatives d&#x27;intrusion sur le serveur Ubuntu. Un honeypot est un dispositif de sécurité qui simule un système vulnérable pour attirer les attaquants et les empêcher d&#x27;attaquer le système réel.</p><p id="6cccbd7a-0cd8-468a-898d-bd09a5f0a65a" class="">Pour utiliser Endless SSH comme honeypot, il faut configurer le serveur Ubuntu pour qu&#x27;il accepte les connexions SSH sur un port différent du port standard (22). Il est recommandé de choisir un port élevé et peu commun pour éviter les tentatives d&#x27;intrusion automatisées.</p><p id="3d9892cf-b002-41e2-8e7d-e857c022e23a" class="">Une fois que le serveur Ubuntu est configuré pour accepter les connexions SSH sur un port différent, il faut installer la librairie Endless SSH et la configurer pour qu&#x27;elle surveille le port choisi. Endless SSH sera alors prêt à détecter les tentatives d&#x27;intrusion sur le port surveillé.</p><p id="b8e0177f-18b1-47ac-aa7d-fba7a661290d" class="">Il est important de noter que l&#x27;utilisation d&#x27;un honeypot peut être risquée et nécessite une connaissance approfondie de la sécurité des systèmes informatiques. Il est recommandé de suivre un guide détaillé pour configurer un honeypot correctement.</p><p id="4d98c2d9-39a7-4b10-a118-83fd2fbf2a8d" class=""><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Après avoir fait beaucoup de serveur ssh, je notes ces best-practices:</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p><ul id="51696038-2be4-43f9-b2a2-af40d62c138e" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">Créer user autre et le mettre sudoer</mark><ul id="888f33fe-fe51-465a-85c0-d6bd5d318d1c" class="bulleted-list"><li style="list-style-type:circle">Connection par clée rsa<ul id="1bc5c4be-72f4-4c63-a161-156f738a4490" class="bulleted-list"><li style="list-style-type:square">Client:<ul id="c7abbd61-21c8-4bbd-9300-3da20bd481fa" class="bulleted-list"><li style="list-style-type:disc">ssh-keygen (ne rien rentrer dans les propositions)</li></ul><ul id="375f9f22-1dec-4e35-ab27-17df24d13cb9" class="bulleted-list"><li style="list-style-type:disc">ssh-copy-id user@ip</li></ul></li></ul></li></ul></li></ul><ul id="44a08fea-3421-4e72-b45b-ae2e77aec81c" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">Désactiver connection root et par mot de passe</mark><ul id="a7b5d746-9838-419a-a703-728c5f7bbd87" class="bulleted-list"><li style="list-style-type:circle">Host:<ul id="a421d1fa-26c8-4cf7-a84b-190073f57cd5" class="bulleted-list"><li style="list-style-type:square">Modifier /etc/ssh/sshd_config</li></ul><ul id="309399d8-dcc9-431b-aa06-1ae03fc345f6" class="bulleted-list"><li style="list-style-type:square">PermitRootLogin no</li></ul><ul id="fef98257-37b7-446a-9054-02c38613560c" class="bulleted-list"><li style="list-style-type:square">PermitPassword no</li></ul></li></ul></li></ul><ul id="76a5deda-ac42-487e-abbc-615c28e0cb44" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">Changer le port de base:</mark><ul id="0b483cb9-1b42-4445-8db4-20e267f26dfd" class="bulleted-list"><li style="list-style-type:circle">Host:<ul id="025f5ae0-30e5-4d11-8d41-514813c942a6" class="bulleted-list"><li style="list-style-type:square">Modifier /etc/ssh/sshd_config</li></ul><ul id="459d3c17-4a40-4794-9665-fbab5f9804d3" class="bulleted-list"><li style="list-style-type:square">Port xxxx</li></ul></li></ul></li></ul><ul id="d808f49c-019e-460e-838b-c6b7bbe9cc4e" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">Installer fail2ban:</mark><ul id="8be742ac-8f6a-48e1-a231-4755b9b9fdbc" class="bulleted-list"><li style="list-style-type:circle">Host:<ul id="3cc9356b-63c5-4609-9cd7-31c6ddc6aac8" class="bulleted-list"><li style="list-style-type:square">Sudo apt-get install update; sudo apt-get install upgrade; sudo apt-get install fail2ban</li></ul></li></ul></li></ul><ul id="64eb858a-7b41-4213-8373-b8926cfa62b8" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">Restart les services:</mark><ul id="909449f0-2eee-4f17-8ae4-811dfa3e56c2" class="bulleted-list"><li style="list-style-type:circle">Host:<ul id="fbf288c1-d539-4a4b-b39d-65337fcfc754" class="bulleted-list"><li style="list-style-type:square">Sudo systemctl restart sshd</li></ul><ul id="02654fd0-3e32-4baa-a2be-444b5287c9de" class="bulleted-list"><li style="list-style-type:square">Sudo systemctl enable fail2ban</li></ul><ul id="7b934164-99fd-4c56-b551-512848fca8fb" class="bulleted-list"><li style="list-style-type:square">Sudo systemctl start fail2ban</li></ul></li></ul></li></ul><ul id="a597a018-0641-4c6d-88aa-a719cef31cb9" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">Endless SSH</mark><ul id="fbea23b7-482a-4330-a2cf-2c5fb9e1984e" class="bulleted-list"><li style="list-style-type:circle">Honeypot</li></ul></li></ul><h3 id="2b654fd8-f48f-4a34-a23e-a7a523be855b" class="">Les prisons ssh et sftp</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="3c8b7d5b-b8c6-4cb0-b97b-12a45b50a6a9"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Une prison SSH, ou chroot jail en anglais, est un mécanisme de sécurité qui permet d&#x27;isoler les utilisateurs d&#x27;un serveur SSH dans un environnement contrôlé. En utilisant une prison SSH, les utilisateurs peuvent se connecter au serveur SSH et exécuter des commandes, mais ils sont limités à leur propre environnement et ne peuvent pas accéder aux fichiers ou aux services du système hôte.</div></figure><p id="85485deb-e31d-496a-992d-e6289fc5bc93" class="">La prison SSH est configurée en créant un répertoire de base pour l&#x27;utilisateur dans lequel se trouvent toutes les ressources nécessaires pour exécuter les commandes. L&#x27;utilisateur est ensuite limité à ce répertoire et ne peut pas naviguer en dehors de celui-ci. Cela permet de limiter les risques de piratage et de compromission du système hôte. La prison SSH est généralement utilisée pour les utilisateurs SFTP, qui ont besoin d&#x27;un accès restreint à des fichiers spécifiques sur le serveur.</p><p id="eae39582-ffc2-4987-92e1-894f4da4c346" class="">Il est important de noter que la configuration de la prison SSH peut être complexe et nécessite une connaissance approfondie de la sécurité des systèmes informatiques. Il est recommandé de suivre un guide détaillé pour configurer la prison SSH correctement.</p><h3 id="835eb4df-da21-4c3a-bf50-1fa79b7b7c0f" class="">Backups</h3><p id="276bc452-3f6e-4743-9f6d-a3155fe03fe8" class="">Les backups sur un serveur target iSCSI depuis un Linux peuvent être effectués à l&#x27;aide d&#x27;un outil de backup tel que <code>rsync</code>.</p><p id="77a043ab-7901-407d-a7b0-03b95d63eedb" class="">Pour effectuer des backups avec <code>rsync</code>, il faut tout d&#x27;abord monter le disque iSCSI comme un disque local. Cela peut être fait en utilisant l&#x27;outil <code>iscsiadm</code> qui est inclus dans la plupart des distributions de Linux.</p><p id="0439127a-a2ee-4aee-842a-cc61242ffbfc" class="">Une fois que le disque iSCSI est monté, il est possible d&#x27;utiliser <code>rsync</code> pour copier les données de la source vers le disque iSCSI. Il est recommandé d&#x27;utiliser l&#x27;option <code>-a</code> pour copier les fichiers avec les mêmes permissions, propriétaires et dates de modification, ainsi que l&#x27;option <code>-v</code> pour afficher les fichiers qui sont copiés.</p><p id="2d47416b-f97e-450e-8a7b-d490bb10f28a" class="">La commande <code>rsync</code> peut être exécutée à partir d&#x27;un script qui est exécuté à une heure précise, ou elle peut être exécutée à l&#x27;aide d&#x27;une tâche cron pour automatiser les backups.</p><p id="540ebe01-0d6c-4ca0-9a0e-145484cc2f62" class="">Il est important de noter que les backups doivent être effectués régulièrement pour garantir la sécurité des données. Il est également recommandé de tester régulièrement les backups pour s&#x27;assurer qu&#x27;ils peuvent être restaurés en cas de besoin.</p><h2 id="21a7e70f-4a18-4951-81fd-d5f22783832a" class="">Configuration du DNS BIND9</h2><h3 id="382f28bd-315c-4462-9f8b-4bcde409d5b1" class="">Configuration du serveur DNS BIND9</h3><p id="bbb6085a-4538-4706-8bf1-84f6e92d9d17" class="">Le serveur DNS BIND9 est utilisé pour gérer la résolution de noms de domaine pour les clients sur le réseau interne et externe de l&#x27;infrastructure HomeLab. Le serveur DNS permet de traduire les noms de domaine en adresses IP, ce qui permet aux clients d&#x27;accéder aux services et aux sites web sur Internet.</p><p id="902797ec-a21d-42bf-9206-b724ff6c608f" class="">La configuration du serveur DNS BIND9 implique la création de zones de recherche directes et inverses pour les noms de domaine. Les zones de recherche directe sont utilisées pour traduire les noms de domaine en adresses IP, tandis que les zones de recherche inverses sont utilisées pour traduire les adresses IP en noms de domaine.</p><p id="82ff003e-deb8-4fe3-9ec5-3f92ed57c3a0" class="">La configuration du serveur DNS BIND9 est effectuée à l&#x27;aide du fichier de configuration <code>named.conf</code>. Ce fichier de configuration contient les paramètres de configuration pour les zones de recherche directe et inverses, les serveurs de noms autoritaires, les enregistrements DNS, etc.</p><p id="0a4b064c-ec1d-43fc-b4d6-1f5dc75712b9" class="">Il est important de noter que la configuration du serveur DNS BIND9 peut être complexe et nécessite une connaissance approfondie de la résolution de noms de domaine et de la configuration de DNS. Il est recommandé de suivre un guide détaillé pour configurer le serveur DNS BIND9 correctement.</p><p id="b6b625fa-fe40-446c-a5e6-fa278e739486" class="">Une fois que le serveur DNS BIND9 est configuré, il doit être configuré sur les clients pour qu&#x27;ils puissent utiliser le serveur DNS pour la résolution de noms de domaine. Les clients peuvent être configurés manuellement en modifiant les paramètres de configuration du réseau, ou ils peuvent être configurés automatiquement à l&#x27;aide de DHCP.</p><p id="ac65e7c7-f9fe-4556-86ea-50ea501e0dea" class="">Il est important de noter que la configuration du serveur DNS BIND9 doit être régulièrement mise à jour pour garantir la sécurité et la disponibilité du système. Les mises à jour de sécurité doivent être installées dès que possible pour éviter les vulnérabilités de sécurité.</p><figure id="a5053618-afec-4b08-a590-babde06a596c" class="image"><a href="E4-Mission1-HomeLab-Baptiste-Grimaldi%2053da6646a8614907a436b4249af64567/Untitled.png"><img style="width:576px" src="E4-Mission1-HomeLab-Baptiste-Grimaldi%2053da6646a8614907a436b4249af64567/Untitled.png"/></a></figure><h2 id="01fd836a-ec7d-45cd-8d55-ed5babd38f15" class="">Configuration du serveur HomeBridge</h2><p id="c076e516-c987-43e1-8695-178e0fd10083" class="">Le serveur HomeBridge est utilisé pour transformer ma maison connectée sous FlexHom en maison HomeKit. HomeBridge est une plate-forme open source qui permet de connecter des appareils non compatibles HomeKit à HomeKit. Le serveur est configuré pour contrôler les lumières, les volets, les thermostats et autres appareils que j’ajoute.</p><h2 id="573c6408-e7ce-40a3-88fa-aefc3de9f36d" class="">Configuration du serveur OctoPrint</h2><p id="7df1a779-8523-4671-ad0f-f9b3840de6af" class="">Le serveur OctoPrint est utilisé pour contrôler une imprimante 3D. Il permet de visualiser les modèles 3D, de les préparer pour l&#x27;impression et de contrôler l&#x27;imprimante 3D à distance. Le serveur est configuré pour fonctionner avec une imprimante 3D Creality Ender 3.</p><h2 id="694a5072-985f-4e3e-b675-27f9eb01a250" class="">Configuration du serveur de cloud gaming</h2><h3 id="5a5d147a-ec10-489b-ad6f-84ebd753a74e" class="">Architecture</h3><ul id="833dcdeb-e0ed-45cb-8b66-facbf019dada" class="bulleted-list"><li style="list-style-type:disc">Laptop configuré pour du jeu<ul id="03900457-d878-446e-a0ab-8e5aedca822e" class="bulleted-list"><li style="list-style-type:circle">GeForce® GTX 1070 with 8GB GDDR5</li></ul><ul id="33dffab1-f4d6-4537-be8d-dd0f15316acd" class="bulleted-list"><li style="list-style-type:circle">32GB de RAM</li></ul><ul id="7e089652-7c71-4f0e-99d7-c1fb0a8f2541" class="bulleted-list"><li style="list-style-type:circle">SSD &amp; HDD</li></ul><ul id="29449e98-ce90-460f-a06d-cea42c63a915" class="bulleted-list"><li style="list-style-type:circle">LAN NIC Gigabit</li></ul><ul id="43e509a6-ee19-45af-a911-2379bf72ffb5" class="bulleted-list"><li style="list-style-type:circle">Windows spectre</li></ul></li></ul><ul id="4c1bf0ff-3466-49f4-8fb7-7d0bf3a5a607" class="bulleted-list"><li style="list-style-type:disc">Nvidia Geforce Shield Server / Sunshine</li></ul><ul id="f25f467d-1950-4771-900b-f64c607ed89a" class="bulleted-list"><li style="list-style-type:disc">Moonlight client</li></ul><p id="06fe1abd-8739-45ba-90a7-e30440349c81" class="">Windows Spectre est une version personnalisée de Windows 10 conçue pour les gamers. Elle est optimisée pour les performances de jeu et inclut des fonctionnalités telles que l&#x27;installation de pilotes graphiques automatique et la désactivation des services inutiles pour améliorer les performances. Windows Spectre est également équipé de logiciels de monitoring pour surveiller les performances du système et détecter les problèmes de compatibilité avec les jeux.</p><p id="5b24daef-6ed2-4c10-a286-f4f6f0d4c8aa" class="">Windows spectre est un windows très léger sans tout les logiciels par défaut de windows.</p><p id="a8e32e40-a8fa-45e9-9605-5c144d8afb65" class="">Au démarrage de l’ordinateur, une session utilisateur secondaire est automatiquement lancée sans mot de passe. Cette session démarre automatiquement un serveur de connexion distante spécialisé dans la rapidité et la fluidité: <strong>Nvidia Geforce Shield</strong> Server.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="4c4772a2-b41b-4111-9c7b-4bcdb0ad4278"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Nvidia Geforce Shield serveur est un ancien programme de Geforce qui, en achetant le “nvidia shield”, une sorte de chrome cast du gaming, permettait de se connecter à distance dans le même lan, ou pas, a un pc.</div></figure><p id="ef2f94e6-de5a-4f32-8f12-9245457fdf4a" class="">Nvidia révolutionne le marché en offrant un nouveau protocole propriétaire ultra rapide. Plus tard un groupe de développeurs de la communauté open-source programment un client lourd qui offre la même chose: “<strong>sunshine”</strong>.
+Côté client, “<strong>moonlight</strong>” apparaît, un client capable de faire pareil que le shield mais en temps que client lourd sur n’importe quelle machine.</p><h2 id="03966d0c-db3c-4a41-ae88-2f0eab681111" class="">Haute disponibilité</h2><p id="bbb67b11-7676-46f8-a280-6bc81fdd00a5" class="">Un système de haute disponibilité est un système qui vise à garantir un haut niveau de disponibilité et de continuité de service pour une application ou un service en cas de panne ou de défaillance d&#x27;un composant.</p><p id="7e062131-d46e-42be-9654-68eaa6eb7e57" class="">Dans le cas d&#x27;un système de haute disponibilité pour un site web, par exemple, on peut mettre en place un système de dns-failover. Cela consiste à avoir un script qui vérifie en permanence si le serveur primaire est disponible. Si ce n&#x27;est pas le cas, le script change automatiquement les enregistrements DNS de la zone OVH pour pointer vers un serveur de secours.</p><p id="a0e8878b-a740-4b03-bcf3-38d69d6567d3" class="">Pour mettre en place un tel système, il faut tout d&#x27;abord disposer d&#x27;un serveur de secours qui est configuré pour prendre le relais en cas de défaillance du serveur primaire. Ensuite, il faut écrire un script qui vérifie régulièrement si le serveur primaire est disponible. Si le serveur est disponible, le script ne fait rien. Si le serveur est indisponible, le script utilise l&#x27;API de OVH pour changer les enregistrements DNS de la zone OVH afin de pointer vers le serveur de secours.</p><p id="6ac28fe0-bf58-406e-a706-63b500e0d3f6" class="">Il est important de noter que la mise en place d&#x27;un système de haute disponibilité peut être complexe et nécessite une connaissance approfondie de la sécurité des systèmes informatiques. Il est recommandé de suivre un guide détaillé pour configurer un tel système correctement.</p><h1 id="e6e190e3-7bc6-4217-8d57-a6aadc650592" class="">Point Environnemental</h1><hr id="488c1c78-be7c-418e-9a5f-d12c7a953a6d"/><h2 id="dc5f3d81-d167-4f20-b126-5a853509c286" class="">Impact du numérique sur l&#x27;environnement</h2><p id="75cf1542-472c-4d7d-b462-f168c4e001b6" class="">Le numérique a un impact significatif sur l&#x27;environnement, il représente 4% des émissions totales de gaz à effet de serre. Les centres de données, qui stockent et traitent une grande quantité de données, consomment énormément d&#x27;énergie. Selon une étude menée par l&#x27;Agence Internationale de l&#x27;Énergie, la consommation électrique des centres de données a augmenté de 6 % en 2020, ce qui équivaut à la consommation totale d&#x27;énergie de l&#x27;Espagne. De plus, la production de matériel informatique nécessite l&#x27;extraction de matières premières et la production de déchets électroniques. En 2019, environ 54 millions de tonnes de déchets électroniques ont été générées dans le monde selon l&#x27;Organisation des Nations unies. Il est donc important de prendre en compte cet impact environnemental lors de la conception et de l&#x27;utilisation de technologies numériques.</p><h2 id="d7565576-c246-42a0-aa3a-aacfc86ecb0d" class="">Avancée du numérique responsable</h2><p id="b6f147a4-edec-4dec-87a6-29a79c7b5802" class="">L&#x27;avancement numérique du travail est un mouvement important qui cherche à intégrer le travail social et environnemental avec le développement et l&#x27;utilisation des technologies numériques. Les technologies numériques ont un impact croissant sur notre société, et il est nécessaire de prendre les mesures nécessaires pour réduire leurs effets négatifs.</p><ul id="0a27d598-4825-4362-a309-0780f1376fa9" class="bulleted-list"><li style="list-style-type:disc">Selon une étude des Nations Unies, la génération de déchets électroniques dans le monde a atteint 53,6 millions de tonnes en 2019. Ce nombre devrait atteindre 74,7 millions de tonnes en 2030. Cela représente une croissance de 21 % en seulement 5 ans. De plus, selon une étude de la Commission européenne, on s&#x27;attend à ce que les émissions de gaz à effet de serre de l&#x27;industrie des technologies de l&#x27;information et de la communication (TIC) doublent d&#x27;ici 2025.</li></ul><ul id="e639ad66-b127-4337-82b5-4db7a62e68a0" class="bulleted-list"><li style="list-style-type:disc">Ces chiffres montrent la rapidité d&#x27;adoption des pratiques numériques importantes. De nombreuses entreprises ont déjà commencé à prendre des mesures pour soutenir la technologie qui a un rôle. <em>Par exemple, Apple s&#x27;efforce de n&#x27;utiliser que des matériaux recyclés pour ses produits, et Google utilise des énergies renouvelables pour alimenter ses centres de données.</em></li></ul><p id="30e0131b-93ed-497a-8062-a5c0cddf01cd" class="">Les gouvernements et les organisations internationales jouent également un rôle important dans la promotion des technologies nécessaires. L&#x27;Union européenne a lancé une stratégie numérique qui met l&#x27;accent sur la promotion des technologies numériques, et les Nations unies ont lancé un programme intitulé &quot;Action pour le climat et technologies numériques&quot;, qui vise à réduire l&#x27;impact environnemental de la technologie.</p><h2 id="f454aaa4-9470-444c-94f4-9ddf42c8aed9" class="">Implication personnelle dans la conception de l&#x27;infrastructure</h2><p id="2371a3e3-b28f-49bb-809e-4f929e4ae7dc" class="">C’est donc avec ces notion environnementales que j’ai créer mon infrastructure. Mes serveurs sont des laptops basse consommation avec une carte mère modifié pour en prendre que les composants réellement utiles pour le serveur et pour le debug.</p><p id="56e48441-c2d2-4d27-86ed-552200fd1f80" class="">C’est également dans cette implication que j’utilise docker. Docker est bien moins gourmand en ressources en que d’autres technologies d’isolation de systèmes.</p><p id="3777db48-b6a8-4297-8ef2-56ddc00c7d88" class="">Mes serveurs minimes sont sur des raspberry pi zero WH 2. Les serveurs minimes dans l&#x27;infrastructure sont sur des Raspberry Pi Zero WH 2, une version légère du célèbre Raspberry Pi. Ils sont très peu gourmands en énergie et sont donc économiques et écologiques. Ils sont également pratiques pour des tâches simples telles que la surveillance des systèmes. Il peuvent tourner sur une paire de pile, c’est impressionnant</p><h1 id="13264ef2-edaa-4a5e-b871-3a2c8aa0256e" class="">Monitoring</h1><hr id="82d33bd9-3bb3-44d9-8442-49fd06e8c165"/><h2 id="ed84f436-3132-482e-ba70-11d0138b9e99" class="">Uptime Robot</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="bd8bff33-b039-40b0-8c18-4bbb2138007b"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Le monitoring est une pratique importante pour garantir la disponibilité et la performance des systèmes informatiques. Uptime Robot est un service de surveillance de site web qui permet de surveiller la disponibilité des sites web et des services. Le service envoie des alertes par e-mail ou SMS en cas de défaillance ou d&#x27;interruption.</div></figure><p id="1237dce7-9d4c-4a16-b3b4-89c6c20a01de" class="">Uptime Robot est un service de surveillance de site web qui permet de surveiller la disponibilité des sites web et des services. Le service envoie des alertes par e-mail ou SMS en cas de défaillance ou d&#x27;interruption. Il est un outil essentiel pour la surveillance de l&#x27;infrastructure HomeLab.</p><p id="382b1768-9f5a-44ea-b68e-3ca4359eafa9" class="">Grâce à Uptime Robot, il est possible de surveiller la disponibilité des serveurs et des applications en temps réel. En cas de défaillance, le service envoie une alerte immédiate par e-mail ou SMS, permettant de réagir rapidement et de minimiser les temps d&#x27;arrêt. Uptime Robot est configuré pour surveiller tous les services de l&#x27;infrastructure HomeLab, y compris les serveurs web, les serveurs de bases de données, les serveurs de messagerie, les serveurs de fichiers, etc.</p><p id="bea252ab-3bab-40c5-867a-15f4052f4ed9" class="">Uptime Robot est également configuré pour surveiller les temps de réponse des serveurs et des applications. Cette fonctionnalité permet de détecter rapidement les problèmes de performance et de réagir avant qu&#x27;ils n&#x27;affectent l&#x27;expérience utilisateur.</p><p id="7f5c2667-7f42-4931-950d-f080e3ddcbdd" class="">Enfin, Uptime Robot fournit des rapports de disponibilité et de performance détaillés pour chaque service surveillé. Ces rapports permettent de suivre les tendances de disponibilité et de performance sur une période donnée, ce qui est utile pour identifier les problèmes récurrents et les tendances à long terme.</p><h2 id="b8e7ec67-7fbd-4f8b-a931-3ca1ca216577" class="">NetData Cloud &amp; mails</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="b5f989be-5fe8-48f0-9ce4-7f3ba08e3da0"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">NetData est un outil de surveillance des systèmes qui fournit des informations en temps réel sur les performances du système, les statistiques de trafic réseau, la charge du processeur et de la mémoire, etc. NetData m&#x27;aide à surveiller l&#x27;utilisation des ressources sur mes serveurs et à détecter les problèmes de performance avant qu&#x27;ils ne deviennent critiques.</div></figure><p id="959072e6-36f5-417b-a4d5-cd42cd6a99b5" class="">NetData est également capable de générer des alertes en cas de dépassement de seuils de performance. Ces alertes peuvent être envoyées par e-mail ou par SMS, ce qui me permet de réagir rapidement en cas de problème.</p><p id="3bcb35fa-0183-4fd5-b325-147c12027cbc" class="">En utilisant NetData Cloud, je peux surveiller mes serveurs à distance depuis n&#x27;importe quel appareil. Les données de surveillance sont stockées dans le cloud, ce qui me permet de les consulter en temps réel, même lorsque je suis en déplacement.</p><p id="7228c12c-0cb4-4d1e-983e-36a730ebe3bd" class="">En outre, NetData Cloud fournit des fonctionnalités de suivi des versions et de gestion des mises à jour, ce qui facilite la maintenance de mes serveurs. Je peux être sûr que mes serveurs sont toujours à jour et sécurisés grâce à NetData Cloud.</p><p id="6a58da4d-90b0-486d-b3fc-38a5ebdad4b0" class="">En somme, NetData est un outil de surveillance essentiel pour tout propriétaire de serveur. Il permet de surveiller les performances en temps réel, de détecter les problèmes de performance et de les résoudre rapidement. Grâce à NetData Cloud, je peux surveiller mes serveurs à distance et être sûr qu&#x27;ils sont toujours à jour et sécurisés.</p><h2 id="25c19329-fec8-4512-b786-7dd90164a6d1" class="">Traefik &amp; ssl</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f7a22e1a-e5da-4bf6-84df-82ea88104d3a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Traefik peut surveiller les certificats SSL pour les sites Web en utilisant la propriété <code>tls.certResolver</code> dans le fichier de configuration Traefik. Cette propriété permet de configurer un résolveur de certificats SSL qui peut être utilisé pour surveiller les certificats SSL pour les sites Web.</div></figure><p id="56f05696-a73a-4ac8-a474-d4ebd31edd8b" class="">Pour utiliser cette fonctionnalité, vous devez d&#x27;abord configurer un résolveur de certificats SSL dans le fichier de configuration Traefik. Le résolveur de certificats SSL peut être configuré pour utiliser un fournisseur de certificats SSL tiers, tel que Let&#x27;s Encrypt, ou pour utiliser des certificats SSL auto-signés.</p><p id="9f84736a-1f9e-434a-a6f4-85fea3332351" class="">Une fois que le résolveur de certificats SSL est configuré, vous pouvez l&#x27;utiliser pour surveiller les certificats SSL pour les sites Web en utilisant la propriété <code>tls.certResolver</code> dans le fichier de configuration Traefik. Cette propriété spécifie le nom du résolveur de certificats SSL à utiliser pour le site Web.</p><p id="f7d1b537-9ea7-469c-854a-d5903ba5687e" class="">Si le certificat SSL pour un site Web expire ou devient invalide, Traefik peut automatiquement renouveler le certificat SSL en utilisant le résolveur de certificats SSL configuré. Traefik peut également envoyer des alertes par e-mail pour informer l&#x27;administrateur système en cas de problème avec un certificat SSL.</p><p id="604d9be7-4d85-405f-99cd-ab2ef5fcdc70" class="">Il est important de configurer correctement la surveillance des certificats SSL pour garantir la sécurité des sites Web. Les certificats SSL expirés ou invalides peuvent rendre les sites Web vulnérables aux attaques de sécurité. Il est donc recommandé de suivre les bonnes pratiques de sécurité pour surveiller les certificats SSL de manière appropriée.</p><h1 id="d53d48fa-d895-4dce-9dee-ac53c9ef06c8" class="">Conclusion</h1><hr id="ef1754ed-12f3-4142-a544-27cdc8fb406d"/><h2 id="b183789a-9ef3-405c-b5b1-20d6a356d30d" class="">Résumé de la mission</h2><p id="ee766d59-8641-4afd-9b5b-f2d1152a26cb" class="">Cette mission consiste en la définition, la fabrication, l’installation ainsi que la configuration d’un système et d’un réseau de type entreprise dans ma maison. Ce système est capable de s’adapter à mes besoins et saura grandir avec mes besoins.</p><h2 id="ba2e94e7-b6fd-416d-9379-edd6ff2aa357" class="">Bilan et perspectives d&#x27;avenir</h2><p id="24548d50-eb69-4b81-9fc2-d9294d9d99da" class="">Le bilan de cette mission est très positif. L&#x27;infrastructure mise en place est efficace, économique et écologique, tout en répondant aux besoins de l&#x27;utilisateur. Les choix de technologies ont été faits en tenant compte de l&#x27;impact environnemental et de la sécurité des systèmes informatiques.</p><p id="88a3137f-ad07-4d7e-b5a6-70fcecde94a2" class="">Pour l&#x27;avenir, il est recommandé de suivre les bonnes pratiques de sécurité pour maintenir la sécurité et la disponibilité du système. Il est également important de continuer à surveiller l&#x27;impact environnemental du système et de prendre les mesures nécessaires pour réduire cet impact. Enfin, il est recommandé de continuer à suivre les tendances et les développements dans le domaine des technologies numériques pour s&#x27;assurer que l&#x27;infrastructure reste à la pointe de la technologie.</p><p id="68e02b5b-5e0c-4cc7-810a-870aac2c4143" class="">Je souhaite améliorer beaucoup de choses et ne prétend en aucuns cas mon système comme infaillible.</p><p id="b3a75088-d2ea-42a3-b607-3eff517ab9b6" class="">Enfin, il est important de suivre les tendances et les développements dans le domaine de la haute disponibilité pour garantir la disponibilité continue du système en cas de panne ou de défaillance d&#x27;un composant. Les solutions de haute disponibilité telles que le DNS failover peuvent aider à garantir la continuité de service en cas de panne.</p><p id="f008a042-4814-46ed-9565-a18936aace16" class="">Il est important de noter que la sécurité et la disponibilité des systèmes informatiques sont des préoccupations importantes pour toute organisation. Il est recommandé de suivre les bonnes pratiques de sécurité et de surveiller régulièrement l&#x27;infrastructure pour détecter les anomalies ou les vulnérabilités de sécurité.</p><p id="1c491c17-9cf5-4add-b18b-970cecee8b7f" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="6a223d50-28c2-4cec-bb06-8e2f80bc7f19"><div style="font-size:1.5em"><span class="icon">👉</span></div><div style="width:100%">Cette documentation est la propriété intellectuelle de Grimaldi Baptiste. 
+<a href="https://portfolio.baptistegrimaldi.info/legal"><mark class="highlight-red_background"><span style="border-bottom:0.05em solid">portfolio.baptistegrimaldi.info/legal</span></mark></a></div></figure></div></article></body></html>

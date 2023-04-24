@@ -1,0 +1,690 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>E4-Mission2-Docker-Scripts-Serveurs-Baptiste-Grimaldi</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="365894ff-aa03-455a-a6aa-b13c65eb6589" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🐳</span></div><h1 class="page-title">E4-Mission2-Docker-Scripts-Serveurs-Baptiste-Grimaldi</h1></header><div class="page-body"><h1 id="7c9175fe-3c54-4d3d-8c50-ad58082f60e0" class="">Liens utiles:</h1><figure id="8c8a0d59-2b9d-455f-82f0-57631a2a12e9"><a href="https://portfolio.baptistegrimaldi.info/projects/view/serveurs-docker" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Article Serveurs Docker</div><div class="bookmark-description">Check out the portfolio of Baptiste Grimaldi, a full-stack web developer specializing in creating dynamic and responsive websites. Explore his projects and contact him for your next web development project.</div></div><div class="bookmark-href"><img src="https://portfolio.baptistegrimaldi.info/apple-touch-icon.png" class="icon bookmark-icon"/>https://portfolio.baptistegrimaldi.info/projects/view/serveurs-docker</div></div></a><figcaption>Article de mon portfolio</figcaption></figure><hr id="5dd4f115-5223-4062-a351-4cee89f4018b"/><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="0dcc48a2-5267-4da7-bef3-e5c3eb2a06c7"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">SOMMAIRE<nav id="7ec5bb6b-838a-49e3-bb84-1ccc593c2bb6" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7c9175fe-3c54-4d3d-8c50-ad58082f60e0">Liens utiles:</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#499e7089-75b8-4030-88b0-61dd1ac2aa52">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#695f087f-32d8-4619-8879-151c6ab04138">But de la documentation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#90863874-960a-4a74-93b1-812473d9f31a">Scripts Docker</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7f67594d-8684-49c5-82bc-498d6b975426">Cahier des charges</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b6d50289-67ba-4d03-9aa3-1808d0267033">Objectifs</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#988a1090-2d30-4d94-b209-281fb5eaab76">Exigences</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ac0b1cae-a9b5-417d-9cd4-ac688dca2968">Environnements</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5ccb1d9b-e4f2-4f45-96d1-9a98b7b6ab74">Présentation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#db6a51c5-dd63-4002-b909-632d0ef4e0a7">Sécurité</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b02d3e12-ffc4-4d58-95d2-bb11c1004748">Les automatisations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3aa99bf1-d238-421a-ac3f-219ce6a832f7">Définition des machines</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#46b641df-ec01-46ed-a90f-58e9c2c211c9">Définition des concepts de l’infrastructure logique</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3c6c9d01-8594-4d91-829f-e7e78e938e08">Mise en commun des machines</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2787e35e-577e-4b98-a46c-200a48519a3e">Persistance des données</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f4e8a1a9-54d0-4792-a293-da0df745e6c7">Les réseaux docker</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#51e4ba38-8396-467c-bb59-c9204e09194d">Taefik | reverse proxy</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a3e40ae2-4a04-4192-991c-8d1e00c3d11d">Taefik | reverse proxy</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e73ff905-9e4e-42d7-9b4e-fffbe9861a44">Les CPU sur docker</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2bd96a61-2f01-4ccb-aa24-12ec443952bf">Sécurité des machines</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7bd79db9-017b-4bf9-9bd7-e927594f0d45">Les réseaux docker pour la sécurité</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b10996d0-342a-4d6d-be15-4b6784deb3e2">Les réseaux docker pour la sécurité</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9c3ee380-6afd-46dc-a3e1-9676cc506c3e">Les certificats SSL</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#925ca335-f122-46ef-b264-7fd5f9906ea0">Les outils à ma dispositions</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2c1037df-4624-4d43-a6b8-58adef1f93dc">Groupmng</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#086715fe-2cea-4f3a-847c-cdaf411bacb8">Docker-compose-all-up.sh</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1fe54050-62e3-4b08-9ed5-cd6a099e637a">backup.sh</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#65b17df0-d9c2-4320-ba9c-f0f9613822d4">sftp users</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#76040ea9-0b17-4198-9709-7323ca4adaed">Méthodologie</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#18df8551-5f5f-4d7d-b488-05136329dc40">Mise en place</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3877066e-e4ed-4069-b007-9727e05d36e3">Tests</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c11b6516-f5d0-4353-920d-b25488dd1045">Mise en œuvre</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6c4109f4-2eec-4854-a0ff-d6ecaeddf04d">Scripts Docker</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#96962c5c-971d-402c-a32f-3f2c4bb7db04">Sécurité</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8d70e400-7f75-4a82-ae0c-a8bf62e4d35b">Monitoring</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a498a75c-72c9-4ba6-a3d9-c302b805bf97">Solutions</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3c9d2c20-50cf-41d5-9a60-1ed517e20160">Alertes de performance</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1f96a44c-0408-4d4c-8978-61d3cdeb8f5b">Les tests de sécurité</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e9416b0e-17c9-485b-a38a-f35caa50acd4">Gestion des mises à jour</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4d39c119-ea37-48c9-843e-317dd08373dc">Conclusion</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#27c5fe89-df4d-452e-acf5-41250f8de8d6">Points clés</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#64f8cd37-4163-445c-8f8b-079562d1d308">Importance</a></div></nav></div></figure><h1 id="499e7089-75b8-4030-88b0-61dd1ac2aa52" class="">Introduction</h1><h2 id="695f087f-32d8-4619-8879-151c6ab04138" class="">But de la documentation</h2><p id="88d0611d-6042-4386-a837-0427c5bb29d2" class="">Le but de cette documentation est de fournir des instructions pour la mise en place de scripts Docker pour des serveurs.</p><p id="5f7edb06-0795-43ef-99d0-58169a9f7196" class=""><em>Les scripts Docker sont des outils essentiels pour la création et la gestion de conteneurs Docker. Ils permettent de déployer des applications dans des environnements de production de manière rapide et efficace.</em></p><p id="773ddb2c-38a4-4502-ace2-13cf8afea4c0" class="">Dans cette documentation, nous allons décrire les objectifs et les exigences du projet, les environnements dans lesquels les scripts Docker seront utilisés, ainsi que la méthode de mise en place et de tests. Nous aborderons également la sécurité et le monitoring pour garantir un fonctionnement optimal des serveurs. Enfin, nous conclurons en soulignant les points clés et l&#x27;importance de ces scripts Docker dans la gestion de serveurs.</p><h2 id="90863874-960a-4a74-93b1-812473d9f31a" class="">Scripts Docker</h2><p id="9a0a6421-e44c-446c-b808-1980d9c5e790" class="">Les scripts Docker sont des outils essentiels pour la création et la gestion de conteneurs Docker. Ils permettent de déployer des applications dans des environnements de production de manière rapide et efficace.</p><p id="30f7b998-31ae-44ca-ae33-a7d23f844128" class="">Les scripts Docker sont écrits en utilisant un langage de script comme Bash ou Python. Ils peuvent être utilisés pour automatiser des tâches courantes telles que la création de conteneurs, le déploiement d&#x27;applications et la configuration de serveurs. Les scripts Docker peuvent également être utilisés pour la gestion de versions, la sauvegarde et la restauration de données, et la surveillance des performances.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="bba7787b-6147-4e0c-b098-68780497ff37"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Les scripts Docker sont donc un outil essentiel pour tout administrateur de serveur qui souhaite déployer des applications dans des environnements de production de manière rapide et efficace. Ils permettent également de garantir la sécurité et le monitoring des serveurs pour un fonctionnement optimal.</div></figure><p id="69516a11-ced8-4cbb-b5a1-9c0adc02e7f7" class="">Dans le cas de cette mission, donc distinguerons deux types de scripts:</p><ul id="4690ae15-c212-4197-b8d3-54a306eb9963" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red_background">Les YAMLS</mark><ul id="402bac76-b549-44f7-82cf-0f8b1a9790cc" class="bulleted-list"><li style="list-style-type:circle">Ici, les YAMLS sont utilisé pour <strong>docker compose</strong>.</li></ul></li></ul><ul id="64b47c13-1fc8-4672-94f7-ae58b85f0841" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red_background">Les Bash / Python</mark><ul id="b2063891-07a8-4a5a-8de1-05df1a56a5f2" class="bulleted-list"><li style="list-style-type:circle">Les scripts pour mettre un <strong>environnement</strong> autour des <strong>conteneurs</strong>.</li></ul></li></ul><p id="2312e0c8-faa4-48ed-a46c-28ea8b5bd3c6" class="">
+</p><p id="8a4a6d05-1bb0-4a1d-bdd0-10c3fe0560de" class="">
+</p><figure id="8d0e8312-4717-4e45-b89d-1fe4b08257cd" class="image"><a href="E4-Mission2-Docker-Scripts-Serveurs-Baptiste-Grima%20365894ffaa03455aa6aab13c65eb6589/Untitled.png"><img style="width:681px" src="E4-Mission2-Docker-Scripts-Serveurs-Baptiste-Grima%20365894ffaa03455aa6aab13c65eb6589/Untitled.png"/></a><figcaption>courte explication de docker-compose</figcaption></figure><p id="fe0b7abd-1d2a-4f10-8fe5-a8dd42b68588" class="">
+</p><h1 id="7f67594d-8684-49c5-82bc-498d6b975426" class="">Cahier des charges</h1><h2 id="b6d50289-67ba-4d03-9aa3-1808d0267033" class="">Objectifs</h2><p id="ce0bfdec-9ff0-479a-9454-681d8502473d" class="">L&#x27;objectif principal de ce projet est de mettre en place des scripts Docker pour faciliter la création et la gestion de conteneurs Docker sur les serveurs. Les scripts doivent être capables de déployer des applications dans des environnements de production de manière rapide et efficace, tout en rajoutant une couche de sécurité.</p><p id="c43c465a-54af-4a56-a885-21d7d4e4c6dd" class="">Les objectifs spécifiques comprennent la mise en place de scripts YAML pour Docker Compose et de scripts Bash/Python pour la création d&#x27;environnements autour des conteneurs et de leurs utilisateurs. La méthodologie doit inclure des étapes pour la mise en place des scripts, les tests et la mise en œuvre dans des environnements de semi-production.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c75b699c-ba8d-4c7a-a8d1-35d58b27fbc1"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">On parle ici de semi-production car les scripts restent en interne.</div></figure><h2 id="988a1090-2d30-4d94-b209-281fb5eaab76" class="">Exigences</h2><p id="93a21332-6793-41eb-b0b6-ff09db1797c1" class="">Les scripts Docker doivent être compatibles avec les dernières versions de Docker et doivent pouvoir être déployés sur différents systèmes d&#x27;exploitation. Ils doivent également être facilement modifiables pour permettre l&#x27;ajout de nouvelles fonctionnalités. Les scripts doivent avoir une documentation claire et complète pour faciliter leur utilisation et leur maintenance.</p><p id="ac6e81c0-f152-41d5-8199-594b3f4f8759" class="">C’est dans cette optique que les scripts sont écrits en bash principalement car ne nécessitant pas de pré-installation sur tout les os:</p><p id="77f50989-b0e4-4730-b924-f4094ea06d3c" class=""><mark class="highlight-red_background">MacOS</mark>: Basé unix donc exécute les fichiers bash nativement.</p><p id="f2f771d2-ed82-44f6-b816-905357b3687f" class=""><mark class="highlight-red_background">Windows</mark>:
+Les scripts bash peuvent être exécutés sur Windows à l&#x27;aide d&#x27;un émulateur de terminal, comme Git Bash ou Cygwin. Ces émulateurs fournissent un environnement Unix-like qui permet d&#x27;exécuter des scripts bash. <em>Mais aujourd’hui windows tant vers le linux pour ses commandes hors powershell et sera donc considéré comme compatible pour les tâches les plus simples.</em></p><p id="a249aa07-ee39-442f-be23-ef69bc052695" class=""><mark class="highlight-red_background">Linux</mark>: Natif</p><h1 id="ac0b1cae-a9b5-417d-9cd4-ac688dca2968" class="">Environnements</h1><h2 id="5ccb1d9b-e4f2-4f45-96d1-9a98b7b6ab74" class="">Présentation</h2><p id="eb29c7cd-5eb9-4189-8ff5-92d19b1d0722" class="">L&#x27;environnement est un <strong>Linux Ubuntu Server LTS 22.</strong></p><p id="90c86cbc-ddee-407a-8a83-fc8260bd5e7e" class="">Ubuntu Server est une distribution Linux populaire pour les serveurs. Elle est utilisée pour les applications web, les bases de données, les fichiers, la virtualisation et plus encore. Ubuntu Server est un système d&#x27;exploitation léger qui peut être installé sur des machines virtuelles, des serveurs dédiés ou des serveurs cloud.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f72f8914-79fc-4ff6-b34c-85dde3096a77"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Ubuntu Server 22.04 LTS est la dernière version de cette distribution. Elle est conçue pour la stabilité et la sécurité à long terme. Elle bénéficie d&#x27;un support de 5 ans pour les mises à jour de sécurité et les correctifs.</div></figure><p id="5132b4af-c1a4-4ab7-a1e7-8b292345556f" class="">En ce qui concerne les outils pré-installés, Ubuntu Server 22.04 LTS offre une grande variété d&#x27;outils et de logiciels pour les serveurs, y compris Docker.</p><h2 id="db6a51c5-dd63-4002-b909-632d0ef4e0a7" class="">Sécurité</h2><p id="9b6a6ff0-4e34-492d-b921-7515200f2f94" class=""><em>Notons qu&#x27;Ubuntu Server dispose d&#x27;un ensemble de protections de réseau et de systèmes bien configurés par défaut. En outre, Ubuntu Server est compatible avec une grande variété d&#x27;outils de sécurité tiers, tels que les </em><em><strong>pare-feu</strong></em><em> et les programmes </em><em><strong>anti-virus</strong></em><em>, qui peuvent être facilement intégrés pour offrir une protection encore plus complète.</em></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="15c8711f-ac55-4ec5-86b4-be3df2f50b6a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Il est important de garder à l&#x27;esprit que la sécurité est un processus continu et qu&#x27;il est donc important de mettre à jour régulièrement les scripts Docker pour inclure les dernières mises à jour de sécurité.</div></figure><h1 id="b02d3e12-ffc4-4d58-95d2-bb11c1004748" class="">Les automatisations</h1><h2 id="3aa99bf1-d238-421a-ac3f-219ce6a832f7" class="">Définition des machines</h2><h2 id="46b641df-ec01-46ed-a90f-58e9c2c211c9" class="">Définition des concepts de l’infrastructure logique</h2><p id="e8c41a7d-1538-4d08-9e63-82b28ecdca05" class="">
+</p><table id="bf16be66-5910-4729-9fcf-8de67da46c6e" class="simple-table"><thead class="simple-table-header"><tr id="5b091025-4239-413f-8526-ab5efa234585"><th id="OPv&lt;" class="simple-table-header-color simple-table-header"><strong>Nom</strong></th><th id="w{at" class="simple-table-header-color simple-table-header" style="width:268px"><strong>Description</strong></th><th id="N^Ak" class="simple-table-header-color simple-table-header" style="width:248px"><strong>Utilisation</strong></th></tr></thead><tbody><tr id="a450e146-4a0d-4c04-b096-16fda951467a"><td id="OPv&lt;" class="">groupmng</td><td id="w{at" class="" style="width:268px">Script Python pour la gestion des utilisateurs et des groupes sous forme d&#x27;arbre.</td><td id="N^Ak" class="" style="width:248px">Vérification des groupes actifs.</td></tr><tr id="a0d399be-1581-4f23-acb9-b66e657d66b1"><td id="OPv&lt;" class="">docker compose all up</td><td id="w{at" class="" style="width:268px">Démarre tous les conteneurs vitaux pour mes serveurs.</td><td id="N^Ak" class="" style="width:248px">Est exécuté au démarrage de la machine hôte.</td></tr><tr id="282d4fe2-deb0-46d8-8218-80287ef3b322"><td id="OPv&lt;" class="">docker compose services</td><td id="w{at" class="" style="width:268px">Un “service” docker-compose est une application définie par docker-compose. </td><td id="N^Ak" class="" style="width:248px">Plusieurs services de la même famille sont définies ensembles.</td></tr><tr id="7d198ffb-2f9c-405f-8daa-7444750d4b7a"><td id="OPv&lt;" class="">docker networks</td><td id="w{at" class="" style="width:268px">Un réseau docker permet aux conteneurs Docker de communiquer entre eux et avec d&#x27;autres serveurs, de manière isolée et sécurisée. ✱</td><td id="N^Ak" class="" style="width:248px">Seuls les docker nécessitant de communiquer ensemble sont sur le même réseau.</td></tr><tr id="775a2d7f-f36e-48e8-bae5-dbae8bf6f76a"><td id="OPv&lt;" class="">docker volumes</td><td id="w{at" class="" style="width:268px">Façon de rendre persistant de la donnée sur une machine docker.</td><td id="N^Ak" class="" style="width:248px">Maintenir et backup les configurations des services conteneurs.</td></tr><tr id="2e09e8e9-8f8e-4afe-b015-0fe489d08ae3"><td id="OPv&lt;" class="">docker cpus</td><td id="w{at" class="" style="width:268px">Surveillance et contrôle du status et de l’utilisation des CPU</td><td id="N^Ak" class="" style="width:248px">Surveillance avec netdata et contrôle des performances avec docker stats </td></tr><tr id="2bbfe9a3-3af9-4fc9-87a1-6c502bbda8c5"><td id="OPv&lt;" class="">docker stats</td><td id="w{at" class="" style="width:268px">Affiche les statistiques des conteneurs Docker en cours d&#x27;exécution</td><td id="N^Ak" class="" style="width:248px">Surveillance des performances</td></tr><tr id="74ffb901-f02c-42c3-9291-9402a63d03a0"><td id="OPv&lt;" class="">netdata</td><td id="w{at" class="" style="width:268px">Netdata est un outil de surveillance en temps réel pour Linux et Docker. Il affiche les statistiques de performance et peut alerter en cas de problèmes. Utile pour surveiller les serveurs et les conteneurs.</td><td id="N^Ak" class="" style="width:248px">Surveillance des connexions réseau par “groupe” docker</td></tr><tr id="94449f7c-79ff-41a3-af2d-9e0e2a8efcb8"><td id="OPv&lt;" class="">uptime bot</td><td id="w{at" class="" style="width:268px">Envoie des alertes en cas de panne de service</td><td id="N^Ak" class="" style="width:248px">Surveillance des services</td></tr><tr id="c2c4a2bd-0e61-462b-b58f-f09a5933ecb2"><td id="OPv&lt;" class="">backup</td><td id="w{at" class="" style="width:268px">Script pour sauvegarder les données</td><td id="N^Ak" class="" style="width:248px">Sauvegarde des données</td></tr><tr id="625f6c0f-f260-4b69-a085-3362a6504071"><td id="OPv&lt;" class="">update n upgrade</td><td id="w{at" class="" style="width:268px">Script pour mettre à jour le système d&#x27;exploitation et les paquets</td><td id="N^Ak" class="" style="width:248px">Mise à jour du système</td></tr><tr id="a82ed927-44a9-4c0b-9698-ce3971a308c4"><td id="OPv&lt;" class="">create sftp user</td><td id="w{at" class="" style="width:268px">Script pour créer un utilisateur SFTP et créer et paramétrer son environnement.</td><td id="N^Ak" class="" style="width:248px">Gestion des utilisateurs</td></tr><tr id="ea6d5ad5-00fc-4e71-ab99-e1db3e89d52c"><td id="OPv&lt;" class="">create dns challenge</td><td id="w{at" class="" style="width:268px">Script pour créer un challenge DNS ACME</td><td id="N^Ak" class="" style="width:248px">Gestion des groupements de certificats SSL chez OVH.</td></tr></tbody></table><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="e4999ed4-d64c-4a20-a5a6-b945694d679e"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/star-of-life_gray.svg"/></div><div style="width:100%">Un réseau docker est un réseau virtuel qui permet aux conteneurs Docker de communiquer entre eux et avec d&#x27;autres serveurs, de manière isolée et sécurisée. Il peut être configuré pour permettre l&#x27;accès à Internet ou à des réseaux internes.</div></figure><h2 id="3c6c9d01-8594-4d91-829f-e7e78e938e08" class="">Mise en commun des machines</h2><h3 id="2787e35e-577e-4b98-a46c-200a48519a3e" class="">Persistance des données</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="19e7d47b-e33d-48e8-98da-90977aa4e7ab"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Les volumes Docker permettent de stocker des données de manière persistante en dehors du conteneur, ce qui est essentiel pour éviter la perte de données en cas de suppression ou de mise à jour du conteneur.</div></figure><p id="9770af3b-d0cb-4f54-9960-0f0fd95a1690" class="">Les volumes peuvent être utilisés pour stocker des fichiers de configuration, des bases de données, des fichiers journaux et d&#x27;autres données importantes. Il est important de mettre en place des sauvegardes régulières des volumes pour garantir la récupération des données en cas de problème.</p><p id="d5ab0905-ed9c-4188-9652-1fcf93714274" class="">Dans ma machine hôte, la charge des données est répartie en fonction de l’utilisation et de la taille du volume:</p><figure id="76d84771-33ca-4104-86a3-774c1f164465" class="image"><a href="E4-Mission2-Docker-Scripts-Serveurs-Baptiste-Grima%20365894ffaa03455aa6aab13c65eb6589/Untitled%201.png"><img style="width:792px" src="E4-Mission2-Docker-Scripts-Serveurs-Baptiste-Grima%20365894ffaa03455aa6aab13c65eb6589/Untitled%201.png"/></a><figcaption>Organisation de la persistance des donnés sur mon serveur.</figcaption></figure><h3 id="f4e8a1a9-54d0-4792-a293-da0df745e6c7" class="">Les réseaux docker</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="bee5a4cf-2f5e-41a6-970e-a0db7f4fbfb5"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Les réseaux docker permettent aux conteneurs Docker de communiquer entre eux et avec d&#x27;autres serveurs de manière isolée et sécurisée. L&#x27;utilisation de réseaux distincts pour chaque service ou groupe de services peut renforcer la sécurité en limitant les possibilités de propagation des attaques.</div></figure><p id="3ca98143-447f-4ff8-afd4-781d155efdec" class="">Il est important de surveiller régulièrement les serveurs pour détecter toute activité suspecte et pour garantir un fonctionnement optimal des scripts Docker. Des outils de surveillance tels que les journaux système, les alertes de sécurité et les outils de détection d&#x27;intrusion peuvent être utilisés pour assurer la sécurité des serveurs.</p><p id="f18af0b2-c929-43f7-b351-a19ba3426de1" class="">Il est également important de documenter clairement et complètement les scripts Docker pour faciliter leur utilisation et leur maintenance. Les scripts doivent être facilement modifiables pour permettre l&#x27;ajout de nouvelles fonctionnalités et doivent être compatibles avec les dernières versions de Docker et les différents systèmes d&#x27;exploitation.</p><p id="12fe83a4-e04a-4f88-9f39-efdca473274f" class=""><mark class="highlight-yellow_background">Dans cette optique, au début de chaque redémarrage, les réseaux vitaux au bon fonctionnement de tout les services sont vérifiés. Egalement certaines machines sont statiques sur le réseau afin d’assurer un bon fonctionnement avec le reverse proxy.</mark></p><figure id="3fb60480-80ce-4cc9-83ff-464f6849bdab" class="image"><a href="E4-Mission2-Docker-Scripts-Serveurs-Baptiste-Grima%20365894ffaa03455aa6aab13c65eb6589/Screenshot_2023-04-20_at_23.31.20.png"><img style="width:385px" src="E4-Mission2-Docker-Scripts-Serveurs-Baptiste-Grima%20365894ffaa03455aa6aab13c65eb6589/Screenshot_2023-04-20_at_23.31.20.png"/></a></figure><h3 id="51e4ba38-8396-467c-bb59-c9204e09194d" class="">Taefik | reverse proxy</h3><h3 id="a3e40ae2-4a04-4192-991c-8d1e00c3d11d" class="">Taefik | reverse proxy</h3><p id="82c7f5b2-bc41-4d84-87f6-687796ac1f4e" class="">Traefik est un reverse proxy et un load-balancer open source qui permet de gérer le trafic entrant et sortant des conteneurs Docker. Il permet de faire du routage dynamique, de la répartition de charge, de l&#x27;ajout et du retrait de conteneurs en temps réel, de la gestion des certificats SSL et de la surveillance des performances.</p><p id="b73cfc39-9804-494b-a8be-c1fe659091e7" class="">Traefik peut être configuré pour s&#x27;intégrer avec Docker et Kubernetes, ce qui en fait une solution idéale pour les environnements de conteneurs. Il dispose également d&#x27;une interface utilisateur Web pour une gestion facile et une visualisation des statistiques de trafic.</p><p id="f6e5829d-9d88-4b60-9bcc-7a0e08267b25" class="">Traefik est utilisé comme reverse proxy pour permettre l&#x27;accès à des sous-domaines pour des machines différentes. Cela permet de gérer le trafic entrant et sortant des conteneurs Docker, de faire du routage dynamique, de la répartition de charge, de l&#x27;ajout et du retrait de conteneurs en temps réel, de la gestion des certificats SSL et de la surveillance des performances. </p><figure id="672971ab-df84-43eb-8444-9dc9b0f0b955" class="image"><a href="E4-Mission2-Docker-Scripts-Serveurs-Baptiste-Grima%20365894ffaa03455aa6aab13c65eb6589/Screenshot_2023-04-20_at_23.33.28.png"><img style="width:336px" src="E4-Mission2-Docker-Scripts-Serveurs-Baptiste-Grima%20365894ffaa03455aa6aab13c65eb6589/Screenshot_2023-04-20_at_23.33.28.png"/></a><figcaption>Taefik redirige en fonction du sous-domaine dans mon cas. (portfolio.baptistegrimaldi.info ou (taberu.baptistegrimaldi.info)</figcaption></figure><p id="b3633908-f70f-4697-81ca-8fa42043ee7d" class="">
+</p><h3 id="e73ff905-9e4e-42d7-9b4e-fffbe9861a44" class="">Les CPU sur docker</h3><p id="1fe474cc-1cff-40bb-ba8d-d96ca9dce52f" class="">Les outils de surveillance des performances des conteneurs Docker tels que <code>netdata</code> et <code>docker stats</code> doivent être configurés pour surveiller les performances des CPU. Cela permet de déterminer si les conteneurs consomment trop ou trop peu de CPU. Les résultats de ces outils peuvent être utilisés pour ajuster les ressources allouées aux conteneurs et pour améliorer les performances globales du système.</p><p id="af479aca-69d5-42d2-985e-d8bfdc96bb5c" class="">Lors de la création de scripts Docker, il est important de veiller à documenter de manière claire et complète leur fonctionnement pour faciliter leur utilisation et leur maintenance. Il est également essentiel de prévoir la possibilité de modifier facilement les scripts pour ajouter de nouvelles fonctionnalités et de s&#x27;assurer qu&#x27;ils sont compatibles avec les dernières versions de Docker et les différents systèmes d&#x27;exploitation.</p><p id="749045e0-8f41-40e7-8a93-4de039086712" class="">Enfin, il est crucial de mettre en place des mesures de sécurité pour protéger les scripts Docker et les données des utilisateurs. Cela peut inclure la configuration de pare-feu, l&#x27;utilisation de mots de passe sécurisés et la limitation des droits d&#x27;accès.</p><figure id="61b7dbe3-cbd2-41ad-8e70-6bbc89afa477" class="image"><a href="E4-Mission2-Docker-Scripts-Serveurs-Baptiste-Grima%20365894ffaa03455aa6aab13c65eb6589/Screenshot_2023-04-20_at_23.31.55.png"><img style="width:556px" src="E4-Mission2-Docker-Scripts-Serveurs-Baptiste-Grima%20365894ffaa03455aa6aab13c65eb6589/Screenshot_2023-04-20_at_23.31.55.png"/></a><figcaption>répartition de CPU sur mon serveur</figcaption></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="a58e44e0-6f85-4514-9b8d-d49c0aba0835"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Ces données sont configurées dans le fichier docker-compose du service.</div></figure><h2 id="2bd96a61-2f01-4ccb-aa24-12ec443952bf" class="">Sécurité des machines</h2><h3 id="7bd79db9-017b-4bf9-9bd7-e927594f0d45" class="">Les réseaux docker pour la sécurité</h3><h3 id="b10996d0-342a-4d6d-be15-4b6784deb3e2" class="">Les réseaux docker pour la sécurité</h3><p id="4fe3ac12-b12d-4b43-a051-6eeaf69d02a8" class="">Les réseaux docker permettent de segmentariser les conteneurs dans des réseaux virtuels. Cela peut renforcer la sécurité en limitant les possibilités de propagation des attaques. Dans les configurations Docker Compose, les réseaux sont utilisés pour isoler les conteneurs qui ont besoin de communiquer entre eux.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="d6718a0d-a198-4bf6-a1dd-af2ed39da8c8"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Par exemple, la base de données est sur le réseau backend, et seuls les conteneurs sur ce réseau peuvent la voir.</div></figure><p id="f43ebd26-2520-4a6a-bfda-cdd4a8bb2835" class="">Il est important de surveiller régulièrement les serveurs pour détecter toute activité suspecte et pour garantir un fonctionnement optimal des scripts Docker. Des outils de surveillance, tels que les journaux système, les alertes de sécurité et les outils de détection d&#x27;intrusion, peuvent être utilisés pour assurer la sécurité des serveurs.</p><p id="999800e5-246c-4306-aa11-01ccd610b73f" class=""><em>Il est également important de documenter clairement et complètement les scripts Docker pour faciliter leur utilisation et leur maintenance. Les scripts doivent être facilement modifiables pour permettre l&#x27;ajout de nouvelles fonctionnalités et doivent être compatibles avec les dernières versions de Docker et les différents systèmes d&#x27;exploitation.</em></p><h3 id="9c3ee380-6afd-46dc-a3e1-9676cc506c3e" class="">Les certificats SSL</h3><p id="85b3523f-af9b-422d-bbad-9ce330f5c432" class="">Le but de la configuration des certificats SSL avec Traefik et OVH pour les dockers est de garantir la sécurité des connexions HTTPS entre les utilisateurs et les conteneurs Docker.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="6c69a9ff-98f5-4fce-8737-e18aeb62333b"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Traefik est un reverse proxy utilisé pour gérer le trafic entrant et sortant des conteneurs Docker. Il dispose d&#x27;une fonctionnalité de gestion des certificats SSL qui permet de générer et de renouveler automatiquement les certificats SSL pour les sous-domaines utilisés par les conteneurs Docker.</div></figure><p id="834a342d-301b-4ada-b446-94d17ca754cd" class="">La configuration des certificats SSL sur Traefik se fait en utilisant les fichiers de configuration YAML de Docker Compose. Une fois la configuration effectuée, Traefik détecte automatiquement les sous-domaines utilisés par les conteneurs Docker et génère les certificats SSL requis.</p><p id="6f14a560-c7ab-48cf-b107-62b47753d716" class="">OVH est un fournisseur de services d&#x27;hébergement qui propose des certificats SSL gratuits pour les domaines hébergés sur ses serveurs. La configuration des certificats SSL sur OVH implique la création d&#x27;un compte OVH, la génération des certificats SSL pour les domaines concernés et la configuration des fichiers de configuration YAML de Docker Compose pour utiliser les certificats SSL générés par OVH.</p><p id="835a8dce-7a75-4651-a902-fa1538955548" class=""><mark class="highlight-yellow_background">La configuration des certificats SSL sur Docker Compose est importante pour garantir la sécurité des connexions HTTPS entre les utilisateurs et les conteneurs Docker. Les certificats SSL permettent de chiffrer les données échangées entre les utilisateurs et les conteneurs Docker, ce qui garantit la confidentialité et l&#x27;intégrité des données.</mark></p><h2 id="925ca335-f122-46ef-b264-7fd5f9906ea0" class="">Les outils à ma dispositions</h2><h3 id="2c1037df-4624-4d43-a6b8-58adef1f93dc" class="">Groupmng</h3><p id="2aa857d7-6bc9-49d6-908d-08198fe08868" class="">Vous trouverez ici, le script énoncé: <a href="https://github.com/GrimalDev/RandomDevProjects/tree/main/LinuxScripts">https://github.com/GrimalDev/RandomDevProjects/tree/main/LinuxScripts</a></p><p id="32fca1cc-7a21-4f44-8c00-aea1ce4a72f2" class="">Le script Python &quot;groupmng&quot; est mon outil utilisé pour la gestion des utilisateurs et des groupes sous forme d&#x27;arbre. Il permet de vérifier les groupes actifs et de faciliter la gestion des utilisateurs et des groupes dans un environnement de production. Le script est disponible sur mon GitHub.</p><h3 id="086715fe-2cea-4f3a-847c-cdaf411bacb8" class="">Docker-compose-all-up.sh</h3><p id="8960e489-6ebc-4dda-99da-71dfe593e7f4" class="">Le script <code>docker-compose-all-up.sh</code> est utilisé pour démarrer tous les conteneurs vitaux pour le bon fonctionnement des serveurs. Il est exécuté au démarrage de la machine hôte.</p><p id="3bd6a239-0084-46ef-bd34-2775dbb5a369" class="">A chaque exécutions, le script réinstalle réellement les machines et relance les réseaux.</p><h3 id="1fe54050-62e3-4b08-9ed5-cd6a099e637a" class="">backup.sh</h3><pre id="2a762a54-8742-49ab-9919-c4b5d683aac2" class="code"><code>#!/bin/bash
+
+DATE=$(date &#x27;+%F&#x27;)
+
+# Define the backup directories
+DOCKER_BACKUP_DIR=/mnt/remote/backup/docker-backups
+SFTP_BACKUP_DIR=/mnt/remote/backup/sftp-backups
+
+# Create a new backup
+echo -e &quot;Creating a new backup...\n&quot;
+sudo rsync -aAXv --delete /docker/ $DOCKER_BACKUP_DIR/$DATE
+sudo rsync -aAXv --delete /sftp/ $SFTP_BACKUP_DIR/$DATE</code></pre><h3 id="65b17df0-d9c2-4320-ba9c-f0f9613822d4" class="">sftp users</h3><p id="25d218e0-e454-4d79-9c53-94033d97dcdb" class="">Les prisons en SSH sont une méthode de sécurité qui permet de restreindre l&#x27;accès des utilisateurs à certaines parties du système de fichiers en leur donnant un accès limité. Cela peut être utile pour limiter les risques de sécurité en cas d&#x27;attaques potentielles ou de comportement malveillant de la part d&#x27;utilisateurs non autorisés.</p><p id="e89ff297-5253-48cc-9c01-7ab35e61fad5" class=""><mark class="highlight-yellow_background">Mon script utilise </mark><mark class="highlight-yellow_background"><strong>ces prisons</strong></mark><mark class="highlight-yellow_background">, créer un </mark><mark class="highlight-yellow_background"><strong>environnement sécurisé</strong></mark><mark class="highlight-yellow_background"> et créer l’</mark><mark class="highlight-yellow_background"><strong>utilisateur autour</strong></mark><mark class="highlight-yellow_background"> de cet environnement.</mark></p><h1 id="76040ea9-0b17-4198-9709-7323ca4adaed" class="">Méthodologie</h1><h2 id="18df8551-5f5f-4d7d-b488-05136329dc40" class="">Mise en place</h2><p id="1a036d43-18ee-410b-9f46-c24d11b284f1" class="">La mise en place des scripts Docker doit suivre une méthodologie rigoureuse pour garantir leur bon fonctionnement. Les étapes comprennent la configuration de l&#x27;environnement, l&#x27;installation de Docker et la mise en place des scripts Docker. Il est important de tester les scripts à chaque étape pour garantir leur bon fonctionnement.</p><p id="899dd903-30fc-46f8-9fbc-42aa0428422f" class=""><mark class="highlight-yellow_background">Je travaille en mode projet avec un </mark><mark class="highlight-yellow_background"><strong>kanban</strong></mark><mark class="highlight-yellow_background"> pour m&#x27;organiser et être sûr d&#x27;effectuer mes améliorations de manière ordonnée.</mark></p><p id="188a8167-cebf-4a2b-8948-ad5a0a78266f" class="">Voici les avantages du kanban pour l&#x27;organisation de mes projets :</p><ul id="47c46666-9983-44d2-84e5-8dc1f7f3dd92" class="bulleted-list"><li style="list-style-type:disc"><strong>Hiérarchisation des tâches par ordre de priorité</strong> : avec le kanban, je peux facilement identifier les tâches les plus importantes et les prioriser en conséquence. Cela me permet de consacrer suffisamment de temps et de ressources aux tâches les plus importantes et de m&#x27;assurer qu&#x27;elles sont effectuées dans les délais impartis.</li></ul><ul id="137cf0bd-7775-409a-9934-c3b9a20f0945" class="bulleted-list"><li style="list-style-type:disc"><strong>Suivi visuel de l&#x27;avancement des tâches</strong> : le kanban est une méthode visuelle qui utilise un tableau pour représenter toutes les tâches et leurs statuts respectifs. Chaque tâche est représentée par une carte qui peut être déplacée de colonne en colonne, en fonction de son état d&#x27;avancement. Les colonnes représentent généralement les états suivants : à faire, en cours, terminé.</li></ul><ul id="258f2bfd-4e3f-4155-a715-56233f9e9044" class="bulleted-list"><li style="list-style-type:disc"><strong>Identification rapide des tâches qui prennent plus de temps que prévu</strong> : le kanban me permet de suivre l&#x27;avancement de chaque tâche et de savoir où j&#x27;en suis à tout moment. Je peux facilement identifier les tâches qui prennent plus de temps que prévu et prendre les mesures nécessaires pour les terminer dans les délais impartis.</li></ul><p id="954ae749-d53c-4c53-9a92-5dfb6f175bf3" class="">En utilisant cette méthode, je peux garantir que toutes les tâches sont effectuées dans les délais impartis et que les améliorations sont effectuées de manière ordonnée et efficace.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="a2394c27-5289-4d16-84db-0645f64f69bf"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Le kanban est une méthode efficace pour organiser ses projets et ses améliorations. Il permet de hiérarchiser les tâches par ordre de priorité, de suivre l&#x27;avancement de chaque tâche de manière visuelle et d&#x27;identifier rapidement les tâches qui prennent plus de temps que prévu.</div></figure><h2 id="3877066e-e4ed-4069-b007-9727e05d36e3" class="">Tests</h2><p id="69ca4682-86cf-46b2-8244-a685e8b6711e" class="">Les tests doivent être effectués régulièrement pour garantir que les scripts Docker fonctionnent correctement. Les tests peuvent inclure des tests de charge, des tests d&#x27;intégration et des tests de sécurité. Les résultats des tests doivent être documentés pour permettre une analyse ultérieure.</p><p id="1fa20f48-d152-4005-b986-8d0af6ba4c33" class="">
+</p><p id="a654fc82-27f4-407a-b1a6-e4d9e09433fe" class=""><mark class="highlight-yellow_background">💬 </mark><mark class="highlight-yellow_background"><strong>EXEMPLE DE TEST</strong></mark></p><p id="25439c97-4855-4d6f-8626-b555446a39c1" class="">Pour tester un environnement docker-compose, vous pouvez utiliser la commande <code>docker-compose up</code>, qui permet de démarrer les conteneurs définis dans le fichier <code>docker-compose.yml</code>. Cette commande crée également les réseaux et les volumes nécessaires pour les conteneurs.</p><p id="1cfe4097-7745-426b-bc1e-309675e8abf2" class="">Une fois les conteneurs démarrés, vous pouvez vérifier leur état en utilisant la commande <code>docker ps</code>. Cette commande affiche une liste des conteneurs en cours d&#x27;exécution, avec leur ID, leur nom, leur image, leur état et leurs ports exposés.</p><p id="0d830933-8d0b-4130-bd1c-7d825dc4dd70" class="">Vous pouvez également vérifier l&#x27;état des réseaux et des volumes en utilisant les commandes <code>docker network ls</code> et <code>docker volume ls</code>. Ces commandes affichent respectivement une liste des réseaux et des volumes Docker en cours d&#x27;utilisation.</p><h1 id="c11b6516-f5d0-4353-920d-b25488dd1045" class="">Mise en œuvre</h1><h2 id="6c4109f4-2eec-4854-a0ff-d6ecaeddf04d" class="">Scripts Docker</h2><p id="b1dd5afe-4b5d-4ad5-b3e6-7dcbb2b00a5e" class="">Une fois les scripts Docker mis en place et testés, ils peuvent être déployés dans des environnements de semi-production. Les scripts Docker doivent être documentés de manière claire et complète pour faciliter leur utilisation et leur maintenance.</p><h2 id="96962c5c-971d-402c-a32f-3f2c4bb7db04" class="">Sécurité</h2><p id="b3eff5d0-8386-401a-9450-3ad1acd962e8" class="">Il est important de mettre en place des mesures de sécurité pour protéger les scripts Docker et les données de l&#x27;utilisateur. Les mesures de sécurité peuvent inclure la configuration de pare-feux, l&#x27;utilisation de mots de passe sécurisés et la limitation des droits d&#x27;accès.</p><h1 id="8d70e400-7f75-4a82-ae0c-a8bf62e4d35b" class="">Monitoring</h1><h2 id="a498a75c-72c9-4ba6-a3d9-c302b805bf97" class="">Solutions</h2><p id="804e754a-7542-4294-9893-8e69b33ef235" class="">Il est important de surveiller régulièrement les serveurs pour détecter toute activité suspecte et pour garantir un fonctionnement optimal des scripts Docker. Les outils de surveillance peuvent inclure des journaux système, des alertes de sécurité et des outils de détection d&#x27;intrusion.</p><h3 id="3c9d2c20-50cf-41d5-9a60-1ed517e20160" class="">Alertes de performance</h3><p id="9ce37dbf-2eb6-4972-9e20-86e107612755" class="">Les outils de surveillance des performances des conteneurs Docker tels que <code>netdata</code> et <code>docker stats</code> doivent être configurés pour surveiller les performances des CPU. Cela permet de déterminer si les conteneurs consomment trop ou trop peu de CPU. Les résultats de ces outils peuvent être utilisés pour ajuster les ressources allouées aux conteneurs et pour améliorer les performances globales du système.</p><h3 id="1f96a44c-0408-4d4c-8978-61d3cdeb8f5b" class="">Les tests de sécurité</h3><p id="7f9f4775-9822-4ef1-a8e8-029b11b5d5bd" class="">Les tests de sécurité sont cruciaux pour garantir que les scripts Docker sont sûrs et fiables. Les tests peuvent inclure des tests de pénétration, des tests d&#x27;intrusion et des tests de vulnérabilité. Les résultats des tests doivent être documentés pour permettre une analyse ultérieure et une amélioration continue de la sécurité.</p><h3 id="e9416b0e-17c9-485b-a38a-f35caa50acd4" class="">Gestion des mises à jour</h3><p id="6a7bfe67-5df3-4765-bbb4-aba856b3b553" class="">La gestion des mises à jour des scripts Docker est importante pour garantir leur bon fonctionnement et leur sécurité. Les mises à jour peuvent inclure des correctifs de sécurité, des améliorations de fonctionnalités et des mises à jour de compatibilité avec les dernières versions de Docker et les différents systèmes d&#x27;exploitation.</p><p id="08aa6242-8fe9-46ec-aa87-099a3a390396" class="">Il est important de suivre les meilleures pratiques pour la gestion des mises à jour, telles que la mise en place de tests rigoureux avant le déploiement des mises à jour et la documentation claire et complète des modifications apportées aux scripts Docker.</p><h1 id="4d39c119-ea37-48c9-843e-317dd08373dc" class="">Conclusion</h1><h2 id="27c5fe89-df4d-452e-acf5-41250f8de8d6" class="">Points clés</h2><ul id="3746a135-1492-43a9-aa4f-4a03b6edb343" class="bulleted-list"><li style="list-style-type:disc">Il est important de surveiller régulièrement les serveurs pour détecter toute activité suspecte et pour garantir un fonctionnement optimal des scripts Docker. Des outils de surveillance peuvent inclure des journaux système, des alertes de sécurité et des outils de détection d&#x27;intrusion.</li></ul><ul id="7f5afb79-679a-40e6-8604-e0d2f1da02ac" class="bulleted-list"><li style="list-style-type:disc">Les tests de sécurité sont cruciaux pour garantir que les scripts Docker sont sûrs et fiables. Les tests peuvent inclure des tests de pénétration, des tests d&#x27;intrusion et des tests de vulnérabilité. Les résultats des tests doivent être documentés pour permettre une analyse ultérieure et une amélioration continue de la sécurité.</li></ul><ul id="8da101be-3083-43af-82c2-bac238416ebc" class="bulleted-list"><li style="list-style-type:disc">La gestion des mises à jour des scripts Docker est importante pour garantir leur bon fonctionnement et leur sécurité. Les mises à jour peuvent inclure des correctifs de sécurité, des améliorations de fonctionnalités et des mises à jour de compatibilité avec les dernières versions de Docker et les différents systèmes d&#x27;exploitation.</li></ul><h2 id="64f8cd37-4163-445c-8f8b-079562d1d308" class="">Importance</h2><p id="f563e813-adb4-43ab-8ed9-80868079f903" class="">La mise en place de mesures de sécurité est cruciale pour protéger les scripts Docker et les données de l&#x27;utilisateur. La configuration de pare-feux, l&#x27;utilisation de mots de passe sécurisés et la limitation des droits d&#x27;accès sont des mesures importantes à prendre.</p><p id="67f7cc73-4c2b-4eae-9052-cf40704cfbbd" class="">Il est également important de documenter clairement et complètement les scripts Docker pour faciliter leur utilisation et leur maintenance. Les scripts doivent être facilement modifiables pour permettre l&#x27;ajout de nouvelles fonctionnalités et doivent être compatibles avec les dernières versions de Docker et les différents systèmes d&#x27;exploitation.</p><p id="7c717828-3c63-4cb0-b9ee-a6152095c082" class="">Enfin, il est crucial de surveiller régulièrement les serveurs pour détecter toute activité suspecte et pour garantir un fonctionnement optimal des scripts Docker. Des outils de surveillance tels que les journaux système, les alertes de sécurité et les outils de détection d&#x27;intrusion peuvent être utilisés pour assurer la sécurité des serveurs.</p><p id="774e12a2-c06c-4db2-b175-94230720da8f" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1c5d2e11-f3be-4809-907c-af7bd8dea010"><div style="font-size:1.5em"><span class="icon">👉</span></div><div style="width:100%">Cette documentation est la propriété intellectuelle de Grimaldi Baptiste. 
+<a href="https://portfolio.baptistegrimaldi.info/legal"><mark class="highlight-red_background"><span style="border-bottom:0.05em solid">portfolio.baptistegrimaldi.info/legal</span></mark></a></div></figure><p id="779a6313-5a02-4c37-be49-b3c562bc6e09" class="">
+</p></div></article></body></html>

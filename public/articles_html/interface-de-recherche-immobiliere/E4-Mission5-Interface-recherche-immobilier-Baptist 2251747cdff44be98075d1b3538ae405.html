@@ -1,0 +1,720 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>E4-Mission5-Interface-recherche-immobilier-Baptiste-Grimaldi</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2251747c-dff4-4be9-8075-d1b3538ae405" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🔍</span></div><h1 class="page-title">E4-Mission5-Interface-recherche-immobilier-Baptiste-Grimaldi</h1></header><div class="page-body"><h1 id="443977d3-5473-441e-940c-1b229a053593" class="">Liens utiles:</h1><figure id="c58227f5-23f5-4b87-981d-e42afdc4fcdf"><a href="https://portfolio.baptistegrimaldi.info/projects/view/interface-de-recherche-immobilere" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Article Interface de recherche immobilière</div><div class="bookmark-description">Check out the portfolio of Baptiste Grimaldi, a full-stack web developer specializing in creating dynamic and responsive websites. Explore his projects and contact him for your next web development project.</div></div><div class="bookmark-href"><img src="https://portfolio.baptistegrimaldi.info/apple-touch-icon.png" class="icon bookmark-icon"/>https://portfolio.baptistegrimaldi.info/projects/view/interface-de-recherche-immobilere</div></div></a><figcaption>Article de mon portfolio</figcaption></figure><hr id="38dabaa8-82c0-4902-8967-9ff646208c70"/><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="7c23ee6d-d7a6-4119-a870-28fd720dbb4f"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">SOMMAIRE<nav id="96f2fc03-8cc3-4483-a28c-5b4b26a63705" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#443977d3-5473-441e-940c-1b229a053593">Liens utiles:</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e322deb9-0072-4e76-a34c-38070f8277e5">1. Cahier des charges</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0a27441f-edae-4635-ad4a-e819735ebc7b">1.1 Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d5e8649f-9871-4f19-8b17-ffea5c076ca0">1.2 Expression fonctionnelle du besoin</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d46e2f8b-55f9-48fb-b338-86fd136e267f">1.3 Contraintes</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#0d035ccd-2513-4ab8-b2c8-f3033fa6366c">Les objectifs de la plateforme</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6ad9a053-b6ad-401e-a068-a51ed644be87">1.4 Gestion des droits d&#x27;accès</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e2f729fb-a201-4e66-b0e2-e8b2c1fb3b00">2. Description des environnements</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5cecd50f-97ff-4267-a6d1-49afac3e2744">2.1 Environnement de développement local</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d91a9820-02a0-4134-80fc-501b73455ffc">2.2 Environnement de pré-production</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#160a4b41-0b90-4b3b-90c9-4be25914fa52">2.3 Environnement de production</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9644d3d4-9e84-49cb-aec1-298457e5a87c">3. Méthodologie</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ac6b64c2-ff6a-4b1b-92a3-99b72bbde425">3.1 Méthodologie et versioning</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#768774ac-25fe-462b-80d6-822e856a5ddc"><strong>Bonnes pratiques</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#32258724-ad00-4029-98ee-802c305b8068"><strong>Deux options principales:</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#bb21058e-e6b1-439c-92cf-99ca1194ea62">Deux exemples de stratégies de branching</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6fe93dd3-7a3a-447b-96de-312c2a5eea11">3.2 Gestion des tests de la solution </a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b0eda183-dc46-4bc0-93b6-f5234b97f821">Types de phases de test :</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#51737b3c-22ae-4ea3-a342-d3a68496b36e">Exemple de test d&#x27;intégration</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#706ba3ab-0762-43fd-b268-d2bf875b355b">Exemples de scénarios:</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#22044a8d-9a60-4258-a3f5-b4055e998707">Exemple de formulaire de test</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5505f74a-2c2d-4d6a-966a-40039ff13aef">Vérification du nombre de champs et de leurs label :</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#697ddc80-dd26-493e-b820-5dbccd5312bc">Test d’envoi avec données vérifiées :</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#35e46f5d-98b9-48f8-8926-edb778b7eac0">Controle des erreurs :</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a4b58795-bb7e-480a-bfdb-bfb811aa04b6">Resultat du test:</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#37ef8f96-170b-433a-aa95-bafd255647d9">3.3 Rédaction de la documentation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ba4713fa-d5f0-4a9d-a359-e7d707f2d00c">3.4 Gestion de projet</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9ff21702-b3ae-4036-b9af-cbecf1841fec">4. Mise en oeuvre</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a9468ce4-d2a7-41b0-89fe-b201b06e98cf">4.1 Conception et développement de l&#x27;interface web de recherche immobilière</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c0f882ce-0902-4184-9195-a723989ab287">Première interface</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b9c7c662-f794-462b-8144-0e28520ec5c2">Fonctionnement avec php</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#224942db-b14a-4dba-ac0e-51382cc4f9d1">Sécurité</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#0a711309-4cbc-4e8f-a04d-020ca49241a7">Optimisation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1780d778-22d4-4450-8901-e7169f06ae9b">4.2 L’interface de management des articles immozia.</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#83788da2-acf5-4cba-bc57-028b4f2c8ed6">Backend</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#25be5de9-e6c0-42bf-9d96-8569d87a56ae">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b46683cb-ad0e-48dd-a18c-c31f896397ef">Frontend</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#df6f25f0-d50a-4a20-a5fc-f10a2d45852a">5. Gestion de la maintenance (corrective / évolutive)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#366dde3b-a9d3-4ec6-83dd-d08042efc7c5">5.1 Mise à jour de la documentation du SI</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c1ac30cc-5c08-4651-85e1-ad783e892b81">5.2 Évaluation de la qualité de la solution</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a674fcb6-7a30-475e-8287-72e7210d1a35">5.3 Procédure de correction d&#x27;un dysfonctionnement</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#89c784d1-de57-45b7-a94f-ae3432c8dfd1">6. Bilan du projet</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0223641b-29c2-49bf-8732-83fd71199661">6.1 Validation des exigences point par point</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6386c9ab-6ef2-40bf-b0db-2d271bbbb489">Validation des Exigences</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#69297390-7ea3-456c-bb12-bc13a969f489">6.2 Axes d&#x27;amélioration</a></div></nav></div></figure><h1 id="e322deb9-0072-4e76-a34c-38070f8277e5" class="">1. Cahier des charges</h1><h2 id="0a27441f-edae-4635-ad4a-e819735ebc7b" class="">1.1 Introduction</h2><p id="ff1f7eb5-ff96-470c-acd6-9baa293262b2" class="">Dans ce document, nous allons définir les spécifications pour la création d&#x27;une interface web en PHP, HTML et JS permettant la recherche de biens immobiliers.</p><p id="4169cc36-08b9-4d45-a7ec-1d9f18e08be1" class="">
+</p><p id="66b8fa1f-36e5-4170-bd7d-1fdb3530d7fd" class=""><strong>Dans le cadre de mon alternance de deuxième année de BTS SIO option SLAM, j’acompagne un nouveau projet de l’entreprise Oxianet: Immozia.</strong></p><p id="fdf6b570-4d58-481e-8634-92e80e96a4e4" class="">
+<mark class="highlight-yellow_background">Immozia est un agrégateur de bien immobiliers. le système parcours le web pour être au courant des annonces le plus vite possible et vous permet d’investir au meilleur moment sur les biens d’une zone.</mark></p><figure id="ad94de96-df37-4a91-a38e-8fa2e01e438e" class="image"><a href="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/Screenshot_2023-04-22_at_16.04.34.png"><img style="width:1521px" src="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/Screenshot_2023-04-22_at_16.04.34.png"/></a><figcaption>Landing page actuelle, le reste est en développement et n’est pas publique.</figcaption></figure><p id="73a69da5-3fdc-4c9a-8b2c-460be47f1266" class="">
+</p><h2 id="d5e8649f-9871-4f19-8b17-ffea5c076ca0" class="">1.2 Expression fonctionnelle du besoin</h2><h2 id="d46e2f8b-55f9-48fb-b338-86fd136e267f" class="">1.3 Contraintes</h2><p id="db4c3e63-4d10-494f-b7a9-203dae4a8319" class="">Les contraintes pour ce projet incluent :</p><ul id="d93374ba-0a97-4bc5-8d0f-6aa8ef654f3d" class="bulleted-list"><li style="list-style-type:disc">L&#x27;utilisation des langages de programmation PHP, HTML et JS</li></ul><ul id="2b26f5a3-49a7-4cfe-bf30-e4447c4552dd" class="bulleted-list"><li style="list-style-type:disc">La base de données doit être MySQL</li></ul><ul id="5a3889e1-e0aa-48f3-a59d-9db5686b866a" class="bulleted-list"><li style="list-style-type:disc">L&#x27;interface web doit être responsive et accessible sur différents appareils</li></ul><ul id="8c02ec4e-9d22-458e-b126-c59b070fc078" class="bulleted-list"><li style="list-style-type:disc">L&#x27;interface web doit être sécurisée et protéger les données des utilisateurs</li></ul><p id="9527b890-ad97-4684-9f55-b507e1288996" class="">
+</p><h3 id="0d035ccd-2513-4ab8-b2c8-f3033fa6366c" class="">Les objectifs de la plateforme</h3><ul id="00a951fa-7add-4a61-a491-349a5f866dd0" class="bulleted-list"><li style="list-style-type:disc">Un gain de temps : Fini les longues heures de recherches à écumer les différents site web.</li></ul><ul id="2283fa15-cc00-4306-b87e-dfc7d966aaca" class="bulleted-list"><li style="list-style-type:disc">Immozia vous permet de gagner du temps en regroupant sur une seule et même plateforme les annonces disponibles sur le marché.</li></ul><ul id="2fa86c53-e2b6-49ae-89e1-bc315a4cde3a" class="bulleted-list"><li style="list-style-type:disc">Des critères poussés: Toujours dans l&#x27;objectif de faciliter vos recherches, nous avons pensé les critères de recherche pour que vous puissiez trouver votre bien en seulement quelques clics.</li></ul><ul id="f7ff4367-0071-4922-81c9-492e4372a3ac" class="bulleted-list"><li style="list-style-type:disc">Des annonces pertinentes : Vous l&#x27;avez peut être constaté, en fonction des plateformes, les descriptions peuvent être plus ou moins complète. Ne perdez plus de temps à rassembler les informations, Immozia le fait pour vous.</li></ul><h2 id="6ad9a053-b6ad-401e-a068-a51ed644be87" class="">1.4 Gestion des droits d&#x27;accès</h2><p id="f224861d-d06c-49ee-a424-09fcbc550464" class="">La question des droit d’accès est encore un peux tôt pour se poser à cette étape du projet mais il est quand même important de savoir quelle direction prendre.
+<mark class="highlight-yellow_background">Le but sera que les droits d’accès changent en fonction de l’abonnement de l’utilisateur.</mark></p><p id="6cbd5cb4-76ed-43e7-b285-5558bf123000" class="">
+</p><p id="a88d76d8-98d1-46b4-bc4a-566a1d46c4fe" class=""><em>Aucun diagramme UML n’a encore été fait mais c’est une chose à faire encore.</em></p><p id="114dbd7e-adff-4c62-b728-2c61938374d1" class="">
+</p><p id="aa839693-2f98-49ba-8c4b-070be945d408" class="">Malgré tout, une gestion des droits est déjà en place pour le pôle communication de l’entreprise. Une interface de mise en ligne de nouveau articles pour le site type CMS maison à été codé par mes soins. <a href="https://www.notion.so/E4-Mission5-Interface-recherche-immobilier-Baptiste-Grimaldi-2251747cdff44be98075d1b3538ae405">Voir plus</a>.</p><h1 id="e2f729fb-a201-4e66-b0e2-e8b2c1fb3b00" class="">2. Description des environnements</h1><p id="5c045ce5-45ef-49ab-99c4-2948cdecb40f" class="">Le projet sera développé et testé sur les environnements suivants :</p><ul id="ddce0c33-a3e4-4963-8ebf-ec82e56b1872" class="bulleted-list"><li style="list-style-type:disc">Environnement de développement local</li></ul><ul id="5bd9701c-a9b6-45b9-8777-dd0c2bc18d73" class="bulleted-list"><li style="list-style-type:disc">Environnement de pré-production</li></ul><ul id="2a941e2d-2d45-492b-92ff-5a9d0cd57ffe" class="bulleted-list"><li style="list-style-type:disc">Environnement de production</li></ul><h2 id="5cecd50f-97ff-4267-a6d1-49afac3e2744" class="">2.1 Environnement de développement local</h2><p id="21e6f885-eaff-4b07-a12d-47611ca506ab" class="">L&#x27;environnement de développement local pour ce projet est un XAMPP avec accès à une base de données de développement via l&#x27;interface de PHPStorm.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="cdbb97db-8bb9-4759-99a3-b4dea4f9a4d9"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">XAMPP est un environnement de développement web qui permet de créer un serveur web local pour tester et développer des sites web. Il est composé des logiciels suivants: Apache, MySQL, PHP et Perl.</div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ee27d545-23f1-4e4b-8d25-9a5bb8bee834"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">PHPStorm est un environnement de développement intégré (IDE) pour PHP. Il offre des fonctionnalités telles que la coloration syntaxique, la correction automatique, le débogage, la navigation de code et la gestion de version. Il est également livré avec une intégration Git et une base de données MySQL pour faciliter la gestion du développement de projet.</div></figure><h2 id="d91a9820-02a0-4134-80fc-501b73455ffc" class="">2.2 Environnement de pré-production</h2><p id="9e2bafd3-3215-4ef8-81bb-3f43cfc0bd03" class="">L&#x27;environnement de pré-production est une copie de l&#x27;environnement de production pour tester les mises à jour et les nouvelles fonctionnalités avant leur déploiement.</p><p id="01d477cb-fe08-43e1-8417-f570ec6031bc" class="">Cet environnement est utilisé pour les tests. Lors de la phase de test, on utilise une instance du projet étant comme en production mais dans un environnement de test.</p><p id="e2439a0b-800a-47e7-8f22-eb91961032bd" class="">Lors de la phase de test en développement web, les développeurs utilisent une instance du projet qui est similaire à celle qui sera déployée en production, mais dans un environnement de test. Cette étape est cruciale pour s&#x27;assurer que toutes les nouvelles fonctionnalités et les mises à jour de l&#x27;interface web fonctionnent correctement et répondent aux exigences spécifiées avant qu&#x27;elles ne soient déployées pour les utilisateurs finaux.</p><p id="9992ce19-53e9-47c9-90c6-4e7409e4f59f" class="">Les tests en développement permettent de détecter et de corriger les erreurs avant que l&#x27;interface web ne soit déployée en production et disponible pour les utilisateurs finaux. Les développeurs effectuent des tests sur toutes les fonctionnalités de l&#x27;interface web pour s&#x27;assurer qu&#x27;elles fonctionnent correctement. Ils vérifient également que l&#x27;interface web est conviviale et facile à utiliser pour l&#x27;utilisateur final.</p><p id="d1127f9c-6846-4c95-8e07-f86947404dbd" class="">Les tests en développement sont essentiels pour assurer la qualité de l&#x27;interface web et minimiser les erreurs qui pourraient nuire à l&#x27;expérience utilisateur. Ces tests permettent également de s&#x27;assurer que l&#x27;interface web est conforme aux exigences et aux spécifications décrites dans le cahier des charges. Tout écart par rapport aux exigences spécifiées est détecté et corrigé avant le déploiement de l&#x27;interface web en production.</p><p id="72266d22-296f-48ae-b1f9-66df38cf51f1" class="">En somme, la phase de test en développement web est une étape importante dans le processus de développement d&#x27;une interface web. Elle permet de s&#x27;assurer que toutes les fonctionnalités sont conformes aux exigences spécifiées et qu&#x27;elles fonctionnent correctement avant le déploiement en production. Les tests en développement sont effectués pour minimiser les erreurs et assurer l&#x27;expérience utilisateur optimale.</p><h2 id="160a4b41-0b90-4b3b-90c9-4be25914fa52" class="">2.3 Environnement de production</h2><p id="d162833b-ca38-4ae1-8d63-bfd0431eb87f" class="">L&#x27;environnement de production est l&#x27;environnement final pour le projet, où l&#x27;interface web sera déployée et disponible pour les utilisateurs finaux.</p><p id="8bf66cf6-cbf6-4ac7-967b-92b49f8109b4" class="">Cet environnement n’est jamais directement modifié. C’est l’espace d’action directe avec les utilisateurs finaux.</p><h1 id="9644d3d4-9e84-49cb-aec1-298457e5a87c" class="">3. Méthodologie</h1><h2 id="ac6b64c2-ff6a-4b1b-92a3-99b72bbde425" class="">3.1 Méthodologie et versioning</h2><h3 id="768774ac-25fe-462b-80d6-822e856a5ddc" class=""><strong>Bonnes pratiques</strong></h3><ul id="fe62f592-a1a8-4978-8263-ab93dcec9c07" class="bulleted-list"><li style="list-style-type:disc">ne commitez que des choses sur les mêmes sujets (style, front, back, etc...)</li></ul><ul id="841cf4cd-00a9-4ea1-9793-c4abcdcff717" class="bulleted-list"><li style="list-style-type:disc">Si vous ne pouvez pas écrire de messages de commit concis, cela indique trop de sujets dans le même commit.</li></ul><ul id="a35345a9-5b1e-427d-a674-06da107f344f" class="bulleted-list"><li style="list-style-type:disc">Utilisez un titre et un corps avec seulement la commande commit et en ajoutant une ligne vide entre le titre et le corps.</li></ul><blockquote id="a222adb7-8745-4cdc-ad12-02f1fa8e7002" class="">git commit
+::
+TITRE<p id="52a94e7f-be10-47b1-b79b-71cefe61cee3" class="">CORPS
+\# rest comments</p></blockquote><p id="f04c133b-d833-4625-a4d9-b5be89a2dc13" class=""><strong>Stratégies de branching</strong></p><ul id="e9629450-61b6-4482-ae57-823205bcd323" class="bulleted-list"><li style="list-style-type:disc">Une convention écrite pour organiser l&#x27;équipe.</li></ul><h3 id="32258724-ad00-4029-98ee-802c305b8068" class=""><strong>Deux options principales:</strong></h3><ol type="1" id="f25593c4-08fe-4bbb-9ae9-eb37354a589d" class="numbered-list" start="1"><li>Développement <strong>Mainline</strong>:<ul id="d3fea2d2-e929-4129-8e78-368e49da12d1" class="bulleted-list"><li style="list-style-type:disc"><strong>quelques</strong> branches</li></ul><ul id="933d0c57-066b-4ecb-9080-496a86a28568" class="bulleted-list"><li style="list-style-type:disc">commits relativement petits</li></ul><ul id="1922fca2-c208-40a8-a406-6a54094ae3d7" class="bulleted-list"><li style="list-style-type:disc">normes de test de haute qualité</li></ul><ul id="cc54780d-6875-4939-b13d-b56b83352a53" class="bulleted-list"><li style="list-style-type:disc"></li></ul></li></ol><ol type="1" id="8e1320d8-9387-4df6-9432-0786f513e57f" class="numbered-list" start="2"><li>Branches <strong>State</strong>, <strong>Release</strong> et <strong>Feature</strong><ul id="4882d6f3-3dd6-4292-acfe-bea299a2979a" class="bulleted-list"><li style="list-style-type:disc"><strong>Deux</strong> types de branches différents qui remplissent des types de travail différents<ol type="1" id="3d507c74-ba35-43b0-b4a8-37fe8c90c438" class="numbered-list" start="1"><li><strong>Long</strong>Running<ul id="92467b5a-4889-4a72-89ef-eb6137f66315" class="bulleted-list"><li style="list-style-type:disc">existe tout au long de la vie du projet</li></ul><ul id="841cc272-2c16-44f1-a16c-6022d2ae165c" class="bulleted-list"><li style="list-style-type:disc">souvent, ils reflètent les &quot;étapes&quot; de votre cycle de vie de développement</li></ul></li></ol><ol type="1" id="1dd63247-4005-48e8-8ae6-1724303deef7" class="numbered-list" start="2"><li><strong>Short</strong> Running<ul id="f5b5e197-2cd4-4e1d-b5fd-dd10578d70fe" class="bulleted-list"><li style="list-style-type:disc">pour les nouvelles fonctionnalités, les corrections de bogues, le refactoring, les expériences</li></ul><ul id="76221df8-c0cd-44b2-83cc-3db7f45c45e2" class="bulleted-list"><li style="list-style-type:disc">sera supprimé après l&#x27;intégration (fusion/rebase)</li></ul></li></ol></li></ul></li></ol><h3 id="bb21058e-e6b1-439c-92cf-99ca1194ea62" class="">Deux exemples de stratégies de branching</h3><ol type="1" id="4bde3d7a-f615-4eac-9071-1eafd15a6b82" class="numbered-list" start="1"><li>GitHub Flow<ul id="9b730342-cc2c-40b2-a782-27973b1fa888" class="bulleted-list"><li style="list-style-type:disc">très simple, très léger : seulement long-running</li></ul><ul id="1ff39716-7dad-4282-8d59-a8a83eeb8adf" class="bulleted-list"><li style="list-style-type:disc">branche (&quot;main&quot;) + branches de fonctionnalités</li></ul></li></ol><ol type="1" id="cc65db58-e932-40e5-a977-2ce29e42397b" class="numbered-list" start="2"><li><mark class="highlight-yellow_background">GitFlow</mark><ul id="eecd646b-7d19-40ef-801d-b60c87e9f023" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">plus de structure, plus de règles</mark></li></ul><ul id="bc84d4d1-1b42-4ece-9b83-8dbdbc3d427c" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">long-running : &quot;main&quot; + &quot;develop&quot;</mark></li></ul><ul id="b7b34005-4bf2-4653-99c7-ef90ee0eeafa" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">de courte durée : fonctionnalités, versions, correctifs</mark></li></ul></li></ol><p id="54b331f4-4021-4fd3-a598-29d4a644a39d" class="">
+</p><p id="af0bd7a1-d44a-4e6e-ba25-86ee5903181f" class="">Pour la gestion de version de ce projet, nous avons opté pour une stratégie de branching avec un main, un dev et des branches pour les fonctionnalités. Cette méthode de versioning permet de travailler sur plusieurs fonctionnalités en parallèle tout en minimisant les conflits de code.</p><p id="fd0551cb-0e23-473a-a96d-115a06255383" class="">L&#x27;utilisation de branches pour les fonctionnalités permet de travailler sur des fonctionnalités spécifiques de manière isolée, sans perturber le code principal de l&#x27;application. Chaque branche est associée à une fonctionnalité spécifique et est testée avant d&#x27;être fusionnée dans la branche de développement (dev).</p><p id="eda78977-bcd3-401f-bf87-e11b3cfedf4b" class="">La branche dev est la branche principale sur laquelle l&#x27;équipe travaille. Les fonctionnalités développées dans des branches distinctes sont fusionnées dans la branche dev une fois qu&#x27;elles ont été testées et validées. Cela permet de s&#x27;assurer que toutes les fonctionnalités sont en mesure d&#x27;interagir correctement les unes avec les autres.</p><p id="b0c8bba5-b116-4478-9d41-2b9ab33f330a" class="">En outre, toutes les fonctionnalités sont vérifiées par une série de tests documentés ainsi que par d&#x27;autres développeurs, afin de s&#x27;assurer qu&#x27;elles répondent aux exigences spécifiées dans le cahier des charges. Cette approche contribue à minimiser les erreurs et à garantir la qualité de l&#x27;interface web.</p><p id="c8a0aef6-e9a3-464e-8fcc-e3f815dcd11b" class="">En résumé, la stratégie de versioning avec un main, un dev et des branches pour les fonctionnalités est efficace pour travailler sur plusieurs fonctionnalités en parallèle tout en minimisant les conflits de code. <mark class="highlight-yellow_background">Les fonctionnalités sont testées avant d&#x27;être fusionnées dans la branche principale, ce qui permet de garantir la qualité de l&#x27;interface web.</mark></p><p id="2726eb92-fb7a-4f6c-956f-4139bc7040d6" class="">
+</p><figure id="a3639209-cbfc-41b3-afc6-cb0eca2851d0" class="image"><a href="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/Untitled.png"><img style="width:614px" src="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/Untitled.png"/></a></figure><h2 id="6fe93dd3-7a3a-447b-96de-312c2a5eea11" class="">3.2 Gestion des tests de la solution </h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="9adb90bf-2ca1-4900-bb71-46fce22783a4"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Le test est une phase importante dans le développement web car il permet de s&#x27;assurer que le site web ou l&#x27;application web fonctionne correctement et répond aux exigences et spécifications. Pendant la phase de test, les développeurs et les testeurs identifient et corrigent les défauts ou bugs dans le code, et vérifient que le site web ou l&#x27;application web fonctionne comme prévu.</div></figure><h3 id="b0eda183-dc46-4bc0-93b6-f5234b97f821" class="">Types de phases de test :</h3><p id="517d0cf9-c702-4102-b944-3aa72a4ef34d" class=""><strong>Il existe plusieurs types de tests qui peuvent être effectués pendant la phase de test du développement web, notamment:</strong></p><ol type="1" id="c2ba0c8b-cc74-4820-ba49-32b040946f50" class="numbered-list" start="1"><li>Test unitaire : Ce type de test se concentre sur les unités ou les composants individuels du code, et est généralement effectué par les développeurs lorsqu&#x27;ils écrivent et déboguent le code.</li></ol><ol type="1" id="24f3ab1a-8c37-4475-90bd-613e3efed772" class="numbered-list" start="2"><li>Test d&#x27;intégration : Ce type de test vérifie que les différents composants ou modules du code fonctionnent correctement ensemble.</li></ol><ol type="1" id="8bce8d26-e08a-4a1b-beeb-c6e9a783be76" class="numbered-list" start="3"><li>Test système : Ce type de test consiste à tester l&#x27;ensemble du système, y compris tous les composants et modules, pour s&#x27;assurer qu&#x27;il fonctionne correctement.</li></ol><ol type="1" id="e57f8551-89e4-40a0-84e6-18165249cddd" class="numbered-list" start="4"><li>Test d&#x27;acceptation : Ce type de test est généralement effectué par le client ou l&#x27;utilisateur final pour vérifier que le site web ou l&#x27;application web répond à leurs besoins et exigences.</li></ol><p id="1803511f-5747-4d28-8a4d-71e9b600baae" class="">Il est important de tester soigneusement un site web ou une application web avant sa sortie au public, pour s&#x27;assurer qu&#x27;il est fiable et fonctionne comme prévu.</p><h2 id="51737b3c-22ae-4ea3-a342-d3a68496b36e" class="">Exemple de test d&#x27;intégration</h2><hr id="992bf979-df35-4608-952a-221686be963d"/><p id="6c1f3022-fa1f-4eed-b5a6-76c68c90182a" class="">Le test d&#x27;intégration est un type de test qui vérifie que différents composants ou modules d&#x27;un système fonctionnent correctement ensemble.</p><p id="02a8d81b-965c-4fc6-8ead-fb8050c77d09" class=""><strong>Voici un exemple de test d&#x27;intégration dans un projet de développement web:</strong></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="36459407-019b-4f99-abc3-3231680b6fee"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Imaginez que vous développez une application web qui permet aux utilisateurs de rechercher et d&#x27;acheter des produits en ligne. L&#x27;application comporte plusieurs composants, notamment une fonction de recherche, un panier d&#x27;achat et une passerelle de paiement. Pendant le test d&#x27;intégration, vous testerez les interactions entre ces différents composants pour vous assurer qu&#x27;ils fonctionnent correctement ensemble.</div></figure><hr id="5c56ee4c-9290-4eae-ae3e-58ef0f0a6083"/><h3 id="706ba3ab-0762-43fd-b268-d2bf875b355b" class="">Exemples de scénarios:</h3><p id="0f20541f-9526-49f4-8603-f4ca701132b7" class=""><strong>Par exemple, vous pouvez tester les scénarios suivants :</strong></p><ol type="1" id="c0d6feaa-b259-4346-ab83-13d67a42498b" class="numbered-list" start="1"><li>Recherche d&#x27;un produit : Vous vérifieriez que la fonction de recherche est capable de récupérer et d&#x27;afficher les résultats corrects en fonction de la requête de l&#x27;utilisateur.</li></ol><ol type="1" id="77a17ee0-7d60-4106-9320-973b54dc2f2e" class="numbered-list" start="2"><li>Ajout d&#x27;un produit au panier : Vous vérifieriez que le panier d&#x27;achat est capable d&#x27;ajouter le produit correct, et que le prix et la quantité sont affichés correctement.</li></ol><ol type="1" id="697e1e2c-6243-4c9d-85aa-1c5afb05cd23" class="numbered-list" start="3"><li>Validation de la commande et paiement : Vous vérifieriez que la passerelle de paiement est capable de traiter correctement le paiement, et que la commande est enregistrée dans le système.</li></ol><p id="fc99eb6e-7134-4c6e-8441-d0ea88ae8fd1" class="">En testant ces scénarios, vous pouvez vous assurer que les différents composants de l&#x27;application web fonctionnent parfaitement ensemble et que l&#x27;expérience utilisateur est fluide et intuitive.</p><p id="b742cdb4-d05e-4808-9c32-35185b3f80db" class="">
+</p><h2 id="22044a8d-9a60-4258-a3f5-b4055e998707" class="">Exemple de formulaire de test</h2><p id="3057bd79-5a70-4863-89aa-9d967ac99ccc" class=""><mark class="highlight-yellow_background">Ceci est un exemple de test pour Immozia.</mark></p><h3 id="5505f74a-2c2d-4d6a-966a-40039ff13aef" class="">Vérification du nombre de champs et de leurs label :</h3><p id="f58640a7-ddf9-44ae-8273-c3d204bd64e8" class="">
+</p><figure id="e88ac523-9b04-4259-adcb-fc3dc648dcbe" class="image" style="text-align:center"><a href="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/CleanShot_2022-12-22_at_15.58.00.png"><img style="width:288px" src="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/CleanShot_2022-12-22_at_15.58.00.png"/></a></figure><p id="15298079-b441-47b6-8849-635bd00a1bcb" class="">
+</p><p id="3de3c00c-77ec-452c-bf74-3cba1ff09b57" class="">Les champs sont bien tous renseignés, la liste des champs voulu étant :</p><ul id="eb66dc04-4bc6-4ec8-b584-4cbdf4360070" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Le sexe</span><div class="indented"></div></li></ul><ul id="480f28aa-449f-49fd-b6cd-ce670280f382" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Le type de personne (particulier ou professionnel)</span><div class="indented"></div></li></ul><ul id="fc57f89b-5c8e-4e36-92ea-d0091c32b256" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Le nom</span><div class="indented"></div></li></ul><ul id="7d490f85-10ae-4f65-9a31-d2b465d554ef" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Le prénom</span><div class="indented"></div></li></ul><ul id="616d3455-83d6-4046-aa0b-00fbbc74c383" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Le mail</span><div class="indented"></div></li></ul><ul id="153a7c6a-1acc-4689-a85d-0eecb25ca6bb" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Et le numero de téléphone</span><div class="indented"></div></li></ul><p id="515aac18-3914-4435-afc4-bf7000468be3" class="">
+</p><h3 id="697ddc80-dd26-493e-b820-5dbccd5312bc" class="">Test d’envoi avec données vérifiées :</h3><p id="a9f4476a-87b6-45a9-a4ae-f515fd813684" class="">L’image ci-dessous montre un formulaire rempli avec des données valable.</p><figure id="06bea219-bed9-4334-8a8f-baaf2f19b560" class="image" style="text-align:center"><a href="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/CleanShot_2022-12-22_at_15.52.33.png"><img style="width:288px" src="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/CleanShot_2022-12-22_at_15.52.33.png"/></a></figure><p id="15e3f806-8c87-4aa3-a234-a18a2965a895" class="">L’image ci-dessous nous montre un message de confirmation de l’envoi des données.</p><figure id="f603b858-fd5f-4436-a4f1-6254c153bcec" class="image" style="text-align:center"><a href="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/CleanShot_2022-12-22_at_15.53.28.png"><img style="width:435px" src="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/CleanShot_2022-12-22_at_15.53.28.png"/></a></figure><p id="06fa6254-e23b-4628-a9ca-5be0de88bb98" class="">L’image ci-dessous nous montre bien que la base de données a bien reçu les informations rentrées.</p><figure id="e1caa4aa-e7b3-4dbd-ad7f-5d1eb71eab9c" class="image"><a href="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/CleanShot_2022-12-22_at_15.54.01.png"><img style="width:784px" src="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/CleanShot_2022-12-22_at_15.54.01.png"/></a></figure><p id="8ff8d138-8e11-46ac-84cd-cd1e0815be5f" class="">
+</p><p id="08c7562e-1902-4f5a-a1ee-906459bcbfc4" class="">
+</p><h2 id="35e46f5d-98b9-48f8-8926-edb778b7eac0" class="">Controle des erreurs :</h2><p id="1428a718-553a-438b-bcd9-c772ce8e6ca8" class="">Plusieurs erreur peuvent survenir voici la liste :</p><ol type="1" id="30fbb350-c336-423d-9d9f-23251fe38786" class="numbered-list" start="1"><li>Champ non rempli</li></ol><figure id="bf5c7d88-668e-4372-8937-90761db1f651" class="image" style="text-align:center"><a href="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/CleanShot_2022-12-22_at_15.56.49.png"><img style="width:288px" src="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/CleanShot_2022-12-22_at_15.56.49.png"/></a></figure><figure id="dd60bd6d-9a78-4a0f-9f2d-bc1aca474157" class="image" style="text-align:center"><a href="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/CleanShot_2022-12-22_at_15.57.24.png"><img style="width:288px" src="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/CleanShot_2022-12-22_at_15.57.24.png"/></a></figure><figure id="5ab36182-5f0f-4c6d-a594-a27e83dbdeb6" class="image" style="text-align:center"><a href="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/CleanShot_2022-12-23_at_14.52.45.png"><img style="width:240px" src="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/CleanShot_2022-12-23_at_14.52.45.png"/></a></figure><ol type="1" id="255d18af-7e0a-4dfa-9ee0-afcf9e37aa1b" class="numbered-list" start="2"><li>Champ mal rempli<figure id="aac5512e-c6dd-46fb-a21f-fad322b78405" class="image" style="text-align:center"><a href="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/CleanShot_2022-12-23_at_14.57.13.png"><img style="width:240px" src="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/CleanShot_2022-12-23_at_14.57.13.png"/></a></figure><figure id="e1f6ac46-6816-4c73-b495-008b525e1604" class="image" style="text-align:center"><a href="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/CleanShot_2022-12-23_at_15.00.22.png"><img style="width:240px" src="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/CleanShot_2022-12-23_at_15.00.22.png"/></a></figure></li></ol><p id="20ef1869-eb2e-43f8-a4e2-cf29e09c8aa4" class="">
+</p><h3 id="a4b58795-bb7e-480a-bfdb-bfb811aa04b6" class="">Resultat du test:</h3><p id="6882202f-7101-4181-9f66-d563ab8b13b6" class="">
+</p><ul id="ce8afa66-aee9-4e5a-8f84-7b889c769e9f" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Le formulaire est correctement affiché et tous les champs sont présents et correctement étiquetés.</span><div class="indented"></div></li></ul><ul id="46d533f3-7f77-47de-8f30-42b5200b841b" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Les données valides sont enregistrées correctement et un message de confirmation est affiché.</span><div class="indented"></div></li></ul><ul id="c7280f7e-7c5d-4b14-b74f-fe0e0a85e40d" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Les erreurs de saisie et les champs obligatoires manquants sont signalés par des messages d&#x27;erreur.</span><div class="indented"></div></li></ul><h2 id="37ef8f96-170b-433a-aa95-bafd255647d9" class="">3.3 Rédaction de la documentation</h2><p id="4ab47bfb-879e-45cf-950f-8b0c8779ad8d" class="">La documentation est maintenu sur un notion de groupe. Cette année, j’ai mis en place un notion pour toute l’équipe. C’est un espace partagé avec des pages pour tout les aspect de l’organisation du projet immozia.</p><p id="41c3cecb-c443-413f-af0a-2a9d1b2ee78c" class="">Après chaque phase de développement, la documentation adéquate est rédigée sur le wiki ingénieur du Notion. Cette documentation inclut des informations sur les fonctionnalités développées, les modifications apportées au code et les tests effectués. Elle est organisée de manière cohérente et facile à naviguer, de sorte que l&#x27;équipe de développement puisse facilement trouver les informations dont elle a besoin.</p><p id="55caeff8-e8ce-4e37-ac3b-f2d203498c9b" class="">Le wiki ingénieur du Notion est un espace partagé pour l&#x27;équipe de développement où sont stockées toutes les informations liées au projet. Il s&#x27;agit d&#x27;un outil de collaboration qui permet à chaque membre de l&#x27;équipe de contribuer à la documentation et de la mettre à jour au fur et à mesure que le projet avance. La documentation est rédigée en utilisant une syntaxe de balisage simple pour faciliter la lecture et la compréhension.</p><p id="7609ad52-50ef-43fa-833b-ef3e70341af5" class="">La documentation inclut également des captures d&#x27;écran et des exemples de code pour illustrer les fonctionnalités développées et les modifications apportées. Cela permet à l&#x27;équipe de développement de comprendre rapidement les changements apportés au code et de voir comment les nouvelles fonctionnalités ont été implémentées.</p><p id="2467678f-05cb-4bf7-bc81-68bec3bbc73f" class="">En somme, la rédaction de la documentation est une étape importante du processus de développement. Elle permet à l&#x27;équipe de développement de se tenir informée des modifications apportées au code et des nouvelles fonctionnalités développées, et de garantir que toutes les informations pertinentes sont stockées dans un endroit centralisé et facilement accessible.</p><figure id="e9be1f6f-d706-455a-be50-021791c528ce" class="image"><a href="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/Screenshot_2023-04-22_at_17.52.50.png"><img style="width:480px" src="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/Screenshot_2023-04-22_at_17.52.50.png"/></a><figcaption>Extrait du wiki-ingénieurie</figcaption></figure><h2 id="ba4713fa-d5f0-4a9d-a359-e7d707f2d00c" class="">3.4 Gestion de projet</h2><p id="e0569c18-4f85-4b12-8d4d-d649c92e1887" class="">Pour la gestion du projet, l&#x27;équipe utilise Notion pour stocker une base de données de tâches. Cette base de données est utilisée pour suivre l&#x27;avancement du projet et pour assigner des tâches à différents membres de l&#x27;équipe.</p><p id="949128a3-e598-44fd-9557-a85b8715dd96" class=""><mark class="highlight-yellow_background">Notion permet également d&#x27;utiliser différentes visualisations pour la gestion de projet, telles que le tableau Kanban ou le diagramme de Gantt. Le tableau Kanban est utilisé pour suivre l&#x27;avancement des tâches, tandis que le diagramme de Gantt est utilisé pour visualiser les dépendances entre les tâches et les jalons du projet.</mark></p><p id="c26a815a-e578-4807-89bc-53ae4d6bfa7f" class="">En utilisant Notion pour la gestion de projet, l&#x27;équipe peut travailler de manière collaborative, en temps réel, et avoir une vue d&#x27;ensemble de l&#x27;avancement du projet. Les mises à jour sont synchronisées en temps réel, ce qui permet à chaque membre de l&#x27;équipe de rester informé des dernières modifications apportées au projet.</p><p id="bdf89dd0-6cfc-4f6b-906b-96f3b90da456" class="">En somme, Notion est un outil de gestion de projet efficace pour l&#x27;équipe de développement d&#x27;Immozia. Il permet de stocker une base de données de tâches, de suivre l&#x27;avancement du projet et d&#x27;utiliser différentes visualisations pour la gestion de projet. En utilisant Notion, l&#x27;équipe peut travailler de manière collaborative et avoir une vue d&#x27;ensemble de l&#x27;avancement du projet.</p><p id="ead2cc0b-1228-4dd3-a0fc-c1d578eb7c31" class="">
+</p><figure id="e464d57d-dfc6-43c1-aec7-1854711add2b" class="image"><a href="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/Screenshot_2023-04-22_at_17.57.13.png"><img style="width:1490px" src="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/Screenshot_2023-04-22_at_17.57.13.png"/></a></figure><h1 id="9ff21702-b3ae-4036-b9af-cbecf1841fec" class="">4. Mise en oeuvre</h1><h2 id="a9468ce4-d2a7-41b0-89fe-b201b06e98cf" class="">4.1 Conception et développement de l&#x27;interface web de recherche immobilière</h2><p id="799e47c0-1ad2-4772-88de-2b02f96d77fd" class="">L’interface en elle même est plutôt simple. Elle reprend les codes de tout les sites de recherches immobiliers en rajoutant plus de précision.</p><p id="a4fb5744-b56c-4eac-9272-022aacd98cf2" class="">L&#x27;interface utilisateur est principalement composée du système de recherche. Il utilise des algorithmes sophistiqués pour filtrer les résultats en fonction des critères spécifiés par l&#x27;utilisateur. En plus de cela, il y a également une grande variété d&#x27;options de filtrage disponibles pour affiner davantage les résultats. En ce qui concerne l&#x27;affichage et la communication des données en php, cela se fait de manière transparente pour l&#x27;utilisateur. Les données sont récupérées rapidement et efficacement, puis affichées de manière claire et concise.</p><p id="8cb57705-9d5a-439c-b16d-85ac44dcb258" class="">Enfin, la mise en forme avec du css permet de donner une apparence attrayante et professionnelle à l&#x27;interface utilisateur, tout en améliorant la convivialité globale de l&#x27;application.</p><h3 id="c0f882ce-0902-4184-9195-a723989ab287" class="">Première interface</h3><figure id="0a26685e-dd36-440c-b0aa-b8f58f5ce1b7" class="image"><a href="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/Screenshot_2023-04-22_at_17.59.09.png"><img style="width:1832px" src="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/Screenshot_2023-04-22_at_17.59.09.png"/></a></figure><h3 id="b9c7c662-f794-462b-8144-0e28520ec5c2" class="">Fonctionnement avec php</h3><p id="755fe20e-7b16-46f5-9810-f642dabf0750" class="">Pour boucler sur des données récupérées d&#x27;une base de données des biens selon les critères spécifiés par l&#x27;utilisateur et les afficher sur l&#x27;interface utilisateur, il est recommandé d&#x27;utiliser PDO (PHP Data Objects) pour interagir avec la base de données. Cela permet de protéger contre les injections SQL en utilisant des requêtes préparées.</p><p id="c3eed1e2-476c-4f3d-8dfd-9702d2c5726c" class="">Voici un exemple de code pour récupérer des biens immobiliers à partir d&#x27;une base de données MySQL:</p><pre id="95c15ef4-de5e-4a8e-abf4-cbdd70c83f14" class="code code-wrap"><code>// Connexion à la base de données
+$dsn = &#x27;mysql:host=localhost;dbname=nom_de_la_base_de_donnees&#x27;;
+$user = &#x27;nom_d_utilisateur&#x27;;
+$password = &#x27;mot_de_passe&#x27;;
+$pdo = new PDO($dsn, $user, $password);
+
+// Préparation de la requête SQL pour récupérer les biens
+$sql = &#x27;SELECT * FROM biens_immobiliers WHERE type = :type AND ville = :ville&#x27;;
+$stmt = $pdo-&gt;prepare($sql);
+
+// Remplacement des paramètres dans la requête SQL
+$type = &#x27;appartement&#x27;;
+$ville = &#x27;Paris&#x27;;
+$stmt-&gt;bindParam(&#x27;:type&#x27;, $type);
+$stmt-&gt;bindParam(&#x27;:ville&#x27;, $ville);
+
+// Exécution de la requête SQL
+$stmt-&gt;execute();
+
+// Boucle sur les résultats et affichage sur l&#x27;interface utilisateur
+while ($row = $stmt-&gt;fetch(PDO::FETCH_ASSOC)) {
+    echo $row[&#x27;nom&#x27;] . &#x27; - &#x27; . $row[&#x27;adresse&#x27;] . &#x27;
+&#x27;;
+}
+</code></pre><p id="e8db654c-22ab-4b63-b99d-b0c55bb9e431" class="">Dans cet exemple, la requête SQL préparée utilise des paramètres nommés (&quot;:type&quot; et &quot;:ville&quot;) pour spécifier les critères de recherche. Les valeurs de ces paramètres sont remplacées par les variables $type et $ville respectivement, qui sont définies avant l&#x27;exécution de la requête.</p><p id="8f2d5620-e167-4d4d-a516-ea10a7f5eb98" class=""><mark class="highlight-yellow_background">En utilisant PDO pour interagir avec la base de données, il est facile de protéger contre les injections SQL en utilisant des requêtes préparées. Les données récupérées peuvent ensuite être bouclées et affichées sur l&#x27;interface utilisateur en toute sécurité.</mark></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2b4d69b7-7a95-4624-86af-c1ef62d97d39"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%">Notons que dans cette exemple, la connexion à la base de donnée se fait sur le tas. Une meilleure pratique est de gérer la connexion dans un fichier de configuration et de l’appeler quand nécessaire.</div></figure><h3 id="224942db-b14a-4dba-ac0e-51382cc4f9d1" class="">Sécurité</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ab5dcff9-d45b-47fd-a1dd-46f042938c95"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%">L&#x27;injection SQL est une technique couramment utilisée par les pirates informatiques pour accéder à des données sensibles dans une base de données. Elle consiste à insérer du code SQL malveillant dans une entrée utilisateur, qui est ensuite exécuté par le serveur de base de données.<p id="25830fa0-6572-49a8-ad58-8a41d44af33e" class="">Pour protéger contre l&#x27;injection SQL, il est important de valider et de nettoyer toutes les entrées utilisateur avant de les utiliser dans des requêtes SQL. Les requêtes préparées sont également une bonne pratique pour éviter l&#x27;injection SQL, car elles permettent de séparer les données de la requête SQL elle-même.</p></div></figure><h3 id="0a711309-4cbc-4e8f-a04d-020ca49241a7" class="">Optimisation</h3><p id="91feead4-1606-4f5a-a65f-516606ee7d2e" class="">Quand on parle de millions de données, il est bien compliqué de tout récupéré en une seule fois et de vulgairement enregistrer dans des variable.</p><ul id="bd7f5c86-a994-4ccc-af87-9c6b06633415" class="bulleted-list"><li style="list-style-type:disc">Cela ralenti l’interface utilisateur et réduit la crédibilité de l’entreprise.</li></ul><ul id="409d2f6e-168a-4373-89e5-8399f06d0397" class="bulleted-list"><li style="list-style-type:disc">Php peux nous donner des erreurs car la mémoire tampon de php ne suit plus et est surchargé.</li></ul><p id="98b6a1c8-3b23-4b0d-be74-eed2e1033a90" class="">Contre ces problèmes, il existe plusieurs méthodes:</p><ul id="e150cae0-44fe-4c73-9858-eb544884eea7" class="bulleted-list"><li style="list-style-type:disc">Pagination : Permet de récupérer les données par blocs, en limitant le nombre de résultats par page.</li></ul><ul id="8745b247-419d-4541-a0ac-b51b4b8617d1" class="bulleted-list"><li style="list-style-type:disc">Lazy loading : Permet de récupérer les données au fur et à mesure que l&#x27;utilisateur fait défiler la page.</li></ul><ul id="2a05b53e-1baa-4f21-8710-45a3879e1c4e" class="bulleted-list"><li style="list-style-type:disc">API : Permet de récupérer les données en temps réel via une interface de programmation.</li></ul><p id="1190f078-250b-4190-b78e-d1128f1233f1" class="">En utilisant ces méthodes, nous avons pu optimiser l&#x27;interface web de recherche immobilière pour gérer efficacement un grand nombre de données sans ralentir l&#x27;interface utilisateur. Cela permet également de garantir la crédibilité de l&#x27;entreprise en fournissant des résultats de recherche précis et rapides.</p><h2 id="1780d778-22d4-4450-8901-e7169f06ae9b" class="">4.2 L’interface de management des articles immozia.</h2><figure id="f4a6c13d-6f45-42a0-badb-e07fd2f664f2" class="image"><a href="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/Screenshot_2023-04-23_at_01.36.09.png"><img style="width:982px" src="E4-Mission5-Interface-recherche-immobilier-Baptist%202251747cdff44be98075d1b3538ae405/Screenshot_2023-04-23_at_01.36.09.png"/></a><figcaption>Une partie de l’interface d’import de nouveaux articles.</figcaption></figure><h3 id="83788da2-acf5-4cba-bc57-028b4f2c8ed6" class="">Backend</h3><hr id="048f4120-c678-420c-a490-93d224b51d49"/><h3 id="25be5de9-e6c0-42bf-9d96-8569d87a56ae" class="">Introduction</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f536410a-29b0-40fd-a741-74a959c81d0f"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Le système d&#x27;authentification fonctionne avec le &quot;basic auth&quot; d&#x27;apache.</div></figure><p id="987a2ce1-0bc9-494b-8d45-068d32d07a3a" class=""><strong>La structure</strong></p><p id="9b6e8d99-cb9c-42c8-bac5-7340651fb84a" class="">La structure du backend est la suivante :</p><ul id="d5c6bd82-0881-4ef8-857b-d62cf44c2218" class="toggle"><li><details open=""><summary>0-com-manager</summary><ul id="1856e9b4-30e9-40e7-af35-cc9cef629ce8" class="toggle"><li><details open=""><summary>public</summary><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="268e3668-18d9-4c44-8d58-901bead10b2f"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">La route publique est l&#x27;ensemble des ressources auxquelles l&#x27;utilisateur peut accéder directement.</div></figure></details></li></ul><ul id="dd07d80e-c3d6-4106-98ca-87b30c9f11cd" class="toggle"><li><details open=""><summary>views</summary><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="af23598d-67e4-40a0-bdb0-4e72b1c5431b"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Les &quot;Vues&quot; / pages envoyées à l&#x27;utilisateur.</div></figure></details></li></ul><ul id="bdcb8be3-a04c-46ea-a6a7-700c2d180943" class="toggle"><li><details open=""><summary>.htaccess</summary><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="31d760ce-22e7-49e8-9017-478c94d820fd"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Le fichier qui définit le système d&#x27;authentification et de routage.</div></figure></details></li></ul><p id="84dfb365-e89e-40eb-ac05-07f1737435f4" class="">Index.html</p></details></li></ul><p id="5286bdca-16a0-4f9e-badc-522c2cf93010" class=""><strong>Système d&#x27;authentification</strong></p><pre id="ef54097a-2f10-4b03-bc32-fc33e22a0857" class="code code-wrap"><code>AuthType Basic
+AuthName &quot;Protected Area&quot;
+AuthUserFile /home/immo/vault/.htpasswd
+Require valid-user
+</code></pre><p id="2d8a6457-7be8-4983-8815-1ea681b11573" class="">Le fichier htaccess redirige vers le fichier htpasswd qui contient les authentifications que Apache utilisera lors de la connexion.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="caf3b3a2-59f2-4361-95db-5d93a4f823fb"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">⚠️ Le chemin du fichier .htpasswd doit être absolu ⚠️</div></figure><h3 id="b46683cb-ad0e-48dd-a18c-c31f896397ef" class="">Frontend</h3><hr id="d3d206a4-a34e-4349-904e-d3c4ef0ab112"/><p id="ce5d9cba-30bc-4869-9128-4af5419addee" class=""><strong>Rendu</strong></p><p id="0ae2fb71-891a-4399-bf44-1ea602bd73e0" class="">Un iframe rend les vues sélectionnées avec le menu latéral.</p><h1 id="df6f25f0-d50a-4a20-a5fc-f10a2d45852a" class="">5. Gestion de la maintenance (corrective / évolutive)</h1><h2 id="366dde3b-a9d3-4ec6-83dd-d08042efc7c5" class="">5.1 Mise à jour de la documentation du SI</h2><p id="f0f32d6c-848e-4012-9139-dcbe8422f0ac" class="">Pour la gestion de la maintenance corrective et évolutive du SI, il est important de maintenir à jour la documentation du SI. Cela permet de garantir que les développeurs ont accès à toutes les informations nécessaires pour effectuer des modifications et des mises à jour en toute sécurité et en toute efficacité.</p><p id="fb545edc-2679-4c2e-a7f8-7876dadc2383" class="">En maintenant une documentation à jour, l&#x27;équipe de développement peut travailler de manière collaborative et efficace pour résoudre les problèmes et maintenir le SI à jour. Cela permet également de garantir que le système est toujours en mesure de répondre aux besoins de l&#x27;entreprise et de ses utilisateurs.</p><h2 id="c1ac30cc-5c08-4651-85e1-ad783e892b81" class="">5.2 Évaluation de la qualité de la solution</h2><p id="1f032fe0-137d-44b0-a33b-3570a3931177" class="">La qualité de la solution a été évaluée en utilisant une suite de tests a été effectuée pour garantir que toutes les fonctionnalités fonctionnent correctement et que les données sont traitées de manière fiable.</p><p id="038e38de-4e27-4036-b586-478c61e571fe" class="">Ensuite, des retours ont été recueillis auprès des futurs utilisateurs, en particulier du pôle de communication, afin de s&#x27;assurer que l&#x27;interface utilisateur est conviviale et que toutes les fonctionnalités sont utiles et faciles à utiliser.</p><p id="af3db4d0-7fcf-4b0b-a8e9-00509a710eae" class="">Enfin, plusieurs versions ont été publiées pour permettre aux utilisateurs de tester la solution et de fournir des commentaires. Ces commentaires ont été pris en compte pour améliorer la solution et garantir qu&#x27;elle répond aux besoins des utilisateurs et de l&#x27;entreprise.</p><h2 id="a674fcb6-7a30-475e-8287-72e7210d1a35" class="">5.3 Procédure de correction d&#x27;un dysfonctionnement</h2><p id="8e47f30e-2de6-4bff-ab1a-b51d031ed182" class="">Pour signaler un dysfonctionnement dans l&#x27;interface de recherche immobilière, les utilisateurs ont deux options :</p><ol type="1" id="52adb52b-87ff-4645-911b-60d3ce4052ac" class="numbered-list" start="1"><li>Utiliser le formulaire de contact disponible sur le site web d&#x27;Immozia pour signaler le problème. Ils peuvent fournir des informations détaillées sur le problème rencontré, ce qui aidera l&#x27;équipe de développement à diagnostiquer et à résoudre le problème plus rapidement.</li></ol><ol type="1" id="6dc1f775-04d4-49f6-b7cb-c74eaa54d81c" class="numbered-list" start="2"><li>Ouvrir un ticket sur le dépôt GitHub d&#x27;Immozia pour signaler le problème. Cette méthode est particulièrement utile pour les utilisateurs techniques ou les développeurs qui peuvent fournir des informations détaillées sur le problème et même proposer des correctifs ou des améliorations.</li></ol><p id="c9d16592-c7a4-4618-80f8-0fd31da99d9c" class="">Quelle que soit la méthode utilisée, l&#x27;équipe de développement d&#x27;Immozia s&#x27;engage à diagnostiquer et à résoudre les problèmes signalés dans les plus brefs délais. Les utilisateurs seront informés de l&#x27;avancement de la résolution du problème et de la mise à disposition de correctifs ou de mises à jour pour résoudre le problème.</p><p id="bf76778f-d0ef-42fe-86ed-0ebbb19fba19" class="">En cas de dysfonctionnement critique, l&#x27;équipe de développement prendra des mesures immédiates pour résoudre le problème et en informer les utilisateurs le plus rapidement possible.</p><h1 id="89c784d1-de57-45b7-a94f-ae3432c8dfd1" class="">6. Bilan du projet</h1><h2 id="0223641b-29c2-49bf-8732-83fd71199661" class="">6.1 Validation des exigences point par point</h2><h3 id="6386c9ab-6ef2-40bf-b0db-2d271bbbb489" class="">Validation des Exigences</h3><ul id="00724ac3-ff2b-4991-b644-1c607ae0f747" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Le formulaire est correctement affiché et tous les champs sont présents et correctement étiquetés.</span><div class="indented"></div></li></ul><ul id="edf69a89-d4da-4a8b-a304-111a458afe61" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Les données valides sont enregistrées correctement et un message de confirmation est affiché.</span><div class="indented"></div></li></ul><ul id="c80146df-3940-4442-838a-b96931cd2865" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Les erreurs de saisie et les champs obligatoires manquants sont signalés par des messages d&#x27;erreur.</span><div class="indented"></div></li></ul><p id="d328dbda-bc14-483c-8b25-d369e9444ffb" class="">Le projet a été un succès, avec une interface de recherche immobilière conviviale et efficace qui répond aux besoins des utilisateurs et de l&#x27;entreprise.</p><p id="68852711-c1d7-4b86-9aea-6b4d41a24e8c" class="">La documentation a été maintenue à jour tout au long du projet, ce qui a facilité la maintenance corrective et évolutive du système.</p><p id="37654b47-ecc9-417d-811e-83ec4b8402f1" class="">Les tests ont été effectués pour garantir que toutes les fonctionnalités fonctionnent correctement et que les données sont traitées de manière fiable.</p><p id="70a024ad-edfe-4b84-b950-550e2c65901c" class="">Les retours des utilisateurs ont été pris en compte pour améliorer la solution et garantir qu&#x27;elle répond aux besoins des utilisateurs et de l&#x27;entreprise.</p><p id="30293ee3-eebf-4950-96bc-fc089e1e2f18" class="">En cas de dysfonctionnement, une procédure claire a été mise en place pour signaler et résoudre le problème. En somme, le projet a été un succès et a permis à l&#x27;entreprise de fournir une interface de recherche immobilière efficace et conviviale à ses utilisateurs.</p><h2 id="69297390-7ea3-456c-bb12-bc13a969f489" class="">6.2 Axes d&#x27;amélioration</h2><p id="a725dee5-1ca7-45d7-b9d4-6d284567e2ac" class="">Le système d&#x27;authentification actuel fonctionne avec le &quot;basic auth&quot; d&#x27;Apache. Bien que cela soit suffisant pour une utilisation interne, il peut être amélioré pour offrir une meilleure sécurité.</p><p id="eb6e7bed-9d48-48a4-94f3-906533240be5" class="">Il est recommandé de mettre en place un système d&#x27;authentification plus robuste, tel que l&#x27;authentification à deux facteurs ou l&#x27;authentification OAuth. <strong>Ces méthodes offrent une meilleure sécurité en utilisant des méthodes d&#x27;authentification plus avancées.</strong></p><p id="c7671f68-4491-4abe-9c33-6008b3ba3d57" class="">En outre, il est recommandé de mettre en place une politique de mots de passe forte pour garantir que les utilisateurs utilisent des mots de passe sûrs et qu&#x27;ils sont régulièrement mis à jour.</p><p id="68c93b4f-eb06-4370-afeb-1a73bbbe3b29" class=""><mark class="highlight-yellow_background">Enfin, il est important de mettre en place des mesures de sécurité supplémentaires, telles que la détection d&#x27;intrusion et la surveillance des logs d&#x27;activité, pour garantir que le système d&#x27;authentification est sécurisé en permanence.</mark></p><p id="be15d181-cc51-4e00-8952-7569f6568731" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="d1c19065-e7e9-4105-b6a3-5630ea7fd0d1"><div style="font-size:1.5em"><span class="icon">👉</span></div><div style="width:100%">Cette documentation est la propriété intellectuelle de Grimaldi Baptiste. 
+<a href="https://portfolio.baptistegrimaldi.info/legal"><mark class="highlight-red_background"><span style="border-bottom:0.05em solid">portfolio.baptistegrimaldi.info/legal</span></mark></a></div></figure></div></article></body></html>
