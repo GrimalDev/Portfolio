@@ -114,5 +114,5 @@ dist
 #test
 test/
 
-articles_html
-articles_media
+public/articles_html
+public/articles_media
