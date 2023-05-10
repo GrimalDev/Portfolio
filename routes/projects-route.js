@@ -329,10 +329,6 @@ router.get('/pdf/:slug', async function(req, res, next) {
   //if file does not exist, send pdf version of markdown body
   if (!fs.existsSync(pdfPath)) {
     project.body = `# ${project.title}\n## ${project.description}(${new Date(project.created_at).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' })})\n\n${project.body}`;
-    //ADD image to the markdown body from the img field
-    if (project.img) {
-      project.body = `${project.body}\n\n![${project.img}](https://portfolio.baptistegrimaldi.info/articles_media/direct_images/${project.img})`;
-    }
 
     resultPdf = await markdownToPdf(project.body, pdfPath, {output: "raw"});
   } else {
