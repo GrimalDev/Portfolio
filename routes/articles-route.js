@@ -143,10 +143,6 @@ router.get('/pdf/:slug', async function(req, res, next) {
   if (!fs.existsSync(pdfPath)) {
     //ADD title to the markdown body
     article.body = `# ${article.title}\n## ${article.description}(${new Date(article.created_at).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' })})\n\n${article.body}`;
-    //ADD image to the markdown body from the img field
-    if (article.img) {
-      article.body = `${article.body}\n\n![${article.img}](https://portfolio.baptistegrimaldi.info/articles_media/direct_images/${article.img})`;
-    }
 
     resultPdf = await markdownToPdf(article.body, pdfPath, {output: "raw"});
   }
