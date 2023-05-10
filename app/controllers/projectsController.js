@@ -34,6 +34,19 @@ export async function getNumberOfPages(searchSQLQuery, nPerPage = 8) {
     });
 }
 
+export async function getAllCategories() {
+    const sql = "SELECT * FROM categories";
+    return new Promise((resolve, reject) => {
+        poolDB.query(sql, (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+        });
+    });
+}
+
 //return collection of projects corresponding to the page number
 //a page is a pack of 8 projects
 //if no page number is provided, the first page is returned
@@ -136,4 +149,42 @@ export async function getProjects(options) {
             return resolve({ projects: projects, maxPages: maxPages });
         });
     });
+}
+
+//function to add a new article
+export async function addProject(project) {
+  //insert a new row in the projects table with the values provided in the project object
+  const query = {
+    sql: "INSERT INTO projects SET ?",
+    values: project,
+  }
+
+  return new Promise((resolve, reject) => {
+    poolDB.query(query.sql, query.values, (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+}
+
+//delete a project
+export async function deleteProject(slug) {
+  const query = {
+    sql: "DELETE FROM projects WHERE slug = ?",
+    values: [slug],
+  }
+
+  return new Promise((resolve, reject) => {
+    poolDB.query(query.sql, query.values, (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        console.log(result);
+        resolve(result);
+      }
+    })
+  })
 }

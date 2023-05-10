@@ -1,35 +1,31 @@
 import express from 'express';
 import moment from "moment";
-import {isAuth, isAdmin} from "../app/helpers/userHelpers.js";
+import {isAuth, isAdmin} from "../app/models/userHelpers.js";
 import poolDB from "../app/config/configDB.js";
+import {getUserById} from "../app/controllers/userController.js";
+import {getAllLanguages} from "../app/controllers/languageController.js";
+import {getAllCategories, getProjects} from "../app/controllers/projectsController.js";
+import {getAllLogs} from "../app/controllers/logsController.js";
 const router = express.Router()
 
 /* GET cv page. */
 router.get('/', isAuth, isAdmin, async function (req, res, next) {
-    //get logs from db
-    const logsQuery = "SELECT * FROM logs_visit ORDER BY visit_time DESC LIMIT 10;";
-    poolDB.query(logsQuery, async (err, logs) => {
-        if (err) throw err;
+  const logs = await getAllLogs();
+  const user = await getUserById(req.user);
+  const languages = await getAllLanguages();
+  const categories = await getAllCategories();
+  const allProjects = await getProjects({categories: [4]});
 
-        //loop through logs and replace timestamp with date
-        for (let i = 0; i < logs.length; i++) {
-            let displayDate = logs[i].visit_time;
 
-            //add two hours to the date to get the correct time
-            displayDate = displayDate.setHours(displayDate.getHours());
-
-            //convert to local time in france
-            displayDate = new Date(displayDate).toLocaleString("fr-FR", {timeZone: "Europe/Paris"});
-
-            //replace timestamp with date
-            logs[i].visit_time = displayDate;
-        }
-
-        res.render('admin', {
-            user: req.user,
-            logs: logs
-        });
-    });
+  res.render('admin', {
+    user: user,
+    logs: logs,
+    projectsInfos : {
+      allProjects: allProjects,
+      languages: languages,
+      categories: categories
+    }
+  });
 });
 
 //select logs between dates

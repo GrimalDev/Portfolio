@@ -1,5 +1,5 @@
 import express from 'express';
-import {isAuth} from "../app/helpers/userHelpers.js";
+import {isAuth} from "../app/models/userHelpers.js";
 const router = express.Router()
 
 /* GET doc page. */

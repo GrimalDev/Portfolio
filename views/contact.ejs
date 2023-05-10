@@ -3,8 +3,9 @@
 <head>
     <%- include("partials/head", {title: "Contact Baptiste Grimaldi"}) %>
     <link rel="stylesheet" href="/stylesheets/contact-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script defer src="/javascripts/particles-config.min.js"></script>
     <script defer src="/javascripts/contact-scripts.min.js"></script>
-
     <script type="module" defer src="/javascripts/main-animator.min.js"></script>
 </head>
 <body>
@@ -40,6 +41,7 @@
         <input id="form__submit" type="submit" value="Send">
     </form>
 </main>
+<div id="particles-js"></div>
 
 <%- include("partials/footer") %>
 

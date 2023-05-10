@@ -67,7 +67,7 @@ function renderProjects(projects) {
         cardLink.classList.add("card__link");
 
         //set image background
-        cardImage.style.backgroundImage = "url('/images/articles/" + project.img + "')";
+        cardImage.style.backgroundImage = "url('/articles_media/direct_images/" + project.img + "')";
 
         //add attributes
         cardLink.setAttribute("href", "/projects/view/" + project.slug);
@@ -76,7 +76,15 @@ function renderProjects(projects) {
 
         //add text
         cardTitle.innerText = project.title + " (" + languageName + ")";
-        cardText.innerText = project.description;
+
+        //if description is an html element as a string (from markdown) append it as html
+        if (project.description.includes("<")) {
+          cardText.innerHTML = project.description;
+          //put styling all to unset and margin to 0 on the child
+          cardText.childNodes[0].style = "all: unset; margin: 0;";
+        } else {
+          cardText.innerText = project.description;
+        }
 
         //append animation
         card.classList.add("animate__popIn");

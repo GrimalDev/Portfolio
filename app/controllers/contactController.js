@@ -18,8 +18,8 @@ export function verifyContactForm(req, res, next) {
         errors.push("Message is required");
     }
 
-    //verify firstname and lastname only letters
-    const nameRegex = /^[a-zA-Z]+$/;
+    //verify firstname and lastname only letters, spaces, and dashes
+    const nameRegex = /^[a-zA-Z- ]+$/;
     if (!nameRegex.test(firstname)) {
         errors.push("First name must only contain letters");
     }

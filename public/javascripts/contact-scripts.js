@@ -31,52 +31,60 @@ textArea.addEventListener("input", function () {
 const form = document.getElementById("contact__form");
 
 form.addEventListener("submit", async function (e) {
-    //prevent default submit
-    e.preventDefault();
+  //prevent default submit
+  e.preventDefault();
 
-    //hide error message if it was displayed
-    statusMessage.classList.toggle("hidden", true);
-    //hide success message if it was displayed
-    statusMessage.classList.toggle("status-good", false);
+  //if button is disabled, do nothing
+  if (document.getElementById("form__submit").disabled) {
+      return;
+  }
 
-    //get all inputs
-    const inputs = document.getElementsByClassName("form__input");
+  //hide error message if it was displayed
+  statusMessage.classList.toggle("hidden", true);
+  //hide success message if it was displayed
+  statusMessage.classList.toggle("status-good", false);
 
-    //check if all inputs are filled
-    let allFilled = true;
-    Object.values(inputs).forEach((input) => {
-        input.classList.toggle("status-bad", false); //remove shake animation
+  //get all inputs
+  const inputs = document.getElementsByClassName("form__input");
 
-        if (!input.value) {
-            //if not all filled, shake the field
-            input.classList.toggle("status-bad");
-            allFilled = false;
-        }
-    });
+  //check if all inputs are filled
+  let allFilled = true;
+  Object.values(inputs).forEach((input) => {
+      input.classList.toggle("status-bad", false); //remove shake animation
 
-    if (!allFilled) {
-        return;
-    }
+      if (!input.value) {
+          //if not all filled, shake the field
+          input.classList.toggle("status-bad");
+          allFilled = false;
+      }
+  });
 
-    //if all filled, send the form and get the response
-    const formData = new URLSearchParams(new FormData(form));
-    const response = await fetch(form.action, {
-        method: "POST",
-        body: formData,
-    });
+  if (!allFilled) {
+      return;
+  }
 
-    const responseJson = await response.json();
+  //if all filled, send the form and get the response
+  const formData = new URLSearchParams(new FormData(form));
+  const response = await fetch(form.action, {
+      method: "POST",
+      body: formData,
+  });
 
-    //if response is nook, display success message
-    if (responseJson.status === 'nook') {
-        statusMessage.innerText = responseJson.message;
-        statusMessage.classList.toggle("hidden");
+  const responseJson = await response.json();
 
-        return;
-    }
+  //if response is nook, display success message
+  if (responseJson.status === 'nook') {
+      statusMessage.innerText = responseJson.message;
+      statusMessage.classList.toggle("hidden");
 
-    //if response is ok, display success message
-    statusMessage.classList.toggle("status-good", true);
-    statusMessage.innerText = "Message sent successfully!";
-    statusMessage.classList.toggle("hidden");
+      return;
+  }
+
+  //if response is ok, display success message
+  statusMessage.classList.toggle("status-good", true);
+  statusMessage.innerText = "Message sent successfully!";
+  statusMessage.classList.toggle("hidden");
+
+  //disable submit button
+  document.getElementById("form__submit").disabled = true;
 })

@@ -4,7 +4,7 @@ import poolDB from "../config/configDB.js";
 export function logVisit(req, res, next) {
     const logsQuery = "INSERT INTO logs_visit (ip, url) VALUES (?, ?)";
 
-    const routeVisited = req.originalUrl;
+    let routeVisited = req.originalUrl;
     const ipUsed = req.headers['x-forwarded-for'] || req.socket.remoteAddress ; // Ip with reverse proxy traefik
     // const ipUsed = req.ip; // Ip without reverse proxy traefik
 
@@ -29,7 +29,7 @@ export function logVisit(req, res, next) {
     };
     let isAsset = false;
 
-    //select the initial route part between first / and second /
+    //select the initial route part between first / and second /#
     // if there is no second / select the whole route
     const routePart = routeVisited.split("/")[1];
 
@@ -44,8 +44,43 @@ export function logVisit(req, res, next) {
         return;
     }
 
+    //control if url is longer than 499 characters (max length in db) and cut it if it is and add [...] at the end
+    if (routeVisited.length > 499) {
+        routeVisited = routeVisited.substring(0, 489) + "[...]";
+    }
+
     poolDB.query(logsQuery, [ipUsed, routeVisited], (err, logs) => {
-        if (err) throw err;
+        if (err) {
+            console.error(err);
+        }
         next();
     });
+}
+
+export async function getAllLogs() {
+  return new Promise((resolve, reject) => {
+    //get logs from db
+    const logsQuery = "SELECT * FROM logs_visit ORDER BY visit_time DESC LIMIT 10;";
+    poolDB.query(logsQuery, async (err, logs) => {
+      if (err) {
+        return reject(err);
+      }
+
+      //loop through logs and replace timestamp with date
+      for (let i = 0; i < logs.length; i++) {
+        let displayDate = logs[i].visit_time;
+
+        //add two hours to the date to get the correct time
+        displayDate = displayDate.setHours(displayDate.getHours());
+
+        //convert to local time in france
+        displayDate = new Date(displayDate).toLocaleString("fr-FR", {timeZone: "Europe/Paris"});
+
+        //replace timestamp with date
+        logs[i].visit_time = displayDate;
+      }
+
+      return resolve(logs);
+    });
+  });
 }

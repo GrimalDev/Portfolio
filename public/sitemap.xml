@@ -1,142 +1,177 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+    <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/cv</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/examens</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/veille</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/projects</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/articles</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/contact</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/media/curriculum/CV_BaptisteGrimaldi_v6.3.pdf</loc>
-  <lastmod>2023-02-28T07:57:58+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/projects/view/home-lab</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/projects/view/serveurs-docker</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/projects/view/mediocs</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/projects/view/modelisation-de-base-de-donnee</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/projects/view/interface-de-recherche-immobilere</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/projects/view/seo-immozia</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/projects/view/demarche-damelioration-continue</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/projects/view/api-immozia</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/projects/view/portfolio-professionnel</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/projects/view/taberu</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/projects/view/control-board</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/articles/view/new-article1</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/articles/view/new-article2</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/articles/view/new-article3</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/articles/view/new-article4</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/articles/view/new-article5</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/articles/view/new-article6</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://portfolio.baptistegrimaldi.info/articles/view/new-article7</loc>
-  <lastmod>2023-04-09T21:11:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/cv</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/examens</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/veille</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/projects</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/articles</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/contact</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/media/curriculum/CV_BaptisteGrimaldi_v6.3.pdf</loc>
+        <lastmod>2023-02-28T07:57:58+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/projects/view/home-lab</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/projects/view/serveurs-docker</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/projects/view/mediocs</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/projects/view/modelisation-de-base-de-donnee</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/projects/view/interface-de-recherche-immobilere</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/projects/view/seo-immozia</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/projects/view/demarche-damelioration-continue</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/projects/view/api-immozia</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/projects/view/portfolio-professionnel</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/projects/view/taberu</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/projects/view/control-board</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/articles/view/weekly-summary-of-the-week-14</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/articles/view/docker-desktop-418-docker-scout-updates-container-file-explorer-ga</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/articles/view/enabling-a-no-code-performance-testing-platform-using-the-ddosify-docker-extension</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/articles/view/containerizing-an-event-posting-app-built-with-the-mean-stack</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/articles/view/weekly-summary-of-the-week-13</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/articles/view/were-no-longer-sunsetting-the-free-team-plan</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/articles/view/weekly-summary-of-the-week-12</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/articles/view/effortlessly-build-machine-learning-apps-with-hugging-faces-docker-spaces</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/articles/view/docker-and-hugging-face-partner-to-democratize-ai</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/articles/view/docker-and-ambassador-labs-announce-telepresence-for-docker-improving-the-kubernetes-development-experience</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/articles/view/announcing-dockerwasm-technical-preview-2</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/articles/view/we-apologize-we-did-a-terrible-job-announcing-the-end-of-docker-free-teams</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/articles/view/weekly-summary-of-the-week-11</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.baptistegrimaldi.info/articles/view/distributed-cloud-native-graph-database-with-nebulagraph-docker-extension</loc>
+        <lastmod>2023-04-12T11:12:26+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
 
 
 </urlset>

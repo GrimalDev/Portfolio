@@ -21,7 +21,7 @@ h1 {
     align-items: center;
     text-align: center;
     text-transform: uppercase;
-    color: #4D4D4C;
+    color: $light-black;
 }
 h2 {
     font-weight: 700;
@@ -31,7 +31,7 @@ h2 {
     align-items: center;
     text-align: center;
     text-transform: capitalize;
-    color: #4D4D4C;
+    color: $light-black;
 }
 h3 {
     font-weight: 500;
@@ -41,28 +41,80 @@ h3 {
     align-items: center;
     justify-content: center;
     text-transform: capitalize;
-    color: #4D4D4C;
+    color: $light-black;
     width: 70%;
     padding-bottom: 1rem;
     border-bottom: #803378 1px solid;
     margin-top: 5vh;
 }
 
-#bts-description__content {
-    font-family: "Inter", serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: clamp(14px, 1.8vw, 20px);
-    line-height: 2rem;
-    color: #4D4D4C;
-    width: 65%;
-    margin-bottom: 10vh;
-}
-
-.important {
-    font-weight: 700;
-    color: #803378;
-    background-color: lightyellow;
+/*------------exams menu nav-----------*/
+.exams-menu__navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    margin-top: 2vh;
+    .exams-menu__items__container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        height: fit-content;
+        margin: 0;
+        padding: 0;
+        gap: 1rem;
+        .exams-menu__item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: fit-content;
+            height: fit-content;
+            padding: 1rem;
+            margin: 0;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            &:hover .exams-menu__item__title {
+                color: white !important;
+                background-color: #803378;
+            }
+            .exams-menu__item__link {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+                color: $light-black;
+                text-decoration: none;
+                .exams-menu__item__illustration {
+                    width: 4rem;
+                    height: 4rem;
+                }
+                span.exams-menu__item__illustration {
+                    font-family: "Roboto", serif;
+                    font-weight: 500;
+                    font-size: 4rem;
+                    line-height: 4rem;
+                    text-align: center;
+                    text-transform: capitalize;
+                    color: black;
+                }
+                .exams-menu__item__title {
+                    font-family: "Roboto", serif;
+                    font-weight: 300;
+                    font-size: 20px;
+                    line-height: 20px;
+                    text-align: center;
+                    text-transform: capitalize;
+                    color: $light-black;
+                    border-radius: 10px;
+                    padding: 0.5rem;
+                    transition: background-color 0.3s ease-in-out;
+                }
+            }
+        }
+    }
 }
 
 /*------------PROJECTS CARDS-----------*/
@@ -72,16 +124,64 @@ h3 {
     margin-bottom: 15vh;
     .card__container {
         justify-content: space-between !important;
-        //display 3 cards per row
-        height: clamp(260px, 40vh, 400px) !important;
-        width: clamp(220px, 33vw, 350px) !important;
+        position: relative;
+        .card__download {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            height: 2.4rem;
+            width: 2.4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 50;
+            border-radius: 10px;
+            background-color: $cream-bg;
+            padding: .4rem;
+            transition: background-color 0.3s ease-in;
+            img {
+                height: 100%;
+                width: 100%;
+            }
+            &:hover {
+                cursor: pointer;
+                background-color: #803378;
+            }
+        }
     }
+}
+
+.card__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 98%;
+    height: fit-content;
+    padding: 1rem;
 }
 
 /*------------RESPONSIVE-----------*/
 
+//media 524
+@media screen and (max-width: 524px) {
+    .exams-menu__item {
+        flex-basis: 100% !important;
+    }
+}
+
 @media screen and (max-width: 768px) {
     #bts-description__content {
         width: 90%;
+    }
+}
+
+//media 1015
+@media screen and (max-width: 1015px) {
+    .exams-menu__items__container {
+        flex-wrap: wrap;
+        .exams-menu__item {
+            flex-basis: 45%;
+        }
     }
 }

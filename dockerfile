@@ -9,6 +9,10 @@ WORKDIR /home/node/app
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
 COPY package*.json ./
+COPY dependencies.txt ./
+
+#install all libraries for production from dependencies.txt
+RUN apt-get update && xargs apt-get install -y <dependencies.txt
 
 RUN npm install
 

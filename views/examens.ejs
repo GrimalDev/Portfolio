@@ -14,40 +14,81 @@
     <h1>Missions E4 & E5</h1>
     <h2>Pour les examens du BTS SIO option SLAM</h2>
 
-    <p>
-        <a href="#bts-description__content">C'est quoi les épreuvres E4 et E5?</a>
-    </p>
+    <div class="exams-menu__navigation">
+        <ul class="exams-menu__items__container">
+            <li class="exams-menu__item">
+                <a href="#more-about-examens" class="exams-menu__item__link" title="En savoir plus sur les examens du BTS SIO">
+                    <img class="exams-menu__item__illustration" src="/images/question-marks.webp" alt="question marks">
+                    <span class="exams-menu__item__title">Les Examens ?</span>
+                </a>
+            </li>
+            <li class="exams-menu__item">
+                <a href="#missions__E4" class="exams-menu__item__link" title="Voir mes missions E4">
+                    <span class="exams-menu__item__illustration" >E4</span>
+                    <span class="exams-menu__item__title">Missions E4</span>
+                </a>
+            </li>
+            <li class="exams-menu__item">
+                <a href="#missions__E5" class="exams-menu__item__link" title="Voir mes missions E5">
+                    <span class="exams-menu__item__illustration" >E5</span>
+                    <span class="exams-menu__item__title">Missions E5</span>
+                </a>
+            </li>
+            <li class="exams-menu__item">
+                <a href="/articles_media/pdf/presentationE4-v3-Baptiste-Grimaldi.pdf" download="presentationE4-v3-Baptiste-Grimaldi.pdf" target="_blank" rel="noreferrer noopener" class="exams-menu__item__link" title="Télécharger mes présentations">
+                    <img class="exams-menu__item__illustration" src="/images/presentation-board.webp" alt="presentation board">
+                    <span class="exams-menu__item__title">Mes présentations</span>
+                </a>
+            </li>
+            <li class="exams-menu__item">
+                <a href="/articles_media/pdf/tableau-synthese-E4-BaptisteGrimaldi.pdf" download="tableau-synthese-E4-BaptisteGrimaldi.pdf" target="_blank" rel="noreferrer noopener" class="exams-menu__item__link" title="Télécharger mon tableau de synthèse du BTS SIO">
+                    <img class="exams-menu__item__illustration" src="/images/data-table-logo.webp" alt="ressources">
+                    <span class="exams-menu__item__title">Tableau de synthèse</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 
-    <h3>Mes projets E4</h3>
+    <h3 id="missions__E4">Mes projets E4</h3>
     <div class="cards__main-container">
         <% projectsE4.forEach(project => {%>
             <div class="card__container card__category__<%= project.categories %>">
-                <div class="card__image" style="background-image: url('/images/articles/<%= project.img %>')"></div>
+                <div class="card__image" style="background-image: url('/articles_media/direct_images/<%= project.img %>')"></div>
                 <div class="card__body">
                     <p class="card__title"><%= project.title %></p>
-                    <p class="card__text"><%= project.description %></p>
+                    <div class="card__text">
+                        <%- project.description %>
+                    </div>
                 </div>
                 <a class="card__link" href="/projects/view/<%= project.slug %>"></a>
+                <a class="card__download" href="/project/pdf/<%= project.slug %>" download="<%= project.slug %>-doc.pdf" target="_blank" rel="noreferrer noopener" title="Télécharger la documentation du projet">
+                    <img src="/images/download-icon.webp" alt="Download icon">
+                </a>
             </div>
         <% }) %>
     </div>
 
-    <h3>Mes missions E5</h3>
+    <h3 id="missions__E5">Mes missions E5</h3>
     <div class="cards__main-container">
         <% projectsE5.forEach(project => {%>
             <div class="card__container card__category__<%= project.categories %>">
-                <a class="card__link" href="/projects/view/<%= project.slug %>"></a>
-                <div class="card__image" style="background-image: url('/images/articles/<%= project.img %>')"></div>
+                <div class="card__image" style="background-image: url('/articles_media/direct_images/<%= project.img %>')"></div>
                 <div class="card__body">
                     <p class="card__title"><%= project.title %></p>
-                    <p class="card__text"><%= project.description %></p>
+                    <div class="card__text">
+                        <%- project.description %>
+                    </div>
                 </div>
+                <a class="card__link" href="/projects/view/<%= project.slug %>"></a>
+                <a class="card__download" href="/project/pdf/<%= project.slug %>" download="<%= project.slug %>-doc.pdf" target="_blank" rel="noreferrer noopener" title="Télécharger la documentation du projet">
+                    <img src="/images/download-icon.webp" alt="Download icon">
+                </a>
             </div>
         <% }) %>
     </div>
 
-    <h3>Le BTS SIO option SLAM</h3>
-    <div id="bts-description__content">
+    <h3 id="more-about-examens">Le BTS SIO option SLAM</h3>
+    <section class="bts-description__content">
         <p>Le BTS SIO (Services Informatiques aux Organisations) <span class="important">option SLAM (Solutions Logicielles et Applications Métier)</span> est une <span class="important">formation professionnalisante de deux ans</span>, qui vise à former des <span class="important">spécialistes en développement de logiciels et d'applications métiers</span>.</p>
 
         <p>Dans le cadre de cette formation, les étudiants sont amenés à passer deux épreuves importantes :</p>
@@ -61,7 +102,7 @@
         <p>Quant à <span class="important">l'épreuve E5</span>, elle vise à évaluer les compétences des étudiants en matière d'analyse et de conception de systèmes d'information. Les étudiants doivent ainsi être capables d'analyser les besoins et les contraintes d'un client, de concevoir une solution adaptée, de rédiger un cahier des charges et de réaliser un prototype.</p>
 
         <p>Ces deux épreuves sont donc essentielles pour valider le <span class="important">BTS SIO option SLAM</span> et permettent aux étudiants de mettre en pratique les compétences qu'ils ont acquises tout au long de leur formation.</p>
-    </div>
+    </section>
 </main>
 
 <%- include("partials/footer") %>

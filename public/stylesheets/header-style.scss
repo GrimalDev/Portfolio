@@ -15,7 +15,7 @@ nav {
         > div:first-child {
             gap: 3rem;
             a {
-                color: #4D4D4C;
+                color: $light-black;
                 text-decoration: none;
                 min-width: fit-content;
                 &.long {

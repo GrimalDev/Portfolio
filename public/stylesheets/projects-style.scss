@@ -26,7 +26,7 @@ h1 {
     align-items: center;
     text-align: center;
     text-transform: uppercase;
-    color: #4D4D4C;
+    color: $light-black;
 }
 h2 {
     font-weight: 700;
@@ -36,7 +36,7 @@ h2 {
     align-items: center;
     text-align: center;
     text-transform: capitalize;
-    color: #4D4D4C;
+    color: $light-black;
 }
 h3 {
     font-weight: 500;
@@ -46,7 +46,7 @@ h3 {
     align-items: center;
     text-align: center;
     text-transform: capitalize;
-    color: #4D4D4C;
+    color: $light-black;
 }
 
 
@@ -87,9 +87,9 @@ h3 {
                 border-radius: 10px;
                 font-size: 1.2rem;
                 font-weight: 500;
-                color: #4D4D4C;
+                color: $light-black;
                 transition: ease-in-out 0.2s;
-                border-bottom: #4D4D4C solid 1px;
+                border-bottom: $light-black solid 1px;
                 text-align: center;
                 box-shadow: 0 0 25px 1px #d5d5d5;
                 background: $cream-bg;
@@ -125,7 +125,7 @@ h3 {
                 .projects-view__sidebar__option__label {
                     font-size: 1.2rem;
                     font-weight: 500;
-                    color: #4D4D4C;
+                    color: $light-black;
                     transition: ease-in-out 0.2s;
                     border: 0;
                     box-sizing: border-box;
