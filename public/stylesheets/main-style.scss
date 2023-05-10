@@ -108,6 +108,7 @@ body.background-fill-dark {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    transition: background-color .2s ease-in-out;
     &::after {
         content: "🌓";
         position: absolute;
@@ -117,6 +118,19 @@ body.background-fill-dark {
         height: fit-content;
         width: fit-content;
         transform: translate(-50%, -50%);
+    }
+    &::before {
+        content: "BETA";
+        position: absolute;
+        right: -5px;
+        top: -5px;
+        font-size: 10px;
+        height: fit-content;
+        width: fit-content;
+        transform: rotate(5deg);
+        color: #fff;
+        background-color: #da0000;
+        padding: 2px 4px;
     }
     &:hover {
         background-color: rgba(217, 217, 217, 0.48);
@@ -196,7 +210,7 @@ header nav > div > span {
     width: 30rem;
     min-width: fit-content;
     height: fit-content;
-    border: 1px solid rgba(77, 77, 76, 0.05);
+    border: 1px solid rgba(77, 77, 77, 0.26);
     box-shadow: 0 20px 30px rgba(0,0,0,.1);
     border-radius: 10px 0 0 10px;
     background-color: $cream-bg;

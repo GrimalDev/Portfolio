@@ -114,5 +114,6 @@ dist
 #test
 test/
 
-public/articles_html
-public/articles_media
+public/articles_html/
+public/articles_media/
+public/model/

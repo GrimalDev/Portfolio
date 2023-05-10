@@ -41,7 +41,7 @@
                 </a>
             </li>
             <li class="exams-menu__item">
-                <a href="/articles_media/pdf/tableau-synthèse-E4-BaptisteGrimaldi.pdf" download="tableau-synthèse-E4-BaptisteGrimaldi.pdf" target="_blank" rel="noreferrer noopener" class="exams-menu__item__link" title="Télécharger mon tableau de synthèse du BTS SIO">
+                <a href="/articles_media/pdf/tableau-synthese-E4-BaptisteGrimaldi.pdf" download="tableau-synthese-E4-BaptisteGrimaldi.pdf" target="_blank" rel="noreferrer noopener" class="exams-menu__item__link" title="Télécharger mon tableau de synthèse du BTS SIO">
                     <img class="exams-menu__item__illustration" src="/images/data-table-logo.webp" alt="ressources">
                     <span class="exams-menu__item__title">Tableau de synthèse</span>
                 </a>
@@ -56,10 +56,12 @@
                 <div class="card__image" style="background-image: url('/articles_media/direct_images/<%= project.img %>')"></div>
                 <div class="card__body">
                     <p class="card__title"><%= project.title %></p>
-                    <p class="card__text"><%= project.description %></p>
+                    <div class="card__text">
+                        <%- project.description %>
+                    </div>
                 </div>
                 <a class="card__link" href="/projects/view/<%= project.slug %>"></a>
-                <a class="card__download" href="<%= project.slug %>-doc.pdf" download="<%= project.slug %>-doc.pdf" target="_blank" rel="noreferrer noopener" title="Télécharger la documentation du projet">
+                <a class="card__download" href="/project/pdf/<%= project.slug %>" download="<%= project.slug %>-doc.pdf" target="_blank" rel="noreferrer noopener" title="Télécharger la documentation du projet">
                     <img src="/images/download-icon.webp" alt="Download icon">
                 </a>
             </div>
@@ -70,12 +72,17 @@
     <div class="cards__main-container">
         <% projectsE5.forEach(project => {%>
             <div class="card__container card__category__<%= project.categories %>">
-                        <a class="card__link" href="/projects/view/<%= project.slug %>"></a>
                 <div class="card__image" style="background-image: url('/articles_media/direct_images/<%= project.img %>')"></div>
                 <div class="card__body">
                     <p class="card__title"><%= project.title %></p>
-                    <p class="card__text"><%= project.description %></p>
+                    <div class="card__text">
+                        <%- project.description %>
+                    </div>
                 </div>
+                <a class="card__link" href="/projects/view/<%= project.slug %>"></a>
+                <a class="card__download" href="/project/pdf/<%= project.slug %>" download="<%= project.slug %>-doc.pdf" target="_blank" rel="noreferrer noopener" title="Télécharger la documentation du projet">
+                    <img src="/images/download-icon.webp" alt="Download icon">
+                </a>
             </div>
         <% }) %>
     </div>

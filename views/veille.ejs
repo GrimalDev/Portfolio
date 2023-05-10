@@ -37,7 +37,7 @@
                 </a>
             </li>
             <li class="exams-menu__item">
-                <a href="/articles_media/pdf/tableau-synthèse-E4-BaptisteGrimaldi.pdf" download="tableau-synthèse-E4-BaptisteGrimaldi.pdf" target="_blank" rel="noreferrer noopener" class="exams-menu__item__link" title="Télécharger mon tableau de synthèse du BTS SIO">
+                <a href="/articles_media/pdf/tableau-synthese-E4-BaptisteGrimaldi.pdf" download="tableau-synthese-E4-BaptisteGrimaldi.pdf" target="_blank" rel="noreferrer noopener" class="exams-menu__item__link" title="Télécharger mon tableau de synthèse du BTS SIO">
                     <img class="exams-menu__item__illustration" src="/images/data-table-logo.webp" alt="ressources">
                     <span class="exams-menu__item__title">Tableau de synthèse</span>
                 </a>
@@ -51,7 +51,7 @@
             <div class="card__container card__category__<%= article.categories %>">
                 <div class="card__image" style="background-image: url('/articles_media/direct_images/<%= article.img %>')"></div>
                 <div class="card__body">
-                    <p class="card__title"><%= article.title %></p>
+                    <p class="card__title"><%= article.title %> (<%= new Date(article.created_at).toLocaleDateString(undefined, { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '-') %>)</p>
                     <p class="card__text"><%- article.description %></p>
                 </div>
                 <a class="card__link" href="/articles/view/<%= article.slug %>"></a>

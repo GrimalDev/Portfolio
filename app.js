@@ -6,6 +6,7 @@ import logger from "morgan";
 import dotenv from 'dotenv'
 import session from './app/config/sessionStore.js'
 import {logVisit} from "./app/controllers/logsController.js";
+import fileUpload from "express-fileupload";
 
 //session store and authentication
 import passport from "passport";
@@ -41,13 +42,20 @@ app.set('view engine', 'ejs');
 if (process.env.NODE_ENV !== 'production') {
   app.use(logger('dev'));
 } else {
-  //log route visits
+  //log route visits to the database
   app.use(logVisit);
+  //user loger simple production logger with time
+  app.use(logger('[:date[clf]] :method :url :status :res[content-length] - :response-time ms'));
 }
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false })); // support encoded bodies
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(fileUpload({
+    useTempFiles: true,
+    tempFileDir: '/tmp/',
+    debug: process.env.NODE_ENV !== 'production'
+  }));
 
 // Sessions for Passport
 app.use(session) // session secret

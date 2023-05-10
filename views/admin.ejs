@@ -13,6 +13,7 @@
     <link rel="manifest" href="/site.webmanifest">
 
     <script type="module" defer src="/javascripts/main-animator.min.js"></script>
+    <script defer src="/javascripts/admin-script.js"></script>
 </head>
 <body>
     <%-
@@ -22,44 +23,117 @@
 
         <h1>GUTENTAG <%= user.username %></h1>
 
-        <form action="/newcvline" method="post">
-            <input type="text" name="title" placeholder="Enter title">
-            <input type="text" name="content_level" placeholder="Enter content level">
-            <input type="submit" value="submit">
-        </form>
+        <div class="container">
+            <h2>Ajouter un projet</h2>
+            <form action="/projects/add" method="post" id="add-project__form" enctype="multipart/form-data">
+                <div id="add-project__from__input-container">
+                    <label for="title" class="add-project__from__input-item-container">
+                        Titre
+                        <input type="text" id="title" name="title" required class="add-project__from__input-item">
+                    </label>
 
-        <h2>Selection de la date du log</h2>
-        <div class="time-select__inputs__container">
-            <form action="/admin/logs/select" method="post">
-                <input type="text" class="time-select__input" id="time-select__input__start" placeholder="Début" name="from">
-                <input type="text" class="time-select__input" id="time-select__input__end" placeholder="Fin" name="to">
-                <input type="submit" value="submit">
+                    <label for="description" class="add-project__from__input-item-container">
+                        Description
+                        <input type="text" id="description" name="description" required class="add-project__from__input-item">
+                    </label>
+
+                    <label for="project-body" class="add-project__from__input-item-container">
+                        Contenu
+                        <textarea name="body" id="project-body" required class="add-project__from__input-item"></textarea>
+                    </label>
+                    <label for="project-languages_linked" class="add-project__from__input-item-container">
+                        Langages
+                        <select name="languages_linked" id="project-languages_linked" class="add-project__from__input-item">
+                            <% Object.values(projectsInfos.languages).forEach(language => { %>
+                                <option value="<%= language.id %>"><%= language.name %></option>
+                            <% }); %>
+                        </select>
+                    </label>
+                    <label for="project-categories" class="add-project__from__input-item-container">
+                        Catégories
+                        <select name="categories" id="project-categories" class="add-project__from__input-item">
+                            <% Object.values(projectsInfos.categories).forEach(category => { %>
+                                <option value="<%= category.id %>"><%= category.name %></option>
+                            <% }); %>
+                        </select>
+                    </label>
+                </div>
+                <div class="drop-zones__container">
+                    <div id="project-image__drop-zone" class="add-project__from__input-item-container drop-zone">
+                        Image du projet<br>
+                        Drop ou click pour ajouter une image
+                    </div>
+                    <div id="project-html-optional__drop-zone" class="add-project__from__input-item-container drop-zone">
+                        Html article (optionnel)<br>
+                        Format zip<br>
+                        Drop ou click pour ajouter des fichier
+                    </div>
+                    <div id="project-pdf__drop-zone" class="add-project__from__input-item-container drop-zone">
+                        Fichier pour téléchargement (si nécessaire)<br>
+                        En pdf !
+                    </div>
+                </div>
+                <input id="project-image__input" type="file" name="img" hidden accept="image/*">
+                <input id="project-html-optional__input" type="file" name="morefiles" hidden accept="zip,application/octet-stream,application/zip,application/x-zip,application/x-zip-compressed">
+                <input id="project-pdf__input" type="file" name="pdf" hidden accept="pdf">
+
+                <button type="reset" id="add-project__form__reset">Réinitialiser</button>
+                <input type="submit" value="Ajouter" id="add-project__form__submit">
+            </form>
+            <div id="add-project__error"></div>
+        </div>
+
+<!--        Delete or modify a project-->
+        <div class="container">
+            <h2>Modifier ou supprimer un projet</h2>
+            <form action="/projects/del" method="post" id="del-project__form">
+                <div id="del-project__from__input-container">
+                    <label for="del-project__select" class="del-project__from__input-item-container">
+                        Projet
+                        <select name="id" id="del-project__select" class="del-project__from__input-item">
+                            <% Object.values(projectsInfos.allProjects).forEach(project => { %>
+                                <option value="<%= project.id %>"><%= project.title %></option>
+                            <% }); %>
+                        </select>
+                    </label>
+                </div>
+                <input type="submit" value="Supprimer" id="del-project__form__submit">
             </form>
         </div>
 
-        <h2>Les logs</h2>
-        <table border="1px solid black">
-            <tr>
-                <th>IP</th>
-                <th>URL</th>
-                <th>DATE</th>
-            </tr>
-            <% Object.values(logs).forEach(log => { %>
+        <div class="container">
+            <h2>Les logs</h2>
+            <div class="time-select__inputs__container">
+                <form action="/admin/logs/select" method="post">
+                    <label for="logs-date__select" id="logs-date__label">
+                        <input type="datetime-local" id="logs-date__select">
+                    </label>
+                    <input type="submit">
+                </form>
+            </div>
+            <table id="logs__table">
                 <tr>
-                    <td><%= log.ip %></td>
-                    <td><%= log.url %></td>
-                    <td>
-                        <%= log.visit_time %>
-                    </td>
-                    <td>
-                        <form action="/admin/logs/del" method="post">
-                            <input type="hidden" name="id" value="<%= log.id %>">
-                            <input type="submit" value="delete">
-                        </form>
-                    </td>
+                    <th>IP</th>
+                    <th>URL</th>
+                    <th>DATE</th>
                 </tr>
-            <% });%>
-        </table>
+                <% Object.values(logs).forEach(log => { %>
+                    <tr>
+                        <td><%= log.ip %></td>
+                        <td><%= log.url %></td>
+                        <td>
+                            <%= log.visit_time %>
+                        </td>
+                        <td>
+                            <form action="/admin/logs/del" method="post" class="logs__button-del">
+                                <input type="hidden" name="id" value="<%= log.id %>">
+                                <input type="submit" value="Delete">
+                            </form>
+                        </td>
+                    </tr>
+                <% });%>
+            </table>
+        </div>
     </main>
     <%- include("partials/footer") %>
 </body>

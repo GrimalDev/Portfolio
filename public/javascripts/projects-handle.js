@@ -76,7 +76,15 @@ function renderProjects(projects) {
 
         //add text
         cardTitle.innerText = project.title + " (" + languageName + ")";
-        cardText.innerText = project.description;
+
+        //if description is an html element as a string (from markdown) append it as html
+        if (project.description.includes("<")) {
+          cardText.innerHTML = project.description;
+          //put styling all to unset and margin to 0 on the child
+          cardText.childNodes[0].style = "all: unset; margin: 0;";
+        } else {
+          cardText.innerText = project.description;
+        }
 
         //append animation
         card.classList.add("animate__popIn");

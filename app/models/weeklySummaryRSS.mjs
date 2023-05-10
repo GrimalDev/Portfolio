@@ -11,8 +11,8 @@ import {
 } from "../controllers/articlesController.js";
 import {summarizeArrayOfTexts, summarizeTextChunks} from "./gptCalls.js";
 
-//get week number
-const week = moment('2023-04-16 15:00:00').week();
+//get week number of the current date
+const week = moment('22/04/2023', 'DD/MM/YYYY').week();
 
 const newArticleSummary = {
   slug: 'weekly-summary-of-the-week-' + week,

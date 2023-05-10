@@ -1,6 +1,6 @@
 import express from 'express';
 import poolDB from "../app/config/configDB.js";
-import markdownTranslate from "../app/models/markdown-translate.js";
+import markdownTranslate, {markdownToPdf} from "../app/models/markdown-translate.js";
 import {getArticleBySlug, getArticles} from "../app/controllers/articlesController.js";
 import * as fs from "fs";
 const router = express.Router()
@@ -16,6 +16,9 @@ router.get('/', function(req, res, next) {
     for (let i = 0; i < articles.length; i++) {
       articles[i].body = await markdownTranslate(articles[i].body);
       articles[i].description = await markdownTranslate(articles[i].description);
+
+      //convert date to string dd/mm/yyyy of client's locale
+      articles[i].date = new Date(articles[i].date).toLocaleDateString();
     }
 
     res.render('articles', {articles: articles});
@@ -120,7 +123,40 @@ router.get('/view/:slug', async function(req, res, next) {
   //convert the description from markdown to html
   article.description = await markdownTranslate(article.description);
 
-  res.render('project-single', {project: article});
+  res.render('content-single', {project: article, route: "articles"});
+});
+
+//get pdf version
+router.get('/pdf/:slug', async function(req, res, next) {
+  //check if the article exists
+  const article = await getArticleBySlug(req.params.slug);
+  if (!article) {
+    res.render('not-found');
+    return;
+  }
+
+  //pdf path
+  const pdfPath = `public/articles_media/pdf/${article.slug}-doc.pdf`;
+  let resultPdf;
+
+  //if file does not exist, send pdf version of markdown body
+  if (!fs.existsSync(pdfPath)) {
+    //ADD title to the markdown body
+    article.body = `# ${article.title}\n## ${article.description}(${new Date(article.created_at).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' })})\n\n${article.body}`;
+    //ADD image to the markdown body from the img field
+    if (article.img) {
+      article.body = `${article.body}\n\n![${article.img}](https://portfolio.baptistegrimaldi.info/articles_media/direct_images/${article.img})`;
+    }
+
+    resultPdf = await markdownToPdf(article.body, pdfPath, {output: "raw"});
+  }
+
+  //send pdf file to the client
+  res.set({
+    "Content-Disposition": `inline; filename=${article.slug}.pdf`,
+    "Content-Type": "application/pdf"
+  });
+  res.send(resultPdf);
 });
 
 export default router;

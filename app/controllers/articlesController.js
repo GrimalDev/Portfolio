@@ -5,9 +5,9 @@ export async function getArticleBySlug(slug) {
     return new Promise((resolve, reject) => {
         poolDB.query(sql, [slug], (err, result) => {
             if (err) {
-                return reject(err);
+              reject(err);
             } else {
-                return resolve(result[0]);
+              resolve(result[0]);
             }
         });
     });
@@ -18,9 +18,9 @@ export async function getArticleById(id) {
     return new Promise((resolve, reject) => {
         poolDB.query(sql, [id], (err, result) => {
             if (err) {
-                return reject(err);
+                reject(err);
             } else {
-                return resolve(result[0]);
+                resolve(result[0]);
             }
         });
     });
@@ -38,9 +38,9 @@ export async function getNumberOfPages(searchSQLQuery, nPerPage = 8) {
     return new Promise((resolve, reject) => {
         poolDB.query(query.sql, query.values, (err, result) => {
             if (err) {
-                return reject(err);
+                reject(err);
             } else {
-                return resolve(Math.ceil(result[0].counter / nPerPage));
+                resolve(Math.ceil(result[0].counter / nPerPage));
             }
         });
     });
@@ -133,10 +133,10 @@ export async function getArticles(options) {
         // Get the articles
         poolDB.query(query.sql, query.values, async (err, articles) => {
             if (err) {
-                return reject(err);
+                reject(err);
             }
 
-            return resolve({ articles: articles, maxPages: maxPages });
+            resolve({ articles: articles, maxPages: maxPages });
         });
     });
 }
@@ -146,9 +146,9 @@ export async function saveArticle(article) {
     return new Promise((resolve, reject) => {
         poolDB.query(sql, [article], (err, result) => {
             if (err) {
-                return reject(err);
+                reject(err);
             } else {
-                return resolve(result);
+                resolve(result);
             }
         });
     });
@@ -159,9 +159,9 @@ export async function updateArticle(article) {
   return new Promise((resolve, reject) => {
     poolDB.query(sql, [article, article.id], (err, result) => {
       if (err) {
-        return reject(err);
+        reject(err);
       } else {
-        return resolve(result);
+        resolve(result);
       }
     });
   });
@@ -172,9 +172,9 @@ export async function deleteArticle(id) {
   return new Promise((resolve, reject) => {
     poolDB.query(sql, [id], (err, result) => {
       if (err) {
-        return reject(err);
+        reject(err);
       } else {
-        return resolve(result);
+        resolve(result);
       }
     });
   });
@@ -185,9 +185,9 @@ export async function getCategories() {
   return new Promise((resolve, reject) => {
     poolDB.query(sql, (err, result) => {
       if (err) {
-        return reject(err);
+        reject(err);
       } else {
-        return resolve(result);
+        resolve(result);
       }
     });
   });
@@ -198,9 +198,9 @@ export async function getCategoriesByArticleId(id) {
   return new Promise((resolve, reject) => {
     poolDB.query(sql, [id], (err, result) => {
       if (err) {
-        return reject(err);
+        reject(err);
       } else {
-        return resolve(result);
+        resolve(result);
       }
     });
   });
@@ -211,9 +211,9 @@ export async function getRSSArticlesByWeek(week) {
   return new Promise((resolve, reject) => {
     poolDB.query(sql, [week], (err, result) => {
       if (err) {
-        return reject(err);
+        reject(err);
       } else {
-        return resolve(result);
+        resolve(result);
       }
     });
   });
@@ -224,9 +224,9 @@ export async function addArticleToCategory(articleId, categoryId) {
   return new Promise((resolve, reject) => {
     poolDB.query(sql, [{ article_id: articleId, category_id: categoryId }], (err, result) => {
       if (err) {
-        return reject(err);
+        reject(err);
       } else {
-        return resolve(result);
+        resolve(result);
       }
     });
   });

@@ -638,7 +638,8 @@ main {
   height: 100%;
 }
 
-h1 {
+h1, .project__title {
+  font-size: clamp(20px, 3vw, 40px);
   font-weight: 700;
   line-height: 41px;
   display: flex;
@@ -648,15 +649,19 @@ h1 {
   color: #4D4D4C;
 }
 
-h2 {
+.project__title {
+  max-width: 90%;
+}
+
+h2, .project__description > * {
+  font-size: clamp(16px, 2vw, 24px);
   font-weight: 700;
-  font-size: 35px !important;
   line-height: 30px;
   display: flex;
   align-items: center;
   text-align: center;
-  text-transform: capitalize;
   color: #4D4D4C;
+  gap: 0.5rem;
 }
 
 h3 {
@@ -674,136 +679,153 @@ h3 {
   margin-top: 5vh;
 }
 
-/*------------exams menu nav-----------*/
-.exams-menu__navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/*------------PROJECT-----------*/
+.project__image {
+  position: relative;
   width: 100%;
-  height: fit-content;
-  margin-top: 2vh;
+  height: clamp(300px, 50vh, 500px);
+  margin-bottom: 2rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-.exams-menu__navigation .exams-menu__items__container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+.project__image .project__header {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: fit-content;
-  margin: 0;
-  padding: 0;
-  gap: 1rem;
-}
-.exams-menu__navigation .exams-menu__items__container .exams-menu__item {
+  height: 100%;
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  width: fit-content;
-  height: fit-content;
-  padding: 1rem;
-  margin: 0;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-.exams-menu__navigation .exams-menu__items__container .exams-menu__item:hover .exams-menu__item__title {
-  color: white !important;
-  background-color: #803378;
-}
-.exams-menu__navigation .exams-menu__items__container .exams-menu__item .exams-menu__item__link {
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  color: #4D4D4C;
-  text-decoration: none;
 }
-.exams-menu__navigation .exams-menu__items__container .exams-menu__item .exams-menu__item__link .exams-menu__item__illustration {
-  width: 4rem;
-  height: 4rem;
-}
-.exams-menu__navigation .exams-menu__items__container .exams-menu__item .exams-menu__item__link span.exams-menu__item__illustration {
-  font-family: "Roboto", serif;
-  font-weight: 500;
-  font-size: 4rem;
-  line-height: 4rem;
+.project__image .project__header .project__title, .project__image .project__header .project__description {
   text-align: center;
-  text-transform: capitalize;
-  color: black;
-}
-.exams-menu__navigation .exams-menu__items__container .exams-menu__item .exams-menu__item__link .exams-menu__item__title {
-  font-family: "Roboto", serif;
-  font-weight: 300;
-  font-size: 20px;
-  line-height: 20px;
-  text-align: center;
-  text-transform: capitalize;
-  color: #4D4D4C;
-  border-radius: 10px;
-  padding: 0.5rem;
-  transition: background-color 0.3s ease-in-out;
+  padding: 0.8rem 1rem;
+  background-color: #f5f5f5;
 }
 
-/*------------PROJECTS CARDS-----------*/
-.cards__main-container {
-  min-height: fit-content;
-  margin-bottom: 15vh;
-}
-.cards__main-container .card__container {
-  justify-content: space-between !important;
+.project__body {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+  color: #4D4D4C;
+  width: 90%;
+  height: fit-content;
+  min-height: 50rem;
+  display: flex;
+  flex-direction: column;
   position: relative;
 }
-.cards__main-container .card__container .card__download {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  height: 2.4rem;
-  width: 2.4rem;
+.project__body .single-project__download {
+  height: 7rem;
+  width: 8.5rem;
+  align-self: flex-end;
+  position: relative;
+  border-radius: 10px;
+  transition: background-color 0.2s ease-in;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 50;
-  border-radius: 10px;
-  background-color: #fbfbfb;
-  padding: 0.4rem;
-  transition: background-color 0.3s ease-in;
 }
-.cards__main-container .card__container .card__download img {
-  height: 100%;
+.project__body .single-project__download:hover {
+  cursor: pointer;
+  background-color: #eeeeee;
+  opacity: 0.9;
+}
+.project__body .single-project__download::after {
+  content: "Version pdf";
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #4D4D4C;
+  width: 6.5rem;
+  height: fit-content;
+}
+.project__body .single-project__download img {
+  align-self: flex-start;
+  margin-top: 1rem;
+  width: 3rem;
+  height: 3rem;
+}
+.project__body iframe {
+  width: 100%;
+  border: none;
+  overflow: hidden;
+}
+.project__body img {
   width: 100%;
 }
-.cards__main-container .card__container .card__download:hover {
-  cursor: pointer;
-  background-color: #803378;
-}
 
-.card__text {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+/*DOWNLOAD BUTTON POPUP*/
+.download-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
   align-items: center;
-  width: 98%;
-  height: fit-content;
-  padding: 1rem;
+  z-index: 100;
+}
+.download-popup.active {
+  display: flex !important;
+}
+.download-popup .download-popup__content {
+  width: 50%;
+  height: 50%;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+}
+.download-popup .download-popup__content .download-popup__title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #4D4D4C;
+}
+.download-popup .download-popup__content .download-popup__text {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #4D4D4C;
+  text-align: center;
+}
+.download-popup .download-popup__content .download-popup__progress-bar {
+  width: 100%;
+  height: 1rem;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  position: relative;
+}
+.download-popup .download-popup__content .download-popup__progress-bar .download-popup__progress-bar__fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #803378;
+  border-radius: 10px;
 }
 
-/*------------RESPONSIVE-----------*/
-@media screen and (max-width: 524px) {
-  .exams-menu__item {
-    flex-basis: 100% !important;
-  }
-}
+/*------------MEDIA QUERIES-----------*/
 @media screen and (max-width: 768px) {
-  #bts-description__content {
-    width: 90%;
+  .project__body {
+    min-height: 40rem;
   }
-}
-@media screen and (max-width: 1015px) {
-  .exams-menu__items__container {
-    flex-wrap: wrap;
+  .download-popup {
+    width: 100%;
   }
-  .exams-menu__items__container .exams-menu__item {
-    flex-basis: 45%;
+  .download-popup .download-popup__content {
+    width: 80%;
+    height: 50%;
   }
 }
 
-/*# sourceMappingURL=examens-style.css.map */
+/*# sourceMappingURL=content-single-style.css.map */

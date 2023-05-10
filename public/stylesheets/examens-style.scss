@@ -138,6 +138,7 @@ h3 {
             border-radius: 10px;
             background-color: $cream-bg;
             padding: .4rem;
+            transition: background-color 0.3s ease-in;
             img {
                 height: 100%;
                 width: 100%;
@@ -148,6 +149,16 @@ h3 {
             }
         }
     }
+}
+
+.card__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 98%;
+    height: fit-content;
+    padding: 1rem;
 }
 
 /*------------RESPONSIVE-----------*/
