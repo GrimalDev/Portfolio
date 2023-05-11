@@ -1,0 +1,11 @@
+{
+  "keywords": [
+    "docker"
+  ],
+  "rssFeeds": [
+    "https://www.docker.com/feed/",
+    "https://blog.alexellis.io/rss/",
+    "https://sreeninet.wordpress.com/category/docker/feed/",
+    "https://roadtoalm.com/category/other/docker/feed/"
+  ]
+}

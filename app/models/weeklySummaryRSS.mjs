@@ -12,7 +12,7 @@ import {
 import {summarizeArrayOfTexts, summarizeTextChunks} from "./gptCalls.js";
 
 //get week number of the current date
-const week = moment('22/04/2023', 'DD/MM/YYYY').week();
+const week = moment().format('W');
 
 const newArticleSummary = {
   slug: 'weekly-summary-of-the-week-' + week,

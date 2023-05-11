@@ -7,6 +7,9 @@ dotenv.config({path: '/Users/thehiddengeek/WebstormProjects/Portfolio/.env'});
 import {addArticleToCategory, getArticleBySlug, getCategories, saveArticle} from "../controllers/articlesController.js";
 import {phraseToSlug} from "./articlesHelper.js";
 
+//rss config file
+import rssConfig from "../config/rssConfig.json" assert {type: "json"};
+
 async function rssFetcher(url) {
   const parser = new RssParser();
   return await parser.parseURL(url);
@@ -64,7 +67,17 @@ async function generateArticles(rssFeedUrl) {
   return await rssToArticles(rssFeed);
 }
 
-const articles = await generateArticles('https://www.docker.com/feed/');
+//get articles from rss feeds in the config file
+const rssFeeds = rssConfig.rssFeeds;
+
+let articles = [];
+for (let rssFeed of rssFeeds) {
+  //generate articles from the rss feed
+  const newArticles = await generateArticles(rssFeed);
+
+  //add the new articles to the articles array
+  articles.push(...newArticles);
+}
 
 // send articles to the database
 // add article in articles table and rss category articles_links_to_categories table
@@ -86,6 +99,15 @@ if (!rssCategoryId) {
 for (let article of articles) {
   //save the last inserted article id
   let lastInsertedArticleId;
+
+  //verify article title has one of the keywords in the config file
+  const keywords = rssConfig.keywords;
+  if (!keywords.some(keyword => article.title.toLowerCase().includes(keyword))) {
+    //verify article description has one of the keywords in the config file
+    if (!keywords.some(keyword => article.description.toLowerCase().includes(keyword))) {
+      continue;
+    }
+  }
 
   //check if article already exists
   if (await getArticleBySlug(article.slug)) {
