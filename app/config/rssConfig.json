@@ -1,4 +1,7 @@
 {
+  "keywords": [
+    "docker"
+  ],
   "rssFeeds": [
     "https://www.docker.com/feed/",
     "https://blog.alexellis.io/rss/",

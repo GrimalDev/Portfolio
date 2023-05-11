@@ -100,10 +100,11 @@ for (let article of articles) {
   //save the last inserted article id
   let lastInsertedArticleId;
 
-  //TODO: verify article title has the word "docker" in it, if not, check the content for the word docker. If not, ignore the article
-  //verify article title has the word "docker" in it
-  if (!article.title.toLowerCase().includes('docker')) {
-    if (!article.body.toLowerCase().includes('docker')) {
+  //verify article title has one of the keywords in the config file
+  const keywords = rssConfig.keywords;
+  if (!keywords.some(keyword => article.title.toLowerCase().includes(keyword))) {
+    //verify article description has one of the keywords in the config file
+    if (!keywords.some(keyword => article.description.toLowerCase().includes(keyword))) {
       continue;
     }
   }
