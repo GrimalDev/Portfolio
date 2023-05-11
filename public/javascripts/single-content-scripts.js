@@ -36,7 +36,21 @@ function notionIntegration() {
 
   for (let i = 0; i < sourceDivsLength; i++) {
     //get the url from the href attribute of the child a tag
-    const sourceUrl = sourceDivs[i].querySelector('a').getAttribute('href');
+    const sourceUrlEl = sourceDivs[i].querySelector('a');
+
+    if (!sourceUrlEl) {
+      //if the innerText is a link, transform element into a link with target='_blank'
+      const sourceUrl = sourceDivs[i].innerText;
+      const sourceLink = document.createElement('a');
+      sourceLink.setAttribute('href', sourceUrl);
+      sourceLink.setAttribute('target', '_blank');
+      sourceLink.innerText = sourceUrl;
+      sourceDivs[i].innerHTML = '';
+      sourceDivs[i].appendChild(sourceLink);
+      continue;
+    }
+
+    const sourceUrl = sourceUrlEl.getAttribute('href');
 
     //create the iframe to hold the preview
     const sourceIframe = document.createElement('iframe');
