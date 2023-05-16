@@ -70,11 +70,11 @@
                 <div class="cards__main-container">
                     <% lastArticles.forEach(article => { %>
                         <div class="card__container card__category__<%= article.categories %>">
-                            <a class="card__link" href="/projects/view/<%= article.slug %>"></a>
+                            <a class="card__link" href="/articles/view/<%= article.slug %>"></a>
                             <div class="card__image" style="background-image: url('/articles_media/direct_images/<%= article.img %>')"></div>
                             <div class="card__body">
-                                <p class="card__title"><%= article.title %></p>
-                                <p class="card__text"><%= article.description %></p>
+                                <p class="card__title"><%= article.title %> (<%= new Date(article.created_at).toLocaleDateString(undefined, { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '-') %>)</p>
+                                <div class="card__text"><%- article.description %></div>
                             </div>
                         </div>
                     <% }); %>
