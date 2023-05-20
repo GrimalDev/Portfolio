@@ -54,12 +54,15 @@ export async function markdownToPdf(mdText, outputPath, translationOptions = {ou
   const file = { content: html };
 
   if (translationOptions.output === "raw") {
+    let htmlToPdf = "";
     try {
-      return await html_to_pdf.generatePdf(file, pdfOptions);
+      htmlToPdf = await html_to_pdf.generatePdf(file, pdfOptions);
     } catch (e) {
       console.error(e);
       return "ERROR IN TEXT TRANSLATION ! Please contact the administrator.";
     }
+
+    return htmlToPdf;
   }
 
   await html_to_pdf.generatePdf(file, pdfOptions).then(pdfBuffer => {
