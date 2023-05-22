@@ -5,6 +5,7 @@ dotenv.config();
 //When in production use "madiadb" as database host
 process.env.NODE_ENV === 'production' ? process.env.DB_HOST = 'mariadb' : process.env.DB_HOST = '192.168.100.200';
 
+// Database configuration from environnement variables.
 const dbParams = {
     host    : process.env.DB_HOST,
     user    : process.env.DB_USER,
