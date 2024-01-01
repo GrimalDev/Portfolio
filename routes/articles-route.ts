@@ -3,13 +3,14 @@ import poolDB from "../app/config/configDB.js";
 import markdownTranslate, {markdownToPdf} from "../app/models/markdown-translate.js";
 import {getArticleBySlug, getArticles} from "../app/controllers/articlesController.js";
 import * as fs from "fs";
+import type {Article} from "../app/models/Article.ts";
 const router = express.Router()
 
 const sql = "SELECT * from articles";
 
 /* GET articles page. */
 router.get('/', function(req, res, next) {
-  poolDB.query(sql, async (err, articles) => {
+  poolDB.query(sql, async (err, articles : Article[]) => {
     if (err) throw err;
 
     //loop through articles and convert boy md to html
@@ -18,7 +19,7 @@ router.get('/', function(req, res, next) {
       articles[i].description = await markdownTranslate(articles[i].description);
 
       //convert date to string dd/mm/yyyy of client's locale
-      articles[i].date = new Date(articles[i].date).toLocaleDateString();
+      articles[i].createdAt = new Date(articles[i].createdAt).toLocaleDateString();
     }
 
     res.render('articles', {articles: articles});
@@ -30,48 +31,18 @@ router.get('/query', async function(req, res, next) {
   //if query string, the projects are filtered by the query string
   //if querry string is page, the projects are by pack of 10
 
-  let searchParams = {
-    page: 1,
-    customSearch: "",
-    categories: [],
-    setParams(page, customSearch = "", categories = []) {
-      this.page = page;
-      this.customSearch = customSearch;
-      this.categories = categories;
-    },
-    toString() {
-      let page = this.page;
-      let customSearch = this.customSearch;
-      let categories = this.categories;
-      if (customSearch === "") {
-        customSearch = "None";
-      }
-      if (this.categories.length === 0) {
-        categories = "all";
-      }
-      return `Page: ${page} + Custom search: ${customSearch} + Categories: ${categories}`;
-    }
-  }
+  let searchParams = searchParamsTemplate
+
 
   //default value
-  if (!req.query.length) {
-    searchParams.setParams(1);
-  }
+  // if (!req.query.length) {
+  //   searchParams = searchParamsTemplate
+  // }
 
-  //page
-  if (req.query.page) {
-    searchParams.page = req.query.page;
-  }
-
-  //custom search
-  if (req.query.search) {
-    searchParams.customSearch = req.query.search;
-  }
-
-  //categories
-  if (req.query.categories) {
-    searchParams.categories = req.query.categories.split(',');
-  }
+  searchParams = searchParamsTemplate
+  searchParams.page = <number><unknown>req.query.page ?? null
+  searchParams.customSearch = <string><unknown>req.query.search ?? null
+  searchParams.categories = (<string><unknown>req.query.categories ?? null).split(',')
 
   //query option for the database
   const queryOptions = {
@@ -154,5 +125,30 @@ router.get('/pdf/:slug', async function(req, res, next) {
   });
   res.send(resultPdf);
 });
+
+interface searchParams {
+  page: number,
+  customSearch: string,
+  categories: string|string[],
+  toString(): string
+}
+
+const searchParamsTemplate:searchParams = {
+  page: 1,
+  customSearch: "",
+  categories: [],
+  toString() {
+    let page = this.page;
+    let customSearch = this.customSearch;
+    let categories = this.categories;
+    if (customSearch === "") {
+      customSearch = "None";
+    }
+    if (this.categories.length === 0) {
+      categories = "all";
+    }
+    return `Page: ${page} + Custom search: ${customSearch} + Categories: ${categories}`;
+  }
+}
 
 export default router;

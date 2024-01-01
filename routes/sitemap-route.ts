@@ -1,6 +1,5 @@
 import express from 'express';
 import * as fs from "fs";
-import path from "path";
 const router = express.Router();
 
 //sitemap route

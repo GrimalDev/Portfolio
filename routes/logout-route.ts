@@ -4,7 +4,7 @@ const router = express.Router()
 
 /* GET doc page. */
 router.get('/logout', isAuth, function(req, res, next) {
-    req.session.destroy(function (err) {
+    req.session.destroy(function (err: boolean | Error) {
         if (err) { return next(err); }
         res.redirect('/');
     });

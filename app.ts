@@ -13,23 +13,23 @@ import passport from "passport";
 import passportConfig from "./app/config/passport.js";
 
 //route imports
-import homeRouter from "./routes/home-route.js";
+// import examensRouter from "./routes/examens-route.ts";
+import homeRouter from "./routes/home-route.ts";
 import cvRouter from "./routes/cv-route.js";
-import projectsRouter from "./routes/projects-route.js";
-import articlesRouter from "./routes/articles-route.js";
-// import examensRouter from "./routes/examens-route.js";
-import contactRouter from "./routes/contact-route.js";
-import veilleRouter from "./routes/veille-router.js";
-import legalRouter from "./routes/legal-route.js";
-
-import registerRouter from "./routes/register-route.js";
-import loginRouter from "./routes/login-route.js";
-import logoutRouter from "./routes/logout-route.js";
-import adminRouter from "./routes/admin-route.js";
-import sitemapRouter from "./routes/sitemap-route.js";
+import projectsRouter from "./routes/projects-route.ts";
+import articlesRouter from "./routes/articles-route.ts";
+import contactRouter from "./routes/contact-route.ts";
+import veilleRouter from "./routes/veille-router.ts";
+import legalRouter from "./routes/legal-route.ts";
+import registerRouter from "./routes/register-route.ts";
+import loginRouter from "./routes/login-route.ts";
+import logoutRouter from "./routes/logout-route.ts";
+import adminRouter from "./routes/admin-route.ts";
+import sitemapRouter from "./routes/sitemap-route.ts";
+import webhooksRouter from "./routes/webhooks-route.ts";
 
 const app = express();
-const listeningPort = 80
+const listeningPort = process.env.PORT || 80;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config();
@@ -80,6 +80,7 @@ app.use('/admin', adminRouter);
 app.use('/account', loginRouter);
 app.use('/account', logoutRouter);
 app.use('/account', registerRouter);
+app.use('/webhooks', webhooksRouter);
 app.use('/libs/threebuild', express.static(path.join(__dirname, 'node_modules/three/build')));
 app.use('/libs/threejsm', express.static(path.join(__dirname, 'node_modules/three/examples/jsm')));
 app.use('/sitemap', sitemapRouter);
@@ -90,7 +91,18 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function(err: { message: any; status: number; }, req: {
+  app: {
+    get: (arg0: string) => string;
+  };
+}, res: {
+  locals: {
+    message: any;
+    error: any;
+  };
+  status: (arg0: any) => void;
+  render: (arg0: string) => void;
+}, next: any) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -106,7 +118,7 @@ app.use(function(err, req, res, next) {
   }
 });
 
-app.listen(listeningPort, (err) => {
-  if (err) { throw err }
+app.listen(listeningPort, () => {
   console.log(`App up and running on port ${listeningPort} !`);
 })
+app.on('error', e => console.error("Error", e));

@@ -9,8 +9,8 @@ router.get('/', async function(req, res, next) {
 
   await getCategories().then((categories) => {
     try {
-      veilleId = categories.find(cat => cat.name === 'veille').id;
-      rssId = categories.find(cat => cat.name === 'rss').id;
+      veilleId = categories.find((cat: { name: string; }) => cat.name === 'veille').id;
+      rssId = categories.find((cat: { name: string; }) => cat.name === 'rss').id;
     } catch (e) {
       console.log(e);
     }

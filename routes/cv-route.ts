@@ -1,5 +1,6 @@
 import express from 'express';
 import poolDB from "../app/config/configDB.js";
+import CVData from "../app/models/CVData.ts";
 const router = express.Router()
 
 /* GET cv page. */
@@ -11,7 +12,7 @@ router.get('/', function(req, res, next) {
 router.get('/data', function(req, res) {
     const sql = "SELECT content, content_level FROM cv_data";
 
-    poolDB.query(sql, (err, result) => {
+    poolDB.query(sql, (err, result : CVData) => {
         if (err) throw err;
         res.json(result)
     });

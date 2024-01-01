@@ -11,7 +11,7 @@ router.get('/register', isAuth, isAdmin, function(req, res, next) {
 router.post('/register', isAuth, isAdmin, userExists, async function (req, res, next) {
     const hash = await genPassword(req.body.password);
 
-    poolDB.query("INSERT INTO users (username, hash, role) VALUES (?, ?, ?)", [req.body.username, hash, 'USER'], (err, result) => {
+    poolDB.query("INSERT INTO users (username, hash, role) VALUES (?, ?, ?)", [req.body.username, hash, 'USER'], (err) => {
         if (err) throw err;
         else {
             console.log("User created");

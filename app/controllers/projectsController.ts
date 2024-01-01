@@ -1,7 +1,6 @@
-import poolDB from "../config/configDB.js";
-import mysql from "mysql";
+import poolDB from "../config/configDB.ts";
 
-export async function getProjectBySlug(slug) {
+export async function getProjectBySlug(slug:string) : Promise<Project> {
     const sql = "SELECT * from projects WHERE slug = ?";
     return new Promise((resolve, reject) => {
         poolDB.query(sql, [slug], (err, result) => {

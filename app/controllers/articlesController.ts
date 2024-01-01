@@ -1,7 +1,10 @@
-import poolDB from "../config/configDB.js";
+import poolDB from "../config/configDB.ts";
+import type {SQLSearchQuery} from "../models/Search.ts";
+import type {Article, ArticlesSearchOptions} from "../models/Article.ts";
+import type {Category} from "../models/Category.ts";
 
-export async function getArticleBySlug(slug) {
-    const sql = "SELECT * from articles WHERE slug = ?";
+export async function getArticleBySlug(slug : string) : Promise<Article> {
+    const sql : string = "SELECT * from articles WHERE slug = ?";
     return new Promise((resolve, reject) => {
         poolDB.query(sql, [slug], (err, result) => {
             if (err) {
@@ -13,8 +16,8 @@ export async function getArticleBySlug(slug) {
     });
 }
 
-export async function getArticleById(id) {
-    const sql = "SELECT * from articles WHERE id = ?";
+export async function getArticleById(id : number) : Promise<Article> {
+    const sql : string = "SELECT * from articles WHERE id = ?";
     return new Promise((resolve, reject) => {
         poolDB.query(sql, [id], (err, result) => {
             if (err) {
@@ -26,8 +29,8 @@ export async function getArticleById(id) {
     });
 }
 
-export async function getNumberOfPages(searchSQLQuery, nPerPage = 8) {
-    let query = {
+export async function getNumberOfPages(searchSQLQuery : SQLSearchQuery, nPerPage = 8) : Promise<number> {
+    let query : SQLSearchQuery = {
         sql: "SELECT COUNT(*) as counter FROM",
         values: [],
     };
@@ -51,25 +54,22 @@ export async function getNumberOfPages(searchSQLQuery, nPerPage = 8) {
 //if no page number is provided, the first page is returned
 //if the page number is too high, the last page is returned
 //The function is nested to be sure that everything is retrieved before returning the result
-export async function getArticles(options) {
+export async function getArticles(options : ArticlesSearchOptions) {
     let pageNumber = options.pageNumber || 1; //if pageNumber is undefined, set it to 1
     let customSearch = options.customSearch || ""; //if customSearch is undefined, set it to an empty string
     let categories = options.categories || []; //if categories is undefined, set it to an empty array
 
     //protectors
     if (!pageNumber) {
-        pageNumber = 1;
-    }
-    if (pageNumber < 1) {
-        pageNumber = 1;
-    }
-    //page not a number, if is string and is "all", all pages are returned, else set to 1
-    if (isNaN(pageNumber) && pageNumber !== "all") {
-        pageNumber = 1;
+      pageNumber = 1;
+    } else if (typeof pageNumber !== "number" && pageNumber !== "all") {
+      pageNumber = 1;
+    } else if (typeof pageNumber === "number" && pageNumber < 1) {
+      pageNumber = 1;
     }
 
     // Build the SQL query
-    const query = {
+    const query : SQLSearchQuery = {
         sql: `SELECT articles.id as id, articles.slug, articles.title, articles.description, articles.body, articles.img, categories.id as categories_linked, articles.created_at
                 FROM articles
                 JOIN articles_links_to_categories ON articles.id = articles_links_to_categories.article_id
@@ -141,8 +141,8 @@ export async function getArticles(options) {
     });
 }
 
-export async function saveArticle(article) {
-    const sql = "INSERT INTO articles SET ?";
+export async function saveArticle(article : Article) {
+    const sql : string = "INSERT INTO articles SET ?";
     return new Promise((resolve, reject) => {
         poolDB.query(sql, [article], (err, result) => {
             if (err) {
@@ -154,8 +154,8 @@ export async function saveArticle(article) {
     });
 }
 
-export async function updateArticle(article) {
-  const sql = "UPDATE articles SET ? WHERE id = ?";
+export async function updateArticle(article : Article) {
+  const sql : string = "UPDATE articles SET ? WHERE id = ?";
   return new Promise((resolve, reject) => {
     poolDB.query(sql, [article, article.id], (err, result) => {
       if (err) {
@@ -167,8 +167,8 @@ export async function updateArticle(article) {
   });
 }
 
-export async function deleteArticle(id) {
-  const sql = "DELETE FROM articles WHERE id = ?";
+export async function deleteArticle(id : number) {
+  const sql : string = "DELETE FROM articles WHERE id = ?";
   return new Promise((resolve, reject) => {
     poolDB.query(sql, [id], (err, result) => {
       if (err) {
@@ -180,8 +180,8 @@ export async function deleteArticle(id) {
   });
 }
 
-export async function getCategories() {
-  const sql = "SELECT * FROM categories";
+export async function getCategories() : Promise<Category> {
+  const sql : string = "SELECT * FROM categories";
   return new Promise((resolve, reject) => {
     poolDB.query(sql, (err, result) => {
       if (err) {
@@ -193,8 +193,8 @@ export async function getCategories() {
   });
 }
 
-export async function getCategoriesByArticleId(id) {
-  const sql = "SELECT categories.id, categories.name FROM categories JOIN articles_links_to_categories ON categories.id = articles_links_to_categories.category_id WHERE articles_links_to_categories.article_id = ?";
+export async function getCategoriesByArticleId(id : number) : Promise<Category> {
+  const sql : string = "SELECT categories.id, categories.name FROM categories JOIN articles_links_to_categories ON categories.id = articles_links_to_categories.category_id WHERE articles_links_to_categories.article_id = ?";
   return new Promise((resolve, reject) => {
     poolDB.query(sql, [id], (err, result) => {
       if (err) {
@@ -206,8 +206,8 @@ export async function getCategoriesByArticleId(id) {
   });
 }
 
-export async function getRSSArticlesByWeek(week) {
-  const sql = "SELECT articles.id, articles.slug, articles.title, articles.description, articles.body, articles.img, articles.created_at FROM articles JOIN articles_links_to_categories altc on articles.id = altc.article_id JOIN categories on categories.id = altc.category_id WHERE categories.id = 9  AND WEEKOFYEAR(articles.created_at) = ?";
+export async function getRSSArticlesByWeek(week : number) : Promise<Article>  {
+  const sql : string = "SELECT articles.id, articles.slug, articles.title, articles.description, articles.body, articles.img, articles.created_at FROM articles JOIN articles_links_to_categories altc on articles.id = altc.article_id JOIN categories on categories.id = altc.category_id WHERE categories.id = 9  AND WEEKOFYEAR(articles.created_at) = ?";
   return new Promise((resolve, reject) => {
     poolDB.query(sql, [week], (err, result) => {
       if (err) {
@@ -219,8 +219,8 @@ export async function getRSSArticlesByWeek(week) {
   });
 }
 
-export async function addArticleToCategory(articleId, categoryId) {
-  const sql = "INSERT INTO articles_links_to_categories SET ?";
+export async function addArticleToCategory(articleId : number, categoryId : number) {
+  const sql : string = "INSERT INTO articles_links_to_categories SET ?";
   return new Promise((resolve, reject) => {
     poolDB.query(sql, [{ article_id: articleId, category_id: categoryId }], (err, result) => {
       if (err) {

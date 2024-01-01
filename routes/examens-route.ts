@@ -11,8 +11,8 @@ router.get('/', async function (req, res, next) {
         pageNumber: 'all'
     });
 
-    const projectsE4 = projects.projects.filter(project => project.categories === 4);
-    const projectsE5 = projects.projects.filter(project => project.categories === 5);
+    const projectsE4 = projects.projects.filter((project: { categories: number; }) => project.categories === 4);
+    const projectsE5 = projects.projects.filter((project: { categories: number; }) => project.categories === 5);
 
     //convert the description from markdown to html
     for (let i = 0; i < projectsE4.length; i++) {

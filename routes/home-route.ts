@@ -2,12 +2,14 @@ import express from 'express';
 const router = express.Router();
 import poolDB from "../app/config/configDB.js";
 import markdownTranslate from "../app/models/markdown-translate.js";
+// @ts-ignore
+import Article from "../app/models/Article.ts";
 
 let sql = "SELECT * FROM (SELECT * FROM articles ORDER BY id DESC LIMIT 3) as r ORDER BY id"
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  poolDB.query(sql, async (err, result) => {
+  poolDB.query(sql, async (err, result: Article[]) => {
     if (err) throw err;
 
     const latestArticles = result;

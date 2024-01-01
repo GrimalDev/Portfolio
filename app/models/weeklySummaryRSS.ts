@@ -8,8 +8,8 @@ import {
   getCategories,
   getRSSArticlesByWeek,
   saveArticle
-} from "../controllers/articlesController.js";
-import {summarizeArrayOfTexts, summarizeTextChunks} from "./gptCalls.js";
+} from "../controllers/articlesController.ts";
+import {summarizeArrayOfTexts, summarizeTextChunks} from "./gptCalls.ts";
 
 //get week number of the current date
 const week = moment().format('W');

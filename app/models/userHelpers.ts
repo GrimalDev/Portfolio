@@ -1,6 +1,6 @@
 /*middleware*/
 import bcrypt from "bcrypt";
-import {getUserById, getUserByUsername} from "../controllers/userController.js";
+import {getUserById, getUserByUsername} from "../controllers/userController.ts";
 
 export async function validPassword(password, hash) {
     return bcrypt.compare(password, hash);

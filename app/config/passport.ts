@@ -1,28 +1,21 @@
 import passport from "passport";
 import { Strategy as LocalStrategy} from 'passport-local'
 import {validPassword} from "../models/userHelpers.js";
-import poolDB from "./configDB.js";
+import poolDB from "./configDB.ts";
 import {getUserByUsername} from "../controllers/userController.js";
+import type {User} from "../models/User.ts";
 
 /*passport IS*/
-const verifyCallback = async (username, password, done) => {
+const verifyCallback = async (username: string, password: string, done: (arg0: null, arg1: boolean|User) => any) => {
     //TODO: Pass message on auth failure
     //get user from db
-    const result = await getUserByUsername(username);
+    const user:User = <User>(await getUserByUsername(username));
 
     //verify if user exists
-    if (!result) { return done(null, false); }
+    if (!user) { return done(null, false); }
 
     //verify if password is good
-    const isValid = await validPassword(password, result.hash);
-
-    //control the user object for the rest of the app
-    const user = {
-        id: result.id,
-        username: result.username,
-        // hash: result.hash,
-        role: result.role
-    };
+    const isValid = await validPassword(password, user.hash);
 
     if (!isValid) { return done(null, false); }
 
@@ -37,13 +30,14 @@ export const passportConfig = () => {
 
     //This function is called when the user is authenticated
     passport.serializeUser((user, done) => {
-        done(null, user.id);
+        // @ts-ignore
+    done(null, user.id);
     });
 
     //This function is called when the user logs out
     passport.deserializeUser(function(userId, done) {
-        poolDB.query('SELECT * FROM users where id = ?', [userId], function(error, rows) {
-            done(error, rows[0].id);
+        poolDB.query('SELECT * FROM users where id = ?', [userId], (err, rows : User[]) => {
+            done(err, rows[0].id);
         });
     });
 }

@@ -14,6 +14,11 @@ router.post('/', verifyContactForm, sendContactFormDB, async function (req, res,
   // using Twilio SendGrid's v3 Node.js Library
 // https://github.com/sendgrid/sendgrid-nodejs
 
+  if (!process.env.SENDGRID_API_KEY) {
+    console.error('Missing SENDGRID_API_KEY environment variable')
+    process.exit(1)
+  }
+
   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
   const msg = {

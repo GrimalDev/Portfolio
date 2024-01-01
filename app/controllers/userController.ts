@@ -1,8 +1,9 @@
-import poolDB from "../config/configDB.js";
+import poolDB from "../config/configDB.ts";
+import type {User} from "../models/User.ts";
 
-export async function getUserByUsername(username) {
+export async function getUserByUsername(username : string) {
     return new Promise((resolve, reject) => {
-        poolDB.query('SELECT * FROM users WHERE username=?', [username], (err, result) => {
+        poolDB.query('SELECT * FROM users WHERE username=?', [username], (err, result: User[]) => {
             if (err) { return reject(err); }
             if (result.length === 0) { return resolve(null); }
             if (!result[0]) { return resolve(null); }
@@ -18,9 +19,9 @@ export async function getUserByUsername(username) {
     });
 }
 
-export async function getUserById(id) {
+export async function getUserById(id : number) {
     return new Promise((resolve, reject) => {
-        poolDB.query('SELECT * FROM users WHERE id=?', [id], (err, result) => {
+        poolDB.query('SELECT * FROM users WHERE id=?', [id], (err, result : User[]) => {
             if (err) { return reject(err); }
             if (result.length === 0) { return resolve(null); }
             if (!result[0].id) { return resolve(null); }

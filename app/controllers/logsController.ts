@@ -1,7 +1,8 @@
 //log middleware to save logs in db
-import poolDB from "../config/configDB.js";
+import poolDB from "../config/configDB.ts";
+import {type Request, type Response, type NextFunction} from "express";
 
-export function logVisit(req, res, next) {
+export function logVisit(req : Request, _res : Response, next : NextFunction) {
     const logsQuery = "INSERT INTO logs_visit (ip, url) VALUES (?, ?)";
 
     let routeVisited = req.originalUrl;
@@ -17,15 +18,15 @@ export function logVisit(req, res, next) {
 
     //ignore assets loggings
     //if between first / and second / is javascripts, stylesheets, images, fonts, etc
-    const assetsVisibly = {
-        "javascripts": false,
-        "stylesheets": false,
-        "images": false,
-        "fonts": false,
-        "favicon": false,
-        "libs": false,
-        "model": false,
-        "webmanifest": false
+    const assetsVisibly: { [asset: string]: boolean }  = {
+        javascripts: false,
+        stylesheets: false,
+        images: false,
+        fonts: false,
+        favicon: false,
+        libs: false,
+        model: false,
+        webmanifest: false
     };
     let isAsset = false;
 
@@ -33,8 +34,8 @@ export function logVisit(req, res, next) {
     // if there is no second / select the whole route
     const routePart = routeVisited.split("/")[1];
 
-    Object.keys(assetsVisibly).forEach((asset) => {
-        if (routePart.includes(asset) && assetsVisibly[asset] === false) {
+    Object.keys(assetsVisibly).forEach((asset : string) => {
+        if (routePart.includes(asset) && !assetsVisibly[asset]) {
             isAsset = true;
         }
     });
@@ -49,7 +50,7 @@ export function logVisit(req, res, next) {
         routeVisited = routeVisited.substring(0, 489) + "[...]";
     }
 
-    poolDB.query(logsQuery, [ipUsed, routeVisited], (err, logs) => {
+    poolDB.query(logsQuery, [ipUsed, routeVisited], (err, _logs) => {
         if (err) {
             console.error(err);
         }

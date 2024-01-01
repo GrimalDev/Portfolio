@@ -1,14 +1,14 @@
 import RssParser from 'rss-parser';
-import {htmlToMarkdown} from "./markdown-translate.js";
+import {htmlToMarkdown} from "./markdown-translate.ts";
 
 import dotenv from "dotenv";
 dotenv.config({path: '/Users/thehiddengeek/WebstormProjects/Portfolio/.env'});
 
-import {addArticleToCategory, getArticleBySlug, getCategories, saveArticle} from "../controllers/articlesController.js";
-import {phraseToSlug} from "./articlesHelper.js";
+import {addArticleToCategory, getArticleBySlug, getCategories, saveArticle} from "../controllers/articlesController.ts";
+import {phraseToSlug} from "./articlesHelper.ts";
 
 //rss config file
-import rssConfig from "../config/rssConfig.json" assert {type: "json"};
+import * as rssConfig from '../config/rssConfig.json';
 
 async function rssFetcher(url) {
   const parser = new RssParser();

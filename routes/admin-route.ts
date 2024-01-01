@@ -37,7 +37,7 @@ router.post('/logs/select', isAuth, isAdmin, async function (req, res, next) {
     to = moment(to, "DD/MM/YYYY H:i:s").unix();
 
     const logsQuery = "SELECT * FROM logs_visit WHERE visit_time >= ? AND visit_time <= ?";
-    poolDB.query(logsQuery, [from, to], (err, logs) => {
+    poolDB.query(logsQuery, [from, to], (err, logs: any) => {
         if (err) throw err;
 
         res.render('admin', {
@@ -52,7 +52,7 @@ router.post('/logs/del', isAuth, isAdmin, async function (req, res, next) {
     let {id} = req.body;
 
     const logsQuery = "DELETE FROM logs_visit WHERE id = ?";
-    poolDB.query(logsQuery, [id], (err, logs) => {
+    poolDB.query(logsQuery, [id], (err) => {
         if (err) throw err;
 
         res.redirect('/admin');

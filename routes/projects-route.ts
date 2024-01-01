@@ -10,20 +10,19 @@ import * as fs from "fs";
 import {phraseToSlug} from "../app/models/articlesHelper.js";
 import {isAdmin, isAuth} from "../app/models/userHelpers.js";
 import AdmZip from "adm-zip";
-import {getArticleBySlug} from "../app/controllers/articlesController.js";
 import path from "path";
 
 const router = express.Router();
 
 /* GET articles page. */
-router.get('/', async function (req, res, next) {
+router.get('/', async function (res) {
 
     const languages = await getAllLanguages();
 
     res.render('projects', {languages: languages});
 });
 
-router.get('/query', async function(req, res, next) {
+router.get('/query', async function(req, res) {
     //if no query string, the first 10 projects are displayed
     //if query string, the projects are filtered by the query string
     //if querry string is page, the projects are by pack of 10
@@ -33,7 +32,7 @@ router.get('/query', async function(req, res, next) {
         page: 1,
         customSearch: "",
         categories: [],
-        setParams(languages, page, customSearch = "", categories = []) {
+        setParams(languages: string|string[], page: number, customSearch = "", categories = []) {
             this.languages = languages;
             this.page = page;
             this.customSearch = customSearch;
@@ -343,7 +342,7 @@ router.get('/pdf/:slug', async function(req, res, next) {
   res.send(resultPdf);
 });
 
-async function sleep(ms) {
+async function sleep(ms : number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
