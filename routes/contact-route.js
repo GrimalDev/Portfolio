@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', verifyContactForm, sendContactFormDB, async function (req, res, next) {
 
-  //send mail contact@baptistegrimaldi.info
+  //send mail contact@baptistegrimaldi.com
   // using Twilio SendGrid's v3 Node.js Library
 // https://github.com/sendgrid/sendgrid-nodejs
 
@@ -18,11 +18,11 @@ router.post('/', verifyContactForm, sendContactFormDB, async function (req, res,
 
   const msg = {
     to: {
-      email: 'contact@baptistegrimaldi.info',
+      email: 'contact@baptistegrimaldi.com',
       name: 'Baptiste Grimaldi',
     },
     from: {
-      email: 'no-reply@baptistegrimaldi.info',
+      email: 'no-reply@baptistegrimaldi.com',
       name: 'Baptiste Grimaldi',
     },
     templateId: 'd-8880bc3646d34d59b0c5f85de370b452',

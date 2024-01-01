@@ -1,7 +1,7 @@
 User-agent: *
 Disallow: /admin
 Disallow: /account
-sitemap: https://portfolio.baptistegrimaldi.info/sitemap.xml
+sitemap: https://portfolio.baptistegrimaldi.com/sitemap.xml
 
 User-agent: Googlebot
 Disallow:
