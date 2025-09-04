@@ -23,7 +23,7 @@ function cleanMarkdown(mdText) {
 }
 
 // Convert markdown to HTML
-export async function markdownTranslate(mdText) {
+export default async function markdownTranslate(mdText) {
   const md = Markdown({
     highlight: (str, lang) => {
       const code =
@@ -93,4 +93,3 @@ export async function markdownToPdf(
     return "ERROR IN TEXT TRANSLATION ! Please contact the administrator.";
   }
 }
-
