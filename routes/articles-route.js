@@ -1,31 +1,37 @@
-import express from 'express';
+import express from "express";
 import poolDB from "../app/config/configDB.js";
-import markdownTranslate, {markdownToPdf} from "../app/models/markdown-translate.js";
-import {getArticleBySlug, getArticles} from "../app/controllers/articlesController.js";
+import markdownTranslate, {
+  markdownToPdf,
+} from "../app/models/markdown-translate.js";
+import {
+  getArticleBySlug,
+  getArticles,
+} from "../app/controllers/articlesController.js";
 import * as fs from "fs";
-const router = express.Router()
-
-const sql = "SELECT * from articles";
+const router = express.Router();
 
 /* GET articles page. */
-router.get('/', function(req, res, next) {
+router.get("/", function (req, res, next) {
+  const sql = "SELECT * from articles";
   poolDB.query(sql, async (err, articles) => {
     if (err) throw err;
 
     //loop through articles and convert boy md to html
     for (let i = 0; i < articles.length; i++) {
       articles[i].body = await markdownTranslate(articles[i].body);
-      articles[i].description = await markdownTranslate(articles[i].description);
+      articles[i].description = await markdownTranslate(
+        articles[i].description,
+      );
 
       //convert date to string dd/mm/yyyy of client's locale
       articles[i].date = new Date(articles[i].date).toLocaleDateString();
     }
 
-    res.render('articles', {articles: articles});
-  })
+    res.render("articles", { articles: articles });
+  });
 });
 
-router.get('/query', async function(req, res, next) {
+router.get("/query", async function (req, res, next) {
   //if no query string, the first 10 projects are displayed
   //if query string, the projects are filtered by the query string
   //if querry string is page, the projects are by pack of 10
@@ -50,8 +56,8 @@ router.get('/query', async function(req, res, next) {
         categories = "all";
       }
       return `Page: ${page} + Custom search: ${customSearch} + Categories: ${categories}`;
-    }
-  }
+    },
+  };
 
   //default value
   if (!req.query.length) {
@@ -70,23 +76,23 @@ router.get('/query', async function(req, res, next) {
 
   //categories
   if (req.query.categories) {
-    searchParams.categories = req.query.categories.split(',');
+    searchParams.categories = req.query.categories.split(",");
   }
 
   //query option for the database
   const queryOptions = {
     pageNumber: searchParams.page,
     customSearch: searchParams.customSearch,
-    categories: searchParams.categories
-  }
+    categories: searchParams.categories,
+  };
 
   //execute query
   const queryResult = await getArticles(queryOptions);
 
   //set the number of pages to display and the projects to display
-  const maxPages  = queryResult.maxPages;
-  const articles  = queryResult.articles;
-  const message   = searchParams.toString();
+  const maxPages = queryResult.maxPages;
+  const articles = queryResult.articles;
+  const message = searchParams.toString();
 
   //convert the body and the description from markdown to html
   for (let i = 0; i < articles.length; i++) {
@@ -94,14 +100,14 @@ router.get('/query', async function(req, res, next) {
     articles[i].description = await markdownTranslate(articles[i].description);
   }
 
-  res.json({message: message, data: articles, maxPages: maxPages});
+  res.json({ message: message, data: articles, maxPages: maxPages });
 });
 
-router.get('/view/:slug', async function(req, res, next) {
+router.get("/view/:slug", async function (req, res, next) {
   const article = await getArticleBySlug(req.params.slug);
 
   if (!article) {
-    res.render('not-found');
+    res.render("not-found");
     return;
   }
 
@@ -114,7 +120,10 @@ router.get('/view/:slug', async function(req, res, next) {
       const filePath = matches[i].replace("{{!!", "").replace("!!}}", "");
 
       //replace de placeholder with the actual html content of the html in the articles path in an iframe
-      article.body = article.body.replace(matches[i], `<iframe src="/articles_html/${filePath}" id="article-body__iframe"></iframe>`);
+      article.body = article.body.replace(
+        matches[i],
+        `<iframe src="/articles_html/${filePath}" id="article-body__iframe"></iframe>`,
+      );
     }
   } else {
     article.body = await markdownTranslate(article.body);
@@ -123,15 +132,15 @@ router.get('/view/:slug', async function(req, res, next) {
   //convert the description from markdown to html
   article.description = await markdownTranslate(article.description);
 
-  res.render('content-single', {project: article, route: "articles"});
+  res.render("content-single", { project: article, route: "articles" });
 });
 
 //get pdf version
-router.get('/pdf/:slug', async function(req, res, next) {
+router.get("/pdf/:slug", async function (req, res, next) {
   //check if the article exists
   const article = await getArticleBySlug(req.params.slug);
   if (!article) {
-    res.render('not-found');
+    res.render("not-found");
     return;
   }
 
@@ -142,17 +151,18 @@ router.get('/pdf/:slug', async function(req, res, next) {
   //if file does not exist, send pdf version of markdown body
   if (!fs.existsSync(pdfPath)) {
     //ADD title to the markdown body
-    article.body = `# ${article.title}\n## ${article.description}(${new Date(article.created_at).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' })})\n\n${article.body}`;
+    article.body = `# ${article.title}\n## ${article.description}(${new Date(article.created_at).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", year: "numeric" })})\n\n${article.body}`;
 
-    resultPdf = await markdownToPdf(article.body, pdfPath, {output: "raw"});
+    resultPdf = await markdownToPdf(article.body, pdfPath, { output: "raw" });
   }
 
   //send pdf file to the client
   res.set({
     "Content-Disposition": `inline; filename=${article.slug}.pdf`,
-    "Content-Type": "application/pdf"
+    "Content-Type": "application/pdf",
   });
   res.send(resultPdf);
 });
 
 export default router;
+
