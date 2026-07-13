@@ -326,13 +326,19 @@ router.get('/pdf/:slug', async function(req, res, next) {
   const pdfPath = `public/articles_media/pdf/${project.slug}-doc.pdf`;
   let resultPdf;
 
-  //if file does not exist, send pdf version of markdown body
-  if (!fs.existsSync(pdfPath)) {
-    project.body = `# ${project.title}\n## ${project.description}(${new Date(project.created_at).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' })})\n\n${project.body}`;
+  try {
+    //if file does not exist, send pdf version of markdown body
+    if (!fs.existsSync(pdfPath)) {
+      project.body = `# ${project.title}\n## ${project.description}(${new Date(project.created_at).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' })})\n\n${project.body}`;
 
-    resultPdf = await markdownToPdf(project.body, pdfPath, {output: "raw"});
-  } else {
-    resultPdf = fs.readFileSync(pdfPath);
+      resultPdf = await markdownToPdf(project.body, pdfPath, {output: "raw"});
+    } else {
+      resultPdf = fs.readFileSync(pdfPath);
+    }
+  } catch (error) {
+    console.error("PDF generation error:", error);
+    res.status(503).send("PDF generation is temporarily unavailable. Please try again later.");
+    return;
   }
 
   //send pdf file to the client

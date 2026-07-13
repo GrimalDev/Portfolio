@@ -1,87 +1,104 @@
 async function applyDataTemplate(json) {
-    let mainElement = await document.querySelector('main');
+  let mainElement = await document.querySelector("main");
 
-    let tempNewCategoryBool = false;
-    let tempNewSecondaryContainer = false;
+  let tempNewCategoryBool = false;
+  let tempNewSecondaryContainer = false;
 
-    //loop through table lines
-    json.forEach(obj => {
+  //loop through table lines
+  json.forEach((obj) => {
+    switch (obj["content_level"]) {
+      //see if line is a title, a list element or a secondary argument
+      case 1:
+        let cvCategory = document.createElement("div");
+        cvCategory.className += "cv-category home-section shadow-section";
 
-        switch (obj['content_level']) {
-            //see if line is a title, a list element or a secondary argument
-            case 1:
-                let cvCategory = document.createElement('div');
-                cvCategory.className += 'cv-category home-section shadow-section';
+        let cvCategoryTitle = document.createElement("h2");
+        cvCategoryTitle.className += "cv-category-title";
+        cvCategoryTitle.innerText = obj["content"];
 
-                let cvCategoryTitle = document.createElement('h2');
-                cvCategoryTitle.className += 'cv-category-title';
-                cvCategoryTitle.innerText = obj['content'];
+        cvCategory.append(cvCategoryTitle);
+        mainElement.append(cvCategory);
 
-                cvCategory.append(cvCategoryTitle);
-                mainElement.append(cvCategory);
+        if (!tempNewCategoryBool) tempNewCategoryBool = !tempNewCategoryBool; // invert the new category bool
+        break;
+      case 2:
+        if (tempNewCategoryBool) {
+          let contentContainerElement = document.createElement("ul");
+          contentContainerElement.className += "cv-content-container";
 
-                if (!tempNewCategoryBool) tempNewCategoryBool = !tempNewCategoryBool; // invert the new category bool
-                break;
-            case 2:
-                if (tempNewCategoryBool) {
-                    let contentContainerElement = document.createElement('ul');
-                    contentContainerElement.className += 'cv-content-container';
+          (async () => {
+            let lastCVCategory = await mainElement.querySelector(
+              ".cv-category:last-child",
+            ); // Get last to append to
 
-                    (async () => {
-                        let lastCVCategory = await mainElement.querySelector('.cv-category:last-child'); // Get last to append to
+            lastCVCategory.append(contentContainerElement);
+          })();
 
-                        lastCVCategory.append(contentContainerElement);
+          tempNewCategoryBool = !tempNewCategoryBool;
+        }
+        let contentElement = document.createElement("li");
+        contentElement.className += "cv-content key";
+        contentElement.innerText = obj["content"];
 
-                    })();
+        (async () => {
+          let lastCVCategory = await mainElement.querySelector(
+            ".cv-category:last-child",
+          ); // Get last to append to
+          let lastCVContentContainer = await lastCVCategory.querySelector(
+            ".cv-content-container:last-child",
+          );
 
-                    tempNewCategoryBool = !tempNewCategoryBool
-                }
-                let contentElement = document.createElement('li');
-                contentElement.className += 'cv-content key';
-                contentElement.innerText = obj['content'];
+          lastCVContentContainer.append(contentElement); //append to last child
+        })();
 
-                (async () => {
-                    let lastCVCategory = await mainElement.querySelector('.cv-category:last-child'); // Get last to append to
-                    let lastCVContentContainer = await lastCVCategory.querySelector('.cv-content-container:last-child');
+        if (!tempNewSecondaryContainer)
+          tempNewSecondaryContainer = !tempNewSecondaryContainer;
+        break;
+      case 3:
+        if (tempNewSecondaryContainer) {
+          let secondaryContentContainerLi = document.createElement("li");
+          secondaryContentContainerLi.className +=
+            "cv-content-secondary-container";
+          let secondaryContentContainerUl = document.createElement("ul");
+          (async () => {
+            let lastCVCategory = await mainElement.querySelector(
+              ".cv-category:last-child",
+            ); // Get last to append to
+            let lastCVContentContainer = await lastCVCategory.querySelector(
+              ".cv-content-container:last-child",
+            );
 
-                    lastCVContentContainer.append(contentElement); //append to last child
-                })();
-
-                if (!tempNewSecondaryContainer) tempNewSecondaryContainer = !tempNewSecondaryContainer;
-                break;
-            case 3:
-                if (tempNewSecondaryContainer) {
-                    let secondaryContentContainerLi = document.createElement('li');
-                    secondaryContentContainerLi.className += 'cv-content-secondary-container';
-                    let secondaryContentContainerUl = document.createElement('ul');
-                    (async () => {
-                        let lastCVCategory = await mainElement.querySelector('.cv-category:last-child'); // Get last to append to
-                        let lastCVContentContainer = await lastCVCategory.querySelector('.cv-content-container:last-child');
-
-                        secondaryContentContainerLi.append(secondaryContentContainerUl);
-                        lastCVContentContainer.append(secondaryContentContainerLi);
-                    })();
-                    tempNewSecondaryContainer = !tempNewSecondaryContainer;
-                }
-
-                let contentSecondaryElement = document.createElement('li');
-                contentSecondaryElement.className += 'cv-content-secondary key';
-                contentSecondaryElement.innerText = obj['content'];
-
-                (async () => {
-                    let lastCVCategory = await mainElement.querySelector('.cv-category:last-child'); // Get last to append to
-                    let lastCVContentContainer = await lastCVCategory.querySelector('.cv-content-container:last-child');
-                    let lastCVContentSecondaryContainer = await lastCVContentContainer.querySelector('.cv-content-secondary-container:last-child');
-                    let lastCVContentSecondaryContainerUl = await lastCVContentSecondaryContainer.querySelector('ul'); //get list from last secondary element to append to
-
-                    lastCVContentSecondaryContainerUl.append(contentSecondaryElement);  //append to last child
-                })();
+            secondaryContentContainerLi.append(secondaryContentContainerUl);
+            lastCVContentContainer.append(secondaryContentContainerLi);
+          })();
+          tempNewSecondaryContainer = !tempNewSecondaryContainer;
         }
 
-    });
+        let contentSecondaryElement = document.createElement("li");
+        contentSecondaryElement.className += "cv-content-secondary key";
+        contentSecondaryElement.innerText = obj["content"];
 
-    //base template exemple
-    /*        <div id="cv-degrees" class="cv-category">
+        (async () => {
+          let lastCVCategory = await mainElement.querySelector(
+            ".cv-category:last-child",
+          ); // Get last to append to
+          let lastCVContentContainer = await lastCVCategory.querySelector(
+            ".cv-content-container:last-child",
+          );
+          let lastCVContentSecondaryContainer =
+            await lastCVContentContainer.querySelector(
+              ".cv-content-secondary-container:last-child",
+            );
+          let lastCVContentSecondaryContainerUl =
+            await lastCVContentSecondaryContainer.querySelector("ul"); //get list from last secondary element to append to
+
+          lastCVContentSecondaryContainerUl.append(contentSecondaryElement); //append to last child
+        })();
+    }
+  });
+
+  //base template exemple
+  /*        <div id="cv-degrees" class="cv-category">
                 <div class="cv-category-title">Diplômes</div>
                 <ul class="cv-content-container">
                     <li class="cv-content">2021 - BTS SIO SLAM - Ecole IRIS</li>
@@ -97,13 +114,16 @@ async function applyDataTemplate(json) {
 }
 
 async function cvDataFetch() {
-    const res = await fetch('/cv/data');
-    if (res.ok) { // if HTTP-status is 200-299
-        let json = await res.json(); // Get response body
-        await applyDataTemplate(json)
-    } else {
-        console.error("HTTP-Error: " + res.status);
-    }
+  const res = await fetch("/cv/data");
+  if (res.ok) {
+    // if HTTP-status is 200-299
+    let json = await res.json(); // Get response body
+    await applyDataTemplate(json);
+  } else {
+    console.error("HTTP-Error: " + res.status);
+  }
 }
 
-cvDataFetch().then(r => { if(r) console.log(r); } );
+cvDataFetch().then((r) => {
+  if (r) console.log(r);
+});

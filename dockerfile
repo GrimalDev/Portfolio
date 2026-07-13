@@ -16,7 +16,9 @@ RUN apt-get update && xargs apt-get install -y <dependencies.txt
 
 RUN npm install
 
+RUN npm build
+
 # Bundle app source
 COPY . .
 
-CMD ["npm", "start"]
+CMD ["npm", "prod"]

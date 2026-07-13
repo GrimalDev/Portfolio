@@ -4,8 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "preinstall": "npm i nodemon -g",
-    "start": "nodemon app.js"
+    "dev": "SERVER_PORT=3030 bun app.js --watch",
+    "build": "webpack --mode production",
+    "prod": "NODE_ENV=production node app.js"
   },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",

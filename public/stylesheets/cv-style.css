@@ -775,6 +775,21 @@ li {
   transition: all 0.3s ease-out;
 }
 
+.cv-content.collapsible {
+  cursor: pointer;
+}
+
+.cv-content.collapsible.active:before {
+  content: "v";
+  transform: rotate(0deg);
+}
+
+.cv-content-secondary-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
 /*------------RESPONSIVE-----------*/
 @media screen and (max-width: 555px) {
   #ddd-and-header {
