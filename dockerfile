@@ -1,4 +1,4 @@
-FROM node:18-buster
+FROM node:18.20.8-bullseye
 
 ENV NODE_ENV="production"
 
@@ -16,9 +16,7 @@ RUN apt-get update && xargs apt-get install -y <dependencies.txt
 
 RUN npm install
 
-RUN npm build
-
 # Bundle app source
 COPY . .
 
-CMD ["npm", "prod"]
+CMD ["npm", "run", "prod"]
