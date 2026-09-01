@@ -7,7 +7,7 @@ import {
   getArticleBySlug,
   getArticles,
 } from "../app/controllers/articlesController.js";
-import * as fs from "fs";
+import { pdfCachePath, readPdfCache } from "../app/models/pdf-cache.js";
 const router = express.Router();
 
 /* GET articles page. */
@@ -137,31 +137,41 @@ router.get("/view/:slug", async function (req, res, next) {
 
 //get pdf version
 router.get("/pdf/:slug", async function (req, res, next) {
-  //check if the article exists
-  const article = await getArticleBySlug(req.params.slug);
-  if (!article) {
-    res.render("not-found");
-    return;
+  try {
+    //check if the article exists
+    const article = await getArticleBySlug(req.params.slug);
+    if (!article) {
+      res.render("not-found");
+      return;
+    }
+
+    //serve the cached PDF when it exists, otherwise generate and cache it
+    let resultPdf = readPdfCache(article.slug);
+
+    if (!resultPdf) {
+      const createdAt = new Date(article.created_at).toLocaleDateString(
+        "fr-FR",
+        { day: "2-digit", month: "2-digit", year: "numeric" },
+      );
+      const body = `# ${article.title}\n## ${article.description}(${createdAt})\n\n${article.body}`;
+
+      resultPdf = await markdownToPdf(body, pdfCachePath(article.slug), {
+        output: "raw",
+      });
+    }
+
+    //send pdf file to the client
+    res.set({
+      "Content-Disposition": `inline; filename=${article.slug}.pdf`,
+      "Content-Type": "application/pdf",
+    });
+    res.send(resultPdf);
+  } catch (error) {
+    console.error("PDF generation error:", error);
+    res
+      .status(503)
+      .send("PDF generation is temporarily unavailable. Please try again later.");
   }
-
-  //pdf path
-  const pdfPath = `public/articles_media/pdf/${article.slug}-doc.pdf`;
-  let resultPdf;
-
-  //if file does not exist, send pdf version of markdown body
-  if (!fs.existsSync(pdfPath)) {
-    //ADD title to the markdown body
-    article.body = `# ${article.title}\n## ${article.description}(${new Date(article.created_at).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", year: "numeric" })})\n\n${article.body}`;
-
-    resultPdf = await markdownToPdf(article.body, pdfPath, { output: "raw" });
-  }
-
-  //send pdf file to the client
-  res.set({
-    "Content-Disposition": `inline; filename=${article.slug}.pdf`,
-    "Content-Type": "application/pdf",
-  });
-  res.send(resultPdf);
 });
 
 export default router;

@@ -11,6 +11,12 @@ import {phraseToSlug} from "../app/models/articlesHelper.js";
 import {isAdmin, isAuth} from "../app/models/userHelpers.js";
 import AdmZip from "adm-zip";
 import {getArticleBySlug} from "../app/controllers/articlesController.js";
+import {
+  ensurePdfCacheDir,
+  invalidatePdfCache,
+  pdfCachePath,
+  readPdfCache,
+} from "../app/models/pdf-cache.js";
 import path from "path";
 
 const router = express.Router();
@@ -258,14 +264,21 @@ router.post('/add', isAuth, isAdmin, async function(req, res, next) {
     }
   }
 
-  //save the pdf if any (pdf is not mandatory)
-  if (req.files.pdf) {
-    const pdf = req.files.pdf;
-    let pdfPath = `./public/articles_media/pdf/${project.slug}-doc.pdf`;
+  //the body is about to change, so any previously generated PDF is now stale
+  invalidatePdfCache(project.slug);
 
-    //if the pdf already exists, delete it
-    if (fs.existsSync(pdfPath)) {
-      await fs.unlinkSync(pdfPath);
+  //save the pdf if any (pdf is not mandatory)
+  //an uploaded PDF takes the place of the generated one, so the GET route
+  //serves it straight from disk and never calls Chromium for this slug
+  if (req.files.pdf) {
+    const pdfPath = pdfCachePath(project.slug);
+
+    try {
+      ensurePdfCacheDir();
+    } catch (err) {
+      finalStatus.status = "nook";
+      finalStatus.message = "Error while saving the pdf file";
+      console.error("PDF cache directory error:", err);
     }
 
     req.files.pdf.mv(pdfPath, function(err) {
@@ -309,44 +322,44 @@ router.post('/delete', isAuth, isAdmin, async function(req, res, next) {
 
   //delete the project
   await deleteProject(project._id);
+  invalidatePdfCache(project.slug);
 
   res.json(finalStatus);
 });
 
 //get pdf version
 router.get('/pdf/:slug', async function(req, res, next) {
-  //check if the project exists
-  const project = await getProjectBySlug(req.params.slug);
-  if (!project) {
-    res.render('not-found');
-    return;
-  }
-
-  //pdf path
-  const pdfPath = `public/articles_media/pdf/${project.slug}-doc.pdf`;
-  let resultPdf;
-
   try {
-    //if file does not exist, send pdf version of markdown body
-    if (!fs.existsSync(pdfPath)) {
-      project.body = `# ${project.title}\n## ${project.description}(${new Date(project.created_at).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' })})\n\n${project.body}`;
-
-      resultPdf = await markdownToPdf(project.body, pdfPath, {output: "raw"});
-    } else {
-      resultPdf = fs.readFileSync(pdfPath);
+    //check if the project exists
+    const project = await getProjectBySlug(req.params.slug);
+    if (!project) {
+      res.render('not-found');
+      return;
     }
+
+    //serve the cached PDF when it exists, otherwise generate and cache it
+    let resultPdf = readPdfCache(project.slug);
+
+    if (!resultPdf) {
+      const createdAt = new Date(project.created_at).toLocaleDateString(
+        'fr-FR',
+        {day: '2-digit', month: '2-digit', year: 'numeric'},
+      );
+      const body = `# ${project.title}\n## ${project.description}(${createdAt})\n\n${project.body}`;
+
+      resultPdf = await markdownToPdf(body, pdfCachePath(project.slug), {output: "raw"});
+    }
+
+    //send pdf file to the client
+    res.set({
+      "Content-Disposition": `inline; filename=${project.slug}.pdf`,
+      "Content-Type": "application/pdf"
+    });
+    res.send(resultPdf);
   } catch (error) {
     console.error("PDF generation error:", error);
     res.status(503).send("PDF generation is temporarily unavailable. Please try again later.");
-    return;
   }
-
-  //send pdf file to the client
-  res.set({
-    "Content-Disposition": `inline; filename=${project.slug}.pdf`,
-    "Content-Type": "application/pdf"
-  });
-  res.send(resultPdf);
 });
 
 async function sleep(ms) {

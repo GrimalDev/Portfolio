@@ -37,6 +37,15 @@ dotenv.config();
 
 //TODO: Report in special DB table all errors displayed with console.error
 
+// Express 4 does not catch rejections thrown by async route handlers, so a
+// single failing request would otherwise reach Node's default
+// --unhandled-rejections=throw and kill the whole process. Individual routes
+// still handle their own errors; this is the last-resort net that keeps one bad
+// request from restarting the container.
+process.on("unhandledRejection", (reason) => {
+  console.error("Unhandled promise rejection:", reason);
+});
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
