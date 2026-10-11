@@ -1,4 +1,4 @@
-FROM node:18.20.8-bullseye
+FROM node:22-bookworm
 
 ENV NODE_ENV="production"
 
@@ -11,8 +11,10 @@ WORKDIR /home/node/app
 COPY package*.json ./
 COPY dependencies.txt ./
 
-#install all libraries for production from dependencies.txt
-RUN apt-get update && xargs apt-get install -y <dependencies.txt
+# Install the shared libraries used by Chromium for PDF generation.
+RUN apt-get -o Acquire::Retries=3 -o APT::Update::Error-Mode=any update \
+    && xargs -r apt-get install -y --no-install-recommends < dependencies.txt \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN npm install
 
